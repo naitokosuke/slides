@@ -2,7 +2,12 @@
   "cSpell.customDictionaries": {
     "cspell-dict": {
       "path": "./.vscode/cspell-dict.txt",
-      "addWords": true,
-    },
-  }
+      "addWords": true
+    }
+  },
+
+  "prettier.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.requireConfig": true
 }
