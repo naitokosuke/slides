@@ -1,10 +1,14 @@
 Buzan
+Cosense
+Nuxt
 Popularisation
 seriph
 Shiki
 slidev
 startuml
 striked
+Tokatsu
+Toukatsu
 unocss
 vite
 vueuse

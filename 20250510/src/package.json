@@ -6,11 +6,5 @@
     "build": "slidev build --base /20250510/ --out ../../dist",
     "dev": "slidev --open",
     "export": "slidev export --dark --output ../20250510.pdf"
-  },
-  "dependencies": {
-    "@slidev/cli": "^51.6.0",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "vue": "^3.5.13"
   }
 }
