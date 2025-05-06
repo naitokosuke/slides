@@ -1,0 +1,8 @@
+{
+  "cSpell.customDictionaries": {
+    "cspell-dict": {
+      "path": "./.vscode/cspell-dict.txt",
+      "addWords": true,
+    },
+  }
+}
