@@ -1,2 +1,10 @@
+Buzan
+Popularisation
+seriph
+Shiki
 slidev
+startuml
+striked
+unocss
 vite
+vueuse
