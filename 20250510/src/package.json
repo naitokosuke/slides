@@ -3,9 +3,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
+    "build": "slidev build --base /20250510/ --out ../../dist",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --dark --output ../20250510.pdf"
   },
   "dependencies": {
     "@slidev/cli": "^51.6.0",
