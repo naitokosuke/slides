@@ -1,11 +1,5 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
+# 東葛.dev #6 2025/05/10(土) 15:00 - 18:00 @柏
 
-To start the slide show:
+## Cosense
 
-- `pnpm install`
-- `pnpm dev`
-- visit <http://localhost:3030>
-
-Edit the [slides.md](./slides.md) to see the changes.
-
-Learn more about Slidev at the [documentation](https://sli.dev/).
+https://scrapbox.io/toukatsu-dev/
