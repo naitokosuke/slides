@@ -3,8 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
+    "build": "slidev build --base /sample/ --out ../../dist/sample",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --dark --output ../sample.pdf"
   }
 }
