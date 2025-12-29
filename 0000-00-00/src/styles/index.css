@@ -140,7 +140,7 @@ iframe {
   border: 1px solid #eee1;
 }
 
-.rough-annotation > path[stroke-width='2'] {
+.rough-annotation > path[stroke-width="2"] {
   stroke-width: calc(2px * var(--slidev-slide-scale));
 }
 

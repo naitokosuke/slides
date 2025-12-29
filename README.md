@@ -6,4 +6,4 @@ Slides & code for my talks, using [Slidev](https://github.com/slidevjs/slidev)!
 
 ###### 0000
 
- - `en` [Template](./0000-00-00) - subtitle
+- `en` [Template](./0000-00-00) - subtitle
