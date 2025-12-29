@@ -1,4 +1,6 @@
 {
+  "vite.autoStart": false,
+  "vite.open": false,
   "slidev.port": 3031,
   "editor.formatOnSave": true,
   "prettier.enable": true,
