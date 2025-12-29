@@ -1,6 +1,7 @@
 {
   "slidev.port": 3031,
-  "cSpell.words": [
-    "seriph"
-  ]
+  "editor.formatOnSave": true,
+  "prettier.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "css.lint.unknownAtRules": "ignore"
 }

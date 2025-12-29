@@ -10,6 +10,7 @@
     "export": "pnpm run picker export",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",
+    "fmt": "prettier --write .",
     "picker": "PICKER_EDITOR=code esno scripts/picker.ts",
     "prepare": "git submodule update --init --recursive"
   },
@@ -31,6 +32,7 @@
     "markdown-it-magic-link": "^0.1.4",
     "playwright-chromium": "^1.45.1",
     "pnpm": "^9.5.0",
+    "prettier": "^3.7.4",
     "prettier-plugin-slidev": "^1.0.5",
     "prompts": "^2.4.2",
     "rimraf": "^6.0.1",
