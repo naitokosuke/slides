@@ -1,17 +1,13 @@
 {
-  "name": "20251213-talk",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.15.1",
   "scripts": {
-    "build": "slidev build",
     "dev": "slidev",
-    "export": "slidev export"
+    "build": "slidev build --out ../dist",
+    "export": "slidev export --per-slide --dark --output ../slides.pdf"
   },
   "dependencies": {
     "@iconify-json/logos": "^1.2.10",
-    "@slidev/cli": "^52.10.0",
-    "@slidev/theme-default": "latest",
     "canvas-confetti": "^1.9.4",
     "gsap": "^3.13.0",
     "vue": "^3.5.25"

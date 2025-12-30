@@ -1,21 +1,15 @@
 {
-  "name": "package.json",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.12.1",
   "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export"
+    "dev": "slidev",
+    "build": "slidev build --out ../dist",
+    "export": "slidev export --per-slide --dark --output ../slides.pdf"
   },
   "dependencies": {
-    "@slidev/cli": "^52.4.0",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "vue": "^3.5.22"
-  },
-  "devDependencies": {
     "@iconify-json/logos": "^1.2.9",
-    "@unocss/preset-icons": "^66.5.4"
+    "@slidev/theme-seriph": "latest",
+    "@unocss/preset-icons": "^66.5.4",
+    "vue": "^3.5.22"
   }
 }

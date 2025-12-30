@@ -1,22 +1,16 @@
 {
-  "name": "tokium-1st",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export"
+    "dev": "slidev",
+    "build": "slidev build --out ../dist",
+    "export": "slidev export --per-slide --dark --output ../slides.pdf"
   },
   "dependencies": {
-    "@slidev/cli": "^0.49.29",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "vue": "^3.4.38"
-  },
-  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b",
-  "devDependencies": {
     "@iconify-json/carbon": "^1.2.1",
     "@iconify-json/logos": "^1.2.0",
-    "@iconify-json/simple-icons": "^1.2.4"
+    "@iconify-json/simple-icons": "^1.2.4",
+    "@slidev/theme-seriph": "latest",
+    "vue": "^3.4.38"
   }
 }
