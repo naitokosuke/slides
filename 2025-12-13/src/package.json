@@ -7,7 +7,6 @@
     "export": "slidev export --per-slide --dark --output ../slides.pdf"
   },
   "dependencies": {
-    "@iconify-json/logos": "^1.2.10",
     "canvas-confetti": "^1.9.4",
     "gsap": "^3.13.0"
   }

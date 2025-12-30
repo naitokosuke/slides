@@ -7,9 +7,6 @@
     "export": "slidev export --per-slide --dark --output ../slides.pdf"
   },
   "dependencies": {
-    "@iconify-json/devicon": "^1.2.25",
-    "@iconify-json/logos": "^1.2.4",
-    "@iconify-json/mdi": "^1.2.3",
     "js-confetti": "^0.12.0"
   }
 }
