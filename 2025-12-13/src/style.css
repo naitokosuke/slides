@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'Tsunagi Gothic';
+  src: url('/fonts/tsunagi-gothic/TsunagiGothic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Onryou';
+  src: url('/fonts/onryou/onryou.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-onryou {
+  font-family: 'Onryou', sans-serif;
+}
+
+.font-noto {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+:root {
+  --slidev-slide-background: #3438F2;
+}
+
+.slidev-layout {
+  background-color: #3438F2;
+  color: #FFFFFF;
+}

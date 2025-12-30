@@ -1,0 +1,359 @@
+/* Import color definitions */
+@import "./style/colors.css";
+
+/* Sophisticated Tropical Sunset Theme - Inspired by luxury beach resort */
+
+/* Main layout container - background handled by DynamicSunsetBackground component */
+.slidev-layout {
+  /* Typography */
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply font-serif;
+  }
+
+  h1 {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-bronze) 0%,
+      var(--color-primary-copper) 50%,
+      var(--color-primary-sienna) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.5));
+
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    color: var(--color-primary-bronze);
+    font-weight: 600;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    margin-bottom: 1.5rem;
+  }
+
+  h3,
+  h4 {
+    color: var(--color-primary-copper);
+    font-weight: 500;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--color-text-primary);
+    line-height: 1.8;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Links */
+  a {
+    color: var(--color-primary-gold);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary-sand);
+    }
+
+    &:has(img) {
+      text-decoration: none !important;
+      border: none !important;
+      outline: none !important;
+    }
+  }
+
+  /* Code Blocks */
+  pre {
+    background: linear-gradient(
+      135deg,
+      var(--monaco-bg-primary) 0%,
+      var(--monaco-bg-secondary) 100%
+    ) !important;
+    padding: 1rem !important;
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    overflow-y: auto !important;
+
+    code {
+      font-size: 1.5em !important;
+      line-height: 1.7;
+    }
+  }
+
+  /* Inline code */
+  :not(pre) > code {
+    background: var(--color-purple-tint);
+    color: var(--color-primary-sand);
+    padding: 0.2em 0.5em;
+    border-radius: 6px;
+    border: 1px solid var(--color-sand-20);
+    backdrop-filter: blur(10px);
+    font-size: 1.3em;
+  }
+
+  /* Lists */
+  ul li {
+    color: var(--color-text-primary);
+    margin-bottom: 0.8rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+    &::marker {
+      color: var(--color-primary-gold);
+    }
+  }
+
+  ol li {
+    color: var(--color-text-primary);
+    margin-bottom: 0.8rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+    &::marker {
+      color: var(--color-primary-sand);
+      font-weight: 600;
+    }
+  }
+
+  /* Tables */
+  table {
+    background: rgba(26, 26, 46, 0.6);
+    border: 1px solid var(--color-gold-22);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  th {
+    background: linear-gradient(
+      135deg,
+      var(--color-gold-22) 0%,
+      var(--color-sand-20) 100%
+    );
+    color: var(--color-primary-sand);
+    font-weight: 600;
+    padding: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+  }
+
+  td {
+    color: var(--color-text-primary);
+    padding: 1rem 1.2rem;
+    border-top: 1px solid var(--color-gold-22);
+  }
+
+  tr:hover td {
+    background: var(--color-gold-22);
+  }
+
+  /* Blockquotes */
+  blockquote {
+    border-left: 4px solid var(--color-primary-gold);
+    background: linear-gradient(
+      135deg,
+      var(--color-orange-tint-10) 0%,
+      var(--color-orange-tint-05) 100%
+    );
+    padding: 2rem 2.5rem;
+    border-radius: 0 16px 16px 0;
+    margin: 2rem 0;
+    backdrop-filter: blur(10px);
+
+    p {
+      color: var(--color-primary-sand);
+      font-style: italic;
+      margin: 0;
+      font-size: 1.1em;
+    }
+  }
+
+  /* Buttons */
+  button {
+    background: var(--color-bronze-15);
+    color: var(--color-primary-bronze);
+    border: 1px solid var(--color-bronze-30);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9em;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--color-bronze-25);
+      border-color: var(--color-bronze-50);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  /* Text Emphasis */
+  strong {
+    color: var(--color-primary-gold);
+    font-weight: 700;
+    text-shadow: 0 0 15px var(--color-gold-44);
+  }
+
+  em {
+    color: var(--color-primary-sand);
+    font-style: italic;
+  }
+
+  /* Horizontal Rules */
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-gold-66),
+      var(--color-sand-66),
+      var(--color-gold-66),
+      transparent
+    );
+    margin: 3rem 0;
+  }
+
+  /* Selection Styling */
+  ::selection {
+    background: var(--color-gold-33);
+    color: #ffffff;
+  }
+
+  /* Click animations */
+  .slidev-vclick-target {
+    animation: fade-in-luxury 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Shiki Magic Move - Global styles applied outside .slidev-layout scope */
+.shiki-magic-move-container {
+  background: linear-gradient(
+    135deg,
+    var(--monaco-bg-primary) 0%,
+    var(--monaco-bg-secondary) 100%
+  ) !important;
+  padding: 1rem !important;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: var(--slidev-code-radius) !important;
+  overflow-y: auto !important;
+
+  /* Code items within magic move */
+  .shiki-magic-move-item {
+    font-size: 1.5em !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Special styling for copy buttons in code blocks */
+  button {
+    background: var(--color-sienna-10) !important;
+    color: var(--color-primary-copper) !important;
+    font-size: 0.8em !important;
+    border-radius: 4px !important;
+    opacity: 0.7;
+  }
+
+  /* Scrollbars */
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-gold-22);
+    border-radius: 0.25rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gold-33);
+    border-radius: 0.25rem;
+
+    &:hover {
+      background: var(--color-gold-55);
+    }
+  }
+}
+
+/* Monaco Editor Blocks */
+.slidev-monaco-container {
+  background: transparent !important;
+  min-height: 400px !important;
+
+  .slidev-monaco-container-inner {
+    border-radius: var(--slidev-code-radius) !important;
+    background: linear-gradient(
+      135deg,
+      var(--monaco-bg-primary) 0%,
+      var(--monaco-bg-secondary) 100%
+    );
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    :is(
+      .monaco-editor,
+      .monaco-editor-background,
+      .margin,
+      .editor-background,
+      .overflow-guard
+    ) {
+      background-color: transparent !important;
+    }
+
+    .monaco-editor {
+      :is(.current-line, .current-line-margin) {
+        background: var(--color-interactive-gold) !important;
+        border-color: var(--color-gold-22) !important;
+      }
+    }
+  }
+}
+
+/* Monaco Editor Hover Widget Custom Styling */
+.monaco-hover,
+.monaco-hover-content {
+  background-color: var(--color-hover-bg) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.monaco-hover .hover-row .hover-contents {
+  color: var(--color-text-primary) !important;
+}
+
+.monaco-hover .hover-row .hover-contents .code {
+  background-color: transparent !important;
+}
+
+/* Smooth Animations */
+@keyframes fade-in-luxury {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .slidev-layout .slidev-vclick-target,
+  .slidev-layout img,
+  .slidev-layout button,
+  .slidev-layout .button {
+    animation: none !important;
+    transition: none !important;
+  }
+}

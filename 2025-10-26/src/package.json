@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --out ../dist",
+    "export": "slidev export --per-slide --dark --output ../slides.pdf"
+  },
+  "dependencies": {
+    "@unocss/preset-icons": "^66.5.4"
+  }
+}

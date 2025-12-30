@@ -1,0 +1,71 @@
+/**
+ * Color Definitions for Tropical Sunset Theme
+ * Used across both Monaco Editor and CSS styling
+ */
+
+:root {
+  /* Primary Colors - Tropical Sunset */
+  --color-primary-gold: #ffcc70;
+  --color-primary-sand: #ffd4a3;
+  --color-primary-bronze: #deb887;
+  --color-primary-copper: #cd853f;
+  --color-primary-sienna: #a0522d;
+
+  /* Background Colors */
+  --color-bg-dark-primary: #1a1a2e;
+  --color-bg-dark-secondary: #22335c;
+  --color-bg-dark-tertiary: #2d3251;
+
+  /* Text Colors */
+  --color-text-primary: #f8f8ff;
+  --color-text-secondary: #deb887;
+  --color-text-accent: #ffd4a3;
+
+  /* Opacity Variants */
+  --color-gold-66: #ffcc7066;
+  --color-gold-55: #ffcc7055;
+  --color-gold-44: #ffcc7044;
+  --color-gold-33: #ffcc7033;
+  --color-gold-22: #ffcc7022;
+  --color-gold-aa: #ffcc70aa;
+
+  --color-sand-66: #ffd4a366;
+  --color-sand-55: #ffd4a355;
+  --color-sand-44: #ffd4a344;
+  --color-sand-33: #ffd4a333;
+  --color-sand-20: #ffd4a320;
+
+  /* Monaco Editor Colors */
+  --monaco-bg-primary: rgba(26, 26, 46, 0.95);
+  --monaco-bg-secondary: rgba(22, 33, 62, 0.95);
+  --monaco-border-gold: #ffcc70aa;
+  --monaco-text-primary: #f8f8ff;
+  --monaco-text-secondary: #ffd4a3;
+
+  /* Error Colors */
+  --color-error: #ff0000;
+  --color-error-border: #ff0000;
+
+  /* Hover and Interactive States */
+  --color-hover-bg: rgba(26, 26, 46, 0.95);
+  --color-hover-border: var(--color-gold-aa);
+  --color-interactive-gold: #ffcc7044;
+
+  /* Additional UI Colors */
+  --color-purple-tint: rgba(139, 90, 151, 0.3);
+  --color-orange-tint-10: rgba(255, 159, 67, 0.1);
+  --color-orange-tint-05: rgba(255, 204, 112, 0.05);
+
+  /* Bronze/Button Colors */
+  --color-bronze-15: rgba(222, 184, 135, 0.15);
+  --color-bronze-25: rgba(222, 184, 135, 0.25);
+  --color-bronze-30: rgba(222, 184, 135, 0.3);
+  --color-bronze-50: rgba(222, 184, 135, 0.5);
+  --color-sienna-10: rgba(160, 82, 45, 0.1);
+
+  /* Brand Colors - Vue and Nuxt */
+  --vue-green: #42b883;
+  --vue-dark: #35495e;
+  --nuxt-green: #00dc82;
+  --nuxt-navy: #020420;
+}
