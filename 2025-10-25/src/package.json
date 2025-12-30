@@ -10,9 +10,6 @@
     "@iconify-json/logos": "^1.1.20",
     "@iconify-json/material-icon-theme": "^1.2.29",
     "@iconify-json/noto": "^1.2.7",
-    "@unocss/preset-web-fonts": "^0.61.0",
-    "@vueuse/integrations": "^12.6.0",
-    "qrcode": "^1.5.4",
-    "vue": "^3.5.18"
+    "@unocss/preset-web-fonts": "^0.61.0"
   }
 }

@@ -9,8 +9,6 @@
   "dependencies": {
     "@iconify-json/carbon": "^1.2.1",
     "@iconify-json/logos": "^1.2.0",
-    "@iconify-json/simple-icons": "^1.2.4",
-    "@slidev/theme-seriph": "latest",
-    "vue": "^3.4.38"
+    "@iconify-json/simple-icons": "^1.2.4"
   }
 }
