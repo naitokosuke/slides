@@ -18,6 +18,7 @@
     "vue": "^3.5.18"
   },
   "devDependencies": {
+    "@unocss/preset-web-fonts": "^0.61.0",
     "playwright-chromium": "^1.49.1"
   }
 }

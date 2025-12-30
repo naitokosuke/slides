@@ -630,9 +630,11 @@ watch(question, async (newQuestion, oldQuestion) => {
     try {
       const res = await fetch('https://yesno.wtf/api')
       answer.value = (await res.json()).answer
-    } catch (error) {
-      answer.value = 'Error! Could not reach the API. ' + error
-    } finally {
+    }
+    catch (error) {
+      answer.value = `Error! Could not reach the API. ${error}`
+    }
+    finally {
       loading.value = false
     }
   }
@@ -780,9 +782,9 @@ transition: slide-up
 ```ts
 const router = useRouter();
 
-const navigateToUser = (userId) => {
+function navigateToUser(userId) {
   router.push(`/usr/${userId}`); // ❌ typo: actual "user"
-};
+}
 ```
 
 <Overlay type="fit-content" top="15%" right="5%" :z-index="1001">
@@ -1000,12 +1002,12 @@ import { RoutesNamesList, RoutesParamsRecord } from "@typed-router";
 type RoutesNamesList = "index" | "user" | "user-id" | "login";
 
 // パラメータの型辞書
-type RoutesParamsRecord = {
+interface RoutesParamsRecord {
   index: never;
   user: never;
   "user-id": { id: string };
   login: never;
-};
+}
 ```
 
 ---
@@ -1333,7 +1335,7 @@ https://azukiazusa.dev/blog/vue-generic-component/
 
 ```vue
 <script setup lang="ts" generic="T extends RoutesNamesList, P extends string">
-import type { RoutesNamesList, NuxtRoute } from "@typed-router";
+import type { NuxtRoute, RoutesNamesList } from "@typed-router";
 
 const props = defineProps<{
   to: NuxtRoute<T, P>;
@@ -1996,15 +1998,15 @@ ni @pinia/colada
 
 <!-- prettier-ignore -->
 ```ts
-import { createApp } from "vue";
-import App from "./App.vue";
-import { createPinia } from "pinia";
-import { PiniaColada } from "@pinia/colada";
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import { PiniaColada } from '@pinia/colada'
+import App from './App.vue'
 
-const app = createApp(App);
-const pinia = createPinia();
-app.use(pinia);
-app.use(PiniaColada, {/** Options */});
+const app = createApp(App)
+const pinia = createPinia()
+app.use(pinia)
+app.use(PiniaColada, {/** Options */})
 ```
 
 ---
@@ -2030,8 +2032,8 @@ nlx nuxi@latest module add @pinia/colada-nuxt
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ["@pinia/nuxt", "@pinia/colada-nuxt"],
-});
+  modules: ['@pinia/nuxt', '@pinia/colada-nuxt'],
+})
 ```
 
 ---
@@ -2483,8 +2485,8 @@ const { mutate: createTodo, state } = useMutation({
 
 <template>
   <button
-    @click="createTodo({ title: '新しいタスク' })"
     :disabled="state.status === 'pending'"
+    @click="createTodo({ title: '新しいタスク' })"
   >
     {{ state.status === "pending" ? "作成中..." : "タスク作成" }}
   </button>
@@ -2553,7 +2555,7 @@ import { PiniaColadaDevtools } from "@pinia/colada-devtools";
 </script>
 
 <template>
-  <main></main>
+  <main />
   <PiniaColadaDevtools />
 </template>
 ```
