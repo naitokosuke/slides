@@ -1,9 +1,14 @@
 version: "0.2"
 language: en
 words:
+  - coens
   - esno
   - iconify
   - naitokosuke
+  - Noto
+  - numpy
+  - Onsen
+  - RDBMS
   - Shiki
   - slidev
   - taze
