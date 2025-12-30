@@ -3,7 +3,7 @@ theme: default
 fonts:
   sans: "Noto Sans JP"
 info: |
-  ## TOKIUM 一次面接
+  ## 自己紹介
 class: text-center
 drawings:
   persist: false
@@ -11,9 +11,9 @@ transition: slide-left
 mdc: true
 ---
 
-<h1>TOKIUM 様 一次面接</h1>
+<h1>自己紹介</h1>
 
-2024.09.26(木)18:00- 西川様・小口様
+2024.09.26
 
 
 ---
@@ -171,26 +171,6 @@ title: ベストスキップ株式会社(2024 - )
   </div>
 
 
-
----
-transition: slide-left
-level: 2
-layout: two-cols
----
-
-<h1>志望動機</h1>
-
-チームでチームと社会に貢献したい
-
-- 「『未来へつながる時』を生む」
-- 「手段にとらわれずにお客様に本質的な価値提供」
-- 一つの製品(目標)に長く向き合える
-- アウトプット文化
-- コミュニティ活動を認めてくれる
-
-::right::
-
-<Tweet id="1747512917111845197" scale="0.66"/>
 
 ---
 transition: slide-up
