@@ -1,16 +1,42 @@
 version: "0.2"
 language: en
 words:
+  - agic
+  - alkey
+  - Clione
   - coens
+  - ditor
+  - elte
+  - ercel
   - esno
+  - Fira
   - iconify
+  - Kailh
+  - KIKKAKE
+  - Kosugi
+  - Limacina
+  - Maru
+  - mitsuhiko
+  - Motio
   - naitokosuke
   - Noto
   - numpy
+  - olta
   - Onsen
+  - openmoji
+  - Otemachi
+  - pipx
+  - pyenv
+  - pyprojec
+  - pyproject
+  - qrcode
   - RDBMS
   - Shiki
   - slidev
   - taze
   - unocss
   - Unplugin
+  - virtualenv
+  - vlang
+  - vueuse
+  - Zenn
