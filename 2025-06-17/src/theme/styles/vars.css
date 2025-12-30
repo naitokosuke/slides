@@ -1,0 +1,13 @@
+:root {
+  --slidev-theme-primary: #3a4a5a;
+  --slidev-theme-secondary: #ffffff;
+  --slidev-theme-background: #f5f5f5;
+  --slidev-theme-text: #3a4a5a;
+  --slidev-theme-accent: #2897c8;
+
+  --aim-at-red: #e82518;
+
+  /* Vue.js brand colors */
+  --vue-green: #42b883;
+  --vue-dark: #35495e;
+}

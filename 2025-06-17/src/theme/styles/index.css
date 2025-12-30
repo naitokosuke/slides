@@ -1,0 +1,58 @@
+@import "./vars.css";
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.75em;
+}
+
+:is(h1, h2, h3) {
+  margin-bottom: 0.5em;
+}
+
+:is(h1, h2, h3, p, span) {
+  color: var(--slidev-theme-primary);
+}
+
+/* Shiki syntax highlighting customization */
+.shiki {
+  border: 1px solid gray !important;
+}
+
+.slidev-page {
+  background-color: #2897c8;
+}
+
+/* Screenshot styling */
+.screen-shot-embed {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Overlay classes */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-blur {
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(7px);
+}
+
+.overlay-white {
+  background-color: #fffffff2;
+}

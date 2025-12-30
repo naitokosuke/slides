@@ -1,0 +1,15 @@
+{
+  "name": "v-tokyo-23",
+  "version": "0.0.1",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "slidev": {
+    "colorSchema": "light",
+    "defaults": {
+      "transition": "slide-left",
+      "aspectRatio": "16/9"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "slide",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@iconify-json/logos": "^1.1.20",
+    "@iconify-json/material-icon-theme": "^1.2.29",
+    "@iconify-json/noto": "^1.2.7",
+    "@slidev/cli": "^52.0.0",
+    "@slidev/theme-default": "latest",
+    "@vueuse/integrations": "^12.6.0",
+    "qrcode": "^1.5.4",
+    "vue": "^3.5.18"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.49.1"
+  }
+}
