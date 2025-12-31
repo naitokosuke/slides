@@ -1,2 +1,5 @@
 packages:
   - "*/src"
+  # FIXME: Monaco Editor dependency issue
+  # https://github.com/naitokosuke/slides/issues/12
+  - "!2025-10-25/src"
