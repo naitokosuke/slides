@@ -7,7 +7,7 @@
     "dev": "pnpm run picker dev --open",
     "build": "rimraf dist && pnpm run picker build",
     "build:all": "rimraf dist && pnpm -r run build",
-    "build:ci": "rimraf dist && pnpm -r --workspace-concurrency=2 run build",
+    "build:ci": "rimraf dist && pnpm -r --workspace-concurrency=3 run build",
     "export": "pnpm run picker export",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",
