@@ -7,7 +7,7 @@
     "dev": "pnpm run picker dev --open",
     "build": "rimraf dist && pnpm run picker build",
     "build:all": "rimraf dist && pnpm -r run build",
-    "build:ci": "rimraf dist && pnpm -r --workspace-concurrency=1 run build",
+    "build:ci": "rimraf dist && NODE_OPTIONS='--max-old-space-size=1536' pnpm -r --workspace-concurrency=1 run build",
     "export": "pnpm run picker export",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",
