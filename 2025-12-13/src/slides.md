@@ -11,7 +11,7 @@ theme: default
 colorSchema: light
 class: text-center
 fonts:
-  sans: 'Tsunagi Gothic'
+  sans: "Tsunagi Gothic"
 
 mdc: true
 
@@ -280,8 +280,9 @@ class: font-noto text-center text-6xl grid place-items-center bg-black
 class: grid place-items-center bg-black
 ---
 
-<video src="/movies/owakariitadaketadaroka.mp4" controls class="h-120" />
-
+<p class="font-noto text-4xl text-white/50 italic">
+  ここに恐怖映像がありました
+</p>
 
 ---
 layout: section
@@ -292,16 +293,10 @@ class: font-onryou text-7xl bg-black text-#d20a13
 
 ---
 layout: section
-class: font-onryou text-7xl bg-black text-#d20a13
+class: font-onryou text-5xl bg-black text-white/30
 ---
 
-REPLAY
-
----
-class: grid place-items-center bg-black
----
-
-<video src="/movies/owakariitadaketadaroka.mp4" controls class="h-120" />
+※ 動画はCloudflareの容量制限により削除されました
 
 ---
 class: grid place-items-center bg-black
@@ -526,6 +521,7 @@ class: text-6xl grid place-items-center
 ---
 
 「〇〇さんと飲み行ってきた」
+
 ---
 class: text-8xl grid place-items-center
 ---
