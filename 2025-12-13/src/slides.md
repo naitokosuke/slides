@@ -11,7 +11,7 @@ theme: default
 colorSchema: light
 class: text-center
 fonts:
-  sans: 'Tsunagi Gothic'
+  sans: "Tsunagi Gothic"
 
 mdc: true
 
@@ -282,7 +282,6 @@ class: grid place-items-center bg-black
 
 <video src="/movies/owakariitadaketadaroka.mp4" controls class="h-120" />
 
-
 ---
 layout: section
 class: font-onryou text-7xl bg-black text-#d20a13
@@ -526,6 +525,7 @@ class: text-6xl grid place-items-center
 ---
 
 「〇〇さんと飲み行ってきた」
+
 ---
 class: text-8xl grid place-items-center
 ---
