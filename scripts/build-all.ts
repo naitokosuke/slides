@@ -37,6 +37,14 @@ async function buildAll() {
       console.log(`Building ${folder} (standalone workspace)...`);
 
       try {
+        // Install dependencies first
+        console.log(`Installing dependencies for ${folder}...`);
+        await execa("pnpm", ["install", "--frozen-lockfile"], {
+          cwd: folderDir,
+          stdio: "inherit",
+        });
+
+        // Build
         await execa("pnpm", ["run", "build", "--base", `/${folder}/`], {
           cwd: folderDir,
           stdio: "inherit",
