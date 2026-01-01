@@ -1,6 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import process from "node:process";
 import { fileURLToPath } from "node:url";
+import { cli, define } from "gunshi";
 import { execa } from "execa";
 
 const rootDir = fileURLToPath(new URL("..", import.meta.url));
@@ -58,4 +60,15 @@ async function buildAll() {
   console.log(`\nAll slides built to ${distDir}`);
 }
 
-await buildAll();
+const command = define({
+  name: "build-all",
+  description: "Build all slides for CI deployment",
+  run: async () => {
+    await buildAll();
+  },
+});
+
+await cli(process.argv.slice(2), command, {
+  name: "build-all",
+  version: "1.0.0",
+});
