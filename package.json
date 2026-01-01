@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "pnpm@9.5.0",
   "scripts": {
+    "create": "node scripts/picker.ts create",
     "dev": "PICKER_EDITOR=code node scripts/picker.ts dev --open",
     "build": "rimraf dist && node scripts/picker.ts build",
     "build:all": "rimraf dist && pnpm -r run build",
