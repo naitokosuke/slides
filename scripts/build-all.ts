@@ -39,15 +39,37 @@ async function buildAll() {
       try {
         // Install dependencies first
         console.log(`Installing dependencies for ${folder}...`);
-        await execa("pnpm", ["install", "--frozen-lockfile"], {
+        const installArgs = process.env.CI
+          ? ["install", "--frozen-lockfile"]
+          : ["install"];
+        await execa("pnpm", installArgs, {
           cwd: folderDir,
           stdio: "inherit",
         });
 
-        // Build
-        await execa("pnpm", ["run", "build", "--base", `/${folder}/`], {
+        // Build demo app
+        console.log(`Building demo app for ${folder}...`);
+        await execa("pnpm", ["run", "build:demo"], {
           cwd: folderDir,
           stdio: "inherit",
+        });
+
+        // Copy types
+        console.log(`Copying types for ${folder}...`);
+        await execa("pnpm", ["run", "copy:types"], {
+          cwd: folderDir,
+          stdio: "inherit",
+        });
+
+        // Build slides with base path
+        console.log(`Building slides for ${folder}...`);
+        await execa("pnpm", ["--filter", "src", "run", "build"], {
+          cwd: folderDir,
+          stdio: "inherit",
+          env: {
+            ...process.env,
+            BASE_URL: `/${folder}/`,
+          },
         });
 
         // Move built files to dist/{folder}/
