@@ -2,6 +2,8 @@ minimumReleaseAge: 1440
 
 packages:
   - "*/src"
+  # 2025-10-25 has its own pnpm-workspace.yaml
+  - "!2025-10-25/src"
 
 catalogs:
   slidev:
