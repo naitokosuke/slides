@@ -43,6 +43,9 @@ jobs:
         run: |
           rclone sync dist/ r2:slides/ --progress
 
+      - name: Install Wrangler v4
+        run: pnpm add -D wrangler@4
+
       - name: Deploy Worker
         uses: cloudflare/wrangler-action@v3
         with:
@@ -50,4 +53,3 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: worker
           packageManager: pnpm
-          wranglerVersion: "4"
