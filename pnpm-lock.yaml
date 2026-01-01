@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      gunshi:
+        specifier: ^0.27.5
+        version: 0.27.5
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.22.0
@@ -14,6 +18,9 @@ importers:
       '@eslint/config-inspector':
         specifier: ^0.5.1
         version: 0.5.2(eslint@9.31.0(jiti@2.6.1))
+      '@gunshi/docs':
+        specifier: 0.27.5
+        version: 0.27.5
       '@iconify-json/carbon':
         specifier: ^1.2.1
         version: 1.2.15
@@ -1230,6 +1237,10 @@ packages:
   '@floating-ui/utils@0.2.5':
     resolution: {integrity: sha512-sTcG+QZ6fdEUObICavU+aB3Mp8HY4n14wYHdxK4fXjPmv3PXZZeY5RaguJmGyeH/CJQhX3fqKUtS4qc1LoHwhQ==}
 
+  '@gunshi/docs@0.27.5':
+    resolution: {integrity: sha512-u2m4FtssSli8Z3xWxICG0nGQpycPaxEs3/zWkvqLNAPAiHQlWg/Sbr7/RIO3A6hmf2BXG0I2wKN75SHlL1PIkw==}
+    hasBin: true
+
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
     engines: {node: '>=18.18.0'}
@@ -2364,6 +2375,10 @@ packages:
 
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+
+  args-tokens@0.23.0:
+    resolution: {integrity: sha512-VZETsQmpEGO7A9adjfIOTyZuxKzurUas9kh1Hm0WGhFq8dOyw50P6OjiTwKyURwnmDabw0DbFjI+BUucJfCtnQ==}
+    engines: {node: '>= 20'}
 
   array-union@2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
@@ -3511,6 +3526,10 @@ packages:
 
   gsap@3.14.2:
     resolution: {integrity: sha512-P8/mMxVLU7o4+55+1TCnQrPmgjPKnwkzkXOK1asnR9Jg2lna4tEY5qBJjMmAaOBDDZWtlRjBXjLa0w53G/uBLA==}
+
+  gunshi@0.27.5:
+    resolution: {integrity: sha512-ExdnmI90hQ/eR1wnUc5rVom+K16F1hSpbYrplpt6rrJhXLprVGK9/E63bk7Rju27hAqc3WvpCa8PeY95R165fw==}
+    engines: {node: '>= 20'}
 
   gzip-size@6.0.0:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
@@ -6312,6 +6331,11 @@ snapshots:
 
   '@floating-ui/utils@0.2.5': {}
 
+  '@gunshi/docs@0.27.5':
+    dependencies:
+      '@antfu/install-pkg': 1.1.0
+      tinyexec: 1.0.2
+
   '@humanfs/core@0.19.1': {}
 
   '@humanfs/node@0.16.6':
@@ -7944,6 +7968,8 @@ snapshots:
 
   argparse@2.0.1: {}
 
+  args-tokens@0.23.0: {}
+
   array-union@2.1.0: {}
 
   asynckit@0.4.0:
@@ -9272,6 +9298,10 @@ snapshots:
       strip-bom-string: 1.0.0
 
   gsap@3.14.2: {}
+
+  gunshi@0.27.5:
+    dependencies:
+      args-tokens: 0.23.0
 
   gzip-size@6.0.0:
     dependencies:
