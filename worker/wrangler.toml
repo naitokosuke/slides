@@ -6,6 +6,6 @@ compatibility_date = "2024-12-30"
 binding = "ASSETS"
 bucket_name = "slides"
 
-[routes]
+[[routes]]
 pattern = "slides.naito.dev/*"
 zone_name = "naito.dev"
