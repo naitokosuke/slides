@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "pnpm build:demo && pnpm copy:types && pnpm --filter src build",
+    "build": "pnpm build:demo && pnpm copy:types && pnpm --filter src build --",
     "copy:types": "mkdir -p src/node_modules/@typed-router && cp demo/.nuxt/typed-router/* src/node_modules/@typed-router/ && echo '{\"name\": \"@typed-router\", \"version\": \"0.0.0\", \"private\": true}' > src/node_modules/@typed-router/package.json",
     "dev": "pnpm --filter src dev",
     "export": "pnpm --filter src export",

@@ -8,16 +8,14 @@ import { execa } from "execa";
 const rootDir = fileURLToPath(new URL("..", import.meta.url));
 const distDir = path.join(rootDir, "dist");
 
-// FIXME: Monaco Editor dependency issue
-// https://github.com/naitokosuke/slides/issues/12
-const EXCLUDED_FOLDERS = ["2025-10-25"];
+// Slides with standalone workspace (have their own pnpm-workspace.yaml)
+const STANDALONE_WORKSPACES = ["2025-10-25"];
 
 async function buildAll() {
   // Get all slide folders (matching YYYY-MM-DD pattern)
   const entries = await fs.readdir(rootDir, { withFileTypes: true });
   const slideFolders = entries
     .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
-    .filter((e) => !EXCLUDED_FOLDERS.includes(e.name))
     .map((e) => e.name)
     .sort();
 
@@ -27,33 +25,59 @@ async function buildAll() {
 
   // Build each slide
   for (const folder of slideFolders) {
-    const srcDir = path.join(rootDir, folder, "src");
-    const slideDist = path.join(rootDir, folder, "dist");
+    const folderDir = path.join(rootDir, folder);
+    const srcDir = path.join(folderDir, "src");
+    const slideDist = path.join(folderDir, "dist");
 
-    // Check if src/package.json exists (is a valid slide project)
-    try {
-      await fs.access(path.join(srcDir, "package.json"));
-    } catch {
-      console.log(`Skipping ${folder}: no package.json`);
-      continue;
-    }
+    // Check if this is a standalone workspace
+    const isStandaloneWorkspace = STANDALONE_WORKSPACES.includes(folder);
 
-    console.log(`Building ${folder}...`);
+    if (isStandaloneWorkspace) {
+      // Standalone workspace: build from root directory
+      console.log(`Building ${folder} (standalone workspace)...`);
 
-    try {
-      await execa("pnpm", ["run", "build", "--base", `/${folder}/`], {
-        cwd: srcDir,
-        stdio: "inherit",
-      });
+      try {
+        await execa("pnpm", ["run", "build", "--base", `/${folder}/`], {
+          cwd: folderDir,
+          stdio: "inherit",
+        });
 
-      // Move built files to dist/{folder}/
-      const targetDir = path.join(distDir, folder);
-      await fs.rename(slideDist, targetDir);
+        // Move built files to dist/{folder}/
+        const targetDir = path.join(distDir, folder);
+        await fs.rename(slideDist, targetDir);
 
-      console.log(`✓ ${folder} built successfully`);
-    } catch (error) {
-      console.error(`✗ ${folder} failed to build`);
-      throw error;
+        console.log(`✓ ${folder} built successfully`);
+      } catch (error) {
+        console.error(`✗ ${folder} failed to build`);
+        throw error;
+      }
+    } else {
+      // Standard slide: build from src directory
+      // Check if src/package.json exists (is a valid slide project)
+      try {
+        await fs.access(path.join(srcDir, "package.json"));
+      } catch {
+        console.log(`Skipping ${folder}: no package.json`);
+        continue;
+      }
+
+      console.log(`Building ${folder}...`);
+
+      try {
+        await execa("pnpm", ["run", "build", "--base", `/${folder}/`], {
+          cwd: srcDir,
+          stdio: "inherit",
+        });
+
+        // Move built files to dist/{folder}/
+        const targetDir = path.join(distDir, folder);
+        await fs.rename(slideDist, targetDir);
+
+        console.log(`✓ ${folder} built successfully`);
+      } catch (error) {
+        console.error(`✗ ${folder} failed to build`);
+        throw error;
+      }
     }
   }
 
