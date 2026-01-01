@@ -4,6 +4,69 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@iconify-json/carbon':
+      specifier: ^1.2.1
+      version: 1.2.15
+    '@iconify-json/devicon':
+      specifier: ^1.2.25
+      version: 1.2.56
+    '@iconify-json/healthicons':
+      specifier: ^1.1.21
+      version: 1.2.12
+    '@iconify-json/logos':
+      specifier: ^1.2.10
+      version: 1.2.10
+    '@iconify-json/material-icon-theme':
+      specifier: ^1.2.29
+      version: 1.2.45
+    '@iconify-json/mdi':
+      specifier: ^1.2.3
+      version: 1.2.3
+    '@iconify-json/noto':
+      specifier: ^1.2.7
+      version: 1.2.7
+    '@iconify-json/openmoji':
+      specifier: ^1.2.0
+      version: 1.2.19
+    '@iconify-json/simple-icons':
+      specifier: ^1.2.4
+      version: 1.2.64
+    '@iconify-json/skill-icons':
+      specifier: ^1.2.0
+      version: 1.2.3
+    '@iconify-json/twemoji':
+      specifier: ^1.1.15
+      version: 1.2.5
+    '@iconify-json/uim':
+      specifier: ^1.1.9
+      version: 1.2.3
+    '@iconify/json':
+      specifier: ^2.2.226
+      version: 2.2.231
+    '@slidev/cli':
+      specifier: ^52.10.0
+      version: 52.11.1
+    '@slidev/client':
+      specifier: ^52.10.0
+      version: 52.11.1
+    '@slidev/theme-default':
+      specifier: latest
+      version: 0.25.0
+    '@slidev/theme-seriph':
+      specifier: latest
+      version: 0.25.0
+    '@vueuse/integrations':
+      specifier: ^13.9.0
+      version: 13.9.0
+    qrcode:
+      specifier: ^1.5.4
+      version: 1.5.4
+    vue:
+      specifier: ^3.5.25
+      version: 3.5.26
+
 importers:
 
   .:
@@ -22,55 +85,55 @@ importers:
         specifier: 0.27.5
         version: 0.27.5
       '@iconify-json/carbon':
-        specifier: ^1.2.1
+        specifier: 'catalog:'
         version: 1.2.15
       '@iconify-json/devicon':
-        specifier: ^1.2.25
+        specifier: 'catalog:'
         version: 1.2.56
       '@iconify-json/healthicons':
-        specifier: ^1.1.21
+        specifier: 'catalog:'
         version: 1.2.12
       '@iconify-json/logos':
-        specifier: ^1.2.10
+        specifier: 'catalog:'
         version: 1.2.10
       '@iconify-json/material-icon-theme':
-        specifier: ^1.2.29
+        specifier: 'catalog:'
         version: 1.2.45
       '@iconify-json/mdi':
-        specifier: ^1.2.3
+        specifier: 'catalog:'
         version: 1.2.3
       '@iconify-json/noto':
-        specifier: ^1.2.7
+        specifier: 'catalog:'
         version: 1.2.7
       '@iconify-json/openmoji':
-        specifier: ^1.2.0
+        specifier: 'catalog:'
         version: 1.2.19
       '@iconify-json/simple-icons':
-        specifier: ^1.2.4
+        specifier: 'catalog:'
         version: 1.2.64
       '@iconify-json/skill-icons':
-        specifier: ^1.2.0
+        specifier: 'catalog:'
         version: 1.2.3
       '@iconify-json/twemoji':
-        specifier: ^1.1.15
+        specifier: 'catalog:'
         version: 1.2.5
       '@iconify-json/uim':
-        specifier: ^1.1.9
+        specifier: 'catalog:'
         version: 1.2.3
       '@iconify/json':
-        specifier: ^2.2.226
+        specifier: 'catalog:'
         version: 2.2.231
       '@slidev/cli':
-        specifier: ^52.10.0
+        specifier: 'catalog:'
         version: 52.11.1(@babel/parser@7.28.5)(@nuxt/kit@3.20.2)(@types/markdown-it@14.1.2)(@types/node@20.14.12)(@vue/compiler-sfc@3.5.26)(markdown-it-async@2.2.0)(playwright-chromium@1.45.3)(postcss@8.5.6)(tsx@4.20.3)
       '@slidev/client':
-        specifier: ^52.10.0
+        specifier: 'catalog:'
         version: 52.11.1(@nuxt/kit@3.20.2)(@vue/compiler-sfc@3.5.26)(markdown-it-async@2.2.0)(postcss@8.5.6)(vite@7.3.0(@types/node@20.14.12)(jiti@2.6.1)(tsx@4.20.3)(yaml@2.8.2))
       '@slidev/theme-default':
-        specifier: latest
+        specifier: 'catalog:'
         version: 0.25.0
       '@slidev/theme-seriph':
-        specifier: latest
+        specifier: 'catalog:'
         version: 0.25.0
       '@types/node':
         specifier: ^20.14.10
@@ -82,7 +145,7 @@ importers:
         specifier: ^3.0.5
         version: 3.0.8
       '@vueuse/integrations':
-        specifier: ^13.9.0
+        specifier: 'catalog:'
         version: 13.9.0(axios@1.7.2)(drauu@0.4.3)(fuse.js@7.1.0)(qrcode@1.5.4)(vue@3.5.26(typescript@5.5.4))
       eslint:
         specifier: ^9.17.0
@@ -115,7 +178,7 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
       qrcode:
-        specifier: ^1.5.4
+        specifier: 'catalog:'
         version: 1.5.4
       rimraf:
         specifier: ^6.0.1
@@ -133,7 +196,7 @@ importers:
         specifier: ^0.61.3
         version: 0.61.6(postcss@8.5.6)(rollup@4.54.0)(vite@7.3.0(@types/node@20.14.12)(jiti@2.6.1)(tsx@4.20.3)(yaml@2.8.2))
       vue:
-        specifier: ^3.5.25
+        specifier: 'catalog:'
         version: 3.5.26(typescript@5.5.4)
       vue-router:
         specifier: ^4.4.0
