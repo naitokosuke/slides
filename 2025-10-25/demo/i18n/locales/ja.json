@@ -1,0 +1,52 @@
+{
+  "site": {
+    "title": "Vue & Nuxt Tech Blog",
+    "description": "型安全性と開発体験を追求する技術ブログ"
+  },
+  "nav": {
+    "home": "ホーム",
+    "about": "このブログについて"
+  },
+  "article": {
+    "backToHome": "ブログトップに戻る",
+    "notFound": "記事が見つかりません",
+    "notFoundDescription": "お探しの記事は存在しないか、削除された可能性があります。",
+    "backHome": "ホームに戻る",
+    "share": "この記事をシェア",
+    "shareTwitter": "Twitter",
+    "shareFacebook": "Facebook",
+    "shareHatena": "はてなブックマーク"
+  },
+  "about": {
+    "title": "このブログについて",
+    "subtitle": "型安全性と開発体験を追求する技術ブログ",
+    "concept": "コンセプト",
+    "conceptDescription1": "このブログは、Vue.js と Nuxt を中心とした現代的なフロントエンド開発における 型安全性と開発者体験（DX）の向上に焦点を当てた技術ブログです。",
+    "conceptDescription2": "特に AI 時代の開発において、型システムがいかに重要な役割を果たすかを 実践的な事例とともにお伝えしています。",
+    "topics": "主なトピック",
+    "techStack": "技術スタック",
+    "techStackDescription": "このデモアプリケーションは以下の技術を使用して構築されています：",
+    "author": "Author",
+    "authorName": "ナイトウコウスケ",
+    "authorRole": "フロントエンドエンジニア・Vue Fes Japan 2025 スピーカー",
+    "authorDescription": "型安全性と開発者体験の向上に情熱を注ぐフロントエンドエンジニアです。 Vue.js エコシステムを中心とした現代的な開発手法について探求し、 実践的な知見を共有しています。"
+  },
+  "language": {
+    "switch": "言語を切り替える",
+    "japanese": "日本語",
+    "english": "English"
+  },
+  "meta": {
+    "pageTitle": "Vue & Nuxt Tech Blog",
+    "articleNotFoundTitle": "記事が見つかりません"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "retry": "再試行"
+  },
+  "seo": {
+    "keywords": "Vue.js, Nuxt, TypeScript, 型安全性, 開発体験, DX",
+    "ogType": "website"
+  }
+}

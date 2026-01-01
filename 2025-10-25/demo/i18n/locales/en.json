@@ -1,0 +1,52 @@
+{
+  "site": {
+    "title": "Vue & Nuxt Tech Blog",
+    "description": "A technical blog pursuing type safety and developer experience"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About"
+  },
+  "article": {
+    "backToHome": "← Back to Blog Top",
+    "notFound": "Article not found",
+    "notFoundDescription": "The article you are looking for does not exist or may have been deleted.",
+    "backHome": "Back to Home",
+    "share": "Share this article",
+    "shareTwitter": "Twitter",
+    "shareFacebook": "Facebook",
+    "shareHatena": "Hatena Bookmark"
+  },
+  "about": {
+    "title": "About This Blog",
+    "subtitle": "A technical blog pursuing type safety and developer experience",
+    "concept": "Concept",
+    "conceptDescription1": "This blog is a technical blog focused on improving type safety and developer experience (DX) in modern frontend development centered on Vue.js and Nuxt.",
+    "conceptDescription2": "We share practical examples of how type systems play important roles in AI-era development.",
+    "topics": "Main Topics",
+    "techStack": "Tech Stack",
+    "techStackDescription": "This demo application is built using the following technologies:",
+    "author": "Author",
+    "authorName": "Naito Kosuke",
+    "authorRole": "Frontend Engineer・Vue Fes Japan 2025 Speaker",
+    "authorDescription": "A frontend engineer passionate about improving type safety and developer experience. Exploring modern development methods centered on the Vue.js ecosystem and sharing practical insights."
+  },
+  "language": {
+    "switch": "Switch language",
+    "japanese": "日本語",
+    "english": "English"
+  },
+  "meta": {
+    "pageTitle": "Vue & Nuxt Tech Blog",
+    "articleNotFoundTitle": "Article not found"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry"
+  },
+  "seo": {
+    "keywords": "Vue.js, Nuxt, TypeScript, Type Safety, Developer Experience, DX",
+    "ogType": "website"
+  }
+}

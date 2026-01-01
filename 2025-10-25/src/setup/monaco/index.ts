@@ -105,23 +105,23 @@ const monacoTropicalTheme = {
 import vueTypes from "./vue.d.ts?raw";
 import piniaColadaTypes from "./pinia-colada.d.ts?raw";
 
-// Direct import from demo-app (no copy needed)
-import routerTypes from "../../../demo-app/.nuxt/typed-router/__router.d.ts?raw";
-import routesTypes from "../../../demo-app/.nuxt/typed-router/__routes.ts?raw";
-import pathsTypes from "../../../demo-app/.nuxt/typed-router/__paths.d.ts?raw";
-import typesUtils from "../../../demo-app/.nuxt/typed-router/__types_utils.d.ts?raw";
-import useTypedRoute from "../../../demo-app/.nuxt/typed-router/__useTypedRoute.ts?raw";
-import useTypedRouter from "../../../demo-app/.nuxt/typed-router/__useTypedRouter.ts?raw";
+// Import from demo (Nuxt app) generated typed-router files
+import routerTypes from "../../../demo/.nuxt/typed-router/__router.d.ts?raw";
+import routesTypes from "../../../demo/.nuxt/typed-router/__routes.ts?raw";
+import pathsTypes from "../../../demo/.nuxt/typed-router/__paths.d.ts?raw";
+import typesUtils from "../../../demo/.nuxt/typed-router/__types_utils.d.ts?raw";
+import useTypedRoute from "../../../demo/.nuxt/typed-router/__useTypedRoute.ts?raw";
+import useTypedRouter from "../../../demo/.nuxt/typed-router/__useTypedRouter.ts?raw";
 
 export default defineMonacoSetup(async (monaco) => {
   monaco.editor.defineTheme("slidev-tropical", monacoTropicalTheme);
   monaco.editor.setTheme("slidev-tropical");
 
   // TypeScript コンパイラオプション設定
-  monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-    ...monaco.languages.typescript.typescriptDefaults.getCompilerOptions(),
+  monaco.typescript.typescriptDefaults.setCompilerOptions({
+    ...monaco.typescript.typescriptDefaults.getCompilerOptions(),
     baseUrl: ".",
-    moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
+    moduleResolution: monaco.typescript.ModuleResolutionKind.NodeJs,
     paths: {
       "@/*": ["./*"],
       "~/*": ["./*"],
@@ -129,35 +129,35 @@ export default defineMonacoSetup(async (monaco) => {
     },
   });
 
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(
+  monaco.typescript.typescriptDefaults.addExtraLib(
     vueTypes,
     "file:///node_modules/@types/vue/index.d.ts",
   );
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(
+  monaco.typescript.typescriptDefaults.addExtraLib(
     piniaColadaTypes,
     "file:///node_modules/@pinia/colada/index.d.ts",
   );
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(
+  monaco.typescript.typescriptDefaults.addExtraLib(
     routesTypes,
     "file:///node_modules/@typed-router/__routes.ts",
   );
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(
+  monaco.typescript.typescriptDefaults.addExtraLib(
     routerTypes,
     "file:///node_modules/@typed-router/__router.d.ts",
   );
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(
+  monaco.typescript.typescriptDefaults.addExtraLib(
     pathsTypes,
     "file:///node_modules/@typed-router/__paths.d.ts",
   );
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(
+  monaco.typescript.typescriptDefaults.addExtraLib(
     typesUtils,
     "file:///node_modules/@typed-router/__types_utils.d.ts",
   );
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(
+  monaco.typescript.typescriptDefaults.addExtraLib(
     useTypedRoute,
     "file:///node_modules/@typed-router/__useTypedRoute.ts",
   );
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(
+  monaco.typescript.typescriptDefaults.addExtraLib(
     useTypedRouter,
     "file:///node_modules/@typed-router/__useTypedRouter.ts",
   );
@@ -174,7 +174,7 @@ ${useTypedRouter.replace(/import[^;]+;/g, "").replace("export default", "export"
 
   const wrappedModule = `declare module '@typed-router' { ${typedRouterModuleContent} }`;
 
-  monaco.languages.typescript.typescriptDefaults.addExtraLib(
+  monaco.typescript.typescriptDefaults.addExtraLib(
     wrappedModule,
     "file:///node_modules/@typed-router/index.d.ts",
   );

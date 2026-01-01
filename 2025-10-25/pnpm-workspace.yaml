@@ -1,0 +1,50 @@
+packages:
+  - src
+  - demo
+
+ignoredBuiltDependencies:
+  - esbuild
+
+catalogs:
+  # Slidev プレゼンテーション環境
+  slidev-presentation:
+    "@slidev/cli": ^52.0.0
+    "@slidev/theme-default": latest
+    "@slidev/theme-seriph": latest
+    "@iconify-json/logos": ^1.1.20
+    "@iconify-json/material-icon-theme": ^1.2.29
+    "@iconify-json/material-symbols": ^1.2.39
+    "@iconify-json/ic": ^1.2.4
+    "@iconify-json/noto": ^1.2.7
+    playwright-chromium: ^1.49.1
+    "@vueuse/integrations": ^12.6.0
+    qrcode: ^1.5.4
+
+  # Monaco Editor
+  monaco:
+    monaco-editor: ^0.55.1
+
+  # デモアプリ依存関係
+  demo-deps:
+    "@nuxt/content": ^3.6.3
+    "@nuxt/eslint": 1.8.0
+    "@nuxtjs/i18n": ^10.0.6
+    better-sqlite3: ^12.2.0
+    eslint: ^9.0.0
+    nuxt: ^4.0.3
+    vue: ^3.5.18
+    vue-router: ^4.5.1
+    pinia: ^3.0.3
+    "@pinia/colada": ^0.17.1
+    nuxt-typed-router: ^4.0.1
+
+  # 開発・品質ツール
+  dev-tools:
+    prettier: ^3.6.2
+    prettier-plugin-slidev: ^1.0.5
+    textlint: ^15.2.1
+    textlint-filter-rule-comments: ^1.2.2
+    textlint-filter-rule-node-types: ^1.1.0
+    textlint-rule-no-dropping-the-ra: ^3.0.0
+    textlint-rule-preset-ai-writing: ^1.1.0
+    textlint-rule-preset-ja-spacing: ^2.4.3

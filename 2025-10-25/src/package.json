@@ -1,12 +1,37 @@
 {
+  "name": "src",
   "type": "module",
   "private": true,
   "scripts": {
+    "build": "NODE_OPTIONS='--max-old-space-size=8192' slidev build --timeout 120000 --out ../dist",
     "dev": "slidev",
-    "build": "slidev build --out ../dist",
-    "export": "slidev export --per-slide --dark --output ../slides.pdf"
+    "dev:export": "slidev --port 3030",
+    "export": "NODE_OPTIONS='--max-old-space-size=8192' slidev export --timeout 120000 --per-slide --dark --output ../slides.pdf",
+    "export:cli-fast": "NODE_OPTIONS='--max-old-space-size=8192' slidev export --timeout 120000 --with-clicks --per-slide --dark --output ../slides.pdf",
+    "fmt": "prettier --write --no-error-on-unmatched-pattern slides.md pages/*.md",
+    "lint": "textlint slides.md pages/*.md",
+    "lint:fix": "textlint --fix slides.md pages/*.md"
   },
   "dependencies": {
+    "@iconify-json/logos": "catalog:slidev-presentation",
+    "@iconify-json/material-icon-theme": "catalog:slidev-presentation",
+    "@iconify-json/noto": "catalog:slidev-presentation",
+    "@slidev/cli": "catalog:slidev-presentation",
+    "@slidev/theme-default": "catalog:slidev-presentation",
+    "@vueuse/integrations": "catalog:slidev-presentation",
+    "qrcode": "catalog:slidev-presentation",
+    "vue": "catalog:demo-deps",
     "@unocss/preset-web-fonts": "^0.61.0"
+  },
+  "devDependencies": {
+    "playwright-chromium": "catalog:slidev-presentation",
+    "prettier": "catalog:dev-tools",
+    "prettier-plugin-slidev": "catalog:dev-tools",
+    "textlint": "catalog:dev-tools",
+    "textlint-filter-rule-comments": "catalog:dev-tools",
+    "textlint-filter-rule-node-types": "catalog:dev-tools",
+    "textlint-rule-no-dropping-the-ra": "catalog:dev-tools",
+    "textlint-rule-preset-ai-writing": "catalog:dev-tools",
+    "textlint-rule-preset-ja-spacing": "catalog:dev-tools"
   }
 }
