@@ -15,8 +15,20 @@ export default {
       if (path === "" || path.endsWith("/")) {
         object = await env.ASSETS.get(path + "index.html");
       } else if (!path.includes(".")) {
-        // Try with /index.html appended
-        object = await env.ASSETS.get(path + "/index.html");
+        // For SPA routing: find the nearest index.html by walking up the path
+        // e.g., "2025-10-25/6" should serve "2025-10-25/index.html"
+        const segments = path.split("/").filter(Boolean);
+        while (segments.length > 0 && !object) {
+          const basePath = segments.join("/") + "/index.html";
+          object = await env.ASSETS.get(basePath);
+          if (!object) {
+            segments.pop();
+          }
+        }
+        // Fallback to root index.html if no nested index.html found
+        if (!object) {
+          object = await env.ASSETS.get("index.html");
+        }
       }
     }
 
