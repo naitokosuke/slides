@@ -12,11 +12,15 @@ const distDir = path.join(rootDir, "dist");
 // Slides with standalone workspace (have their own pnpm-workspace.yaml)
 const STANDALONE_WORKSPACES = ["2025-10-25"];
 
+// Demo folders to exclude from build
+const EXCLUDED_FOLDERS = ["0000-00-00"];
+
 async function buildAll() {
   // Get all slide folders (matching YYYY-MM-DD pattern)
   const entries = await fs.readdir(rootDir, { withFileTypes: true });
   const slideFolders = entries
     .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
+    .filter((e) => !EXCLUDED_FOLDERS.includes(e.name))
     .map((e) => e.name)
     .sort();
 
