@@ -45,6 +45,8 @@
     "eslint-plugin-format": "catalog:lint",
     "execa": "^9.5.2",
     "fast-glob": "^3.3.2",
+    "gray-matter": "^4.0.3",
+    "gunshi": "catalog:script",
     "markdown-it-magic-link": "catalog:slidev",
     "playwright-chromium": "catalog:slidev",
     "pnpm": "^9.5.0",
@@ -59,7 +61,6 @@
     "unocss": "catalog:slidev",
     "vue": "catalog:slidev",
     "vue-router": "catalog:slidev",
-    "gunshi": "catalog:script",
     "vue-tsc": "catalog:slidev"
   }
 }
