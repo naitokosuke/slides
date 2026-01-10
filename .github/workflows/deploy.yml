@@ -20,6 +20,9 @@ jobs:
 
       - run: pnpm install
 
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install chromium
+
       - run: pnpm build:ci
 
       - name: Install rclone
