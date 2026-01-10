@@ -48,7 +48,7 @@ onSlideEnter(() => {
     }
 
     const particleCount = 50 * (timeLeft / duration)
-    
+
     confetti({
       ...defaults,
       particleCount,
@@ -290,39 +290,6 @@ class: text-4xl
 
 ---
 layout: center
-class: text-8xl
----
-
-👑
-
----
-layout: center
----
-
-王であって神ではない
-
----
-layout: center
-class: text-4xl
----
-
-- 理解できてないことはないけど
-- 知らないことはある
-- 信奉するのではなく尊敬する
-
-<!--
-- Vue Router の `.active` クラスと `.router-link-exact-active` の 2 種類あった
--->
-
----
-layout: center
-class: text-9xl
----
-
-？
-
----
-layout: center
 class: text-9xl
 ---
 
@@ -543,6 +510,10 @@ src/
 
 ```vue
 <script setup lang="ts">
+// with GraphQL Codegen
+const { user } = defineProps<{
+  user: UserCardFragment;
+}>();
 graphql(`
   fragment UserCard on User {
     id
@@ -550,10 +521,6 @@ graphql(`
     avatar
   }
 `);
-// with GraphQL Codegen
-const { user } = defineProps<{
-  user: UserCardFragment;
-}>();
 </script>
 ```
 
