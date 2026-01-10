@@ -13,6 +13,11 @@ mdc: true
 fonts:
   sans: "Kosugi Maru"
   mono: "Fira Code"
+seoMeta:
+  ogTitle: Python でファクトリメソッド？
+  ogImage: https://slides.naito.dev/2024-08-03/og-image.png
+  ogUrl: https://slides.naito.dev/2024-08-03/
+  twitterCard: summary_large_image
 ---
 
 <h1><span>Python でファクトリメソッド？</span></h1>

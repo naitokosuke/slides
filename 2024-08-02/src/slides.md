@@ -10,6 +10,11 @@ transition: fade-out
 fonts:
   sans: "Kiwi Maru "
   mono: "Fira Code"
+seoMeta:
+  ogTitle: 東葛.dev #1
+  ogImage: https://slides.naito.dev/2024-08-02/og-image.png
+  ogUrl: https://slides.naito.dev/2024-08-02/
+  twitterCard: summary_large_image
 ---
 
 # 東葛.dev #1

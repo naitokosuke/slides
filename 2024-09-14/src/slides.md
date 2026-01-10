@@ -1,5 +1,6 @@
 ---
 theme: default
+title: V が名前に入ってる
 info: |
   ## 「V が名前に入ってる」
   Funabashi.dev supported by KIKKAKE CREATION 2024.09.14
@@ -8,6 +9,11 @@ transition: slide-left
 fonts:
   sans: "Kosugi Maru"
   mono: "Fira Code"
+seoMeta:
+  ogTitle: V が名前に入ってる
+  ogImage: https://slides.naito.dev/2024-09-14/og-image.png
+  ogUrl: https://slides.naito.dev/2024-09-14/
+  twitterCard: summary_large_image
 ---
 
 <h1>V <span v-click>が名前に入ってる</span></h1>

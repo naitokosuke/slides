@@ -12,6 +12,9 @@ const distDir = path.join(rootDir, "dist");
 // Slides with standalone workspace (have their own pnpm-workspace.yaml)
 const STANDALONE_WORKSPACES = ["2025-10-25"];
 
+// Slides that already have manually created OG images
+const SKIP_OG_GENERATION = ["2025-10-25", "2025-06-17"];
+
 // Demo folders to exclude from build
 const EXCLUDED_FOLDERS = ["0000-00-00"];
 
@@ -118,8 +121,72 @@ async function buildAll() {
 
   console.log(`\nAll slides built to ${distDir}`);
 
+  // Generate OG images for slides that don't have them
+  await generateOgImages(slideFolders);
+
   // Generate homepage
   await generateHomepage(slideFolders);
+}
+
+async function generateOgImages(slideFolders: string[]) {
+  console.log("\nGenerating OG images...");
+
+  for (const folder of slideFolders) {
+    // Skip slides that already have manually created OG images
+    if (SKIP_OG_GENERATION.includes(folder)) {
+      console.log(`Skipping OG image for ${folder} (manually created)`);
+      continue;
+    }
+
+    const srcDir = path.join(rootDir, folder, "src");
+    const targetDir = path.join(distDir, folder);
+    const ogImagePath = path.join(targetDir, "og-image.png");
+
+    // Check if OG image already exists in dist
+    try {
+      await fs.access(ogImagePath);
+      console.log(`Skipping OG image for ${folder} (already exists)`);
+      continue;
+    } catch {
+      // OG image doesn't exist, generate it
+    }
+
+    console.log(`Generating OG image for ${folder}...`);
+
+    try {
+      // Export first slide as PNG
+      await execa(
+        "pnpm",
+        ["exec", "slidev", "export", "--format", "png", "--range", "1", "--output", "og-image"],
+        {
+          cwd: srcDir,
+          stdio: "inherit",
+        }
+      );
+
+      // Move the generated image to dist folder
+      // slidev export creates og-image-001.png for single slide
+      const generatedImage = path.join(srcDir, "og-image-001.png");
+      try {
+        await fs.access(generatedImage);
+        await fs.rename(generatedImage, ogImagePath);
+        console.log(`✓ OG image generated for ${folder}`);
+      } catch {
+        // Try alternative naming (og-image.png)
+        const altGeneratedImage = path.join(srcDir, "og-image.png");
+        try {
+          await fs.access(altGeneratedImage);
+          await fs.rename(altGeneratedImage, ogImagePath);
+          console.log(`✓ OG image generated for ${folder}`);
+        } catch {
+          console.warn(`⚠ Could not find generated OG image for ${folder}`);
+        }
+      }
+    } catch (error) {
+      console.warn(`⚠ Failed to generate OG image for ${folder}:`, error);
+      // Continue with other slides, don't fail the entire build
+    }
+  }
 }
 
 interface SlideInfo {

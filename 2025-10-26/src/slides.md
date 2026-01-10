@@ -6,6 +6,11 @@ fonts:
   sans: "Noto Sans JP"
   serif: "Murecho"
   mono: "JetBrains Mono"
+seoMeta:
+  ogTitle: 最高の DX - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発
+  ogImage: https://slides.naito.dev/2025-10-26/og-image.png
+  ogUrl: https://slides.naito.dev/2025-10-26/
+  twitterCard: summary_large_image
 ---
 
 # 最高の DX - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発

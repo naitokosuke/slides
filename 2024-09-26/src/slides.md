@@ -1,5 +1,6 @@
 ---
 theme: default
+title: 自己紹介
 fonts:
   sans: "Noto Sans JP"
 info: |
@@ -9,6 +10,11 @@ drawings:
   persist: false
 transition: slide-left
 mdc: true
+seoMeta:
+  ogTitle: 自己紹介
+  ogImage: https://slides.naito.dev/2024-09-26/og-image.png
+  ogUrl: https://slides.naito.dev/2024-09-26/
+  twitterCard: summary_large_image
 ---
 
 <h1>自己紹介</h1>
