@@ -153,8 +153,11 @@ async function generateOgImages(slideFolders: string[]) {
 
     console.log(`Generating OG image for ${folder}...`);
 
+    const ogExportDir = path.join(srcDir, "og-image");
+
     try {
       // Export first slide as PNG
+      // slidev export creates a directory with 1.png inside
       await execa(
         "pnpm",
         ["exec", "slidev", "export", "--format", "png", "--range", "1", "--output", "og-image"],
@@ -165,25 +168,20 @@ async function generateOgImages(slideFolders: string[]) {
       );
 
       // Move the generated image to dist folder
-      // slidev export creates og-image-001.png for single slide
-      const generatedImage = path.join(srcDir, "og-image-001.png");
+      const generatedImage = path.join(ogExportDir, "1.png");
       try {
         await fs.access(generatedImage);
         await fs.rename(generatedImage, ogImagePath);
+        // Clean up the export directory
+        await fs.rm(ogExportDir, { recursive: true, force: true });
         console.log(`✓ OG image generated for ${folder}`);
       } catch {
-        // Try alternative naming (og-image.png)
-        const altGeneratedImage = path.join(srcDir, "og-image.png");
-        try {
-          await fs.access(altGeneratedImage);
-          await fs.rename(altGeneratedImage, ogImagePath);
-          console.log(`✓ OG image generated for ${folder}`);
-        } catch {
-          console.warn(`⚠ Could not find generated OG image for ${folder}`);
-        }
+        console.warn(`⚠ Could not find generated OG image for ${folder}`);
       }
     } catch (error) {
       console.warn(`⚠ Failed to generate OG image for ${folder}:`, error);
+      // Clean up on failure
+      await fs.rm(ogExportDir, { recursive: true, force: true }).catch(() => {});
       // Continue with other slides, don't fail the entire build
     }
   }
