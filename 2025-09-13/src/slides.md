@@ -1,6 +1,12 @@
 ---
 theme: default
+title: Vue を仕事で書くようになりました
 transition: slide-left
+seoMeta:
+  ogTitle: Vue を仕事で書くようになりました
+  ogImage: https://slides.naito.dev/2025-09-13/og-image.png
+  ogUrl: https://slides.naito.dev/2025-09-13/
+  twitterCard: summary_large_image
 ---
 
 # Vue を仕事で書くようになりました

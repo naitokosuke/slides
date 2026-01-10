@@ -16,6 +16,11 @@ fonts:
 mdc: true
 
 transition: slide-left
+seoMeta:
+  ogTitle: 公式が勝手に言ってるだけ
+  ogImage: https://slides.naito.dev/2025-12-13/og-image.png
+  ogUrl: https://slides.naito.dev/2025-12-13/
+  twitterCard: summary_large_image
 ---
 
 # 公式が勝手に言ってるだけ
