@@ -169,6 +169,8 @@ class: text-9xl
 
 ### ❌ switch は文（statement）
 
+<!-- eslint-skip -->
+
 ```javascript
 // これはできない
 const result = switch (props.foo) {
