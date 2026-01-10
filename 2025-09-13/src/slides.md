@@ -594,15 +594,16 @@ export function multiply(a: number, b: number) {
 if (import.meta.vitest) {
   const { it, expect, describe } = import.meta.vitest;
 
-describe("math utils", () => {
-  it("adds two numbers and returns their sum", () => {
-    expect(add(1, 2)).toBe(3);
-  });
+  describe("math utils", () => {
+    it("adds two numbers and returns their sum", () => {
+      expect(add(1, 2)).toBe(3);
+    });
 
-  it("multiplies two numbers and returns their product", () => {
-    expect(multiply(2, 3)).toBe(6);
+    it("multiplies two numbers and returns their product", () => {
+      expect(multiply(2, 3)).toBe(6);
+    });
   });
-});
+}
 ```
 
 ---
