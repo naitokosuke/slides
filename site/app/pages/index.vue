@@ -16,42 +16,45 @@ const formatDate = (dateStr: string) => {
 
 <template>
   <div class="page">
-    <div class="bg" />
-    <div class="overlay" />
+    <div class="bg" aria-hidden="true" />
+    <div class="overlay" aria-hidden="true" />
 
-    <main class="main">
-      <header class="header">
-        <h1 class="hero-title">
-          <span class="hero-line">Slides</span>
-        </h1>
-        <p class="hero-sub">
+    <main>
+      <header>
+        <h1>Slides</h1>
+        <p>
           Presentations by
           <a
             href="https://x.com/naitokosuke"
             target="_blank"
             rel="noopener noreferrer"
-            class="author-link"
-            >naitokosuke</a
           >
+            naitokosuke
+            <span class="visually-hidden">(opens in new tab)</span>
+          </a>
         </p>
       </header>
 
-      <section class="grid">
-        <a
-          v-for="slide in slides"
-          :key="slide.folder"
-          :href="`/${slide.folder}/`"
-          class="card"
-        >
-          <div class="card-img">
-            <img :src="slide.ogImage" :alt="slide.title" loading="lazy" />
-            <div class="card-img-overlay" />
-          </div>
-          <div class="card-body">
-            <time class="card-date">{{ formatDate(slide.date) }}</time>
-            <h2 class="card-title">{{ slide.title }}</h2>
-          </div>
-        </a>
+      <section aria-label="Slide presentations">
+        <ul class="grid" role="list">
+          <li v-for="slide in slides" :key="slide.folder" class="card">
+            <a :href="`/${slide.folder}/`" class="card-link">
+              <figure>
+                <img
+                  :src="slide.ogImage"
+                  :alt="`Thumbnail for ${slide.title}`"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="card-body">
+                <time :datetime="slide.date">{{
+                  formatDate(slide.date)
+                }}</time>
+                <h2>{{ slide.title }}</h2>
+              </div>
+            </a>
+          </li>
+        </ul>
       </section>
     </main>
   </div>
@@ -82,7 +85,7 @@ const formatDate = (dateStr: string) => {
   z-index: 1;
 }
 
-.main {
+main {
   position: relative;
   z-index: 2;
   max-width: 1200px;
@@ -90,25 +93,22 @@ const formatDate = (dateStr: string) => {
   padding: 80px 24px 60px;
 }
 
-.header {
+header {
   margin-bottom: 72px;
 }
 
-.hero-title {
+h1 {
   font-family: "Playfair Display", serif;
   font-size: clamp(2.5rem, 8vw, 4rem);
   font-weight: 400;
   letter-spacing: 0.15em;
   line-height: 1.1;
   color: #fff;
+  opacity: 0.95;
   margin: 0 0 16px;
 }
 
-.hero-line {
-  opacity: 0.95;
-}
-
-.hero-sub {
+header p {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 400;
@@ -117,29 +117,48 @@ const formatDate = (dateStr: string) => {
   margin: 0;
 }
 
-.author-link {
+header a {
   color: rgba(160, 190, 220, 0.9);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.author-link:hover {
+header a:hover {
   color: #fff;
+}
+
+header a:focus-visible {
+  outline: 2px solid rgba(160, 190, 220, 0.9);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .card {
-  display: block;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   overflow: hidden;
-  text-decoration: none;
   transition:
     transform 0.3s ease,
     border-color 0.3s ease,
@@ -152,14 +171,34 @@ const formatDate = (dateStr: string) => {
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
 }
 
-.card-img {
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-link:focus-visible {
+  outline: 2px solid rgba(160, 190, 220, 0.9);
+  outline-offset: -2px;
+}
+
+figure {
   position: relative;
   aspect-ratio: 1200 / 630;
   overflow: hidden;
   background: rgba(20, 35, 55, 0.5);
+  margin: 0;
 }
 
-.card-img img {
+figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8, 20, 35, 0.6) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+figure img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -169,23 +208,16 @@ const formatDate = (dateStr: string) => {
   opacity: 0.9;
 }
 
-.card:hover .card-img img {
+.card:hover figure img {
   transform: scale(1.03);
   opacity: 1;
-}
-
-.card-img-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(8, 20, 35, 0.6) 0%, transparent 50%);
-  pointer-events: none;
 }
 
 .card-body {
   padding: 20px 24px 24px;
 }
 
-.card-date {
+time {
   display: block;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.75rem;
@@ -194,7 +226,7 @@ const formatDate = (dateStr: string) => {
   margin-bottom: 8px;
 }
 
-.card-title {
+h2 {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 500;
@@ -209,17 +241,12 @@ const formatDate = (dateStr: string) => {
 }
 
 @media (max-width: 640px) {
-  .main {
+  main {
     padding: 48px 16px 40px;
   }
 
-  .header {
+  header {
     margin-bottom: 48px;
-  }
-
-  .hero-title {
-    flex-direction: column;
-    gap: 0;
   }
 
   .grid {
