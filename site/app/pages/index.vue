@@ -22,11 +22,17 @@ const formatDate = (dateStr: string) => {
     <main class="main">
       <header class="header">
         <h1 class="hero-title">
-          <span class="hero-line">TALK.</span>
-          <span class="hero-line">CODE.</span>
-          <span class="hero-line">SLIDE.</span>
+          <span class="hero-line">Slides</span>
         </h1>
-        <p class="hero-sub">Presentations by naitokosuke</p>
+        <p class="hero-sub">
+          Presentations by
+          <a
+            href="https://x.com/naitokosuke"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="author-link"
+          >naitokosuke</a>
+        </p>
       </header>
 
       <section class="grid">
@@ -51,8 +57,6 @@ const formatDate = (dateStr: string) => {
 </template>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap");
-
 .page {
   min-height: 100vh;
   position: relative;
@@ -90,13 +94,10 @@ const formatDate = (dateStr: string) => {
 }
 
 .hero-title {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 24px;
-  font-family: "Inter", sans-serif;
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  font-weight: 300;
-  letter-spacing: 0.08em;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
   line-height: 1.1;
   color: #fff;
   margin: 0 0 16px;
@@ -110,10 +111,19 @@ const formatDate = (dateStr: string) => {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 400;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: rgba(140, 170, 200, 0.7);
   margin: 0;
+}
+
+.author-link {
+  color: rgba(160, 190, 220, 0.9);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.author-link:hover {
+  color: #fff;
 }
 
 .grid {
@@ -192,6 +202,7 @@ const formatDate = (dateStr: string) => {
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
