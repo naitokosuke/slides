@@ -355,6 +355,8 @@ function generateHomepageHtml(slides: SlideInfo[]): string {
     .title {
       font-size: 1.125rem;
       color: #fff;
+      overflow-x: auto;
+      white-space: nowrap;
     }
     @media (max-width: 600px) {
       body {
