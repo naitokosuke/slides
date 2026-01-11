@@ -35,16 +35,14 @@ const formatDate = (dateStr: string) => {
         </p>
       </header>
 
-      <ul class="grid" role="list">
-        <li v-for="slide in slides" :key="slide.folder" class="card">
-          <a :href="`/${slide.folder}/`" class="card-link">
-            <div class="card-image">
-              <img :src="slide.ogImage" :alt="slide.title" loading="lazy" />
-            </div>
-            <div class="card-body">
+      <ul role="list">
+        <li v-for="slide in slides" :key="slide.folder">
+          <a :href="`/${slide.folder}/`">
+            <img :src="slide.ogImage" :alt="slide.title" loading="lazy" />
+            <footer>
               <time :datetime="slide.date">{{ formatDate(slide.date) }}</time>
               <h2>{{ slide.title }}</h2>
-            </div>
+            </footer>
           </a>
         </li>
       </ul>
@@ -145,7 +143,7 @@ header {
   }
 }
 
-.grid {
+ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
@@ -157,97 +155,79 @@ header {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-}
 
-.card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  overflow: hidden;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-6px);
-    border-color: rgba(100, 160, 220, 0.25);
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
-
-    .card-image img {
-      transform: scale(1.03);
-      opacity: 1;
-    }
-  }
-
-  a {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-
-    &:focus-visible {
-      outline: 2px solid rgba(160, 190, 220, 0.9);
-      outline-offset: -2px;
-    }
-  }
-
-  .card-image {
-    position: relative;
-    aspect-ratio: 1200 / 630;
+  li {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
     overflow: hidden;
-    background: rgba(20, 35, 55, 0.5);
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
 
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(8, 20, 35, 0.6) 0%,
-        transparent 50%
-      );
-      pointer-events: none;
+    &:hover {
+      transform: translateY(-6px);
+      border-color: rgba(100, 160, 220, 0.25);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+
+      img {
+        transform: scale(1.03);
+        opacity: 1;
+      }
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+
+      &:focus-visible {
+        outline: 2px solid rgba(160, 190, 220, 0.9);
+        outline-offset: -2px;
+      }
     }
 
     img {
       width: 100%;
-      height: 100%;
+      aspect-ratio: 1200 / 630;
       object-fit: cover;
+      background: rgba(20, 35, 55, 0.5);
       transition:
         transform 0.4s ease,
         opacity 0.3s ease;
       opacity: 0.9;
     }
-  }
 
-  .card-body {
-    padding: 20px 24px 24px;
+    footer {
+      padding: 20px 24px 24px;
 
-    @media (max-width: 640px) {
-      padding: 16px 20px 20px;
-    }
+      @media (max-width: 640px) {
+        padding: 16px 20px 20px;
+      }
 
-    time {
-      display: block;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      color: rgba(120, 160, 200, 0.8);
-      margin-bottom: 8px;
-    }
+      time {
+        display: block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+        color: rgba(120, 160, 200, 0.8);
+        margin-bottom: 8px;
+      }
 
-    h2 {
-      font-family: "Inter", sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.92);
-      margin: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      h2 {
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.92);
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
     }
   }
 }
