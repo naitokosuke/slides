@@ -1,19 +1,19 @@
 ---
 theme: default
 transition: slide-left
-title: 最高の DX (lite) - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発
+title: 最高の DX - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発(Lite ver.)
 fonts:
   sans: "Noto Sans JP"
   serif: "Murecho"
   mono: "JetBrains Mono"
 seoMeta:
-  ogTitle: 最高の DX (lite) - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発
+  ogTitle: 最高の DX - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発(Lite ver.)
   ogImage: https://slides.naito.dev/2025-10-25-lite/og-image.png
   ogUrl: https://slides.naito.dev/2025-10-25-lite/
   twitterCard: summary_large_image
 ---
 
-# 最高の DX (lite) - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発
+# 最高の DX - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発(Lite ver.)
 
 ---
 
