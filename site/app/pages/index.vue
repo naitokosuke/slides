@@ -15,87 +15,69 @@ const formatDate = (dateStr: string) => {
 </script>
 
 <template>
-  <div class="page">
-    <div class="bg" aria-hidden="true" />
-    <div class="overlay" aria-hidden="true" />
+  <main>
+    <header>
+      <h1>Slides</h1>
+      <p>
+        Presentations by
+        <a
+          href="https://x.com/naitokosuke"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          naitokosuke
+          <span class="visually-hidden">(opens in new tab)</span>
+        </a>
+      </p>
+    </header>
 
-    <main>
-      <header>
-        <h1>Slides</h1>
-        <p>
-          Presentations by
-          <a
-            href="https://x.com/naitokosuke"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            naitokosuke
-            <span class="visually-hidden">(opens in new tab)</span>
-          </a>
-        </p>
-      </header>
-
-      <ul role="list">
-        <li v-for="slide in slides" :key="slide.folder">
-          <a :href="`/${slide.folder}/`">
-            <img :src="slide.ogImage" :alt="slide.title" loading="lazy" />
-            <footer>
-              <time :datetime="slide.date">{{ formatDate(slide.date) }}</time>
-              <h2>{{ slide.title }}</h2>
-            </footer>
-          </a>
-        </li>
-      </ul>
-    </main>
-  </div>
+    <ul role="list">
+      <li v-for="slide in slides" :key="slide.folder">
+        <a :href="`/${slide.folder}/`">
+          <img :src="slide.ogImage" :alt="slide.title" loading="lazy" />
+          <footer>
+            <time :datetime="slide.date">{{ formatDate(slide.date) }}</time>
+            <h2>{{ slide.title }}</h2>
+          </footer>
+        </a>
+      </li>
+    </ul>
+  </main>
 </template>
 
 <style scoped>
-.page {
-  min-height: 100vh;
-  position: relative;
-}
-
-.bg {
-  position: fixed;
-  inset: 0;
-  background: url("/bg.png") center/cover no-repeat fixed;
-  z-index: 0;
-}
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(8, 20, 35, 0.92) 0%,
-    rgba(8, 20, 35, 0.85) 40%,
-    rgba(8, 20, 35, 0.92) 100%
-  );
-  z-index: 1;
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 main {
   position: relative;
-  z-index: 2;
+  min-height: 100vh;
   max-width: 1200px;
   margin: 0 auto;
   padding: 80px 24px 60px;
 
   @media (max-width: 640px) {
     padding: 48px 16px 40px;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &::before {
+    background: url("/bg.png") center/cover no-repeat fixed;
+    z-index: -2;
+  }
+
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 20, 35, 0.92) 0%,
+      rgba(8, 20, 35, 0.85) 40%,
+      rgba(8, 20, 35, 0.92) 100%
+    );
+    z-index: -1;
   }
 
   header {
@@ -138,6 +120,18 @@ main {
         outline: 2px solid rgba(160, 190, 220, 0.9);
         outline-offset: 2px;
         border-radius: 2px;
+      }
+
+      span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
       }
     }
   }
