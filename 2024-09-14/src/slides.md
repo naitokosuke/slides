@@ -1,8 +1,8 @@
 ---
 theme: default
-title: V が名前に入ってる
+title: V が名前に入ってる(再)
 info: |
-  ## 「V が名前に入ってる」
+  ## 「V が名前に入ってる(再)」
   Funabashi.dev supported by KIKKAKE CREATION 2024.09.14
 class: text-right
 transition: slide-left
@@ -10,13 +10,13 @@ fonts:
   sans: "Kosugi Maru"
   mono: "Fira Code"
 seoMeta:
-  ogTitle: V が名前に入ってる
+  ogTitle: V が名前に入ってる(再)
   ogImage: https://slides.naito.dev/2024-09-14/og-image.png
   ogUrl: https://slides.naito.dev/2024-09-14/
   twitterCard: summary_large_image
 ---
 
-<h1>V <span v-click>が名前に入ってる</span></h1>
+<h1>V <span v-click>が名前に入ってる(再)</span></h1>
 
 <div first-letter:text-blue>ナイトウ <a href="https://twitter.com/engineer_naito" target="_blank" rel="noopener noreferrer"><carbon-logo-twitter /></a></div>
 
