@@ -21,14 +21,35 @@ const EXCLUDED_FOLDERS = ["0000-00-00"];
 async function buildAll() {
   // Get all slide folders (matching YYYY-MM-DD pattern)
   const entries = await fs.readdir(rootDir, { withFileTypes: true });
-  const slideFolders = entries
+  const allSlideFolders = entries
     .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
     .filter((e) => !EXCLUDED_FOLDERS.includes(e.name))
     .map((e) => e.name)
     .sort();
 
-  // Clean dist directory
-  await fs.rm(distDir, { recursive: true, force: true });
+  // Check if we should only build changed slides
+  const changedSlidesEnv = process.env.CHANGED_SLIDES;
+  let slideFolders: string[];
+  let isIncrementalBuild = false;
+
+  if (changedSlidesEnv && changedSlidesEnv !== "all") {
+    // Incremental build: only build changed slides
+    const changedSet = new Set(
+      changedSlidesEnv.split(",").map((s) => s.trim()),
+    );
+    slideFolders = allSlideFolders.filter((f) => changedSet.has(f));
+    isIncrementalBuild = true;
+    console.log(`Incremental build: ${slideFolders.join(", ")}`);
+  } else {
+    // Full build
+    slideFolders = allSlideFolders;
+    console.log("Full build: all slides");
+  }
+
+  // Clean dist directory (only for full builds)
+  if (!isIncrementalBuild) {
+    await fs.rm(distDir, { recursive: true, force: true });
+  }
   await fs.mkdir(distDir, { recursive: true });
 
   // Build each slide
@@ -124,11 +145,11 @@ async function buildAll() {
   // Copy public folder to dist
   await copyPublicAssets();
 
-  // Generate OG images for slides that don't have them
+  // Generate OG images for slides that don't have them (only for built slides)
   await generateOgImages(slideFolders);
 
-  // Generate homepage
-  await generateHomepage(slideFolders);
+  // Generate homepage (always use all slides for complete listing)
+  await generateHomepage(allSlideFolders);
 }
 
 async function copyPublicAssets() {
@@ -137,10 +158,7 @@ async function copyPublicAssets() {
     await fs.access(publicDir);
     const files = await fs.readdir(publicDir);
     for (const file of files) {
-      await fs.copyFile(
-        path.join(publicDir, file),
-        path.join(distDir, file)
-      );
+      await fs.copyFile(path.join(publicDir, file), path.join(distDir, file));
     }
     console.log("✓ Public assets copied");
   } catch {
@@ -180,11 +198,21 @@ async function generateOgImages(slideFolders: string[]) {
       // slidev export creates a directory with 1.png inside
       await execa(
         "pnpm",
-        ["exec", "slidev", "export", "--format", "png", "--range", "1", "--output", "og-image"],
+        [
+          "exec",
+          "slidev",
+          "export",
+          "--format",
+          "png",
+          "--range",
+          "1",
+          "--output",
+          "og-image",
+        ],
         {
           cwd: srcDir,
           stdio: "inherit",
-        }
+        },
       );
 
       // Move the generated image to dist folder
@@ -201,7 +229,9 @@ async function generateOgImages(slideFolders: string[]) {
     } catch (error) {
       console.warn(`⚠ Failed to generate OG image for ${folder}:`, error);
       // Clean up on failure
-      await fs.rm(ogExportDir, { recursive: true, force: true }).catch(() => {});
+      await fs
+        .rm(ogExportDir, { recursive: true, force: true })
+        .catch(() => {});
       // Continue with other slides, don't fail the entire build
     }
   }
@@ -223,7 +253,10 @@ async function generateHomepage(slideFolders: string[]) {
     try {
       const content = await fs.readFile(slidesPath, "utf-8");
       const { data } = matter(content);
-      const title = data.title || data.info?.split("\n")[0]?.replace(/^##\s*/, "") || folder;
+      const title =
+        data.title ||
+        data.info?.split("\n")[0]?.replace(/^##\s*/, "") ||
+        folder;
       slides.push({
         folder,
         title,
@@ -253,7 +286,7 @@ function generateHomepageHtml(slides: SlideInfo[]): string {
       <a href="/${slide.folder}/" class="slide-card">
         <span class="date">${slide.date}</span>
         <span class="title">${escapeHtml(slide.title)}</span>
-      </a>`
+      </a>`,
     )
     .join("\n");
 

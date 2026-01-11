@@ -10,26 +10,58 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed slides
+        id: changes
+        run: |
+          # Get changed slide folders (YYYY-MM-DD pattern)
+          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}' | sort -u | tr '\n' ',' | sed 's/,$//')
+
+          # Check if shared files changed (requires full rebuild)
+          SHARED_CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^(package\.json|pnpm-lock\.yaml|pnpm-workspace\.yaml|scripts/|public/|worker/)' || true)
+
+          if [ -n "$SHARED_CHANGED" ]; then
+            echo "changed=all" >> $GITHUB_OUTPUT
+            echo "Shared files changed, rebuilding all"
+          elif [ -z "$CHANGED" ]; then
+            echo "changed=none" >> $GITHUB_OUTPUT
+            echo "No slide changes detected"
+          else
+            echo "changed=$CHANGED" >> $GITHUB_OUTPUT
+            echo "Changed slides: $CHANGED"
+          fi
 
       - uses: pnpm/action-setup@v4
+        if: steps.changes.outputs.changed != 'none'
 
       - uses: actions/setup-node@v4
+        if: steps.changes.outputs.changed != 'none'
         with:
           node-version: 24
           cache: pnpm
 
       - run: pnpm install
+        if: steps.changes.outputs.changed != 'none'
 
       - name: Install Playwright browsers
+        if: steps.changes.outputs.changed != 'none'
         run: pnpm exec playwright install chromium
 
-      - run: pnpm build:ci
+      - name: Build slides
+        if: steps.changes.outputs.changed != 'none'
+        run: pnpm build:ci
+        env:
+          CHANGED_SLIDES: ${{ steps.changes.outputs.changed }}
 
       - name: Install rclone
+        if: steps.changes.outputs.changed != 'none'
         run: |
           curl https://rclone.org/install.sh | sudo bash
 
       - name: Configure rclone for R2
+        if: steps.changes.outputs.changed != 'none'
         run: |
           mkdir -p ~/.config/rclone
           cat > ~/.config/rclone/rclone.conf << EOF
@@ -43,10 +75,18 @@ jobs:
           EOF
 
       - name: Upload to R2
+        if: steps.changes.outputs.changed != 'none'
         run: |
-          rclone sync dist/ r2:slides/ --progress
+          if [ "${{ steps.changes.outputs.changed }}" = "all" ]; then
+            # Full sync for full rebuilds
+            rclone sync dist/ r2:slides/ --progress
+          else
+            # Copy only changed folders + homepage for incremental builds
+            rclone copy dist/ r2:slides/ --progress
+          fi
 
       - name: Deploy Worker
+        if: steps.changes.outputs.changed != 'none'
         working-directory: worker
         run: pnpm dlx wrangler@4 deploy
         env:
