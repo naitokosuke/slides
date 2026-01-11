@@ -6,10 +6,15 @@ interface SlideInfo {
   folder: string;
   title: string;
   date: string;
+  ogImage: string;
 }
 
 // Demo folders to exclude
 const EXCLUDED_FOLDERS = ["0000-00-00"];
+
+// Base URL for OG images (production URL for dev, relative for build)
+const OG_IMAGE_BASE =
+  process.env.NODE_ENV === "development" ? "https://slides.naito.dev" : "";
 
 export default defineEventHandler(async () => {
   const rootDir = path.resolve(process.cwd(), "..");
@@ -28,6 +33,10 @@ export default defineEventHandler(async () => {
 
   for (const folder of slideFolders) {
     const slidesPath = path.join(rootDir, folder, "src", "slides.md");
+
+    // OG image path (stored in each slide directory root)
+    const ogImage = `${OG_IMAGE_BASE}/${folder}/og-image.png`;
+
     try {
       const content = await fs.readFile(slidesPath, "utf-8");
       const { data } = matter(content);
@@ -39,12 +48,14 @@ export default defineEventHandler(async () => {
         folder,
         title,
         date: folder,
+        ogImage,
       });
     } catch {
       slides.push({
         folder,
         title: folder,
         date: folder,
+        ogImage,
       });
     }
   }
