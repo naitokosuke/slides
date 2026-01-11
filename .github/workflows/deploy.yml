@@ -16,8 +16,8 @@ jobs:
       - name: Detect changed slides
         id: changes
         run: |
-          # Get changed slide folders (YYYY-MM-DD pattern)
-          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}' | sort -u | tr '\n' ',' | sed 's/,$//')
+          # Get changed slide folders (YYYY-MM-DD or YYYY-MM-DD-suffix pattern)
+          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}(-[a-zA-Z0-9]+)?' | sort -u | tr '\n' ',' | sed 's/,$//')
 
           # Check if shared files changed (requires full rebuild)
           SHARED_CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^(package\.json|pnpm-lock\.yaml|pnpm-workspace\.yaml|scripts/|public/|worker/)' || true)

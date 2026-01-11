@@ -19,10 +19,10 @@ const SKIP_OG_GENERATION = ["2025-10-25", "2025-06-17"];
 const EXCLUDED_FOLDERS = ["0000-00-00"];
 
 async function buildAll() {
-  // Get all slide folders (matching YYYY-MM-DD pattern)
+  // Get all slide folders (matching YYYY-MM-DD or YYYY-MM-DD-suffix pattern)
   const entries = await fs.readdir(rootDir, { withFileTypes: true });
   const allSlideFolders = entries
-    .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
+    .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}(-[\w]+)?$/.test(e.name))
     .filter((e) => !EXCLUDED_FOLDERS.includes(e.name))
     .map((e) => e.name)
     .sort();
