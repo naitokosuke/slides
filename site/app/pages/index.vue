@@ -35,10 +35,10 @@ const formatDate = (dateStr: string) => {
       <li v-for="slide in slides" :key="slide.folder">
         <a :href="`/${slide.folder}/`">
           <img :src="slide.ogImage" :alt="slide.title" loading="lazy" />
-          <footer>
+          <div>
             <time :datetime="slide.date">{{ formatDate(slide.date) }}</time>
             <h2>{{ slide.title }}</h2>
-          </footer>
+          </div>
         </a>
       </li>
     </ul>
@@ -192,7 +192,7 @@ main {
         opacity: 0.9;
       }
 
-      footer {
+      div {
         padding: 20px 24px 24px;
 
         @media (max-width: 640px) {
