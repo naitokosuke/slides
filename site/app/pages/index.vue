@@ -26,7 +26,7 @@ const formatDate = (dateStr: string) => {
           rel="noopener noreferrer"
         >
           naitokosuke
-          <span class="visually-hidden">(opens in new tab)</span>
+          <span>(opens in new tab)</span>
         </a>
       </p>
     </header>
