@@ -121,11 +121,31 @@ async function buildAll() {
 
   console.log(`\nAll slides built to ${distDir}`);
 
+  // Copy public folder to dist
+  await copyPublicAssets();
+
   // Generate OG images for slides that don't have them
   await generateOgImages(slideFolders);
 
   // Generate homepage
   await generateHomepage(slideFolders);
+}
+
+async function copyPublicAssets() {
+  const publicDir = path.join(rootDir, "public");
+  try {
+    await fs.access(publicDir);
+    const files = await fs.readdir(publicDir);
+    for (const file of files) {
+      await fs.copyFile(
+        path.join(publicDir, file),
+        path.join(distDir, file)
+      );
+    }
+    console.log("✓ Public assets copied");
+  } catch {
+    // No public folder, skip
+  }
 }
 
 async function generateOgImages(slideFolders: string[]) {
@@ -243,6 +263,13 @@ function generateHomepageHtml(slides: SlideInfo[]): string {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slides - naitokosuke</title>
+  <meta name="description" content="Tech talks and presentations by naitokosuke">
+  <meta property="og:title" content="Slides - naitokosuke">
+  <meta property="og:description" content="Tech talks and presentations">
+  <meta property="og:image" content="https://slides.naito.dev/og-image.png">
+  <meta property="og:url" content="https://slides.naito.dev/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
   <style>
     * {
       box-sizing: border-box;
