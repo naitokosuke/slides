@@ -4,7 +4,6 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { cli, define } from "gunshi";
 import { execa } from "execa";
-import matter from "gray-matter";
 
 const rootDir = fileURLToPath(new URL("..", import.meta.url));
 const distDir = path.join(rootDir, "dist");
@@ -148,8 +147,8 @@ async function buildAll() {
   // Generate OG images for slides that don't have them (only for built slides)
   await generateOgImages(slideFolders);
 
-  // Generate homepage (always use all slides for complete listing)
-  await generateHomepage(allSlideFolders);
+  // Generate homepage using Nuxt SSG
+  await generateHomepage();
 }
 
 async function copyPublicAssets() {
@@ -237,156 +236,39 @@ async function generateOgImages(slideFolders: string[]) {
   }
 }
 
-interface SlideInfo {
-  folder: string;
-  title: string;
-  date: string;
-}
+async function generateHomepage() {
+  console.log("\nGenerating homepage with Nuxt SSG...");
 
-async function generateHomepage(slideFolders: string[]) {
-  console.log("\nGenerating homepage...");
+  const siteDir = path.join(rootDir, "site");
 
-  const slides: SlideInfo[] = [];
+  try {
+    // Generate static site
+    await execa("pnpm", ["run", "generate"], {
+      cwd: siteDir,
+      stdio: "inherit",
+    });
 
-  for (const folder of slideFolders) {
-    const slidesPath = path.join(rootDir, folder, "src", "slides.md");
-    try {
-      const content = await fs.readFile(slidesPath, "utf-8");
-      const { data } = matter(content);
-      const title =
-        data.title ||
-        data.info?.split("\n")[0]?.replace(/^##\s*/, "") ||
-        folder;
-      slides.push({
-        folder,
-        title,
-        date: folder,
-      });
-    } catch {
-      slides.push({
-        folder,
-        title: folder,
-        date: folder,
-      });
+    // Copy generated files to dist (excluding _nuxt which goes to root)
+    const siteOutput = path.join(siteDir, ".output", "public");
+    const files = await fs.readdir(siteOutput);
+
+    for (const file of files) {
+      const src = path.join(siteOutput, file);
+      const dest = path.join(distDir, file);
+      const stat = await fs.stat(src);
+
+      if (stat.isDirectory()) {
+        await fs.cp(src, dest, { recursive: true });
+      } else {
+        await fs.copyFile(src, dest);
+      }
     }
+
+    console.log("✓ Homepage generated with Nuxt SSG");
+  } catch (error) {
+    console.error("✗ Failed to generate homepage");
+    throw error;
   }
-
-  // Sort by date descending (newest first)
-  slides.sort((a, b) => b.date.localeCompare(a.date));
-
-  const html = generateHomepageHtml(slides);
-  await fs.writeFile(path.join(distDir, "index.html"), html);
-  console.log("✓ Homepage generated");
-}
-
-function generateHomepageHtml(slides: SlideInfo[]): string {
-  const slideItems = slides
-    .map(
-      (slide) => `
-      <a href="/${slide.folder}/" class="slide-card">
-        <span class="date">${slide.date}</span>
-        <span class="title">${escapeHtml(slide.title)}</span>
-      </a>`,
-    )
-    .join("\n");
-
-  return `<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <title>Slides - naitokosuke</title>
-  <meta name="description" content="Tech talks and presentations by naitokosuke">
-  <meta property="og:title" content="Slides - naitokosuke">
-  <meta property="og:description" content="Tech talks and presentations">
-  <meta property="og:image" content="https://slides.naito.dev/og-image.png">
-  <meta property="og:url" content="https://slides.naito.dev/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #0f0f0f;
-      color: #e0e0e0;
-      min-height: 100vh;
-      padding: 2rem;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: #fff;
-    }
-    .slides-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .slide-card {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      padding: 1.25rem 1.5rem;
-      background: #1a1a1a;
-      border-radius: 8px;
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .slide-card:hover {
-      background: #252525;
-      transform: translateX(4px);
-    }
-    .date {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.875rem;
-      color: #888;
-      white-space: nowrap;
-    }
-    .title {
-      font-size: 1.125rem;
-      color: #fff;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem;
-      }
-      .slide-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Slides</h1>
-    <div class="slides-list">
-${slideItems}
-    </div>
-  </div>
-</body>
-</html>`;
-}
-
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }
 
 const command = define({

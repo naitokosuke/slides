@@ -1,0 +1,22 @@
+{
+  "name": "slides-site",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuxt": "^4.2.2",
+    "vue": "^3.5.26",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@unocss/nuxt": "^66.1.0",
+    "gray-matter": "^4.0.3",
+    "unocss": "^66.1.0"
+  }
+}
