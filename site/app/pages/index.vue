@@ -144,7 +144,7 @@ main {
     padding: 0;
     margin: 0;
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       grid-template-columns: 1fr;
       gap: 20px;
     }
