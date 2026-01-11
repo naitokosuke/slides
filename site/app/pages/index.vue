@@ -31,7 +31,8 @@ const formatDate = (dateStr: string) => {
             target="_blank"
             rel="noopener noreferrer"
             class="author-link"
-          >naitokosuke</a>
+            >naitokosuke</a
+          >
         </p>
       </header>
 
@@ -128,7 +129,7 @@ const formatDate = (dateStr: string) => {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 28px;
 }
 
