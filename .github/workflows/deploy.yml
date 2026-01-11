@@ -22,9 +22,15 @@ jobs:
           # Check if shared files changed (requires full rebuild)
           SHARED_CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^(package\.json|pnpm-lock\.yaml|pnpm-workspace\.yaml|scripts/|public/|worker/)' || true)
 
+          # Check if only site/ changed (homepage only rebuild)
+          SITE_CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^site/' || true)
+
           if [ -n "$SHARED_CHANGED" ]; then
             echo "changed=all" >> $GITHUB_OUTPUT
             echo "Shared files changed, rebuilding all"
+          elif [ -n "$SITE_CHANGED" ] && [ -z "$CHANGED" ]; then
+            echo "changed=site-only" >> $GITHUB_OUTPUT
+            echo "Only site/ changed, rebuilding homepage only"
           elif [ -z "$CHANGED" ]; then
             echo "changed=none" >> $GITHUB_OUTPUT
             echo "No slide changes detected"
@@ -46,14 +52,21 @@ jobs:
         if: steps.changes.outputs.changed != 'none'
 
       - name: Install Playwright browsers
-        if: steps.changes.outputs.changed != 'none'
+        if: steps.changes.outputs.changed != 'none' && steps.changes.outputs.changed != 'site-only'
         run: pnpm exec playwright install chromium
 
       - name: Build slides
-        if: steps.changes.outputs.changed != 'none'
+        if: steps.changes.outputs.changed != 'none' && steps.changes.outputs.changed != 'site-only'
         run: pnpm build:ci
         env:
           CHANGED_SLIDES: ${{ steps.changes.outputs.changed }}
+
+      - name: Build homepage only
+        if: steps.changes.outputs.changed == 'site-only'
+        run: |
+          mkdir -p dist
+          pnpm --filter slides-site run generate
+          cp -r site/.output/public/* dist/
 
       - name: Install rclone
         if: steps.changes.outputs.changed != 'none'
