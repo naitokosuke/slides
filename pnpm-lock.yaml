@@ -267,7 +267,7 @@ importers:
         specifier: ^1.9.3
         version: 1.9.4
 
-  2025-10-26/src:
+  2025-10-25-lite/src:
     dependencies:
       '@unocss/preset-icons':
         specifier: ^66.5.4
