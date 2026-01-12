@@ -23,7 +23,15 @@ export default defineNuxtConfig({
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        {
+          rel: "alternate",
+          type: "application/rss+xml",
+          title: "Slides - naitokosuke",
+          href: "https://slides.naito.dev/feed.xml",
+        },
+      ],
     },
   },
 
@@ -34,8 +42,8 @@ export default defineNuxtConfig({
     prerender: {
       // Don't crawl links - slides are external
       crawlLinks: false,
-      // Only prerender the index page
-      routes: ["/"],
+      // Prerender the index page and RSS feed
+      routes: ["/", "/feed.xml"],
     },
   },
 });
