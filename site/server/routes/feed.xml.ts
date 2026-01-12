@@ -77,6 +77,7 @@ export default defineEventHandler(async (event) => {
       <link>${SITE_URL}/${slide.folder}/</link>
       <guid isPermaLink="true">${SITE_URL}/${slide.folder}/</guid>
       <pubDate>${formatRfc822Date(slide.date)}</pubDate>
+      <enclosure url="${SITE_URL}/${slide.folder}/og-image.png" type="image/png" length="0"/>
     </item>`,
     )
     .join("\n");
