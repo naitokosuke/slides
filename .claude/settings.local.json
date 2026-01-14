@@ -1,5 +1,8 @@
 {
   "permissions": {
-    "allow": ["Bash(gh issue close:*)"]
+    "allow": [
+      "Bash(gh issue close:*)",
+      "Bash(gh issue create:*)"
+    ]
   }
 }
