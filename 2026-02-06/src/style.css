@@ -35,11 +35,13 @@
   --color-pink-tint: #FBEBF0;
 
   --slidev-theme-primary: var(--color-blue);
+  --slidev-theme-background: var(--color-background);
 }
 
 /* ===========================================
    Base Styles
    =========================================== */
+.slidev-page,
 .slidev-layout {
   background: var(--color-background);
   color: var(--color-blue);
