@@ -14,63 +14,48 @@
 }
 
 /* ===========================================
-   Theme Color Variables
+   Color Palette
 
-   Color Palette:
-   - Background: #F9F4EE (Warm Cream)
-   - Primary:    #0F51DE (Deep Blue)
-   - Accent:     #F7CBDA (Soft Pink)
+   Base:
+   1. #F9F4EE - Background
+   2. #0F51DE - Blue
+   3. #F7CBDA - Pink
+
+   Derived:
+   4. #FFFFFF - White
+   5. #B7CBF5 - Blue Tint
+   6. #FBEBF0 - Pink Tint
    =========================================== */
 :root {
-  /* Override Slidev theme variables */
-  --slidev-theme-primary: #0F51DE;
+  --color-background: #F9F4EE;
+  --color-blue: #0F51DE;
+  --color-pink: #F7CBDA;
+  --color-white: #FFFFFF;
+  --color-blue-tint: #B7CBF5;
+  --color-pink-tint: #FBEBF0;
 
-  /* Custom theme variables */
-  --theme-background: #F9F4EE;
-  --theme-primary: #0F51DE;
-  --theme-accent: #F7CBDA;
-  --theme-text: #0F51DE;
+  --slidev-theme-primary: var(--color-blue);
 }
 
 /* ===========================================
-   Global Styles
+   Base Styles
    =========================================== */
 .slidev-layout {
-  background: var(--theme-background);
-  color: var(--theme-text);
+  background: var(--color-background);
+  color: var(--color-blue);
 }
 
-/* ===========================================
-   Typography
-   =========================================== */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--theme-primary);
-}
-
-p, li {
-  color: var(--theme-text);
+  color: var(--color-blue);
 }
 
 a {
-  color: var(--theme-primary);
+  color: var(--color-blue);
 }
 
-/* ===========================================
-   Code Blocks
-   =========================================== */
 :not(pre) > code {
-  background-color: var(--theme-accent);
-  color: var(--theme-primary);
+  background: var(--color-pink);
+  color: var(--color-blue);
   padding: 0.15em 0.4em;
   border-radius: 4px;
-}
-
-/* ===========================================
-   Theme Overrides for Seriph
-   =========================================== */
-.slidev-layout.cover,
-.slidev-layout.intro,
-.slidev-layout.center,
-.slidev-layout.default {
-  background: var(--theme-background);
 }
