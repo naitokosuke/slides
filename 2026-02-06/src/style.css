@@ -1,0 +1,76 @@
+/* ===========================================
+   Font Definitions
+   =========================================== */
+@font-face {
+  font-family: 'Kodomo Rounded';
+  src: url('/KodomoRounded.otf') format('opentype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Kodomo Rounded';
+  src: url('/KodomoRounded-Light.otf') format('opentype');
+  font-weight: 300;
+}
+
+/* ===========================================
+   Theme Color Variables
+
+   Color Palette:
+   - Background: #F9F4EE (Warm Cream)
+   - Primary:    #0F51DE (Deep Blue)
+   - Accent:     #F7CBDA (Soft Pink)
+   =========================================== */
+:root {
+  /* Override Slidev theme variables */
+  --slidev-theme-primary: #0F51DE;
+
+  /* Custom theme variables */
+  --theme-background: #F9F4EE;
+  --theme-primary: #0F51DE;
+  --theme-accent: #F7CBDA;
+  --theme-text: #0F51DE;
+}
+
+/* ===========================================
+   Global Styles
+   =========================================== */
+.slidev-layout {
+  background: var(--theme-background);
+  color: var(--theme-text);
+}
+
+/* ===========================================
+   Typography
+   =========================================== */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--theme-primary);
+}
+
+p, li {
+  color: var(--theme-text);
+}
+
+a {
+  color: var(--theme-primary);
+}
+
+/* ===========================================
+   Code Blocks
+   =========================================== */
+:not(pre) > code {
+  background-color: var(--theme-accent);
+  color: var(--theme-primary);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+/* ===========================================
+   Theme Overrides for Seriph
+   =========================================== */
+.slidev-layout.cover,
+.slidev-layout.intro,
+.slidev-layout.center,
+.slidev-layout.default {
+  background: var(--theme-background);
+}
