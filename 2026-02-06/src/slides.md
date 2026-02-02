@@ -1,6 +1,5 @@
 ---
 title: ぼくのきたく
-class: text-center
 transition: fade-out
 fonts:
   sans: "Kodomo Rounded"
@@ -11,4 +10,13 @@ layout: cover
 # ぼくのきたく
 
 ---
+layout: biim
+text: はつとうこうです
+megaton: true
+section: じこしょうかい
+chart: "かいしゃから\nおうちまで"
+timer: "00:00:00"
+gaba: 0
+---
 
+## よーいスタート
