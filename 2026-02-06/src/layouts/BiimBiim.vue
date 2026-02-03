@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, provide, ref } from "vue";
 import { sanitizeUrl } from "@braintree/sanitize-url";
 import TimerTimer from "../components/TimerTimer.vue";
 
@@ -20,13 +20,16 @@ const {
 }>();
 
 const safeIcon = computed(() => sanitizeUrl(icon));
+
+const timerRef = ref<InstanceType<typeof TimerTimer>>();
+provide("timer", timerRef);
 </script>
 
 <template>
   <div class="biim-layout">
     <main>
       <slot />
-      <TimerTimer />
+      <TimerTimer ref="timerRef" />
     </main>
     <aside>
       <div>{{ section }}</div>

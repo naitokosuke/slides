@@ -18,4 +18,6 @@ chart: "かいしゃから\nおうちまで"
 gaba: 0
 ---
 
-## よーいスタート
+<p text-9xl>よーい</p>
+
+<StartButton />
