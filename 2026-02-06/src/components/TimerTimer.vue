@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 import { ref, onMounted, onUnmounted, computed } from "vue";
 
 const useElapsedTimer = () => {
@@ -21,7 +21,9 @@ const useElapsedTimer = () => {
 
   return { formatted };
 };
+</script>
 
+<script setup lang="ts">
 const { formatted: timer } = useElapsedTimer();
 </script>
 
