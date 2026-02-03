@@ -10,10 +10,10 @@ layout: cover
 # ぼくのきたく
 
 ---
-layout: biim
+layout: BiimBiim
 text: はつとうこうです
 megaton: true
-section: じこしょうかい
+section: しょうかい
 chart: "かいしゃから\nおうちまで"
 gaba: 0
 ---

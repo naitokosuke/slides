@@ -23,7 +23,7 @@ const safeIcon = computed(() => sanitizeUrl(icon));
 </script>
 
 <template>
-  <div class="root">
+  <div class="biim-layout">
     <main>
       <slot />
       <TimerTimer />
@@ -43,7 +43,7 @@ const safeIcon = computed(() => sanitizeUrl(icon));
 </template>
 
 <style scoped>
-.root {
+.biim-layout {
   width: 100%;
   height: 100%;
   display: grid;
@@ -51,101 +51,101 @@ const safeIcon = computed(() => sanitizeUrl(icon));
   grid-template-rows: 1fr 100px;
   background: #000;
   color: #fff;
-}
 
-main {
-  position: relative;
-  display: grid;
-  place-items: center;
-  background: var(--color-background);
-  color: var(--color-blue);
-  padding: 16px;
-}
+  main {
+    position: relative;
+    display: grid;
+    place-items: center;
+    background: var(--color-background);
+    color: var(--color-blue);
+    padding: 16px;
 
-main :deep(img),
-main :deep(video) {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
+    :deep(img),
+    :deep(video) {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
 
-aside {
-  display: grid;
-  grid-template-rows: 3fr 6fr 1fr;
-  background: #1a1a1a;
-  border-left: 2px solid #444;
-  padding: 8px;
-  gap: 8px;
-}
+  aside {
+    display: grid;
+    grid-template-rows: 3fr 6fr 1fr;
+    background: #1a1a1a;
+    border-left: 2px solid #444;
+    padding: 8px;
+    gap: 8px;
 
-aside > div {
-  padding: 8px;
-  background: #222;
-  border: 2px solid #444;
-  text-align: center;
-}
+    > div {
+      padding: 8px;
+      background: #222;
+      border: 2px solid #444;
+      text-align: center;
 
-aside > div:first-child {
-  font-size: 1.1em;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      &:first-child {
+        font-size: 1.1em;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
 
-.chart {
-  font-size: 0.9em;
-  color: #ccc;
-  white-space: pre-line;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .chart {
+      font-size: 0.9em;
+      color: #ccc;
+      white-space: pre-line;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.gaba {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  color: #888;
-}
+    .gaba {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      color: #888;
 
-.gaba span {
-  color: #f66;
-  font-weight: bold;
-  font-family: "Fira Code", monospace;
-}
+      span {
+        color: #f66;
+        font-weight: bold;
+        font-family: "Fira Code", monospace;
+      }
+    }
+  }
 
-footer {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: #111;
-  border-top: 2px solid #444;
-}
+  footer {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #111;
+    border-top: 2px solid #444;
 
-footer img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-}
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
 
-footer p {
-  margin: 0;
-  font-size: 1.3em;
-  line-height: 1.5;
-}
+    p {
+      margin: 0;
+      font-size: 1.3em;
+      line-height: 1.5;
 
-footer .megaton {
-  font-size: 1.8em;
-  font-weight: bold;
-  color: #fc0;
-  text-shadow:
-    2px 2px 0 #000,
-    -2px -2px 0 #000,
-    2px -2px 0 #000,
-    -2px 2px 0 #000;
+      &.megaton {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #fc0;
+        text-shadow:
+          2px 2px 0 #000,
+          -2px -2px 0 #000,
+          2px -2px 0 #000,
+          -2px 2px 0 #000;
+      }
+    }
+  }
 }
 </style>
