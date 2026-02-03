@@ -1,23 +1,28 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from "vue";
 
-const elapsed = ref(0);
-let intervalId: ReturnType<typeof setInterval> | null = null;
+const useElapsedTimer = () => {
+  const elapsed = ref(0);
+  let intervalId: ReturnType<typeof setInterval> | null = null;
 
-const timer = computed(() => {
-  const h = Math.floor(elapsed.value / 3600);
-  const m = Math.floor((elapsed.value % 3600) / 60);
-  const s = elapsed.value % 60;
-  return [h, m, s].map((v) => String(v).padStart(2, "0")).join(":");
-});
+  const formatted = computed(() => {
+    const h = Math.floor(elapsed.value / 3600);
+    const m = Math.floor((elapsed.value % 3600) / 60);
+    const s = elapsed.value % 60;
+    return [h, m, s].map((v) => String(v).padStart(2, "0")).join(":");
+  });
 
-onMounted(() => {
-  intervalId = setInterval(() => elapsed.value++, 1000);
-});
+  onMounted(() => {
+    intervalId = setInterval(() => elapsed.value++, 1000);
+  });
+  onUnmounted(() => {
+    if (intervalId) clearInterval(intervalId);
+  });
 
-onUnmounted(() => {
-  if (intervalId) clearInterval(intervalId);
-});
+  return { formatted };
+};
+
+const { formatted: timer } = useElapsedTimer();
 </script>
 
 <template>
