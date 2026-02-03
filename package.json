@@ -17,6 +17,7 @@
     "prepare": "git submodule update --init --recursive"
   },
   "devDependencies": {
+    "@braintree/sanitize-url": "catalog:utils",
     "@antfu/eslint-config": "catalog:lint",
     "@eslint/config-inspector": "catalog:lint",
     "@gunshi/docs": "catalog:script",

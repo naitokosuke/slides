@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from "vue";
+import { sanitizeUrl } from "@braintree/sanitize-url";
 import TimerTimer from "../components/TimerTimer.vue";
 
 const {
@@ -16,6 +18,8 @@ const {
   text?: string;
   megaton?: boolean;
 }>();
+
+const safeIcon = computed(() => sanitizeUrl(icon));
 </script>
 
 <template>
@@ -32,7 +36,7 @@ const {
       </div>
     </aside>
     <footer>
-      <img :src="icon" alt="" />
+      <img :src="safeIcon" alt="" />
       <p :class="{ megaton }">{{ text }}</p>
     </footer>
   </div>
