@@ -64,7 +64,6 @@ provide("timer", timerRef);
     color: var(--color-blue);
     padding: 16px;
     min-height: 0;
-    overflow: hidden;
   }
 
   aside {
@@ -75,7 +74,6 @@ provide("timer", timerRef);
     padding: 8px;
     gap: 8px;
     min-height: 0;
-    overflow: hidden;
 
     > div {
       padding: 8px;
