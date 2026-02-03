@@ -51,7 +51,8 @@ provide("timer", timerRef);
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 180px;
-  grid-template-rows: 1fr 100px;
+  grid-template-rows: 1fr 17%;
+  overflow: hidden;
   background: var(--color-pink);
   color: var(--color-blue);
 
@@ -62,13 +63,8 @@ provide("timer", timerRef);
     background: var(--color-background);
     color: var(--color-blue);
     padding: 16px;
-
-    :deep(img),
-    :deep(video) {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
+    min-height: 0;
+    overflow: hidden;
   }
 
   aside {
@@ -78,6 +74,8 @@ provide("timer", timerRef);
     border-left: 2px solid var(--color-pink-tint);
     padding: 8px;
     gap: 8px;
+    min-height: 0;
+    overflow: hidden;
 
     > div {
       padding: 8px;
@@ -120,7 +118,7 @@ provide("timer", timerRef);
   footer {
     grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 70px 1fr;
     align-items: center;
     gap: 12px;
     padding: 12px 16px;
@@ -128,8 +126,8 @@ provide("timer", timerRef);
     border-top: 2px solid var(--color-pink);
 
     img {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       object-fit: contain;
     }
 

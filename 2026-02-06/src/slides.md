@@ -10,7 +10,7 @@ layout: cover
 # ぼくのきたく
 
 ---
-layout: BiimBiim
+layout: BiimSystem
 text: はつとうこうです
 megaton: true
 section: しょうかい
