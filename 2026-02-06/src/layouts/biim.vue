@@ -1,17 +1,24 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from "vue";
 
-defineProps({
-  gaba: { type: Number, default: 0 },
-  section: { type: String, default: "" },
-  chart: { type: String, default: "" },
-  icon: { type: String, default: "/images/icon.png" },
-  text: { type: String, default: "" },
-  megaton: { type: Boolean, default: false },
-});
+const {
+  gaba = 0,
+  section = "",
+  chart = "",
+  icon = "/images/icon.png",
+  text = "",
+  megaton = false,
+} = defineProps<{
+  gaba?: number;
+  section?: string;
+  chart?: string;
+  icon?: string;
+  text?: string;
+  megaton?: boolean;
+}>();
 
 const elapsed = ref(0);
-let intervalId = null;
+let intervalId: ReturnType<typeof setInterval> | null = null;
 
 const timer = computed(() => {
   const h = Math.floor(elapsed.value / 3600);
@@ -38,7 +45,9 @@ onUnmounted(() => {
     <aside>
       <div>{{ section }}</div>
       <div class="chart">{{ chart }}</div>
-      <div class="gaba">ガバ <span>{{ gaba }}</span></div>
+      <div class="gaba">
+        ガバ <span>{{ gaba }}</span>
+      </div>
     </aside>
     <footer>
       <img :src="icon" alt="" />
@@ -82,7 +91,11 @@ main :deep(video) {
   font-weight: bold;
   color: #0f0;
   font-family: "Fira Code", monospace;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+  text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000;
 }
 
 aside {
@@ -158,6 +171,10 @@ footer .megaton {
   font-size: 1.8em;
   font-weight: bold;
   color: #fc0;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+  text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000;
 }
 </style>
