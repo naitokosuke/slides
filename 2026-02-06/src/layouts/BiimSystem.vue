@@ -26,7 +26,7 @@ provide("timer", timerRef);
 </script>
 
 <template>
-  <div class="biim-layout">
+  <div class="biim">
     <main>
       <slot />
       <TimerTimer ref="timerRef" />
@@ -46,7 +46,7 @@ provide("timer", timerRef);
 </template>
 
 <style scoped>
-.biim-layout {
+.biim {
   width: 100%;
   height: 100%;
   display: grid;
