@@ -15,7 +15,6 @@ text: はつとうこうです
 megaton: true
 section: じこしょうかい
 chart: "かいしゃから\nおうちまで"
-timer: "00:00:00"
 gaba: 0
 ---
 

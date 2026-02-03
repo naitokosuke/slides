@@ -1,12 +1,31 @@
 <script setup>
+import { ref, onMounted, onUnmounted, computed } from "vue";
+
 defineProps({
-  timer: { type: String, default: "00:00:00" },
   gaba: { type: Number, default: 0 },
   section: { type: String, default: "" },
   chart: { type: String, default: "" },
   icon: { type: String, default: "/images/icon.png" },
   text: { type: String, default: "" },
   megaton: { type: Boolean, default: false },
+});
+
+const elapsed = ref(0);
+let intervalId = null;
+
+const timer = computed(() => {
+  const h = Math.floor(elapsed.value / 3600);
+  const m = Math.floor((elapsed.value % 3600) / 60);
+  const s = elapsed.value % 60;
+  return [h, m, s].map((v) => String(v).padStart(2, "0")).join(":");
+});
+
+onMounted(() => {
+  intervalId = setInterval(() => elapsed.value++, 1000);
+});
+
+onUnmounted(() => {
+  if (intervalId) clearInterval(intervalId);
 });
 </script>
 
