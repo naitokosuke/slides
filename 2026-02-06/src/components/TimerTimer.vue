@@ -58,12 +58,7 @@ defineExpose({ start, stop, reset, isRunning, elapsed });
   bottom: 12px;
   font-size: 1.8em;
   font-weight: bold;
-  color: #0f0;
+  color: var(--color-blue);
   font-family: "Fira Code", monospace;
-  text-shadow:
-    2px 2px 0 #000,
-    -2px -2px 0 #000,
-    2px -2px 0 #000,
-    -2px 2px 0 #000;
 }
 </style>

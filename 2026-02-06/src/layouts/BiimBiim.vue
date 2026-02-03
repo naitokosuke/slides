@@ -52,8 +52,8 @@ provide("timer", timerRef);
   display: grid;
   grid-template-columns: 1fr 180px;
   grid-template-rows: 1fr 100px;
-  background: #000;
-  color: #fff;
+  background: var(--color-pink);
+  color: var(--color-blue);
 
   main {
     position: relative;
@@ -74,15 +74,15 @@ provide("timer", timerRef);
   aside {
     display: grid;
     grid-template-rows: 3fr 6fr 1fr;
-    background: #1a1a1a;
-    border-left: 2px solid #444;
+    background: var(--color-pink);
+    border-left: 2px solid var(--color-pink-tint);
     padding: 8px;
     gap: 8px;
 
     > div {
       padding: 8px;
-      background: #222;
-      border: 2px solid #444;
+      background: var(--color-pink-tint);
+      border: 2px solid var(--color-white);
       text-align: center;
 
       &:first-child {
@@ -96,7 +96,7 @@ provide("timer", timerRef);
 
     .chart {
       font-size: 0.9em;
-      color: #ccc;
+      color: var(--color-blue);
       white-space: pre-line;
       display: flex;
       align-items: center;
@@ -107,10 +107,10 @@ provide("timer", timerRef);
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
-      color: #888;
+      color: var(--color-blue);
 
       span {
-        color: #f66;
+        color: var(--color-blue);
         font-weight: bold;
         font-family: "Fira Code", monospace;
       }
@@ -124,8 +124,8 @@ provide("timer", timerRef);
     align-items: center;
     gap: 12px;
     padding: 12px 16px;
-    background: #111;
-    border-top: 2px solid #444;
+    background: var(--color-pink-tint);
+    border-top: 2px solid var(--color-pink);
 
     img {
       width: 80px;
@@ -137,16 +137,12 @@ provide("timer", timerRef);
       margin: 0;
       font-size: 1.3em;
       line-height: 1.5;
+      color: var(--color-blue);
 
       &.megaton {
         font-size: 1.8em;
         font-weight: bold;
-        color: #fc0;
-        text-shadow:
-          2px 2px 0 #000,
-          -2px -2px 0 #000,
-          2px -2px 0 #000,
-          -2px 2px 0 #000;
+        color: var(--color-blue);
       }
     }
   }
