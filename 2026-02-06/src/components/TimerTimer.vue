@@ -1,8 +1,9 @@
 <script lang="ts">
-import { ref, onMounted, onUnmounted, computed } from "vue";
+import { ref, onUnmounted, computed } from "vue";
 
-const useElapsedTimer = () => {
+const useTimer = () => {
   const elapsed = ref(0);
+  const isRunning = ref(false);
   let intervalId: ReturnType<typeof setInterval> | null = null;
 
   const formatted = computed(() => {
@@ -12,19 +13,38 @@ const useElapsedTimer = () => {
     return [h, m, s].map((v) => String(v).padStart(2, "0")).join(":");
   });
 
-  onMounted(() => {
+  const start = () => {
+    if (isRunning.value) return;
     intervalId = setInterval(() => elapsed.value++, 1000);
-  });
+    isRunning.value = true;
+  };
+
+  const stop = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+    isRunning.value = false;
+  };
+
+  const reset = () => {
+    stop();
+    elapsed.value = 0;
+  };
+
   onUnmounted(() => {
     if (intervalId) clearInterval(intervalId);
   });
 
-  return { formatted };
+  return { formatted, start, stop, reset, isRunning, elapsed };
 };
 </script>
 
 <script setup lang="ts">
-const { formatted: timer } = useElapsedTimer();
+const { formatted: timer, start, stop, reset, isRunning, elapsed } =
+  useTimer();
+
+defineExpose({ start, stop, reset, isRunning, elapsed });
 </script>
 
 <template>
