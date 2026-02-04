@@ -1,6 +1,6 @@
 ---
 title: ぼくのきたく
-transition: fade-out
+transition: view-transition
 fonts:
   sans: "Kodomo Rounded"
   mono: "Fira Code"

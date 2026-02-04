@@ -67,6 +67,7 @@ provide("timer", timerRef);
   }
 
   aside {
+    view-transition-name: biim-aside;
     display: grid;
     grid-template-rows: 3fr 6fr 1fr;
     background: var(--color-pink);
@@ -114,6 +115,7 @@ provide("timer", timerRef);
   }
 
   footer {
+    view-transition-name: biim-footer;
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: 70px 1fr;
