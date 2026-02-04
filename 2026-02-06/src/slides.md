@@ -91,9 +91,19 @@ gaba: 1
 layout: BiimSystem
 text: まずかいしゃちかくのコンビニにIN
 section: バフかくとく
-chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
 gaba: 1
 ---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🏢たいきん</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏪コンビニ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚃えき</p>
+</div>
+</template>
 
 <p text-8xl>🏪</p>
 <p text-2xl mt-4>ファミマIN</p>
@@ -103,9 +113,19 @@ gaba: 1
 layout: BiimSystem
 text: ほろよいをかくほ...あっ
 section: バフかくとく
-chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
 gaba: 1
 ---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🏢たいきん</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏪コンビニ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚃えき</p>
+</div>
+</template>
 
 <p text-7xl>🍑</p>
 <p text-3xl mt-4>ほろよい</p>
@@ -116,9 +136,19 @@ layout: BiimSystem
 text: ガバです、ストゼロつかんでました
 megaton: true
 section: バフかくとく
-chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
 gaba: 2
 ---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🏢たいきん</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏪コンビニ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚃えき</p>
+</div>
+</template>
 
 <p text-7xl>🍋</p>
 <p text-3xl mt-4>ストロングゼロ</p>
@@ -129,9 +159,19 @@ layout: BiimSystem
 text: ここでそくプシュですね、RTAのきほんです
 megaton: true
 section: バフかくとく
-chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
 gaba: 1
 ---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🏢たいきん</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏪コンビニ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚃えき</p>
+</div>
+</template>
 
 <p text-8xl>🫳🍋💨</p>
 <p text-3xl mt-4>そくプシュ</p>
@@ -139,11 +179,21 @@ gaba: 1
 
 ---
 layout: BiimSystem
-text: ほろよいバフがつきました、だんじょんこうりゃくがラクになります
+text: ほろよいバフがつきました、きたくがラクになります
 section: バフかくとく
-chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
 gaba: 1
 ---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🏢たいきん</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏪コンビニ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚃えき</p>
+</div>
+</template>
 
 <p text-6xl>✨🧑✨</p>
 <p text-2xl mt-4>ほろよいバフ付与</p>
@@ -235,9 +285,25 @@ layout: BiimSystem
 text: ねおちするとタイムしゅうりょうです
 megaton: true
 section: ガバポイント
-chart: "南かしわ\n↓ ねおち\n我孫子\n↓ ばくすい\n取手"
 gaba: 1
 ---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>南かしわ</p>
+  <div flex items-center justify-center gap-1>
+    <carbon-arrow-down />
+    <span text-xs>ねおち</span>
+  </div>
+  <p>我孫子</p>
+  <div flex items-center justify-center gap-1>
+    <carbon-arrow-down />
+    <span text-xs>ばくすい</span>
+  </div>
+  <p>取手</p>
+</div>
+</template>
 
 <p text-7xl>😴💤</p>
 <p text-2xl mt-4>ねおちのりすごし</p>
@@ -248,9 +314,19 @@ layout: BiimSystem
 text: これはRTAてきにはダメですね、タイマーストップあつかいです
 megaton: true
 section: ガバポイント
-chart: "南かしわ着\n↓\n地元でのむ\n↓\nきおくなし"
 gaba: 99
 ---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>南かしわ着</p>
+  <carbon-arrow-down mx-auto />
+  <p>地元でのむ</p>
+  <carbon-arrow-down mx-auto />
+  <p>きおくなし</p>
+</div>
+</template>
 
 <p text-7xl>🍺🍻</p>
 <p text-2xl mt-4>地元でのんでからきたく</p>
@@ -260,9 +336,19 @@ gaba: 99
 layout: BiimSystem
 text: のみありカテゴリはじつはあります、せんくしゃ兄きにかんしゃ
 section: ガバポイント
-chart: "南かしわ着\n↓\n地元でのむ\n↓\nきおくなし"
 gaba: 99
 ---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>南かしわ着</p>
+  <carbon-arrow-down mx-auto />
+  <p>地元でのむ</p>
+  <carbon-arrow-down mx-auto />
+  <p>きおくなし</p>
+</div>
+</template>
 
 <p text-6xl>📊</p>
 <p text-2xl mt-4>べつカテゴリとしてけいそく中</p>
@@ -273,9 +359,18 @@ layout: BiimSystem
 text: はい、おつかれさまでした。ご視聴ありがとうございました
 megaton: true
 section: ゴール
-chart: "高田馬場\n↓\n南かしわ\n🏠"
 gaba: 1
 ---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>高田馬場</p>
+  <carbon-arrow-down mx-auto />
+  <p>南かしわ</p>
+  <p>🏠</p>
+</div>
+</template>
 
 <p text-8xl>🏠</p>
 <p text-3xl mt-4>ゴール！</p>
