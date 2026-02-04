@@ -30,7 +30,9 @@ const safeIcon = computed(() => sanitizeUrl(icon));
     </main>
     <aside>
       <div>{{ section }}</div>
-      <div class="chart">{{ chart }}</div>
+      <div class="chart">
+        <slot name="chart">{{ chart }}</slot>
+      </div>
       <div class="gaba">
         ガバ <span>{{ gaba }}</span>
       </div>
@@ -93,6 +95,7 @@ const safeIcon = computed(() => sanitizeUrl(icon));
       color: var(--color-blue);
       white-space: pre-line;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
     }
