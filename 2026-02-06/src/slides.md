@@ -57,7 +57,7 @@ gaba: 0
 
 ---
 layout: BiimSystem
-text: たいきんをおしてスタート
+text: しゅっきんをおしてスタート
 megaton: true
 section: しょうかい
 chart: "かいしゃから\nおうちまで"
@@ -159,7 +159,7 @@ layout: BiimSystem
 text: ここでそくプシュですね、RTAのきほんです
 megaton: true
 section: バフかくとく
-gaba: 1
+gaba: 2
 ---
 
 <template #chart>
@@ -181,7 +181,7 @@ gaba: 1
 layout: BiimSystem
 text: ほろよいバフがつきました、きたくがラクになります
 section: バフかくとく
-gaba: 1
+gaba: 2
 ---
 
 <template #chart>
@@ -207,7 +207,7 @@ gaba: 1
 layout: BiimSystem
 text: バフをのせたままえきにむかいます
 section: バフかくとく
-gaba: 1
+gaba: 2
 ---
 
 <template #chart>
@@ -229,7 +229,7 @@ gaba: 1
 layout: BiimSystem
 text: ただ山手線はひとが多いきがするんですよね
 section: ルートかいせつ
-gaba: 1
+gaba: 2
 ---
 
 <template #chart>
@@ -251,7 +251,7 @@ layout: BiimSystem
 text: にっこり帰りたいので
 megaton: true
 section: ルートかいせつ
-gaba: 1
+gaba: 2
 ---
 
 <template #chart>
@@ -271,7 +271,7 @@ layout: BiimSystem
 text: オリチャーの東西線ルートでいきます
 megaton: true
 section: ルートかいせつ
-gaba: 1
+gaba: 2
 ---
 
 <template #chart>
@@ -291,7 +291,7 @@ gaba: 1
 layout: BiimSystem
 text: 大手町のりかえがネックですが、ほろよいでカバーしていきます
 section: ルートかいせつ
-gaba: 1
+gaba: 2
 ---
 
 <template #chart>
@@ -313,7 +313,7 @@ layout: BiimSystem
 text: はい、南かしわにとうちゃくしました
 megaton: true
 section: きたくパート
-gaba: 1
+gaba: 2
 ---
 
 <template #chart>
@@ -334,7 +334,7 @@ gaba: 1
 layout: BiimSystem
 text: とうぜん南かしわでのみます
 section: きたくパート
-gaba: 1
+gaba: 2
 ---
 
 <template #chart>
@@ -358,7 +358,7 @@ gaba: 1
 layout: BiimSystem
 text: いい気分でのんでいたら...
 section: きたくパート
-gaba: 1
+gaba: 2
 ---
 
 <template #chart>
@@ -506,7 +506,7 @@ layout: BiimSystem
 text: ねおちするとタイムしゅうりょうです
 megaton: true
 section: ガバポイント
-gaba: 1
+gaba: 3
 ---
 
 <template #chart>
@@ -535,7 +535,7 @@ layout: BiimSystem
 text: これはRTAてきにはダメですね、タイマーストップあつかいです
 megaton: true
 section: ガバポイント
-gaba: 99
+gaba: 3
 ---
 
 <template #chart>
@@ -557,7 +557,7 @@ gaba: 99
 layout: BiimSystem
 text: のみありカテゴリはじつはあります、せんくしゃ兄きにかんしゃ
 section: ガバポイント
-gaba: 99
+gaba: 3
 ---
 
 <template #chart>
@@ -580,7 +580,7 @@ layout: BiimSystem
 text: はい、おつかれさまでした。ご視聴ありがとうございました
 megaton: true
 section: ゴール
-gaba: 1
+gaba: 3
 ---
 
 <template #chart>
