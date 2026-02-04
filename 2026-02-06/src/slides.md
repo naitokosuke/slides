@@ -205,6 +205,28 @@ gaba: 1
 
 ---
 layout: BiimSystem
+text: バフをのせたままえきにむかいます
+section: バフかくとく
+gaba: 1
+---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🏢たいきん</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏪コンビニ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚃えき</p>
+</div>
+</template>
+
+<p text-8xl>🚶✨</p>
+<p text-2xl mt-4>えきにいどう</p>
+<p text-xl op-70>のみながらあるく</p>
+
+---
+layout: BiimSystem
 text: ただ山手線はひとが多いきがするんですよね
 section: ルートかいせつ
 gaba: 1
