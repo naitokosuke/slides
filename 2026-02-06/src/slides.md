@@ -89,6 +89,60 @@ gaba: 1
 
 ---
 layout: BiimSystem
+text: まずかいしゃちかくのコンビニにIN
+section: バフかくとく
+chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
+gaba: 1
+---
+
+<p text-8xl>🏪</p>
+<p text-2xl mt-4>ファミマIN</p>
+<p text-xl op-70>これがじゅうようです</p>
+
+---
+layout: BiimSystem
+text: ここでストロングゼロをかくほします
+megaton: true
+section: バフかくとく
+chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
+gaba: 1
+---
+
+<p text-7xl>🍋</p>
+<p text-3xl mt-4>ストロングゼロ</p>
+<p text-xl op-70>レモン 500ml</p>
+
+---
+layout: BiimSystem
+text: ここでそくプシュですね、RTAのきほんです
+megaton: true
+section: バフかくとく
+chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
+gaba: 1
+---
+
+<p text-8xl>🫳🍋💨</p>
+<p text-3xl mt-4>そくプシュ</p>
+<p text-xl op-70>これがタイムたんしゅくのカギ</p>
+
+---
+layout: BiimSystem
+text: ほろよいバフがつきました、だんじょんこうりゃくがラクになります
+section: バフかくとく
+chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
+gaba: 1
+---
+
+<p text-6xl>✨🧑✨</p>
+<p text-2xl mt-4>ほろよいバフ付与</p>
+<div text-left text-lg mt-4 space-y-1 mx-auto w-fit>
+  <p>・ストレスたいせい +50</p>
+  <p>・だんじょんこうりゃく +30</p>
+  <p>・ねおちリスク +20</p>
+</div>
+
+---
+layout: BiimSystem
 text: ただ山手線はひとが多いきがするんですよね
 section: ルートかいせつ
 gaba: 1
