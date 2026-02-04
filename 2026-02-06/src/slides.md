@@ -70,7 +70,7 @@ gaba: 1
 
 ---
 layout: BiimSystem
-text: これがせんくしゃ兄きのチャートになります
+text: まずせんくしゃ兄きのチャート
 section: ルートかいせつ
 gaba: 0
 ---
@@ -86,11 +86,11 @@ gaba: 0
 </template>
 
 <p text-8xl>🚃</p>
-<p text-2xl mt-4>山手線ホームへダッシュ</p>
+<p text-2xl mt-4>山手線ルート</p>
 
 ---
 layout: BiimSystem
-text: ここは階だんをのぼってすぐひだりですね、ふだんのれんしゅうがいきます
+text: ただ山手線はひとが多いきがするんですよね
 section: ルートかいせつ
 gaba: 0
 ---
@@ -105,13 +105,28 @@ gaba: 0
 ]" />
 </template>
 
-<p text-7xl>🏃‍♂️💨</p>
-<p text-2xl mt-4>ここはダッシュですね</p>
-<p text-xl op-70>のりかえ 2 ふん以ない</p>
+<p text-7xl>👥👥👥</p>
+<p text-7xl>👥👥👥</p>
+<p text-7xl>👥👥👥</p>
 
 ---
 layout: BiimSystem
-text: これがオリチャーですね、とうきょうメトロけいゆルートです
+text: にっこり帰りたいので
+megaton: true
+section: ルートかいせつ
+gaba: 1
+---
+
+<template #chart>
+
+</template>
+
+<p text-8xl>オリチャー発動！</p>
+
+---
+layout: BiimSystem
+text: オリチャーの東西線ルートでいきます
+megaton: true
 section: ルートかいせつ
 gaba: 0
 ---
@@ -127,11 +142,11 @@ gaba: 0
 </template>
 
 <p text-8xl>🚇</p>
-<p text-2xl mt-4>東西線ホームへダッシュ</p>
+<p text-2xl mt-4>東西線ルートをさいようします</p>
 
 ---
 layout: BiimSystem
-text: のりかえがらくなのでしょしんしゃ向けですね、ただ大手町がひろいのがネック
+text: 大手町のりかえがネックですが、れんしゅうでカバーしていきます
 section: ルートかいせつ
 gaba: 0
 ---
@@ -148,11 +163,11 @@ gaba: 0
 
 <p text-6xl>🗺️</p>
 <p text-2xl mt-4>大手町ダンジョン</p>
-<p text-xl op-70>まよったらタイムロス</p>
+<p text-xl op-70>ほろよい気分でカバー</p>
 
 ---
 layout: BiimSystem
-text: はい、ここがいちばんのガバポイントですね。ねおちするとタイムしゅうりょうです
+text: ねおちするとタイムしゅうりょうです
 megaton: true
 section: ガバポイント
 chart: "南かしわ\n↓ ねおち\n我孫子\n↓ ばくすい\n取手"
@@ -161,7 +176,7 @@ gaba: 1
 
 <p text-7xl>😴💤</p>
 <p text-2xl mt-4>ねおちのりすごし</p>
-<p text-xl op-70>きづいたら取手</p>
+<p text-xl op-70>取手(BADEND)</p>
 
 ---
 layout: BiimSystem
