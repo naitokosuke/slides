@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { useTimer } from "./TimerTimer.vue";
 
+const { label = "スタート" } = defineProps<{ label: string }>();
+
 const { start } = useTimer();
 </script>
 
 <template>
-  <button @click="start">スタート</button>
+  <button @click="start">{{ label }}</button>
 </template>
 
 <style scoped>
