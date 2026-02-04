@@ -39,7 +39,6 @@ gaba: 0
 <div text-left text-xl mt-4 space-y-2>
   <p>しようかのう: でんしゃ、バス、とほ</p>
   <p>きんし: タクシー、じてんしゃ、じかようしゃ</p>
-  <p>びこう: ねおちは 1 かいまでゆるされます</p>
 </div>
 
 ---
@@ -72,7 +71,7 @@ gaba: 1
 layout: BiimSystem
 text: まずせんくしゃ兄きのチャート
 section: ルートかいせつ
-gaba: 0
+gaba: 1
 ---
 
 <template #chart>
@@ -92,7 +91,7 @@ gaba: 0
 layout: BiimSystem
 text: ただ山手線はひとが多いきがするんですよね
 section: ルートかいせつ
-gaba: 0
+gaba: 1
 ---
 
 <template #chart>
@@ -128,7 +127,7 @@ layout: BiimSystem
 text: オリチャーの東西線ルートでいきます
 megaton: true
 section: ルートかいせつ
-gaba: 0
+gaba: 1
 ---
 
 <template #chart>
@@ -148,7 +147,7 @@ gaba: 0
 layout: BiimSystem
 text: 大手町のりかえがネックですが、れんしゅうでカバーしていきます
 section: ルートかいせつ
-gaba: 0
+gaba: 1
 ---
 
 <template #chart>
@@ -209,7 +208,7 @@ text: はい、おつかれさまでした。ご視聴ありがとうござい�
 megaton: true
 section: ゴール
 chart: "高田馬場\n↓\n南かしわ\n🏠"
-gaba: 0
+gaba: 1
 ---
 
 <p text-8xl>🏠</p>
