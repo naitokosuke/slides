@@ -310,6 +310,199 @@ gaba: 1
 
 ---
 layout: BiimSystem
+text: はい、南かしわにとうちゃくしました
+megaton: true
+section: きたくパート
+gaba: 1
+---
+
+<template #chart>
+<RouteChart :items="[
+  { type: 'station', name: '高田馬場' },
+  { type: 'line', name: '東西線', time: 15, color: '#00a7db' },
+  { type: 'station', name: '大手町' },
+  { type: 'line', name: '千代田線', time: 40, color: '#00bb85' },
+  { type: 'station', name: '南かしわ', active: true },
+]" />
+</template>
+
+<p text-8xl>🚉</p>
+<p text-2xl mt-4>南かしわ とうちゃく</p>
+<p text-xl op-70>ここからがほんばん</p>
+
+---
+layout: BiimSystem
+text: とうぜん南かしわでのみます
+section: きたくパート
+gaba: 1
+---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🚉南かしわ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🍺のむ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚌バス</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏠じたく</p>
+</div>
+</template>
+
+<p text-8xl>🍺🍻</p>
+<p text-2xl mt-4>南かしわでのむ</p>
+<p text-xl op-70>これがメインイベント</p>
+
+---
+layout: BiimSystem
+text: いい気分でのんでいたら...
+section: きたくパート
+gaba: 1
+---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🚉南かしわ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🍺のむ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚌バス</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏠じたく</p>
+</div>
+</template>
+
+<p text-8xl>🍻😊</p>
+<p text-2xl mt-4>いい気分</p>
+<p text-xl op-70>さいこう</p>
+
+---
+layout: BiimSystem
+text: ガバです、バスがなくなりました
+megaton: true
+section: きたくパート
+gaba: 3
+---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🚉南かしわ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🍺のむ</p>
+  <carbon-arrow-down mx-auto />
+  <p op-50 line-through>🚌バス</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏠じたく</p>
+</div>
+</template>
+
+<p text-8xl>🚌❌</p>
+<p text-2xl mt-4>バスしゅうりょう</p>
+<p text-xl op-70>のみすぎた</p>
+
+---
+layout: BiimSystem
+text: あるくしかないですね
+section: きたくパート
+gaba: 3
+---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🚉南かしわ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🍺のむ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚶とほ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏠じたく</p>
+</div>
+</template>
+
+<p text-8xl>🚶</p>
+<p text-2xl mt-4>とほにへんこう</p>
+<p text-xl op-70>しかたない</p>
+
+---
+layout: BiimSystem
+text: よっぱらいながらやみよをあるきます
+section: きたくパート
+gaba: 3
+---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🚉南かしわ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🍺のむ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚶とほ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏠じたく</p>
+</div>
+</template>
+
+<p text-8xl>🌙🚶💫</p>
+<p text-2xl mt-4>よみちをあるく</p>
+<p text-xl op-70>ふらふら</p>
+
+---
+layout: BiimSystem
+text: じたくがみえてきました
+megaton: true
+section: きたくパート
+gaba: 3
+---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🚉南かしわ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🍺のむ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚶とほ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏠じたく</p>
+</div>
+</template>
+
+<p text-8xl>🏠</p>
+<p text-2xl mt-4>じたくはっけん</p>
+<p text-xl op-70>あとすこし</p>
+
+---
+layout: BiimSystem
+text: げんかんをあけます、ここでタイマーストップです
+megaton: true
+section: きたくパート
+gaba: 3
+---
+
+<template #chart>
+
+<div text-sm space-y-1>
+  <p>🚉南かしわ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🍺のむ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🚶とほ</p>
+  <carbon-arrow-down mx-auto />
+  <p>🏠じたく</p>
+</div>
+</template>
+
+<p text-8xl>🚪</p>
+<p text-2xl mt-4>げんかんオープン</p>
+<p text-xl op-70>タイマーストップ！</p>
+
+---
+layout: BiimSystem
 text: ねおちするとタイムしゅうりょうです
 megaton: true
 section: ガバポイント
@@ -324,7 +517,7 @@ gaba: 1
     <carbon-arrow-down />
     <span text-xs>ねおち</span>
   </div>
-  <p>我孫子</p>
+  <p>あび子</p>
   <div flex items-center justify-center gap-1>
     <carbon-arrow-down />
     <span text-xs>ばくすい</span>
@@ -350,7 +543,7 @@ gaba: 99
 <div text-sm space-y-1>
   <p>南かしわ着</p>
   <carbon-arrow-down mx-auto />
-  <p>地元でのむ</p>
+  <p>南かしわでのむ</p>
   <carbon-arrow-down mx-auto />
   <p>きおくなし</p>
 </div>
@@ -372,7 +565,7 @@ gaba: 99
 <div text-sm space-y-1>
   <p>南かしわ着</p>
   <carbon-arrow-down mx-auto />
-  <p>地元でのむ</p>
+  <p>南かしわでのむ</p>
   <carbon-arrow-down mx-auto />
   <p>きおくなし</p>
 </div>
