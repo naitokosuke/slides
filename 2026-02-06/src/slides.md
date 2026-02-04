@@ -256,6 +256,12 @@ gaba: 1
 
 <template #chart>
 
+<div text-sm space-y-2>
+  <p>ん？</p>
+  <p>あっ</p>
+  <p>これは...</p>
+  <p text-lg font-bold>💡</p>
+</div>
 </template>
 
 <p text-8xl>オリチャー発動！</p>
@@ -283,7 +289,7 @@ gaba: 1
 
 ---
 layout: BiimSystem
-text: 大手町のりかえがネックですが、れんしゅうでカバーしていきます
+text: 大手町のりかえがネックですが、ほろよいでカバーしていきます
 section: ルートかいせつ
 gaba: 1
 ---
