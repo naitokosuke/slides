@@ -18,20 +18,9 @@ chart: "かいしゃから\nおうちまで"
 gaba: 0
 ---
 
-<script setup lang="ts">
-import { inject } from "vue";
-
-const timerRef = inject<any>("timer");
-
-const handleStart = () => {
-  timerRef?.value?.start();
-  $slidev.nav.next();
-};
-</script>
-
 <p text-9xl>よーい</p>
 
-<StartButton @click="handleStart" />
+<StartButton @click="$slidev.nav.next()" />
 
 ---
 layout: BiimSystem
@@ -40,5 +29,3 @@ section: しょうかい
 chart: "かいしゃから\nおうちまで"
 gaba: 0
 ---
-
-<p text-9xl>スタート！</p>

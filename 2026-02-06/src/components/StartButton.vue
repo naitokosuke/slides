@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import { inject, type Ref } from "vue";
-import type TimerTimer from "./TimerTimer.vue";
+import { useTimer } from "./TimerTimer.vue";
 
-const timerRef = inject<Ref<InstanceType<typeof TimerTimer>>>("timer");
-
-const handleClick = () => {
-  timerRef?.value?.start();
-};
+const { start } = useTimer();
 </script>
 
 <template>
-  <button @click="handleClick">スタート</button>
+  <button @click="start">スタート</button>
 </template>
 
 <style scoped>

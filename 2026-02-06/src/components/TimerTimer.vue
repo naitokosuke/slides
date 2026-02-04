@@ -1,48 +1,42 @@
 <script lang="ts">
-import { ref, onUnmounted, computed } from "vue";
+import { ref, computed } from "vue";
 
-const useTimer = () => {
-  const elapsed = ref(0);
-  const isRunning = ref(false);
-  let intervalId: ReturnType<typeof setInterval> | null = null;
+const elapsed = ref(0);
+const isRunning = ref(false);
 
-  const formatted = computed(() => {
-    const h = Math.floor(elapsed.value / 3600);
-    const m = Math.floor((elapsed.value % 3600) / 60);
-    const s = elapsed.value % 60;
-    return [h, m, s].map((v) => String(v).padStart(2, "0")).join(":");
-  });
+const formatted = computed(() => {
+  const h = Math.floor(elapsed.value / 3600);
+  const m = Math.floor((elapsed.value % 3600) / 60);
+  const s = elapsed.value % 60;
+  return [h, m, s].map((v) => String(v).padStart(2, "0")).join(":");
+});
 
-  const start = () => {
-    if (isRunning.value) return;
-    intervalId = setInterval(() => elapsed.value++, 1000);
-    isRunning.value = true;
-  };
+let intervalId: ReturnType<typeof setInterval> | null = null;
 
-  const stop = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-    isRunning.value = false;
-  };
+const start = () => {
+  if (isRunning.value) return;
+  intervalId = setInterval(() => elapsed.value++, 1000);
+  isRunning.value = true;
+};
+const stop = () => {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+  isRunning.value = false;
+};
+const reset = () => {
+  stop();
+  elapsed.value = 0;
+};
 
-  const reset = () => {
-    stop();
-    elapsed.value = 0;
-  };
-
-  onUnmounted(() => {
-    if (intervalId) clearInterval(intervalId);
-  });
-
+export const useTimer = () => {
   return { formatted, start, stop, reset, isRunning, elapsed };
 };
 </script>
 
 <script setup lang="ts">
-const { formatted: timer, start, stop, reset, isRunning, elapsed } =
-  useTimer();
+const { formatted: timer, start, stop, reset, isRunning, elapsed } = useTimer();
 
 defineExpose({ start, stop, reset, isRunning, elapsed });
 </script>
