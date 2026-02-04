@@ -101,16 +101,28 @@ gaba: 1
 
 ---
 layout: BiimSystem
-text: ここでストロングゼロをかくほします
-megaton: true
+text: ほろよいをかくほ...あっ
 section: バフかくとく
 chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
 gaba: 1
 ---
 
+<p text-7xl>🍑</p>
+<p text-3xl mt-4>ほろよい</p>
+<p text-xl op-70>もも味をねらいます</p>
+
+---
+layout: BiimSystem
+text: ガバです、ストゼロつかんでました
+megaton: true
+section: バフかくとく
+chart: "🏢たいきん\n↓\n🏪コンビニ\n↓\n🚃えき"
+gaba: 2
+---
+
 <p text-7xl>🍋</p>
 <p text-3xl mt-4>ストロングゼロ</p>
-<p text-xl op-70>レモン 500ml</p>
+<p text-xl op-70>レモン</p>
 
 ---
 layout: BiimSystem
