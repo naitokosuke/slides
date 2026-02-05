@@ -23,7 +23,7 @@ gaba: 0
 <div text-left text-xl mt-4 space-y-2>
   <p>カテゴリ: Any%</p>
   <p>けいそくかいし: たいきんボタンをおしたしゅんかん</p>
-  <p>けいそくしゅうりょう: じたくのげんかんをあけたしゅんかん</p>
+  <p>けいそくしゅうりょう: おうちのげんかんをあけたしゅんかん</p>
 </div>
 
 ---
@@ -332,8 +332,8 @@ gaba: 2
 
 ---
 layout: BiimSystem
-text: とうぜん南かしわでのみます
-section: きたくパート
+text: ひつよう行動をたっせいします
+section: もより駅についた
 gaba: 2
 ---
 
@@ -346,7 +346,7 @@ gaba: 2
   <carbon-arrow-down mx-auto />
   <p>🚌バス</p>
   <carbon-arrow-down mx-auto />
-  <p>🏠じたく</p>
+  <p>🏠おうち</p>
 </div>
 </template>
 
@@ -370,7 +370,7 @@ gaba: 2
   <carbon-arrow-down mx-auto />
   <p>🚌バス</p>
   <carbon-arrow-down mx-auto />
-  <p>🏠じたく</p>
+  <p>🏠おうち</p>
 </div>
 </template>
 
@@ -380,9 +380,9 @@ gaba: 2
 
 ---
 layout: BiimSystem
-text: ガバです、バスがなくなりました
+text: 終バスが行ってしまっていました
 megaton: true
-section: きたくパート
+section: ガバ
 gaba: 3
 ---
 
@@ -395,13 +395,13 @@ gaba: 3
   <carbon-arrow-down mx-auto />
   <p op-50 line-through>🚌バス</p>
   <carbon-arrow-down mx-auto />
-  <p>🏠じたく</p>
+  <p>🏠おうち</p>
 </div>
 </template>
 
 <p text-8xl>🚌❌</p>
-<p text-2xl mt-4>バスしゅうりょう</p>
-<p text-xl op-70>のみすぎた</p>
+<p text-2xl mt-4>バス終りょう</p>
+<p text-xl op-70>お酒ってこわい</p>
 
 ---
 layout: BiimSystem
@@ -419,7 +419,7 @@ gaba: 3
   <carbon-arrow-down mx-auto />
   <p>🚶とほ</p>
   <carbon-arrow-down mx-auto />
-  <p>🏠じたく</p>
+  <p>🏠おうち</p>
 </div>
 </template>
 
@@ -443,7 +443,7 @@ gaba: 3
   <carbon-arrow-down mx-auto />
   <p>🚶とほ</p>
   <carbon-arrow-down mx-auto />
-  <p>🏠じたく</p>
+  <p>🏠おうち</p>
 </div>
 </template>
 
@@ -453,7 +453,7 @@ gaba: 3
 
 ---
 layout: BiimSystem
-text: じたくがみえてきました
+text: おうちがみえてきました
 megaton: true
 section: きたくパート
 gaba: 3
@@ -468,12 +468,12 @@ gaba: 3
   <carbon-arrow-down mx-auto />
   <p>🚶とほ</p>
   <carbon-arrow-down mx-auto />
-  <p>🏠じたく</p>
+  <p>🏠おうち</p>
 </div>
 </template>
 
 <p text-8xl>🏠</p>
-<p text-2xl mt-4>じたくはっけん</p>
+<p text-2xl mt-4>おうちはっけん</p>
 <p text-xl op-70>あとすこし</p>
 
 ---
@@ -493,7 +493,7 @@ gaba: 3
   <carbon-arrow-down mx-auto />
   <p>🚶とほ</p>
   <carbon-arrow-down mx-auto />
-  <p>🏠じたく</p>
+  <p>🏠おうち</p>
 </div>
 </template>
 
