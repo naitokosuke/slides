@@ -89,7 +89,7 @@ gaba: 1
 
 ---
 layout: BiimSystem
-text: ちょっとより道してアイテムをGETします
+text: ひつようなアイテムを手に入れるためコンビニへ
 section: バフかくとく
 gaba: 1
 ---
@@ -106,8 +106,8 @@ gaba: 1
 </template>
 
 <p text-8xl>🏪</p>
-<p text-2xl mt-4>ファミマIN</p>
-<p text-xl op-70>これがじゅうようです</p>
+<p text-2xl mt-4>コンビニへ</p>
+<p text-xl op-70>(絵文字あってる？)</p>
 
 ---
 layout: BiimSystem
@@ -156,7 +156,7 @@ gaba: 2
 
 ---
 layout: BiimSystem
-text: ここでそくプシュですね、RTAのきほんです
+text: でも時間はないのでストゼロでOKとします
 megaton: true
 section: バフかくとく
 gaba: 2
