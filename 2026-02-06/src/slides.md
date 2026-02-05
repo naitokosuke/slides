@@ -89,7 +89,7 @@ gaba: 1
 
 ---
 layout: BiimSystem
-text: まずかいしゃちかくのコンビニにIN
+text: ちょっとより道してアイテムをGETします
 section: バフかくとく
 gaba: 1
 ---
