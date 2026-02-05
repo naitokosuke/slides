@@ -7,7 +7,7 @@ const {
   gaba = 0,
   section = "",
   chart = "",
-  icon = "/images/icon.png",
+  icon = "images/icon.png",
   text = "",
   megaton = false,
 } = defineProps<{
@@ -19,7 +19,9 @@ const {
   megaton?: boolean;
 }>();
 
-const safeIcon = computed(() => sanitizeUrl(icon));
+const safeIcon = computed(() =>
+  sanitizeUrl(`${import.meta.env.BASE_URL}${icon}`),
+);
 </script>
 
 <template>
