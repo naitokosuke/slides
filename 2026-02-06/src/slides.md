@@ -311,6 +311,27 @@ gaba: 2
 
 ---
 layout: BiimSystem
+text: ここでねおちすると取手なのできをつけます
+section: ルートかいせつ
+gaba: 2
+---
+
+<template #chart>
+<RouteChart :items="[
+  { type: 'station', name: '高田馬場' },
+  { type: 'line', name: '東西線', time: 15, color: '#00a7db' },
+  { type: 'station', name: '大手町' },
+  { type: 'line', name: '千代田線', time: 40, color: '#00bb85', active: true },
+  { type: 'station', name: '南かしわ' },
+]" />
+</template>
+
+<p text-8xl>🚃💤</p>
+<p text-2xl mt-4>千代田線</p>
+<p text-xl op-70>ねおちちゅうい</p>
+
+---
+layout: BiimSystem
 text: はい、南かしわにとうちゃくしました
 megaton: true
 section: きたくパート
