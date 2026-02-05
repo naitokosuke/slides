@@ -57,7 +57,7 @@ gaba: 0
 
 ---
 layout: BiimSystem
-text: しゅっきんをおしてスタート
+text: たいきんをおしてスタート
 megaton: true
 section: しょうかい
 chart: "かいしゃから\nおうちまで"
