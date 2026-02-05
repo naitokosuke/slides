@@ -1,5 +1,6 @@
 ---
 title: ぼくのきたく RTA
+favicon: /images/icon.png
 transition: view-transition
 fonts:
   sans: "Kodomo Rounded"
@@ -503,81 +504,7 @@ gaba: 3
 
 ---
 layout: BiimSystem
-text: ねおちするとタイムしゅうりょうです
-megaton: true
-section: ガバポイント
-gaba: 3
----
-
-<template #chart>
-
-<div text-sm space-y-1>
-  <p>南かしわ</p>
-  <div flex items-center justify-center gap-1>
-    <carbon-arrow-down />
-    <span text-xs>ねおち</span>
-  </div>
-  <p>あび子</p>
-  <div flex items-center justify-center gap-1>
-    <carbon-arrow-down />
-    <span text-xs>ばくすい</span>
-  </div>
-  <p>取手</p>
-</div>
-</template>
-
-<p text-7xl>😴💤</p>
-<p text-2xl mt-4>ねおちのりすごし</p>
-<p text-xl op-70>取手(BADEND)</p>
-
----
-layout: BiimSystem
-text: これはRTAてきにはダメですね、タイマーストップあつかいです
-megaton: true
-section: ガバポイント
-gaba: 3
----
-
-<template #chart>
-
-<div text-sm space-y-1>
-  <p>南かしわ着</p>
-  <carbon-arrow-down mx-auto />
-  <p>南かしわでのむ</p>
-  <carbon-arrow-down mx-auto />
-  <p>きおくなし</p>
-</div>
-</template>
-
-<p text-7xl>🍺🍻</p>
-<p text-2xl mt-4>地元でのんでからきたく</p>
-<p text-xl op-70>これはもうべつカテゴリ</p>
-
----
-layout: BiimSystem
-text: のみありカテゴリはじつはあります、せんくしゃ兄きにかんしゃ
-section: ガバポイント
-gaba: 3
----
-
-<template #chart>
-
-<div text-sm space-y-1>
-  <p>南かしわ着</p>
-  <carbon-arrow-down mx-auto />
-  <p>南かしわでのむ</p>
-  <carbon-arrow-down mx-auto />
-  <p>きおくなし</p>
-</div>
-</template>
-
-<p text-6xl>📊</p>
-<p text-2xl mt-4>べつカテゴリとしてけいそく中</p>
-<p text-xl op-70>のみありAny%</p>
-
----
-layout: BiimSystem
-text: はい、おつかれさまでした。ご視聴ありがとうございました
+text: はい、おつかれさまでした。ごしちょうありがとうございました
 megaton: true
 section: ゴール
 gaba: 3
@@ -595,4 +522,4 @@ gaba: 3
 
 <p text-8xl>🏠</p>
 <p text-3xl mt-4>ゴール！</p>
-<p text-xl op-70 mt-2>WR めざしてがんばります</p>
+<p text-xl op-70 mt-2>ザ・エンドってね</p>
