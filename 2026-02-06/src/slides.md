@@ -69,7 +69,7 @@ gaba: 1
 
 ---
 layout: BiimSystem
-text: まずせんくしゃ兄きのチャート
+text: 山手線をり用するため駅に向かいます
 section: ルートかいせつ
 gaba: 1
 ---
