@@ -49,6 +49,16 @@ gaba: 0
 
 ---
 layout: BiimSystem
+text: 内ようがないよう
+section: しょうかい
+chart: "学びようそは\nないです"
+gaba: 0
+---
+
+<p text-7xl>トイレ休けいわくだよ</p>
+
+---
+layout: BiimSystem
 text: はい、それではスタートしていきます
 megaton: true
 section: しょうかい
