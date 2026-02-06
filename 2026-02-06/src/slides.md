@@ -50,7 +50,7 @@ gaba: 0
 ---
 layout: BiimSystem
 text: 内ようがないよう
-section: しょうかい
+section: かえりたい
 chart: "学びようそは\nないです"
 gaba: 0
 ---
