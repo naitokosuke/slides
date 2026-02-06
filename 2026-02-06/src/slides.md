@@ -353,7 +353,51 @@ gaba: 2
 
 ---
 layout: BiimSystem
-text: はい、南かしわにとうちゃくしました
+text: ...
+megaton: true
+section: ルートかいせつ
+gaba: 3
+---
+
+<template #chart>
+<RouteChart :items="[
+  { type: 'station', name: '高田馬場' },
+  { type: 'line', name: '東西線', time: 15, color: '#00a7db' },
+  { type: 'station', name: '大手町' },
+  { type: 'line', name: '千代田線', time: 40, color: '#00bb85', active: true },
+  { type: 'station', name: '南かしわ' },
+]" />
+</template>
+
+<p text-8xl>📖😴💤</p>
+<p text-2xl mt-4>あーあ</p>
+<p text-xl op-70>ぐーぐー</p>
+
+---
+layout: BiimSystem
+text: 新まつ戸でおきました、セーフです
+megaton: true
+section: ルートかいせつ
+gaba: 3
+---
+
+<template #chart>
+<RouteChart :items="[
+  { type: 'station', name: '高田馬場' },
+  { type: 'line', name: '東西線', time: 15, color: '#00a7db' },
+  { type: 'station', name: '大手町' },
+  { type: 'line', name: '千代田線', time: 40, color: '#00bb85', active: true },
+  { type: 'station', name: '南かしわ' },
+]" />
+</template>
+
+<p text-8xl>😳✨</p>
+<p text-2xl mt-4>新まつ戸でかくせい</p>
+<p text-xl op-70>のりすごしかいひ！</p>
+
+---
+layout: BiimSystem
+text: ぶ事に南かしわにとうちゃくしました
 megaton: true
 section: きたくパート
 gaba: 2
