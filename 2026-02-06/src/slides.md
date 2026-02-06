@@ -1,10 +1,15 @@
 ---
-title: ぼくのきたく RTA
+title: ぼくのきたく
 favicon: /images/icon.png
 transition: view-transition
 fonts:
   sans: "Kodomo Rounded"
   mono: "Fira Code"
+seoMeta:
+  ogTitle: ぼくのきたく
+  ogImage: https://slides.naito.dev/2026-02-06/og-image.png
+  ogUrl: https://slides.naito.dev/2026-02-06/
+  twitterCard: summary_large_image
 layout: cover
 ---
 
@@ -12,7 +17,7 @@ layout: cover
 
 ---
 layout: BiimSystem
-text: はい、はつとうこうです。よろしくおねがいします
+text: 『ぼくのきたく』 LT は〜じ〜ま〜るよ〜
 megaton: true
 section: しょうかい
 chart: "かいしゃから\nおうちまで"
