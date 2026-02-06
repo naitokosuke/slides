@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 
 const elapsed = ref(0);
 const isRunning = ref(false);
+const isStopped = ref(false);
 
 const formatted = computed(() => {
   const h = Math.floor(elapsed.value / 3600);
@@ -24,6 +25,7 @@ const stop = () => {
     intervalId = null;
   }
   isRunning.value = false;
+  isStopped.value = true;
 };
 const reset = () => {
   stop();
@@ -31,18 +33,18 @@ const reset = () => {
 };
 
 export const useTimer = () => {
-  return { formatted, start, stop, reset, isRunning, elapsed };
+  return { formatted, start, stop, reset, isRunning, isStopped, elapsed };
 };
 </script>
 
 <script setup lang="ts">
-const { formatted: timer, start, stop, reset, isRunning, elapsed } = useTimer();
+const { formatted: timer, start, stop, reset, isRunning, isStopped, elapsed } = useTimer();
 
-defineExpose({ start, stop, reset, isRunning, elapsed });
+defineExpose({ start, stop, reset, isRunning, isStopped, elapsed });
 </script>
 
 <template>
-  <span class="timer">{{ timer }}</span>
+  <span class="timer" :class="{ stopped: isStopped }">{{ timer }}</span>
 </template>
 
 <style scoped>
@@ -54,5 +56,9 @@ defineExpose({ start, stop, reset, isRunning, elapsed });
   font-weight: bold;
   color: var(--color-blue);
   font-family: "Fira Code", monospace;
+
+  &.stopped {
+    color: #e53935;
+  }
 }
 </style>

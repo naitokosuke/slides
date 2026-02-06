@@ -589,9 +589,7 @@ gaba: 3
 </div>
 </template>
 
-<p text-8xl>🚪</p>
-<p text-2xl mt-4>げんかんオープン</p>
-<p text-xl op-70>タイマーストップ！</p>
+<StopButton label="🚪げんかんオープン" @click="$slidev.nav.next()" />
 
 ---
 layout: BiimSystem
