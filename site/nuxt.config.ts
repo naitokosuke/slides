@@ -35,6 +35,12 @@ export default defineNuxtConfig({
     },
   },
 
+  // Vite 8's default lightningcss minifier chokes on @nuxt/fonts' generated
+  // font-family fallback CSS ("Invalid empty selector"); esbuild doesn't.
+  vite: {
+    build: { cssMinify: "esbuild" },
+  },
+
   // SSG configuration
   ssr: true,
   nitro: {

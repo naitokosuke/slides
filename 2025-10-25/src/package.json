@@ -21,7 +21,7 @@
     "@vueuse/integrations": "catalog:slidev-presentation",
     "qrcode": "catalog:slidev-presentation",
     "vue": "catalog:demo-deps",
-    "@unocss/preset-web-fonts": "^0.61.0"
+    "@unocss/preset-web-fonts": "catalog:slidev-presentation"
   },
   "devDependencies": {
     "playwright-chromium": "catalog:slidev-presentation",

@@ -7,6 +7,6 @@
     "export": "slidev export --per-slide --dark --output ../slides.pdf"
   },
   "dependencies": {
-    "canvas-confetti": "^1.9.3"
+    "canvas-confetti": "catalog:content"
   }
 }

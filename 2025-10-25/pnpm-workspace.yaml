@@ -2,6 +2,9 @@ packages:
   - src
   - demo
 
+overrides:
+  monaco-editor: catalog:monaco
+
 ignoredBuiltDependencies:
   - esbuild
 
@@ -19,6 +22,7 @@ catalogs:
     playwright-chromium: ^1.49.1
     "@vueuse/integrations": ^12.6.0
     qrcode: ^1.5.4
+    "@unocss/preset-web-fonts": ^0.61.0
 
   # Monaco Editor
   monaco:
@@ -32,8 +36,8 @@ catalogs:
     better-sqlite3: ^12.2.0
     eslint: ^9.0.0
     nuxt: ^4.0.3
-    vue: ^3.5.18
-    vue-router: ^4.5.1
+    vue: ^3.5.42
+    vue-router: ^5.3.1
     pinia: ^3.0.3
     "@pinia/colada": ^0.17.1
     nuxt-typed-router: ^4.0.1
@@ -41,6 +45,7 @@ catalogs:
   # 開発・品質ツール
   dev-tools:
     prettier: ^3.6.2
+    typescript: ^5.9.2
     prettier-plugin-slidev: ^1.0.5
     textlint: ^15.2.1
     textlint-filter-rule-comments: ^1.2.2
@@ -48,3 +53,9 @@ catalogs:
     textlint-rule-no-dropping-the-ra: ^3.0.0
     textlint-rule-preset-ai-writing: ^1.1.0
     textlint-rule-preset-ja-spacing: ^2.4.3
+
+allowBuilds:
+  better-sqlite3: true
+  esbuild: true
+  playwright-chromium: true
+  unrs-resolver: true
