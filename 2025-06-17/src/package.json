@@ -7,6 +7,6 @@
     "export": "slidev export --per-slide --dark --output ../slides.pdf"
   },
   "dependencies": {
-    "js-confetti": "^0.12.0"
+    "js-confetti": "catalog:content"
   }
 }

@@ -10,14 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^4.2.2",
-    "vue": "^3.5.26",
-    "vue-router": "^4.6.4"
+    "nuxt": "catalog:site",
+    "vue": "catalog:site",
+    "vue-router": "catalog:site"
   },
   "devDependencies": {
-    "@nuxt/fonts": "^0.12.1",
-    "@unocss/nuxt": "^66.1.0",
-    "gray-matter": "^4.0.3",
-    "unocss": "^66.1.0"
+    "@nuxt/fonts": "catalog:site",
+    "@unocss/nuxt": "catalog:site",
+    "gray-matter": "catalog:misc",
+    "unocss": "catalog:site"
   }
 }

@@ -7,6 +7,6 @@
     "export": "slidev export --per-slide --dark --output ../slides.pdf"
   },
   "dependencies": {
-    "@unocss/preset-icons": "^66.5.4"
+    "@unocss/preset-icons": "catalog:content"
   }
 }
