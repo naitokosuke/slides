@@ -63,7 +63,7 @@ catalogs:
     fast-glob: ^3.3.3
     prettier: ^3.9.6
     taze: ^0.14.3
-    pnpm: ^9.15.9
+    pnpm: ^11.25.0
 
   misc:
     gray-matter: ^4.0.3
@@ -84,3 +84,8 @@ catalogs:
     gsap: ^3.15.0
     js-confetti: ^0.12.0
     "@unocss/preset-icons": ^66.9.2
+
+allowBuilds:
+  esbuild: true
+  playwright-chromium: true
+  unrs-resolver: true

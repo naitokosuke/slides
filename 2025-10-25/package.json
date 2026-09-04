@@ -12,10 +12,5 @@
     "lint:fix": "pnpm --filter src lint:fix",
     "dev:demo": "pnpm --filter demo dev",
     "build:demo": "pnpm --filter demo build"
-  },
-  "pnpm": {
-    "overrides": {
-      "monaco-editor": "catalog:monaco"
-    }
   }
 }
