@@ -46,17 +46,16 @@ const formatDate = (dateString: string) => {
           class="article-card"
         >
           <NuxtLink
-            :to="localePath({ name: 'articles-slug', params: { slug: article.slug } })"
+            :to="
+              localePath({
+                name: 'articles-slug',
+                params: { slug: article.slug },
+              })
+            "
             class="article-link"
           >
-            <div
-              v-if="article.imageUrl"
-              class="article-image"
-            >
-              <img
-                :src="article.imageUrl"
-                :alt="article.title"
-              >
+            <div v-if="article.imageUrl" class="article-image">
+              <img :src="article.imageUrl" :alt="article.title" />
             </div>
             <div class="article-content">
               <h2 class="article-title">{{ article.title }}</h2>
@@ -68,11 +67,7 @@ const formatDate = (dateString: string) => {
                 }}</span>
               </div>
               <div class="article-tags">
-                <span
-                  v-for="tag in article.tags"
-                  :key="tag"
-                  class="tag"
-                >
+                <span v-for="tag in article.tags" :key="tag" class="tag">
                   {{ tag }}
                 </span>
               </div>

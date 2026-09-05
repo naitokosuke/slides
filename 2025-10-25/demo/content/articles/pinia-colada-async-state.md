@@ -23,9 +23,9 @@ Pinia Colada は、Pinia をベースにした非同期状態管理のための�
 
 ```typescript
 const { data, isLoading, error } = useQuery({
-  key: ['articles'],
-  query: () => fetchArticles()
-})
+  key: ["articles"],
+  query: () => fetchArticles(),
+});
 ```
 
 シンプルな API で強力な機能を実現できます。

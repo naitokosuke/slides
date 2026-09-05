@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface FileNode {
   name: string;
-  type: 'file' | 'folder';
+  type: "file" | "folder";
   route?: string;
   children?: FileNode[];
 }
@@ -16,17 +16,25 @@ defineProps<{
   <div class="file-tree-with-routes">
     <div class="file-tree-editor" style="view-transition-name: file-tree">
       <div class="editor-header">
-        <div class="editor-title">{{ title || 'EXPLORER' }}</div>
+        <div class="editor-title">{{ title || "EXPLORER" }}</div>
       </div>
       <div class="file-tree">
-        <TreeNodeWithRoute v-for="(node, index) in nodes" :key="index" :node="node" />
+        <TreeNodeWithRoute
+          v-for="(node, index) in nodes"
+          :key="index"
+          :node="node"
+        />
       </div>
     </div>
 
     <div class="route-overlay">
       <div class="overlay-title">Routes</div>
       <div class="route-list">
-        <TreeNodeRoute v-for="(node, index) in nodes" :key="index" :node="node" />
+        <TreeNodeRoute
+          v-for="(node, index) in nodes"
+          :key="index"
+          :node="node"
+        />
       </div>
     </div>
   </div>
@@ -59,7 +67,7 @@ defineProps<{
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+  font-family: "JetBrains Mono", "Consolas", "Monaco", monospace;
   font-size: 0.9em;
   min-width: 450px;
   margin: 0 auto;
@@ -95,7 +103,7 @@ defineProps<{
   min-width: 300px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
-  font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+  font-family: "JetBrains Mono", "Consolas", "Monaco", monospace;
   font-size: 0.9em;
 }
 

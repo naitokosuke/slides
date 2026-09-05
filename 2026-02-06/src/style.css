@@ -2,14 +2,14 @@
    Font Definitions
    =========================================== */
 @font-face {
-  font-family: 'Kodomo Rounded';
-  src: url('/KodomoRounded.otf') format('opentype');
+  font-family: "Kodomo Rounded";
+  src: url("/KodomoRounded.otf") format("opentype");
   font-weight: normal;
 }
 
 @font-face {
-  font-family: 'Kodomo Rounded';
-  src: url('/KodomoRounded-Light.otf') format('opentype');
+  font-family: "Kodomo Rounded";
+  src: url("/KodomoRounded-Light.otf") format("opentype");
   font-weight: 300;
 }
 
@@ -27,12 +27,12 @@
    6. #FBEBF0 - Pink Tint
    =========================================== */
 :root {
-  --color-background: #F9F4EE;
-  --color-blue: #0F51DE;
-  --color-pink: #F7CBDA;
-  --color-white: #FFFFFF;
-  --color-blue-tint: #B7CBF5;
-  --color-pink-tint: #FBEBF0;
+  --color-background: #f9f4ee;
+  --color-blue: #0f51de;
+  --color-pink: #f7cbda;
+  --color-white: #ffffff;
+  --color-blue-tint: #b7cbf5;
+  --color-pink-tint: #fbebf0;
 
   --slidev-theme-primary: var(--color-blue);
   --slidev-theme-background: var(--color-background);
@@ -47,7 +47,12 @@
   color: var(--color-blue);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--color-blue);
 }
 

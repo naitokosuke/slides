@@ -42,7 +42,7 @@ onMounted(() => {
   if (!el.value) return;
 
   const observer = new IntersectionObserver(
-    entries => {
+    (entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
           fireFireworks();
@@ -51,7 +51,7 @@ onMounted(() => {
         }
       }
     },
-    { threshold: 0.5 }
+    { threshold: 0.5 },
   );
 
   observer.observe(el.value);

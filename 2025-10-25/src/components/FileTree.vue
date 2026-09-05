@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface FileNode {
   name: string;
-  type: 'file' | 'folder';
+  type: "file" | "folder";
   children?: FileNode[];
 }
 
@@ -14,7 +14,7 @@ defineProps<{
 <template>
   <div class="file-tree-editor" style="view-transition-name: file-tree">
     <div class="editor-header">
-      <div class="editor-title">{{ title || 'EXPLORER' }}</div>
+      <div class="editor-title">{{ title || "EXPLORER" }}</div>
     </div>
     <div class="file-tree">
       <TreeNode v-for="(node, index) in nodes" :key="index" :node="node" />
@@ -44,7 +44,7 @@ defineProps<{
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+  font-family: "JetBrains Mono", "Consolas", "Monaco", monospace;
   font-size: 0.9em;
   min-width: 450px;
   margin: 0 auto;

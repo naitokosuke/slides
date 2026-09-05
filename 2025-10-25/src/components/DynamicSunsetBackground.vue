@@ -13,12 +13,12 @@ const { currentPage, total } = useNav();
 
 // Cache CSS variables once on mount instead of reading every render
 const cssVars = ref({
-  primaryBg: '#1a1f35',
-  secondaryBg: '#0f1220',
-  tertiaryBg: '#2d1b3d',
-  bronze: '#cd7f32',
-  copper: '#b87333',
-  sienna: '#a0522d',
+  primaryBg: "#1a1f35",
+  secondaryBg: "#0f1220",
+  tertiaryBg: "#2d1b3d",
+  bronze: "#cd7f32",
+  copper: "#b87333",
+  sienna: "#a0522d",
 });
 
 // Pre-computed RGB values cache to avoid repeated hex parsing
@@ -28,21 +28,29 @@ onMounted(() => {
   // Read CSS variables once and cache them
   const root = getComputedStyle(document.documentElement);
   cssVars.value = {
-    primaryBg: root.getPropertyValue('--color-bg-dark-primary').trim() || '#1a1f35',
-    secondaryBg: root.getPropertyValue('--color-bg-dark-secondary').trim() || '#0f1220',
-    tertiaryBg: root.getPropertyValue('--color-bg-dark-tertiary').trim() || '#2d1b3d',
-    bronze: root.getPropertyValue('--color-primary-bronze').trim() || '#cd7f32',
-    copper: root.getPropertyValue('--color-primary-copper').trim() || '#b87333',
-    sienna: root.getPropertyValue('--color-primary-sienna').trim() || '#a0522d',
+    primaryBg:
+      root.getPropertyValue("--color-bg-dark-primary").trim() || "#1a1f35",
+    secondaryBg:
+      root.getPropertyValue("--color-bg-dark-secondary").trim() || "#0f1220",
+    tertiaryBg:
+      root.getPropertyValue("--color-bg-dark-tertiary").trim() || "#2d1b3d",
+    bronze: root.getPropertyValue("--color-primary-bronze").trim() || "#cd7f32",
+    copper: root.getPropertyValue("--color-primary-copper").trim() || "#b87333",
+    sienna: root.getPropertyValue("--color-primary-sienna").trim() || "#a0522d",
   };
 
   // Pre-populate RGB cache with all colors we'll use
   const allColors = [
     ...Object.values(cssVars.value),
-    "#0f0f1a", "#4a2c4a", "#6b3a47", "#0a0a12", "#3a1f2a",
-    "#05050c", "#1a1328"
+    "#0f0f1a",
+    "#4a2c4a",
+    "#6b3a47",
+    "#0a0a12",
+    "#3a1f2a",
+    "#05050c",
+    "#1a1328",
   ];
-  allColors.forEach(color => {
+  allColors.forEach((color) => {
     if (!rgbCache.has(color)) {
       rgbCache.set(color, hexToRgb(color));
     }
@@ -92,7 +100,13 @@ const backgroundStyle = computed(() => {
   const vars = cssVars.value;
 
   // Define key color sets for each stage using cached CSS variables
-  const stage1 = [vars.primaryBg, vars.tertiaryBg, vars.sienna, vars.copper, vars.bronze]; // Early sunset
+  const stage1 = [
+    vars.primaryBg,
+    vars.tertiaryBg,
+    vars.sienna,
+    vars.copper,
+    vars.bronze,
+  ]; // Early sunset
   const stage2 = ["#0f0f1a", vars.primaryBg, "#4a2c4a", "#6b3a47", vars.sienna]; // Mid sunset
   const stage3 = ["#0a0a12", "#0f0f1a", vars.tertiaryBg, "#4a2c4a", "#3a1f2a"]; // Late sunset
   const stage4 = ["#05050c", "#0a0a12", "#0f0f1a", "#1a1328", vars.tertiaryBg]; // Night

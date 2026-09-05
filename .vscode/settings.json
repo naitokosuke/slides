@@ -3,7 +3,10 @@
   "vite.open": false,
   "slidev.port": 3031,
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "prettier.enable": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

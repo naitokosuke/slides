@@ -13,26 +13,17 @@ const switchLocale = (event: Event) => {
   <div class="layout">
     <nav class="navbar">
       <div class="nav-container">
-        <NuxtLink
-          :to="localePath({ name: 'index' })"
-          class="nav-brand"
-        >
-          {{ t('site.title') }}
+        <NuxtLink :to="localePath({ name: 'index' })" class="nav-brand">
+          {{ t("site.title") }}
         </NuxtLink>
 
         <div class="nav-actions">
           <div class="nav-links">
-            <NuxtLink
-              :to="localePath({ name: 'index' })"
-              class="nav-link"
-            >
-              {{ t('nav.home') }}
+            <NuxtLink :to="localePath({ name: 'index' })" class="nav-link">
+              {{ t("nav.home") }}
             </NuxtLink>
-            <NuxtLink
-              :to="localePath({ name: 'about' })"
-              class="nav-link"
-            >
-              {{ t('nav.about') }}
+            <NuxtLink :to="localePath({ name: 'about' })" class="nav-link">
+              {{ t("nav.about") }}
             </NuxtLink>
           </div>
 
@@ -43,11 +34,7 @@ const switchLocale = (event: Event) => {
               :title="t('language.switch')"
               @change="switchLocale"
             >
-              <option
-                v-for="loc in locales"
-                :key="loc.code"
-                :value="loc.code"
-              >
+              <option v-for="loc in locales" :key="loc.code" :value="loc.code">
                 {{ loc.name }}
               </option>
             </select>
@@ -64,16 +51,10 @@ const switchLocale = (event: Event) => {
       <div class="footer-container">
         <p>&copy; 2025 ナイトウコウスケ. Vue Fes Japan 2025 Demo App.</p>
         <div class="footer-links">
-          <a
-            href="https://vuefes.jp/2025/"
-            target="_blank"
-            rel="noopener"
-          >Vue Fes Japan 2025</a>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener"
-          >GitHub</a>
+          <a href="https://vuefes.jp/2025/" target="_blank" rel="noopener"
+            >Vue Fes Japan 2025</a
+          >
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
