@@ -9,6 +9,7 @@
     "node_modules",
     "pnpm-lock.yaml",
     "**/*.md",
-    "**/*.markdown"
+    "**/*.markdown",
+    ".claude/settings.local.json"
   ]
 }
