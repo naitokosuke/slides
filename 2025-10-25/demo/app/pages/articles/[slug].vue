@@ -38,16 +38,12 @@ useHead({
 <template>
   <div class="container">
     <header class="header">
-      <NuxtLink
-        :to="localePath({ name: 'index' })"
-        class="back-link"
-      > {{ t("article.backToHome") }} </NuxtLink>
+      <NuxtLink :to="localePath({ name: 'index' })" class="back-link">
+        {{ t("article.backToHome") }}
+      </NuxtLink>
     </header>
 
-    <article
-      v-if="article"
-      class="article"
-    >
+    <article v-if="article" class="article">
       <div class="article-header">
         <h1 class="article-title">
           {{ article.title }}
@@ -57,31 +53,18 @@ useHead({
           <span class="date">{{ formatDate(article.publishedAt) }}</span>
         </div>
         <div class="article-tags">
-          <span
-            v-for="tag in article.tags"
-            :key="tag"
-            class="tag"
-          >
+          <span v-for="tag in article.tags" :key="tag" class="tag">
             {{ tag }}
           </span>
         </div>
       </div>
 
-      <div
-        v-if="article.imageUrl"
-        class="article-hero"
-      >
-        <img
-          :src="article.imageUrl"
-          :alt="article.title"
-        >
+      <div v-if="article.imageUrl" class="article-hero">
+        <img :src="article.imageUrl" :alt="article.title" />
       </div>
 
       <div class="article-body">
-        <ContentRenderer
-          v-if="article?.body"
-          :value="article"
-        />
+        <ContentRenderer v-if="article?.body" :value="article" />
       </div>
 
       <footer class="article-footer">
@@ -102,16 +85,12 @@ useHead({
       </footer>
     </article>
 
-    <div
-      v-else
-      class="not-found"
-    >
+    <div v-else class="not-found">
       <h1>{{ t("article.notFound") }}</h1>
       <p>{{ t("article.notFoundDescription") }}</p>
-      <NuxtLink
-        :to="localePath({ name: 'index' })"
-        class="home-link"
-      >{{ t("article.backHome") }}</NuxtLink>
+      <NuxtLink :to="localePath({ name: 'index' })" class="home-link">{{
+        t("article.backHome")
+      }}</NuxtLink>
     </div>
   </div>
 </template>

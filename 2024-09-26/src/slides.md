@@ -21,7 +21,6 @@ seoMeta:
 
 2024.09.26
 
-
 ---
 layout: cover
 class: text-right
@@ -152,7 +151,6 @@ title: コガソフトウェア株式会社(2021 - 2023)
 
 - 退職(2023.12)
 
-
 ---
 transition: slide-left
 title: ベストスキップ株式会社(2024 - )
@@ -175,8 +173,6 @@ title: ベストスキップ株式会社(2024 - )
   <div bg-gray inline-block px-5>
     <logos-fastapi-icon /> <simple-icons-rye text-black /> <logos-openai-icon />
   </div>
-
-
 
 ---
 transition: slide-up
@@ -281,5 +277,3 @@ RDBMS を使用した DB 設計
 
 - チャット Bot API 開発時に経験
   - シンプルな構成
-
-

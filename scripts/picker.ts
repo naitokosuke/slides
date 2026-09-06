@@ -69,9 +69,7 @@ const devCommand = define({
     if (editor) {
       console.log(`use editor ${editor} by env PICKER_EDITOR`);
       execa(editor, [
-        fileURLToPath(
-          new URL(`../${folder}/src/slides.md`, import.meta.url),
-        ),
+        fileURLToPath(new URL(`../${folder}/src/slides.md`, import.meta.url)),
       ]);
     }
 

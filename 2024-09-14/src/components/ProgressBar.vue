@@ -5,7 +5,7 @@ interface Props {
   bgColor?: string;
 }
 
-const { currentPage, totalPages, bgColor="bg-green" } = defineProps<Props>();
+const { currentPage, totalPages, bgColor = "bg-green" } = defineProps<Props>();
 </script>
 
 <template>
@@ -17,4 +17,3 @@ const { currentPage, totalPages, bgColor="bg-green" } = defineProps<Props>();
     />
   </div>
 </template>
-

@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, watch, computed, useTemplateRef } from "vue";
+import {
+  ref,
+  onMounted,
+  onBeforeUnmount,
+  watch,
+  computed,
+  useTemplateRef,
+} from "vue";
 import { gsap } from "gsap";
 import { useIsSlideActive, useSlideContext } from "@slidev/client";
 
@@ -21,7 +28,7 @@ const {
   variableSpeed,
   onSentenceComplete,
   at = 0,
-  reverseMode = false
+  reverseMode = false,
 } = defineProps<{
   className?: string;
   showCursor?: boolean;
@@ -72,16 +79,23 @@ let timeout: ReturnType<typeof setTimeout> | null = null;
 
 const executeTypingAnimation = () => {
   const currentText = textArray.value[currentTextIndex.value];
-  const processedText = reverseMode ? currentText.split("").reverse().join("") : currentText;
+  const processedText = reverseMode
+    ? currentText.split("").reverse().join("")
+    : currentText;
 
   if (isDeleting.value) {
     if (displayedText.value === "") {
       isDeleting.value = false;
-      if (currentTextIndex.value === textArray.value.length - 1 && !loop) return;
+      if (currentTextIndex.value === textArray.value.length - 1 && !loop)
+        return;
 
-      onSentenceComplete?.(textArray.value[currentTextIndex.value], currentTextIndex.value);
+      onSentenceComplete?.(
+        textArray.value[currentTextIndex.value],
+        currentTextIndex.value,
+      );
 
-      currentTextIndex.value = (currentTextIndex.value + 1) % textArray.value.length;
+      currentTextIndex.value =
+        (currentTextIndex.value + 1) % textArray.value.length;
       currentCharIndex.value = 0;
       timeout = setTimeout(() => {}, pauseDuration);
     } else {
@@ -96,7 +110,7 @@ const executeTypingAnimation = () => {
           displayedText.value += processedText[currentCharIndex.value];
           currentCharIndex.value += 1;
         },
-        variableSpeed ? getRandomSpeed() : typingSpeed
+        variableSpeed ? getRandomSpeed() : typingSpeed,
       );
     } else if (textArray.value.length > 1) {
       timeout = setTimeout(() => {
@@ -115,16 +129,13 @@ const startAnimation = () => {
   }, delay * 1000);
 };
 
-watch(
-  [displayedText, currentCharIndex, isDeleting],
-  () => {
-    if (!hasStarted.value) return;
-    if (timeout) clearTimeout(timeout);
-    executeTypingAnimation();
-  }
-);
+watch([displayedText, currentCharIndex, isDeleting], () => {
+  if (!hasStarted.value) return;
+  if (timeout) clearTimeout(timeout);
+  executeTypingAnimation();
+});
 
-watch(canStart, value => {
+watch(canStart, (value) => {
   if (value && !hasStarted.value) {
     startAnimation();
   }
@@ -138,7 +149,7 @@ onMounted(() => {
       duration: cursorBlinkDuration,
       repeat: -1,
       yoyo: true,
-      ease: "power2.inOut"
+      ease: "power2.inOut",
     });
   }
 });
@@ -161,7 +172,10 @@ onBeforeUnmount(() => {
       v-if="showCursor"
       ref="cursorRef"
       :class="`ml-1 inline-block opacity-100 ${
-        hideCursorWhileTyping && (currentCharIndex < textArray[currentTextIndex].length || isDeleting) ? 'hidden' : ''
+        hideCursorWhileTyping &&
+        (currentCharIndex < textArray[currentTextIndex].length || isDeleting)
+          ? 'hidden'
+          : ''
       } ${cursorClassName}`"
     >
       {{ cursorCharacter }}
