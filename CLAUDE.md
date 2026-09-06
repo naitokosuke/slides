@@ -19,7 +19,7 @@ This repository is migrated to Vite+. Run the toolchain through `vp`, which come
 - `vp run lint` runs Vize
 - `vp run <script>` is the equivalent of `pnpm run <script>`
 
-Do not rely on a globally installed `vp` or `vize`. The Nix system profile ships a `vp` whose derivation is missing its JavaScript entry point, and its `vize` is a different version from the one pinned here.
+Run these from the repository root so `vp` resolves from `node_modules/.bin`. A globally installed toolchain drifts from what this repository pins, and the system profile currently carries vize 0.391.0 against the pinned 0.390.0.
 
 Oxfmt options live in the `fmt` block of `vite.config.ts`. There is no separate formatter config file.
 
