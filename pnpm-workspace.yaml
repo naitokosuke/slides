@@ -39,7 +39,6 @@ catalogs:
 
   lint:
     vize: ^0.390.0
-    oxfmt: ^0.66.0
 
   script:
     gunshi: ^0.27.6
@@ -63,6 +62,7 @@ catalogs:
     prettier: ^3.9.6
     taze: ^0.14.3
     pnpm: ^11.25.0
+    vite: npm:@voidzero-dev/vite-plus-core@0.3.0
 
   misc:
     gray-matter: ^4.0.3
@@ -88,3 +88,21 @@ allowBuilds:
   esbuild: true
   playwright-chromium: true
   unrs-resolver: true
+overrides:
+  vite@*: catalog:tooling
+peerDependencyRules:
+  allowAny:
+    - vite
+  allowedVersions:
+    vite: "*"
+minimumReleaseAgeExclude:
+  - vite-plus
+  - "@voidzero-dev/*"
+  - oxlint
+  - "@oxlint/*"
+  - oxlint-tsgolint
+  - "@oxlint-tsgolint/*"
+  - oxfmt
+  - "@oxfmt/*"
+  - vitest
+  - "@vitest/*"
