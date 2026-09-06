@@ -57,6 +57,7 @@
     "taze": "catalog:tooling",
     "typescript": "catalog:tooling",
     "unocss": "catalog:slidev",
+    "vite-plus": "catalog:tooling",
     "vize": "catalog:lint",
     "vue": "catalog:slidev",
     "vue-router": "catalog:slidev",
