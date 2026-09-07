@@ -38,7 +38,15 @@ export const useTimer = () => {
 </script>
 
 <script setup lang="ts">
-const { formatted: timer, start, stop, reset, isRunning, isStopped, elapsed } = useTimer();
+const {
+  formatted: timer,
+  start,
+  stop,
+  reset,
+  isRunning,
+  isStopped,
+  elapsed,
+} = useTimer();
 
 defineExpose({ start, stop, reset, isRunning, isStopped, elapsed });
 </script>

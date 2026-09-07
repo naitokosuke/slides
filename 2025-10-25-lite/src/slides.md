@@ -65,7 +65,6 @@ class: text-8xl
 
 **57** **44** **54**
 
-
 <br />
 
 **35** **42**
@@ -986,9 +985,7 @@ import { PiniaColada } from "@pinia/colada";
 const app = createApp(App);
 const pinia = createPinia();
 app.use(pinia);
-app.use(PiniaColada, {
-  /** Options */
-});
+app.use(PiniaColada, {/** Options */});
 ```
 
 ---

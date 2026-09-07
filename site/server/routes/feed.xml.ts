@@ -68,7 +68,10 @@ export default defineEventHandler(async (event) => {
 
   slides.sort((a, b) => b.date.localeCompare(a.date));
 
-  const lastBuildDate = slides.length > 0 ? formatRfc822Date(slides[0].date) : new Date().toUTCString();
+  const lastBuildDate =
+    slides.length > 0
+      ? formatRfc822Date(slides[0].date)
+      : new Date().toUTCString();
 
   const items = slides
     .map(

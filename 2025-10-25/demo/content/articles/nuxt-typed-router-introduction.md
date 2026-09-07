@@ -16,6 +16,7 @@ Nuxt Typed Router は、Nuxt アプリケーションにおけるルーティン
 ## なぜ型安全なルーティングが必要か？
 
 従来のルーティングでは、以下のような問題がありました：
+
 - ルート名のタイポによるランタイムエラー
 - パラメータの型が不明確
 - リファクタリング時の見落とし
@@ -30,8 +31,8 @@ Nuxt Typed Router は、Nuxt アプリケーションにおけるルーティン
 
 ```typescript
 // 型安全なナビゲーション
-const router = useRouter()
-router.push('/articles/nuxt-typed-router-introduction')
+const router = useRouter();
+router.push("/articles/nuxt-typed-router-introduction");
 ```
 
 このように、Nuxt Typed Router を使用することで、開発体験が向上します。

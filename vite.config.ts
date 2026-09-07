@@ -1,8 +1,21 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 import "@slidev/cli";
 import MarkdownItMagicLink from "markdown-it-magic-link";
 
 export default defineConfig({
+  fmt: {
+    semi: true,
+    singleQuote: false,
+    printWidth: 80,
+    sortPackageJson: false,
+    ignorePatterns: [
+      "dist",
+      "node_modules",
+      "pnpm-lock.yaml",
+      "**/*.md",
+      "**/*.markdown",
+    ],
+  },
   slidev: {
     markdown: {
       markdownItSetup(md) {

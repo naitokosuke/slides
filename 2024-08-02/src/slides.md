@@ -165,7 +165,6 @@ Interaction Round Table
 
 ::right::
 
-
 <div mt-15>
   <div>IRT #とは</div>
   <a
@@ -193,7 +192,6 @@ import { useQRCode } from "@vueuse/integrations/useQRCode";
 
 const qrcode = useQRCode("https://blog.phperkaigi.jp/2020/02/07/interactive-round-table/");
 </script>
-
 
 ---
 transition: fade-out

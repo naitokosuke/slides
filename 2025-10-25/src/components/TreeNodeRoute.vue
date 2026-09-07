@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface FileNode {
   name: string;
-  type: 'file' | 'folder';
+  type: "file" | "folder";
   route?: string;
   children?: FileNode[];
 }
@@ -16,7 +16,11 @@ defineProps<{
     <span class="route-path">{{ node.route }}</span>
   </div>
   <template v-if="node.children">
-    <TreeNodeRoute v-for="(child, index) in node.children" :key="index" :node="child" />
+    <TreeNodeRoute
+      v-for="(child, index) in node.children"
+      :key="index"
+      :node="child"
+    />
   </template>
 </template>
 

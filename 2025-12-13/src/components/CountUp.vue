@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, computed, useTemplateRef } from "vue";
+import {
+  ref,
+  onMounted,
+  onUnmounted,
+  watch,
+  computed,
+  useTemplateRef,
+} from "vue";
 import { useIsSlideActive, useSlideContext } from "@slidev/client";
 
 const {
@@ -44,10 +51,12 @@ const formatNumber = (value: number) => {
   const options = {
     useGrouping: !!separator,
     minimumFractionDigits: 0,
-    maximumFractionDigits: 0
+    maximumFractionDigits: 0,
   };
 
-  const formattedNumber = Intl.NumberFormat("en-US", options).format(Number(value.toFixed(0)));
+  const formattedNumber = Intl.NumberFormat("en-US", options).format(
+    Number(value.toFixed(0)),
+  );
 
   return separator ? formattedNumber.replace(/,/g, separator) : formattedNumber;
 };
@@ -112,17 +121,14 @@ watch(
     updateDisplay();
     hasStarted.value = false;
   },
-  { immediate: true }
+  { immediate: true },
 );
 
-watch(
-  canStart,
-  (value) => {
-    if (value && !hasStarted.value) {
-      startAnimation();
-    }
+watch(canStart, (value) => {
+  if (value && !hasStarted.value) {
+    startAnimation();
   }
-);
+});
 
 onMounted(() => {
   updateDisplay();

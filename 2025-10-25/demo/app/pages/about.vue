@@ -14,12 +14,8 @@ useHead({
 <template>
   <div class="container">
     <div class="about-header">
-      <h1 class="page-title">
-        このブログについて
-      </h1>
-      <p class="page-subtitle">
-        型安全性と開発体験を追求する技術ブログ
-      </p>
+      <h1 class="page-title">このブログについて</h1>
+      <p class="page-subtitle">型安全性と開発体験を追求する技術ブログ</p>
     </div>
 
     <div class="about-content">

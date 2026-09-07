@@ -18,7 +18,9 @@ async function buildAll() {
   // Get all slide folders (matching YYYY-MM-DD or YYYY-MM-DD-suffix pattern)
   const entries = await fs.readdir(rootDir, { withFileTypes: true });
   const allSlideFolders = entries
-    .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}(-[\w]+)?$/.test(e.name))
+    .filter(
+      (e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}(-[\w]+)?$/.test(e.name),
+    )
     .filter((e) => !EXCLUDED_FOLDERS.includes(e.name))
     .map((e) => e.name)
     .sort();

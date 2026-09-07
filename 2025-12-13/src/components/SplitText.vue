@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick, useTemplateRef, computed } from "vue"
-import { gsap } from "gsap"
-import { SplitText as GSAPSplitText } from "gsap/SplitText"
-import { useIsSlideActive, useSlideContext } from "@slidev/client"
+import {
+  ref,
+  onMounted,
+  onUnmounted,
+  watch,
+  nextTick,
+  useTemplateRef,
+  computed,
+} from "vue";
+import { gsap } from "gsap";
+import { SplitText as GSAPSplitText } from "gsap/SplitText";
+import { useIsSlideActive, useSlideContext } from "@slidev/client";
 
-gsap.registerPlugin(GSAPSplitText)
+gsap.registerPlugin(GSAPSplitText);
 
 const {
   text,
@@ -17,156 +25,154 @@ const {
   to = { opacity: 1, y: 0 },
   textAlign = "center",
   at = 0,
-  onLetterAnimationComplete
+  onLetterAnimationComplete,
 } = defineProps<{
-  text: string
-  className?: string
-  delay?: number
-  duration?: number
-  ease?: string | ((t: number) => number)
-  splitType?: "chars" | "words" | "lines" | "words, chars"
-  from?: gsap.TweenVars
-  to?: gsap.TweenVars
-  textAlign?: "left" | "center" | "right" | "justify"
-  at?: number
-  onLetterAnimationComplete?: () => void
-}>()
+  text: string;
+  className?: string;
+  delay?: number;
+  duration?: number;
+  ease?: string | ((t: number) => number);
+  splitType?: "chars" | "words" | "lines" | "words, chars";
+  from?: gsap.TweenVars;
+  to?: gsap.TweenVars;
+  textAlign?: "left" | "center" | "right" | "justify";
+  at?: number;
+  onLetterAnimationComplete?: () => void;
+}>();
 
 const emit = defineEmits<{
-  "animation-complete": []
-}>()
+  "animation-complete": [];
+}>();
 
-const isSlideActive = useIsSlideActive()
-const { $clicks } = useSlideContext()
+const isSlideActive = useIsSlideActive();
+const { $clicks } = useSlideContext();
 
-const textRef = useTemplateRef<HTMLParagraphElement>("textRef")
-const animationCompletedRef = ref(false)
-const hasStarted = ref(false)
-const timelineRef = ref<gsap.core.Timeline | null>(null)
-const splitterRef = ref<GSAPSplitText | null>(null)
-const targetsRef = ref<Element[]>([])
+const textRef = useTemplateRef<HTMLParagraphElement>("textRef");
+const animationCompletedRef = ref(false);
+const hasStarted = ref(false);
+const timelineRef = ref<gsap.core.Timeline | null>(null);
+const splitterRef = ref<GSAPSplitText | null>(null);
+const targetsRef = ref<Element[]>([]);
 
-const canStart = computed(() => isSlideActive.value && $clicks.value >= at)
+const canStart = computed(() => isSlideActive.value && $clicks.value >= at);
 
 const initializeSplit = async () => {
-  if (typeof window === "undefined" || !textRef.value || !text) return
+  if (typeof window === "undefined" || !textRef.value || !text) return;
 
-  await nextTick()
+  await nextTick();
 
-  const el = textRef.value
+  const el = textRef.value;
 
-  const absoluteLines = splitType === "lines"
-  if (absoluteLines) el.style.position = "relative"
+  const absoluteLines = splitType === "lines";
+  if (absoluteLines) el.style.position = "relative";
 
-  let splitter: GSAPSplitText
+  let splitter: GSAPSplitText;
   try {
     splitter = new GSAPSplitText(el, {
       type: splitType,
       absolute: absoluteLines,
-      linesClass: "split-line"
-    })
-    splitterRef.value = splitter
+      linesClass: "split-line",
+    });
+    splitterRef.value = splitter;
   } catch (error) {
-    console.error("Failed to create SplitText:", error)
-    return
+    console.error("Failed to create SplitText:", error);
+    return;
   }
 
-  let targets: Element[]
+  let targets: Element[];
   switch (splitType) {
     case "lines":
-      targets = splitter.lines
-      break
+      targets = splitter.lines;
+      break;
     case "words":
-      targets = splitter.words
-      break
+      targets = splitter.words;
+      break;
     case "chars":
-      targets = splitter.chars
-      break
+      targets = splitter.chars;
+      break;
     default:
-      targets = splitter.chars
+      targets = splitter.chars;
   }
 
   if (!targets || targets.length === 0) {
-    console.warn("No targets found for SplitText animation")
-    splitter.revert()
-    return
+    console.warn("No targets found for SplitText animation");
+    splitter.revert();
+    return;
   }
 
-  targetsRef.value = targets
+  targetsRef.value = targets;
 
-  targets.forEach(t => {
-    (t as HTMLElement).style.willChange = "transform, opacity"
-  })
+  targets.forEach((t) => {
+    (t as HTMLElement).style.willChange = "transform, opacity";
+  });
 
-  gsap.set(targets, { ...from, immediateRender: true, force3D: true })
-}
+  gsap.set(targets, { ...from, immediateRender: true, force3D: true });
+};
 
 const startAnimation = () => {
-  if (hasStarted.value || !canStart.value || targetsRef.value.length === 0) return
+  if (hasStarted.value || !canStart.value || targetsRef.value.length === 0)
+    return;
 
-  hasStarted.value = true
+  hasStarted.value = true;
 
-  const targets = targetsRef.value
+  const targets = targetsRef.value;
 
   const tl = gsap.timeline({
     smoothChildTiming: true,
     onComplete: () => {
-      animationCompletedRef.value = true
+      animationCompletedRef.value = true;
       gsap.set(targets, {
         ...to,
         clearProps: "willChange",
-        immediateRender: true
-      })
-      onLetterAnimationComplete?.()
-      emit("animation-complete")
-    }
-  })
+        immediateRender: true,
+      });
+      onLetterAnimationComplete?.();
+      emit("animation-complete");
+    },
+  });
 
-  timelineRef.value = tl
+  timelineRef.value = tl;
 
   tl.to(targets, {
     ...to,
     duration,
     ease,
     stagger: delay / 1000,
-    force3D: true
-  })
-}
+    force3D: true,
+  });
+};
 
 const cleanup = () => {
   if (timelineRef.value) {
-    timelineRef.value.kill()
-    timelineRef.value = null
+    timelineRef.value.kill();
+    timelineRef.value = null;
   }
   if (splitterRef.value) {
-    gsap.killTweensOf(textRef.value)
-    splitterRef.value.revert()
-    splitterRef.value = null
+    gsap.killTweensOf(textRef.value);
+    splitterRef.value.revert();
+    splitterRef.value = null;
   }
-  targetsRef.value = []
-  hasStarted.value = false
-  animationCompletedRef.value = false
-}
+  targetsRef.value = [];
+  hasStarted.value = false;
+  animationCompletedRef.value = false;
+};
 
-watch(
-  canStart,
-  (value) => {
-    if (value && !hasStarted.value) {
-      startAnimation()
-    }
+watch(canStart, (value) => {
+  if (value && !hasStarted.value) {
+    startAnimation();
   }
-)
+});
 
 onMounted(async () => {
-  await initializeSplit()
+  await initializeSplit();
   if (canStart.value) {
-    startAnimation()
+    startAnimation();
   }
-})
+});
 
 onUnmounted(() => {
-  cleanup()
-})
+  cleanup();
+});
 
 watch(
   [
@@ -177,16 +183,16 @@ watch(
     () => splitType,
     () => from,
     () => to,
-    () => onLetterAnimationComplete
+    () => onLetterAnimationComplete,
   ],
   async () => {
-    cleanup()
-    await initializeSplit()
+    cleanup();
+    await initializeSplit();
     if (canStart.value) {
-      startAnimation()
+      startAnimation();
     }
-  }
-)
+  },
+);
 </script>
 
 <template>
@@ -195,7 +201,7 @@ watch(
     :class="`split-parent inline-block whitespace-normal ${className}`"
     :style="{
       textAlign,
-      wordWrap: 'break-word'
+      wordWrap: 'break-word',
     }"
   >
     {{ text }}

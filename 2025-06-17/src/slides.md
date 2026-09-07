@@ -977,7 +977,7 @@ transition: slide-up
 function render(s: string, opts?: RenderOptions): string {
   return [preProcess, markdown.render, postProcess, sanitize].reduce(
     (acc, p) => p(acc, opts),
-    s
+    s,
   );
 }
 
@@ -1245,7 +1245,7 @@ ctx.markdownQuestionBridge.value?.questionFormatsBridges.forEach(
       }
       // ...
     }
-  }
+  },
 );
 ```
 
@@ -1485,7 +1485,7 @@ transition: slide-up
 const hydrate = (/** ... */) => {
   // ...
   target.addEventListener("input", (e) =>
-    bridge.userActions.english.hydrationBindings.handleInput(e)
+    bridge.userActions.english.hydrationBindings.handleInput(e),
   );
 };
 ```

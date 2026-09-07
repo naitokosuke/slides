@@ -6,12 +6,8 @@ interface Props {
 }
 
 const { currentPage, totalPages } = defineProps<Props>();
-
-
 </script>
 
 <template>
-  <div class="abs-br m-6">
-    {{ currentPage }} / {{ totalPages }}
-  </div>
+  <div class="abs-br m-6">{{ currentPage }} / {{ totalPages }}</div>
 </template>
