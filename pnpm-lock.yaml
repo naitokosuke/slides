@@ -368,6 +368,12 @@ importers:
 
   2026-02-06/src: {}
 
+  2026-09-12/src:
+    dependencies:
+      98.css:
+        specifier: ^0.1.21
+        version: 0.1.21
+
   site:
     dependencies:
       nuxt:
@@ -403,6 +409,9 @@ importers:
         version: 5.9.3
 
 packages:
+
+  98.css@0.1.21:
+    resolution: {integrity: sha512-ddk5qtUWyapM0Bzd5jwGExoE5fdSEGrP+F5VbYjyZLf2c9UVmn6w2NPTvCsoD4BWdGsjdLjlkQGhWwWTJcYQJQ==}
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -7533,6 +7542,8 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
+
+  98.css@0.1.21: {}
 
   '@ampproject/remapping@2.3.0':
     dependencies:
