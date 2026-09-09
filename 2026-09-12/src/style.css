@@ -69,6 +69,7 @@
   --taskbar-button-h: 2rem;
   --taskbar-task-w: 9.75rem;
   --progress-h: 1.6rem;
+  --icon-xs: 1rem;
   --icon-sm: 1.6rem;
   --icon-md: 2.8rem;
   --icon-lg: 3.4rem;
@@ -460,7 +461,7 @@
           }
         }
 
-        :is(.worktree-grid, .project-list, .memory-lines) {
+        :is(.worktree-grid, .project-list, .memory-lines, .claude-tree) {
           flex: 1;
           min-height: 0;
           display: flex;
@@ -609,6 +610,52 @@
           figcaption img {
             width: var(--icon-lg);
             height: var(--icon-lg);
+          }
+        }
+
+        .claude-tree {
+          > .sunken-panel {
+            padding: var(--space-2) var(--space-4);
+          }
+
+          ul.tree-view {
+            padding: 0;
+            background: none;
+            box-shadow: none;
+            font-family: var(--font-mono);
+            font-size: var(--text-3xs);
+            line-height: var(--leading-tight);
+
+            :is(li, summary) {
+              line-height: var(--leading-tight);
+            }
+
+            summary::before {
+              margin-top: 3px;
+            }
+
+            ul {
+              display: block;
+              gap: 0;
+              margin: 3px 0 0 16px;
+              padding: 0 0 0 16px;
+              font-size: inherit;
+            }
+          }
+
+          img {
+            display: inline-block;
+            width: var(--icon-xs);
+            height: var(--icon-xs);
+            margin-right: var(--space-2);
+            vertical-align: text-bottom;
+          }
+
+          .note {
+            margin-left: var(--space-4);
+            font-family: var(--font-body);
+            color: var(--c-shadow);
+            text-shadow: 1px 1px var(--c-light);
           }
         }
 

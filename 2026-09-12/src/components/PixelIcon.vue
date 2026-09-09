@@ -6,8 +6,10 @@ const { name } = defineProps<{ name: string }>();
 const files: Record<string, string> = {
   chip: "chip_ramdrive-4",
   drive: "hard_disk_drive-4",
+  file: "file_lines-0",
   folder: "directory_closed-4",
   mirror: "monitor_blue_grad-0",
+  open: "directory_open_cool-5",
   trash: "recycle_bin_full-4",
 };
 
