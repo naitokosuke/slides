@@ -18,7 +18,7 @@ export function useStage() {
     if (onScreen && document.startViewTransition) {
       document.startViewTransition(apply).ready.catch(() => {});
     } else {
-      void apply();
+      apply();
     }
   });
 
