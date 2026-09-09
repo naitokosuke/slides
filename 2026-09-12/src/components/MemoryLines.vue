@@ -29,3 +29,38 @@ const over = [81, 58, 89, 72, 66, 85, 51, 93, 68, 79, 60, 87, 71, 95];
     </div>
   </div>
 </template>
+
+<style scoped>
+.memory-lines {
+  > .sunken-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-5);
+
+    > .lines {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+
+      > span {
+        height: var(--space-2);
+        background: var(--c-ink);
+      }
+
+      &[data-over="true"] > span {
+        background: var(--c-shadow);
+        box-shadow: 1px 1px var(--c-light);
+      }
+    }
+
+    > .cut {
+      flex: none;
+      height: var(--dither-w);
+      background-image: var(--dither);
+      background-size: var(--dither-w) var(--dither-w);
+    }
+  }
+}
+</style>

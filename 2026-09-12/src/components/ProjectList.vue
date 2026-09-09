@@ -46,3 +46,43 @@ const goneCount = computed(() => rows.filter((row) => row.removed).length);
     </div>
   </div>
 </template>
+
+<style scoped>
+.project-list {
+  > .sunken-panel {
+    view-transition-name: project-list;
+    view-transition-class: morph;
+    padding: var(--space-2);
+
+    > table {
+      box-shadow: none;
+      font-size: var(--text-3xs);
+
+      td {
+        padding: var(--space-1) var(--space-3);
+      }
+
+      .name {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        font-family: var(--font-mono);
+
+        > img {
+          width: var(--icon-sm);
+          height: var(--icon-sm);
+        }
+      }
+
+      .state {
+        width: 1%;
+
+        &[data-gone="true"] {
+          color: var(--c-shadow);
+          text-shadow: 1px 1px var(--c-light);
+        }
+      }
+    }
+  }
+}
+</style>

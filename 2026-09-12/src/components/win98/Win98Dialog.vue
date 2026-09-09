@@ -35,14 +35,14 @@ const {
     gap: var(--space-5);
     padding: var(--space-5) var(--space-4) var(--space-3);
 
-    img {
+    > img {
       flex: none;
       width: var(--icon-lg);
       height: var(--icon-lg);
       image-rendering: pixelated;
     }
 
-    p {
+    > p {
       margin: 0;
       font-size: var(--text-md);
       line-height: var(--leading-relaxed);
@@ -55,7 +55,7 @@ const {
     gap: var(--space-2);
     padding: var(--space-3) var(--space-4) var(--space-4);
 
-    button {
+    > button {
       min-width: var(--dialog-button-w);
       font-family: var(--font-body);
       font-size: var(--text-xs);

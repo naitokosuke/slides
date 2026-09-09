@@ -31,3 +31,58 @@ const { node } = defineProps<{ node: TreeNode }>();
     </template>
   </li>
 </template>
+
+<style scoped>
+li {
+  line-height: var(--leading-tight);
+
+  > details {
+    > summary {
+      line-height: var(--leading-tight);
+
+      &::before {
+        margin-top: 3px;
+      }
+
+      > img {
+        display: inline-block;
+        width: var(--icon-xs);
+        height: var(--icon-xs);
+        margin-right: var(--space-2);
+        vertical-align: text-bottom;
+      }
+
+      > .note {
+        margin-left: var(--space-4);
+        font-family: var(--font-body);
+        color: var(--c-shadow);
+        text-shadow: 1px 1px var(--c-light);
+      }
+    }
+
+    > ul {
+      display: block;
+      gap: 0;
+      margin: 3px 0 0 16px;
+      padding: 0 0 0 16px;
+      font-size: inherit;
+    }
+  }
+
+  /* v-else branch: <template> renders no wrapper, so these are direct li children */
+  > img {
+    display: inline-block;
+    width: var(--icon-xs);
+    height: var(--icon-xs);
+    margin-right: var(--space-2);
+    vertical-align: text-bottom;
+  }
+
+  > .note {
+    margin-left: var(--space-4);
+    font-family: var(--font-body);
+    color: var(--c-shadow);
+    text-shadow: 1px 1px var(--c-light);
+  }
+}
+</style>

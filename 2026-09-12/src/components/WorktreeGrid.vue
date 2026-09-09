@@ -36,15 +36,14 @@ const items = computed(() =>
 <template>
   <div class="worktree-grid" :data-stage="stage">
     <div class="sunken-panel">
-      <div class="items">
+      <div>
         <div
           v-for="item in items"
           :key="item.key"
-          class="item"
           :style="{ viewTransitionName: item.key }"
         >
           <PixelIcon name="folder" />
-          <span class="label">{{ item.label }}</span>
+          <span>{{ item.label }}</span>
           <div
             class="progress-indicator segmented"
             :data-idle="String(!item.running)"
@@ -67,3 +66,78 @@ const items = computed(() =>
     </div>
   </div>
 </template>
+
+<style scoped>
+.worktree-grid {
+  > .sunken-panel {
+    padding: var(--space-4);
+
+    > div {
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-content: center;
+      justify-items: center;
+      gap: var(--space-6) var(--space-4);
+
+      > div {
+        view-transition-class: morph;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-2);
+
+        > img {
+          width: var(--icon-xl);
+          height: var(--icon-xl);
+        }
+
+        > span {
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: var(--text-sm);
+          line-height: var(--leading-tight);
+        }
+
+        > .progress-indicator {
+          width: 82%;
+          height: var(--space-5);
+
+          &[data-idle="true"] {
+            visibility: hidden;
+          }
+        }
+      }
+    }
+  }
+
+  &[data-stage="1"] {
+    > .sunken-panel {
+      > div {
+        grid-template-columns: repeat(7, 1fr);
+        gap: var(--space-2) var(--space-3);
+
+        > div {
+          gap: var(--space-1);
+
+          > img {
+            width: var(--icon-md);
+            height: var(--icon-md);
+          }
+
+          > span {
+            font-size: var(--text-3xs);
+          }
+
+          > .progress-indicator {
+            height: var(--space-3);
+          }
+        }
+      }
+    }
+  }
+}
+</style>

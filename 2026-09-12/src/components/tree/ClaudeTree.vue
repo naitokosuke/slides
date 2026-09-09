@@ -54,3 +54,20 @@ const root: TreeNode = {
     </div>
   </div>
 </template>
+
+<style scoped>
+.claude-tree {
+  > .sunken-panel {
+    padding: var(--space-2) var(--space-4);
+
+    > .tree-view {
+      padding: 0;
+      background: none;
+      box-shadow: none;
+      font-family: var(--font-mono);
+      font-size: var(--text-3xs);
+      line-height: var(--leading-tight);
+    }
+  }
+}
+</style>

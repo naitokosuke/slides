@@ -119,11 +119,13 @@
       box-shadow: var(--shadow-window);
       view-transition-name: win98-window;
 
-      > .title-bar .title-bar-text {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        font-size: var(--text-2xs);
+      > .title-bar {
+        > .title-bar-text {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: var(--text-2xs);
+        }
       }
 
       > .window-body {
@@ -315,25 +317,25 @@
             padding: var(--space-5);
             background: var(--c-face);
             box-shadow: var(--bevel-raised);
-          }
 
-          dt {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-            font-size: var(--text-sm);
+            > dt {
+              display: flex;
+              align-items: center;
+              gap: var(--space-3);
+              font-size: var(--text-sm);
 
-            img {
-              width: var(--icon-md);
-              height: var(--icon-md);
+              > img {
+                width: var(--icon-md);
+                height: var(--icon-md);
+              }
             }
-          }
 
-          dd {
-            margin: 0;
-            font-size: var(--text-4xl);
-            font-weight: 700;
-            line-height: var(--leading-tight);
+            > dd {
+              margin: 0;
+              font-size: var(--text-4xl);
+              font-weight: 700;
+              line-height: var(--leading-tight);
+            }
           }
 
           &:has(meter) {
@@ -348,14 +350,14 @@
               padding: 0;
               background: none;
               box-shadow: none;
-            }
 
-            dd {
-              font-size: var(--text-md);
-              line-height: var(--leading-normal);
+              > dd {
+                font-size: var(--text-md);
+                line-height: var(--leading-normal);
 
-              &:last-child {
-                text-align: right;
+                &:last-child {
+                  text-align: right;
+                }
               }
             }
           }
@@ -392,9 +394,11 @@
             padding: var(--space-1) var(--space-3);
           }
 
-          :is(tbody, tfoot) td:not(:first-child) {
-            text-align: right;
-            font-family: var(--font-mono);
+          :is(tbody, tfoot) {
+            td:not(:first-child) {
+              text-align: right;
+              font-family: var(--font-mono);
+            }
           }
 
           td:has(meter) {
@@ -411,9 +415,11 @@
             background: var(--c-face-light);
           }
 
-          tr[data-selected] :is(th, td) {
-            background: var(--c-accent);
-            color: var(--c-light);
+          tr[data-selected] {
+            > :is(th, td) {
+              background: var(--c-accent);
+              color: var(--c-light);
+            }
           }
         }
 
@@ -436,27 +442,29 @@
           padding: var(--space-4) var(--space-5);
           font-family: var(--font-body);
 
-          legend {
+          > legend {
             padding: 0 var(--space-2);
             font-size: var(--text-2xs);
           }
 
-          .field-row + .field-row {
-            margin-top: var(--space-4);
-          }
+          > .field-row {
+            & + .field-row {
+              margin-top: var(--space-4);
+            }
 
-          label {
-            gap: var(--space-1);
-            font-size: var(--text-sm);
-            line-height: var(--leading-normal);
-          }
+            > label {
+              gap: var(--space-1);
+              font-size: var(--text-sm);
+              line-height: var(--leading-normal);
+            }
 
-          input[disabled] + label {
-            color: var(--c-shadow);
-            text-shadow: 1px 1px var(--c-light);
-
-            code {
+            > input[disabled] + label {
               color: var(--c-shadow);
+              text-shadow: 1px 1px var(--c-light);
+
+              code {
+                color: var(--c-shadow);
+              }
             }
           }
         }
@@ -475,115 +483,6 @@
           }
         }
 
-        .worktree-grid {
-          > .sunken-panel {
-            padding: var(--space-4);
-          }
-
-          .items {
-            height: 100%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            align-content: center;
-            justify-items: center;
-            gap: var(--space-6) var(--space-4);
-          }
-
-          .item {
-            view-transition-class: morph;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-2);
-
-            img {
-              width: var(--icon-xl);
-              height: var(--icon-xl);
-            }
-
-            .label {
-              max-width: 100%;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              font-size: var(--text-sm);
-              line-height: var(--leading-tight);
-            }
-
-            .progress-indicator {
-              width: 82%;
-              height: var(--space-5);
-            }
-
-            [data-idle="true"] {
-              visibility: hidden;
-            }
-          }
-
-          &[data-stage="1"] {
-            .items {
-              grid-template-columns: repeat(7, 1fr);
-              gap: var(--space-2) var(--space-3);
-            }
-
-            .item {
-              gap: var(--space-1);
-
-              img {
-                width: var(--icon-md);
-                height: var(--icon-md);
-              }
-
-              .label {
-                font-size: var(--text-3xs);
-              }
-
-              .progress-indicator {
-                height: var(--space-3);
-              }
-            }
-          }
-        }
-
-        .project-list {
-          > .sunken-panel {
-            view-transition-name: project-list;
-            view-transition-class: morph;
-            padding: var(--space-2);
-          }
-
-          table {
-            box-shadow: none;
-            font-size: var(--text-3xs);
-
-            td {
-              padding: var(--space-1) var(--space-3);
-            }
-
-            .name {
-              display: flex;
-              align-items: center;
-              gap: var(--space-3);
-              font-family: var(--font-mono);
-            }
-
-            .state {
-              width: 1%;
-
-              &[data-gone="true"] {
-                color: var(--c-shadow);
-                text-shadow: 1px 1px var(--c-light);
-              }
-            }
-
-            img {
-              width: var(--icon-sm);
-              height: var(--icon-sm);
-            }
-          }
-        }
-
         .scale {
           flex: 1;
           min-height: 0;
@@ -598,163 +497,53 @@
             padding: var(--space-1);
             background: var(--c-accent);
             box-shadow: var(--bevel-sunken);
-          }
 
-          .part {
-            width: var(--scale-part);
-            height: var(--scale-part);
-            background: var(--c-light);
-            box-shadow: var(--bevel-raised);
-          }
-
-          figcaption img {
-            width: var(--icon-lg);
-            height: var(--icon-lg);
-          }
-        }
-
-        .claude-tree {
-          > .sunken-panel {
-            padding: var(--space-2) var(--space-4);
-          }
-
-          ul.tree-view {
-            padding: 0;
-            background: none;
-            box-shadow: none;
-            font-family: var(--font-mono);
-            font-size: var(--text-3xs);
-            line-height: var(--leading-tight);
-
-            :is(li, summary) {
-              line-height: var(--leading-tight);
-            }
-
-            summary::before {
-              margin-top: 3px;
-            }
-
-            ul {
-              display: block;
-              gap: 0;
-              margin: 3px 0 0 16px;
-              padding: 0 0 0 16px;
-              font-size: inherit;
+            > .part {
+              width: var(--scale-part);
+              height: var(--scale-part);
+              background: var(--c-light);
+              box-shadow: var(--bevel-raised);
             }
           }
 
-          img {
-            display: inline-block;
-            width: var(--icon-xs);
-            height: var(--icon-xs);
-            margin-right: var(--space-2);
-            vertical-align: text-bottom;
-          }
-
-          .note {
-            margin-left: var(--space-4);
-            font-family: var(--font-body);
-            color: var(--c-shadow);
-            text-shadow: 1px 1px var(--c-light);
-          }
-        }
-
-        .memory-lines {
-          > .sunken-panel {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: var(--space-3);
-            padding: var(--space-5);
-          }
-
-          .lines {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-1);
-
-            span {
-              height: var(--space-2);
-              background: var(--c-ink);
+          > figcaption {
+            > img {
+              width: var(--icon-lg);
+              height: var(--icon-lg);
             }
-
-            &[data-over="true"] span {
-              background: var(--c-shadow);
-              box-shadow: 1px 1px var(--c-light);
-            }
-          }
-
-          .cut {
-            flex: none;
-            height: var(--dither-w);
-            background-image: var(--dither);
-            background-size: var(--dither-w) var(--dither-w);
           }
         }
       }
     }
   }
 
-  > footer {
-    flex: none;
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    height: var(--taskbar-h);
-    padding: 0 var(--space-2);
-    background: var(--c-face);
-    box-shadow: var(--bevel-taskbar);
-    view-transition-name: win98-taskbar;
+  &[data-variant="cover"] {
+    > main {
+      > .window {
+        width: var(--cover-window-w);
+        height: auto;
 
-    button {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2);
-      height: var(--taskbar-button-h);
-      min-width: auto;
-      font-size: var(--text-2xs);
+        > .window-body {
+          flex: none;
+          gap: var(--space-5);
+          padding: var(--space-6) var(--space-6) var(--space-5);
 
-      & + button {
-        flex: none;
-        width: var(--taskbar-task-w);
-        justify-content: flex-start;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
+          h1 {
+            font-size: var(--text-2xl);
+          }
 
-    > div {
-      margin-left: auto;
-      padding: var(--space-1) var(--space-3);
-      font-family: var(--font-ui);
-      font-size: var(--text-3xs);
-    }
-  }
+          > footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: var(--space-4);
+            font-size: var(--text-sm);
+          }
 
-  &[data-variant="cover"] > main > .window {
-    width: var(--cover-window-w);
-    height: auto;
-
-    > .window-body {
-      flex: none;
-      gap: var(--space-5);
-      padding: var(--space-6) var(--space-6) var(--space-5);
-
-      h1 {
-        font-size: var(--text-2xl);
-      }
-
-      > footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: var(--space-4);
-        font-size: var(--text-sm);
-      }
-
-      .progress-indicator {
-        height: var(--progress-h);
+          .progress-indicator {
+            height: var(--progress-h);
+          }
+        }
       }
     }
   }

@@ -7,15 +7,55 @@ const { currentSlideNo, total } = useNav();
 <template>
   <footer>
     <button>
-      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-        <rect x="0" y="1" width="7" height="6" fill="#e33" />
-        <rect x="8" y="0" width="8" height="7" fill="#3a3" />
-        <rect x="0" y="8" width="7" height="7" fill="#36c" />
-        <rect x="8" y="8" width="8" height="8" fill="#eb0" />
-      </svg>
+      <PixelIcon name="start" />
       スタート
     </button>
     <button>大掃除.exe - {{ currentSlideNo }} / {{ total }}</button>
     <div class="status-field-border">2026-09-12</div>
   </footer>
 </template>
+
+<style scoped>
+footer {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: var(--taskbar-h);
+  padding: 0 var(--space-2);
+  background: var(--c-face);
+  box-shadow: var(--bevel-taskbar);
+  view-transition-name: win98-taskbar;
+
+  > button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: var(--taskbar-button-h);
+    min-width: auto;
+    font-size: var(--text-2xs);
+
+    > img {
+      width: var(--icon-xs);
+      height: var(--icon-xs);
+      image-rendering: pixelated;
+    }
+
+    & + button {
+      flex: none;
+      width: var(--taskbar-task-w);
+      justify-content: flex-start;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  > .status-field-border {
+    margin-left: auto;
+    padding: var(--space-1) var(--space-3);
+    font-family: var(--font-ui);
+    font-size: var(--text-3xs);
+  }
+}
+</style>
