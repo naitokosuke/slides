@@ -30,6 +30,7 @@
 ### 発端（〜1.5分）
 
 - ある日 `du -sh ~/.claude` を叩いたら **2.5GB** あった →「これは掃除しないと」と思った（`dotclaude-before` バックアップの実データを見せる）
+- `~/.claude` の構成を Explorer 風のフォルダツリーで見せる（公式: code.claude.com/docs/en/claude-directory）。transcript は作業ディレクトリごと、memory は repo ごとで worktree 間共有、という違いをここで示す
 - `.claude/projects/` の中身を見ると issue worktree ごとにディレクトリができている。本当にゴミかどうか `cwd` を見て EXISTS/GONE 判定で調べ始めた
 
 ### 主犯は `.claude` ではなかった（〜1.5分、話の転換点）
@@ -42,6 +43,7 @@
 
 - gwq の設計に沿って語る。gwq に merged 判定機能はなく、ライフサイクルは `status` / `remove -b` / `add --expires` + `prune --expired` で回す設計
 - 入口は `gwq status --filter inactive`（既定 14 日、ファイル mtime ベース）。触られていないことは分かるが merged かは分からない
+- `.claude` 側の一次情報として cclens（lambdalisue/cclens）の `sql`。`sessions.root` は transcript の `cwd` から復元した実パスなので、worktree ごとの最終セッション日が出る。PART 2 の EXISTS/GONE 判定はこれに `test -d` を足しただけ、と種明かしする
 - gwq の標準ルートは `gwq remove -b` = `git branch -d`。squash merge 運用だとローカルのコミットが main に含まれず、常に `not fully merged` で拒否される
 - だから forge の一次情報 `gh pr list --state merged` を根拠にし、その上で `--force-delete-branch`（= `git branch -D`）を使う
 - 棚卸し結果の表 → 削除コマンドとエッジケース（`File name too long`）
@@ -63,4 +65,5 @@
   - 鏡の方を掃除していた → worktree から消す
   - git に merged を聞いていた → `gh pr list --state merged`
   - 捨て時を決めていなかった → `gwq add --expires 7d`
+- 「そして今も溜まっている」: このスライドを作っていた Claude Code セッションに対する `cclens doctor` の実出力（style.css を 10 分で 20 回編集して詰まった、hook に 9 回ブロックされた、`~/.claude` に未使用 surface が 13 個）。自分の作業ディレクトリ以外の話は出さない
 - 働き方はこれからも変わる、掃除も続く仕事になる

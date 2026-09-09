@@ -55,6 +55,12 @@ $ du -sh ~/.claude
 
 ---
 
+## `~/.claude` の中身
+
+<ClaudeTree />
+
+---
+
 ## `.claude/projects/` の中身
 
 <ProjectList />
@@ -123,6 +129,29 @@ BRANCH              STATUS      CHANGES   ACTIVITY
 ```
 
 <small>14 日触っていなければ inactive。ファイルの更新日時を見ているだけで、merged かどうかは見ていない</small>
+
+---
+
+## `.claude` 側にも聞く
+
+```bash
+$ cclens sql "SELECT root, COUNT(*) AS sessions, MAX(started_at) AS last
+              FROM sessions GROUP BY root ORDER BY last"
+```
+
+<table>
+  <thead>
+    <tr><th>root</th><th>sessions</th><th>last</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>/Users/naito/src/app---12-login</td><td>3</td><td>2026-06-20</td></tr>
+    <tr><td>/Users/naito/src/app---47-retry</td><td>1</td><td>2026-07-02</td></tr>
+    <tr><td>/Users/naito/src/app---63-cache</td><td>8</td><td>2026-09-01</td></tr>
+    <tr><td>/Users/naito/src/app---94-oauth</td><td>5</td><td>2026-09-02</td></tr>
+  </tbody>
+</table>
+
+<small>transcript の cwd から復元した実パスと、最後にセッションを始めた日。gwq の mtime とは別の一次情報</small>
 
 ---
 
@@ -236,6 +265,8 @@ clicks: 1
 claude project purge
 ```
 
+<small>EXISTS / GONE は cclens の <code>root</code> に <code>test -d</code> を足しただけ</small>
+
 ---
 
 ## 掃除は一度では終わらない
@@ -337,6 +368,25 @@ layout: section
 </ol>
 
 ---
+
+## そして今も溜まっている
+
+```text
+$ cclens doctor
+
+WHAT TO FIX FIRST
+  1. In ~/src/github.com/naitokosuke/slides---40-2026-09-12, 13 tool calls failed in recurring ways:
+        9× blocked-by-hook — a habit keeps hitting a rule/hook
+        4× path-not-found — paths are being guessed wrong
+     …and Claude got stuck re-editing style.css (20 edits in 10m).
+
+CONFIG WORTH PRUNING
+  ~/.claude: 13 surfaces installed but never used
+```
+
+<small>このスライドを作っていた Claude Code のセッション</small>
+
+---
 layout: section
 ---
 
@@ -351,5 +401,7 @@ layout: section
 <ul>
   <li>Claude Code / メモリ <a href="https://code.claude.com/docs/en/memory">code.claude.com/docs/en/memory</a></li>
   <li>Claude Code / .claude ディレクトリ <a href="https://code.claude.com/docs/en/claude-directory">code.claude.com/docs/en/claude-directory</a></li>
+  <li>Claude Code / セッション <a href="https://code.claude.com/docs/en/sessions#where-transcripts-are-stored">code.claude.com/docs/en/sessions</a></li>
+  <li>cclens <a href="https://github.com/lambdalisue/cclens">github.com/lambdalisue/cclens</a> &mdash; <code>sql</code> / <code>doctor</code></li>
   <li>gwq <a href="https://github.com/d-kuro/gwq">github.com/d-kuro/gwq</a> &mdash; <code>status --filter inactive</code> / <code>remove -b</code> / <code>add --expires</code> / <code>prune --expired</code></li>
 </ul>
