@@ -131,13 +131,13 @@ class: text-6xl
 transition: fade
 ---
 
-<iframe src="https://mates-system.github.io/v-tokyo-23/" class="w-full h-full" title="Vue.js Tokyo v23 LT" />
+<iframe src="/2025-06-17/" class="w-full h-full" title="Vue.js Tokyo v23 LT" />
 
 ---
 
 <div class="h-full grid place-items-center">
-  <QRCode url="https://mates-system.github.io/v-tokyo-23/" :size="400" />
-  <a class="text-4xl opacity-80" href="https://mates-system.github.io/v-tokyo-23/">https://mates-system.github.io/v-tokyo-23/</a>
+  <QRCode url="https://slides.naito.dev/2025-06-17/" :size="400" />
+  <a class="text-4xl opacity-80" href="https://slides.naito.dev/2025-06-17/">https://slides.naito.dev/2025-06-17/</a>
 </div>
 
 ---
