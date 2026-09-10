@@ -88,7 +88,7 @@ level: 2
 import { ref } from "vue";
 import { useQRCode } from "@vueuse/integrations/useQRCode";
 
-const text = ref("https://kosuke222naito.github.io/20240803-lt/");
+const text = ref("https://slides.naito.dev/2024-08-03/");
 const qrcode = useQRCode(text);
 </script>
 
