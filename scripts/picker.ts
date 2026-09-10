@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { cli, define } from "gunshi";
 import prompts from "prompts";
 import { execa } from "execa";
+import { startDevServer } from "./dev-server.ts";
 
 const rootDir = fileURLToPath(new URL("..", import.meta.url));
 
@@ -47,13 +48,13 @@ async function runSlidev(folder: string, command: string, extraArgs: string[]) {
 
 const devCommand = define({
   name: "dev",
-  description: "Start development server for a slide",
+  description: "Serve the slide index and every deck from one dev server",
   args: {
-    yes: {
-      type: "boolean",
-      short: "y",
-      description: "Use the latest folder without prompting",
-      default: false,
+    port: {
+      type: "number",
+      short: "p",
+      description: "Port to listen on",
+      default: 3030,
     },
     open: {
       type: "boolean",
@@ -62,23 +63,7 @@ const devCommand = define({
     },
   },
   run: async (ctx) => {
-    const folder = await pickFolder(ctx.values.yes);
-    if (!folder) return;
-
-    const editor = process.env.PICKER_EDITOR;
-    if (editor) {
-      console.log(`use editor ${editor} by env PICKER_EDITOR`);
-      execa(editor, [
-        fileURLToPath(new URL(`../${folder}/src/slides.md`, import.meta.url)),
-      ]);
-    }
-
-    const extraArgs: string[] = [];
-    if (ctx.values.open) {
-      extraArgs.push("--open");
-    }
-
-    await runSlidev(folder, "dev", extraArgs);
+    await startDevServer({ port: ctx.values.port, open: ctx.values.open });
   },
 });
 

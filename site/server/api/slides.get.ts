@@ -6,20 +6,23 @@ interface SlideInfo {
   folder: string;
   title: string;
   date: string;
-  ogImage: string;
+  ogImage: string | null;
 }
 
-// Demo folders to exclude
-const EXCLUDED_FOLDERS = ["0000-00-00"];
+const EXCLUDED_FOLDERS = import.meta.dev ? [] : ["0000-00-00"];
 
-// Base URL for OG images (production URL for dev, relative for build)
-const OG_IMAGE_BASE =
-  process.env.NODE_ENV === "development" ? "https://slides.naito.dev" : "";
+async function exists(file: string) {
+  try {
+    await fs.access(file);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export default defineEventHandler(async () => {
   const rootDir = path.resolve(process.cwd(), "..");
 
-  // Get all slide folders (matching YYYY-MM-DD or YYYY-MM-DD-suffix pattern)
   const entries = await fs.readdir(rootDir, { withFileTypes: true });
   const slideFolders = entries
     .filter(
@@ -32,35 +35,29 @@ export default defineEventHandler(async () => {
   const slides: SlideInfo[] = [];
 
   for (const folder of slideFolders) {
-    const slidesPath = path.join(rootDir, folder, "src", "slides.md");
+    const folderDir = path.join(rootDir, folder);
+    const ogImage = (await exists(path.join(folderDir, "og-image.png")))
+      ? `/${folder}/og-image.png`
+      : null;
 
-    // OG image path (stored in each slide directory root)
-    const ogImage = `${OG_IMAGE_BASE}/${folder}/og-image.png`;
-
+    let title = folder;
     try {
-      const content = await fs.readFile(slidesPath, "utf-8");
+      const content = await fs.readFile(
+        path.join(folderDir, "src", "slides.md"),
+        "utf-8",
+      );
       const { data } = matter(content);
-      const title =
+      title =
         data.title ||
         data.info?.split("\n")[0]?.replace(/^##\s*/, "") ||
         folder;
-      slides.push({
-        folder,
-        title,
-        date: folder,
-        ogImage,
-      });
     } catch {
-      slides.push({
-        folder,
-        title: folder,
-        date: folder,
-        ogImage,
-      });
+      title = folder;
     }
+
+    slides.push({ folder, title, date: folder, ogImage });
   }
 
-  // Sort by date descending (newest first)
   slides.sort((a, b) => b.date.localeCompare(a.date));
 
   return slides;
