@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
 
 jobs:
   deploy:
@@ -15,15 +20,29 @@ jobs:
 
       - name: Detect changed slides
         id: changes
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "changed=all" >> $GITHUB_OUTPUT
+            echo "Manual run, rebuilding all"
+            exit 0
+          fi
+
+          # Diff against the last successful deploy so changes from failed runs are not dropped
+          BASE=$(gh run list --workflow deploy.yml --branch main --status success --limit 1 --json headSha --jq '.[0].headSha')
+          BASE=${BASE:-${{ github.event.before }}}
+          echo "Diff base: $BASE"
+          DIFF=$(git diff --name-only $BASE ${{ github.sha }})
+
           # Get changed slide folders (YYYY-MM-DD or YYYY-MM-DD-suffix pattern)
-          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}(-[a-zA-Z0-9]+)?' | sort -u | tr '\n' ',' | sed 's/,$//')
+          CHANGED=$(echo "$DIFF" | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}(-[a-zA-Z0-9]+)?' | sort -u | tr '\n' ',' | sed 's/,$//' || true)
 
           # Check if shared files changed (requires full rebuild)
-          SHARED_CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^(package\.json|pnpm-lock\.yaml|pnpm-workspace\.yaml|scripts/|public/|worker/)' || true)
+          SHARED_CHANGED=$(echo "$DIFF" | grep -E '^(package\.json|pnpm-lock\.yaml|pnpm-workspace\.yaml|scripts/|public/|worker/)' || true)
 
           # Check if only site/ changed (homepage only rebuild)
-          SITE_CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^site/' || true)
+          SITE_CHANGED=$(echo "$DIFF" | grep -E '^site/' || true)
 
           if [ -n "$SHARED_CHANGED" ]; then
             echo "changed=all" >> $GITHUB_OUTPUT
