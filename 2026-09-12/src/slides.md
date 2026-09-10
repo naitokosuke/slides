@@ -7,7 +7,7 @@ info: |
   I started cutting a worktree per issue and running Claude Code in parallel.
   Here is what quietly grew to 319.6GB, and how I cleaned it up.
 
-  Speaker: Kosuke Naito (@naitokosuke)
+  Speaker: [@naitokosuke](https://twitter.com/naitokosuke)
 duration: 10min
 colorSchema: light
 transition: view-transition
@@ -27,11 +27,16 @@ seoMeta:
 layout: cover
 ---
 
+---
+
+# Hi
+
+---
+
 # AI Changed How I Work.<br>My Disk Paid for It
 
 <footer>
-  <span>2026-09-12</span>
-  <span>Kosuke Naito / @naitokosuke</span>
+  <span><a href="https://twitter.com/naitokosuke">@naitokosuke</a></span>
 </footer>
 
 ---
