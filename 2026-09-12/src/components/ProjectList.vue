@@ -7,13 +7,13 @@ const { status = false } = defineProps<{ status?: boolean }>();
 const stage = useStage();
 
 const rows = [
-  { name: "-Users-naito-src-app---12-login", removed: true },
-  { name: "-Users-naito-src-app---47-retry", removed: true },
-  { name: "-Users-naito-src-docs---58-typo", removed: true },
-  { name: "-Users-naito-src-api---63-cache", removed: false },
-  { name: "-Users-naito-src-web---71-modal", removed: true },
-  { name: "-Users-naito-src-cli---88-flags", removed: true },
-  { name: "-Users-naito-src-app---94-oauth", removed: false },
+  { name: "app-some---12-login", removed: true },
+  { name: "app-some---47-retry", removed: true },
+  { name: "app-some---94-oauth", removed: false },
+  { name: "app-other---58-typo", removed: true },
+  { name: "app-other---63-cache", removed: false },
+  { name: "app-other---71-modal", removed: true },
+  { name: "app-other---88-flags", removed: true },
 ];
 
 const purged = computed(() => stage.value > 0);
@@ -39,9 +39,9 @@ const goneCount = computed(() => rows.filter((row) => row.removed).length);
       </table>
     </div>
     <div class="status-bar">
-      <p class="status-bar-field">176 件</p>
+      <p class="status-bar-field">133 items</p>
       <p v-if="status" class="status-bar-field">
-        削除できる {{ purged ? goneCount : 0 }} 件
+        {{ purged ? goneCount : 0 }} removable
       </p>
     </div>
   </div>

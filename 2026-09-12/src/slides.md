@@ -1,21 +1,23 @@
 ---
 theme: default
-title: AIによって仕事のスタイルが変わった、大掃除だ
+title: AI Changed How I Work. My Disk Paid for It
 info: |
-  ## AIによって仕事のスタイルが変わった、大掃除だ
-  2026-09-12 発表スライド
+  ## AI Changed How I Work. My Disk Paid for It
 
-  Speaker: ナイトウコウスケ (@naitokosuke)
+  I started cutting a worktree per issue and running Claude Code in parallel.
+  Here is what quietly grew to 319.6GB, and how I cleaned it up.
+
+  Speaker: Kosuke Naito (@naitokosuke)
 duration: 10min
 colorSchema: light
 transition: view-transition
 fonts:
   mono: "Fira Code"
 seoMeta:
-  description: "issue ごとに worktree を切って Claude Code を並列で走らせるようになった結果、何が肥大化したのか。319.6GB の棚卸しの記録"
-  author: "ナイトウコウスケ"
-  ogTitle: AIによって仕事のスタイルが変わった、大掃除だ
-  ogDescription: "issue ごとに worktree を切って Claude Code を並列で走らせるようになった結果、何が肥大化したのか。319.6GB の棚卸しの記録"
+  description: "I started cutting a worktree per issue and running Claude Code in parallel. Here is what quietly grew to 319.6GB, and how I cleaned it up"
+  author: "Kosuke Naito"
+  ogTitle: AI Changed How I Work. My Disk Paid for It
+  ogDescription: "I started cutting a worktree per issue and running Claude Code in parallel. Here is what quietly grew to 319.6GB, and how I cleaned it up"
   ogImage: https://slides.naito.dev/2026-09-12/og-image.png
   ogUrl: https://slides.naito.dev/2026-09-12/
   ogType: website
@@ -25,57 +27,55 @@ seoMeta:
 layout: cover
 ---
 
-# AIによって仕事のスタイルが変わった、<br>大掃除だ
+# AI Changed How I Work.<br>My Disk Paid for It
 
 <footer>
   <span>2026-09-12</span>
-  <span>ナイトウコウスケ / @naitokosuke</span>
+  <span>Kosuke Naito / @naitokosuke</span>
 </footer>
 
 ---
 clicks: 1
 ---
 
-## 仕事のスタイルが変わった
+## <span v-if="$clicks">One worktree per issue</span><span v-else>One branch per issue</span>
 
 <WorktreeGrid />
 
 ---
 
-## ある日、容量を見た
+## Then one day I ran du
 
 ```bash
 $ du -sh ~/.claude
 2.5G    /Users/naito/.claude
 ```
 
-<Win98Dialog title="ディスクのクリーンアップ" icon="drive" :buttons="['OK', 'キャンセル']">
-  <code>~/.claude</code> が 2.5GB 使用しています。
+<Win98Dialog title="Disk Cleanup" icon="drive" :buttons="['OK', 'Cancel']">
+  <code>~/.claude</code> is using 2.5GB.
 </Win98Dialog>
 
 ---
 
-## `~/.claude` の中身
+## What is actually in `~/.claude`
 
 <ClaudeTree />
 
 ---
 
-## `.claude/projects/` の中身
+## Inside `.claude/projects/`
 
 <ProjectList />
 
 ---
 
-## ところが、掃除が進まない
+## Except nothing was safe to delete
 
 <ProjectList status />
 
 ---
 
-## そこで worktree 側を見た
-
-### <PixelIcon name="drive" /> 176 worktree / 319.6GB
+## I had been chasing the wrong 2.5GB
 
 <dl>
   <div>
@@ -84,28 +84,20 @@ $ du -sh ~/.claude
     <dd>2.5GB</dd>
   </div>
   <div>
-    <dt>worktree 全体</dt>
+    <dt>176 worktrees</dt>
     <dd><meter value="319.6" max="319.6"></meter></dd>
     <dd>319.6GB</dd>
   </div>
 </dl>
 
-<small>同じ縮尺</small>
-
----
-
-## 主犯は `.claude` ではなかった
-
-<figure class="scale">
-  <div class="whole">
-    <div class="part"></div>
-  </div>
+<figure>
+  <PixelIcon name="drive" />
   <figcaption>
-    <PixelIcon name="mirror" />
-    <strong>127 倍</strong>
-    <small>■ worktree 319.6GB<br>□ ~/.claude 2.5GB</small>
+    <strong>127&times;</strong>
   </figcaption>
 </figure>
+
+<small>The 2.5GB was never the cause. It was a mirror of the 319.6GB</small>
 
 ---
 layout: section
@@ -115,11 +107,11 @@ layout: section
 
 # PART 1
 
-## 消していい worktree を見分ける
+## Which worktrees are safe to delete?
 
 ---
 
-## まず gwq に聞く
+## Ask gwq first
 
 ```bash
 $ gwq status --filter inactive
@@ -128,11 +120,11 @@ BRANCH              STATUS      CHANGES   ACTIVITY
 1301-add-export     inactive              2 months ago
 ```
 
-<small>14 日触っていなければ inactive。ファイルの更新日時を見ているだけで、merged かどうかは見ていない</small>
+<small>Inactive only means nothing has touched the files for 14 days. It says nothing about whether the branch ever merged</small>
 
 ---
 
-## `.claude` 側にも聞く
+## Then ask `.claude`
 
 ```bash
 $ cclens sql "SELECT root, COUNT(*) AS sessions, MAX(started_at) AS last
@@ -144,35 +136,35 @@ $ cclens sql "SELECT root, COUNT(*) AS sessions, MAX(started_at) AS last
     <tr><th>root</th><th>sessions</th><th>last</th></tr>
   </thead>
   <tbody>
-    <tr><td>/Users/naito/src/app---12-login</td><td>3</td><td>2026-06-20</td></tr>
-    <tr><td>/Users/naito/src/app---47-retry</td><td>1</td><td>2026-07-02</td></tr>
-    <tr><td>/Users/naito/src/app---63-cache</td><td>8</td><td>2026-09-01</td></tr>
-    <tr><td>/Users/naito/src/app---94-oauth</td><td>5</td><td>2026-09-02</td></tr>
+    <tr><td>~/src/app-some---12-login</td><td>3</td><td>2026-06-20</td></tr>
+    <tr><td>~/src/app-some---47-retry</td><td>1</td><td>2026-07-02</td></tr>
+    <tr><td>~/src/app-other---63-cache</td><td>8</td><td>2026-09-01</td></tr>
+    <tr><td>~/src/app-some---94-oauth</td><td>5</td><td>2026-09-02</td></tr>
   </tbody>
 </table>
 
-<small>transcript の cwd から復元した実パスと、最後にセッションを始めた日。gwq の mtime とは別の一次情報</small>
+<small>The real path from each transcript's cwd, and the last day I worked there. A second opinion, independent of file mtime</small>
 
 ---
 
-## gwq の答えは `git branch -d`
+## gwq defers to `git branch -d`
 
 ```bash
 $ gwq remove -b 1234-fix-login
 ```
 
-<Win98Dialog title="エラー" icon="drive" :buttons="['OK']">
+<Win98Dialog title="Error" icon="drive" :buttons="['OK']">
   <code>not fully merged</code>
 </Win98Dialog>
 
-<small>squash merge だとローカルのコミットは main に残らない。git には merged が見えない</small>
+<small>With squash merges the local commits never reach main, so git never sees the merge</small>
 
 ---
 
-## 判定の根拠
+## Who do you trust for "merged"?
 
 <fieldset>
-  <legend>merged と言えるか</legend>
+  <legend>Can you call it merged?</legend>
   <div class="field-row">
     <input id="judge-d" type="radio" name="judge" disabled />
     <label for="judge-d"><code>gwq remove -b</code> = <code>git branch -d</code></label>
@@ -189,59 +181,59 @@ $ gwq remove -b 1234-fix-login
 
 ---
 
-## 判定フロー
+## Three checks before deleting
 
 <ol>
   <li>
     <PixelIcon name="folder" />
-    <p>未コミット差分</p>
+    <p>Uncommitted work</p>
     <code>gwq status --json</code>
   </li>
   <li>
     <PixelIcon name="mirror" />
-    <p>PR 履歴</p>
+    <p>PR history</p>
     <code>gh pr list --state merged</code>
   </li>
   <li>
     <PixelIcon name="trash" />
-    <p>merged だけ削除</p>
+    <p>Delete only what merged</p>
     <code>gwq remove -b --force-delete-branch</code>
   </li>
 </ol>
 
 ---
 
-## 176 worktree の棚卸し
+## Taking stock: 176 worktrees
 
 <table>
   <thead>
-    <tr><th>区分</th><th>件数</th><th>容量</th><th></th></tr>
+    <tr><th>Verdict</th><th>Count</th><th>Size</th><th></th></tr>
   </thead>
   <tbody>
-    <tr data-selected><td>削除候補（clean かつ merged 確認済み）</td><td>117</td><td>219.45GB</td><td><meter value="219.45" max="319.6"></meter></td></tr>
-    <tr><td>個別確認（PR 履歴なし）</td><td>30</td><td>38.63GB</td><td><meter value="38.63" max="319.6"></meter></td></tr>
-    <tr><td>保持（作業中）</td><td>15</td><td>27.91GB</td><td><meter value="27.91" max="319.6"></meter></td></tr>
-    <tr><td>個別確認（未コミット差分あり）</td><td>13</td><td>25.46GB</td><td><meter value="25.46" max="319.6"></meter></td></tr>
+    <tr data-selected><td>Safe to delete (clean and merged)</td><td>117</td><td>219.45GB</td><td><meter value="219.45" max="319.6"></meter></td></tr>
+    <tr><td>Needs a look (no PR history)</td><td>30</td><td>38.63GB</td><td><meter value="38.63" max="319.6"></meter></td></tr>
+    <tr><td>Keep (still working on it)</td><td>15</td><td>27.91GB</td><td><meter value="27.91" max="319.6"></meter></td></tr>
+    <tr><td>Needs a look (uncommitted work)</td><td>13</td><td>25.46GB</td><td><meter value="25.46" max="319.6"></meter></td></tr>
   </tbody>
   <tfoot>
-    <tr><td>合計</td><td>176</td><td>319.6GB</td><td><meter value="319.6" max="319.6"></meter></td></tr>
+    <tr><td>Total</td><td>176</td><td>319.6GB</td><td><meter value="319.6" max="319.6"></meter></td></tr>
   </tfoot>
 </table>
 
 ---
 
-## 削除と、そのエッジケース
+## Deleting them, and one surprise
 
 ```bash
 gwq remove -b --force-delete-branch "<branch>"
 rm -rf "<path>" && gwq prune
 ```
 
-<Win98Dialog title="エラー" icon="drive" :buttons="['OK']">
+<Win98Dialog title="Error" icon="drive" :buttons="['OK']">
   <code>File name too long</code>
 </Win98Dialog>
 
-<small><code>--force-delete-branch</code> は <code>git branch -D</code>。gh で merged を確かめたから使える</small>
+<small><code>--force-delete-branch</code> is <code>git branch -D</code>. I only reach for it because gh already confirmed the merge</small>
 
 ---
 layout: section
@@ -251,13 +243,13 @@ layout: section
 
 # PART 2
 
-## `.claude/projects` に戻る
+## Back to `.claude/projects`
 
 ---
 clicks: 1
 ---
 
-## 掃除の順番が逆だった
+## I had been cleaning in the wrong order
 
 <ProjectList status />
 
@@ -265,24 +257,24 @@ clicks: 1
 claude project purge
 ```
 
-<small>EXISTS / GONE は cclens の <code>root</code> に <code>test -d</code> を足しただけ</small>
+<small>EXISTS / GONE is nothing clever. It is cclens's <code>root</code> plus a <code>test -d</code></small>
 
 ---
 
-## 掃除は一度では終わらない
+## This is not a one-time job
 
 <dl>
   <div>
-    <dt><PixelIcon name="trash" /> purge 済み</dt>
-    <dd>11 件</dd>
+    <dt><PixelIcon name="trash" /> Purged</dt>
+    <dd>11</dd>
   </div>
   <div>
-    <dt><PixelIcon name="folder" /> 新しく増えた</dt>
-    <dd>14 件</dd>
+    <dt><PixelIcon name="folder" /> Newly created</dt>
+    <dd>14</dd>
   </div>
 </dl>
 
-<small>増えた 14 件のうち 1 件は、この発表のための worktree</small>
+<small>One of those 14 is the worktree for this talk</small>
 
 ---
 layout: section
@@ -292,17 +284,17 @@ layout: section
 
 # PART 3
 
-## auto memory は別の軸で溜まる
+## auto memory grows on its own axis
 
 ---
 
-## worktree とは無関係に積み上がる
+## It outlives every worktree
 
 <fieldset>
-  <legend>cleanupPeriodDays の対象</legend>
+  <legend>What cleanupPeriodDays covers</legend>
   <div class="field-row">
     <input id="cleanup-history" type="checkbox" checked />
-    <label for="cleanup-history">会話履歴</label>
+    <label for="cleanup-history">Conversation history</label>
   </div>
   <div class="field-row">
     <input id="cleanup-memory" type="checkbox" disabled />
@@ -312,9 +304,35 @@ layout: section
 
 ---
 
-## `MEMORY.md` には上限がある
+## `MEMORY.md` has a ceiling
 
 <MemoryLines />
+
+<small>The later you add a rule, the more quietly it stops being read</small>
+
+---
+
+## So you trim it by hand
+
+<ol>
+  <li>
+    <PixelIcon name="file" />
+    <p>Cut lines</p>
+    <code>edit MEMORY.md</code>
+  </li>
+  <li>
+    <PixelIcon name="chip" />
+    <p>Stop writing more</p>
+    <code>autoMemoryEnabled: false</code>
+  </li>
+  <li>
+    <PixelIcon name="trash" />
+    <p>Drop the whole project</p>
+    <code>claude project purge</code>
+  </li>
+</ol>
+
+<small>Nothing expires it for you, so it has to be on your list</small>
 
 ---
 
@@ -341,35 +359,35 @@ layout: section
 <figure>
   <PixelIcon name="trash" />
   <figcaption>
-    <strong>117 件・219.45GB</strong>
+    <strong>117 worktrees &middot; 219.45GB</strong>
   </figcaption>
 </figure>
 
 ---
 
-## 反省
+## Three things I got wrong
 
 <ol>
   <li>
     <PixelIcon name="mirror" />
-    <p>鏡の方を掃除していた</p>
-    <code>worktree から消す</code>
+    <p>I cleaned the mirror</p>
+    <code>delete the worktree</code>
   </li>
   <li>
     <PixelIcon name="drive" />
-    <p>git に merged を聞いていた</p>
+    <p>I asked git about merges</p>
     <code>gh pr list --state merged</code>
   </li>
   <li>
     <PixelIcon name="chip" />
-    <p>捨て時を決めていなかった</p>
+    <p>I never set an expiry</p>
     <code>gwq add --expires 7d</code>
   </li>
 </ol>
 
 ---
 
-## そして今も溜まっている
+## And it is piling up again
 
 ```text
 $ cclens doctor
@@ -384,24 +402,24 @@ CONFIG WORTH PRUNING
   ~/.claude: 13 surfaces installed but never used
 ```
 
-<small>このスライドを作っていた Claude Code のセッション</small>
+<small>From the Claude Code session that built these slides</small>
 
 ---
 layout: section
 ---
 
-## 働き方はこれからも変わる
+## The way we work keeps changing
 
-# 掃除も、続く仕事になる
+# So cleaning up is part of the job
 
 ---
 
-## 参考
+## References
 
 <ul>
-  <li>Claude Code / メモリ <a href="https://code.claude.com/docs/en/memory">code.claude.com/docs/en/memory</a></li>
-  <li>Claude Code / .claude ディレクトリ <a href="https://code.claude.com/docs/en/claude-directory">code.claude.com/docs/en/claude-directory</a></li>
-  <li>Claude Code / セッション <a href="https://code.claude.com/docs/en/sessions#where-transcripts-are-stored">code.claude.com/docs/en/sessions</a></li>
+  <li>Claude Code / Memory <a href="https://code.claude.com/docs/en/memory">code.claude.com/docs/en/memory</a></li>
+  <li>Claude Code / .claude directory <a href="https://code.claude.com/docs/en/claude-directory">code.claude.com/docs/en/claude-directory</a></li>
+  <li>Claude Code / Sessions <a href="https://code.claude.com/docs/en/sessions#where-transcripts-are-stored">code.claude.com/docs/en/sessions</a></li>
   <li>cclens <a href="https://github.com/lambdalisue/cclens">github.com/lambdalisue/cclens</a> &mdash; <code>sql</code> / <code>doctor</code></li>
   <li>gwq <a href="https://github.com/d-kuro/gwq">github.com/d-kuro/gwq</a> &mdash; <code>status --filter inactive</code> / <code>remove -b</code> / <code>add --expires</code> / <code>prune --expired</code></li>
 </ul>

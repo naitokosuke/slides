@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { title = "AIによって仕事のスタイルが変わった、大掃除だ" } = defineProps<{
+const { title = "AI Changed How I Work. My Disk Paid for It" } = defineProps<{
   title?: string;
 }>();
 </script>

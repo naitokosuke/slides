@@ -8,9 +8,9 @@ const { currentSlideNo, total } = useNav();
   <footer>
     <button>
       <PixelIcon name="start" />
-      スタート
+      Start
     </button>
-    <button>大掃除.exe - {{ currentSlideNo }} / {{ total }}</button>
+    <button>cleanup.exe - {{ currentSlideNo }} / {{ total }}</button>
     <div class="status-field-border">2026-09-12</div>
   </footer>
 </template>

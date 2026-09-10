@@ -8,32 +8,24 @@ const root: TreeNode = {
       name: "projects/",
       children: [
         {
-          name: "-Users-naito-src-app/",
-          note: "repo 本体",
+          name: "app-some/",
+          note: "the repo itself",
           children: [
             {
               name: "memory/",
-              note: "worktree 間で共有、sweep 対象外",
+              note: "shared across worktrees, never swept",
               children: [{ name: "MEMORY.md" }],
             },
-            { name: "6f2a….jsonl", note: "cleanupPeriodDays で消える" },
+            { name: "6f2a….jsonl", note: "removed by cleanupPeriodDays" },
           ],
         },
         {
-          name: "-Users-naito-src-app---12-login/",
-          note: "worktree ごと",
-          children: [
-            { name: "8c1d….jsonl" },
-            {
-              name: "8c1d…/",
-              children: [{ name: "subagents/" }, { name: "tool-results/" }],
-            },
-          ],
+          name: "app-some---12-login/",
+          note: "one per worktree",
+          children: [{ name: "8c1d….jsonl" }],
         },
-        { name: "-Users-naito-src-app---47-retry/" },
       ],
     },
-    { name: "history.jsonl" },
   ],
 };
 </script>

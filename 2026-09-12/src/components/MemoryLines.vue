@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const read = [92, 74, 88, 61, 96, 55, 83, 70, 90, 48];
+const read = [92, 74, 88, 61, 96, 55, 83, 70];
 
-const over = [81, 58, 89, 72, 66, 85, 51, 93, 68, 79, 60, 87, 71, 95];
+const over = [81, 58, 89, 72, 66, 85, 51, 93, 68, 79, 60, 87];
 </script>
 
 <template>
@@ -24,8 +24,8 @@ const over = [81, 58, 89, 72, 66, 85, 51, 93, 68, 79, 60, 87, 71, 95];
       </div>
     </div>
     <div class="status-bar">
-      <p class="status-bar-field">先頭 200 行 / 25KB</p>
-      <p class="status-bar-field">以降は読まれない</p>
+      <p class="status-bar-field">First 200 lines / 25KB</p>
+      <p class="status-bar-field">The rest is never read</p>
     </div>
   </div>
 </template>

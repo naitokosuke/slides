@@ -80,8 +80,7 @@
   --dialog-button-w: 6rem;
   --table-meter-w: 14rem;
   --table-meter-h: 1.3rem;
-  --scale-w: 19rem;
-  --scale-part: 1.68rem;
+  --workspace-w: 16rem;
 
   --motion-slide: 0.2s;
   --motion-zoom: 0.24s;
@@ -157,8 +156,7 @@
           box-sizing: content-box;
           height: var(--title-h);
           margin: 0;
-          padding-bottom: var(--space-2);
-          border-bottom: var(--rule-w) solid var(--c-shadow);
+          padding-bottom: var(--space-3);
           overflow: hidden;
           font-size: var(--text-lg);
           line-height: var(--title-h);
@@ -301,6 +299,14 @@
           padding: 0;
           list-style: none;
           font-size: var(--text-xs);
+
+          > li {
+            line-height: var(--leading-loose);
+
+            > code {
+              white-space: nowrap;
+            }
+          }
         }
 
         dl {
@@ -480,37 +486,6 @@
             flex: 1;
             min-height: 0;
             overflow: hidden;
-          }
-        }
-
-        .scale {
-          flex: 1;
-          min-height: 0;
-          align-items: center;
-
-          > .whole {
-            flex: none;
-            width: var(--scale-w);
-            height: var(--scale-w);
-            display: flex;
-            align-items: flex-end;
-            padding: var(--space-1);
-            background: var(--c-accent);
-            box-shadow: var(--bevel-sunken);
-
-            > .part {
-              width: var(--scale-part);
-              height: var(--scale-part);
-              background: var(--c-light);
-              box-shadow: var(--bevel-raised);
-            }
-          }
-
-          > figcaption {
-            > img {
-              width: var(--icon-lg);
-              height: var(--icon-lg);
-            }
           }
         }
       }

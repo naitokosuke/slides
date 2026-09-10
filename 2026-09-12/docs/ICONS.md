@@ -7,15 +7,15 @@
 `PixelIcon.vue` のマッピング。
 
 | `name`   | ファイル (@react95/icons/png/) |
-| -------- | ------------------------------- |
-| `folder` | `Folder_32x32_4.png`             |
-| `open`   | `FolderOpen_32x32_4.png`         |
-| `file`   | `FileText_32x32_4.png`           |
-| `drive`  | `Defrag_32x32_4.png`             |
-| `trash`  | `RecycleFull_32x32_4.png`        |
-| `chip`   | `Memory_32x32_4.png`             |
-| `mirror` | `Computer_32x32_4.png`           |
-| `start`  | `Logo_16x16_4.png`               |
+| -------- | ------------------------------ |
+| `folder` | `Folder_32x32_4.png`           |
+| `open`   | `FolderOpen_32x32_4.png`       |
+| `file`   | `FileText_32x32_4.png`         |
+| `drive`  | `Defrag_32x32_4.png`           |
+| `trash`  | `RecycleFull_32x32_4.png`      |
+| `chip`   | `Memory_32x32_4.png`           |
+| `mirror` | `Computer_32x32_4.png`         |
+| `start`  | `Logo_16x16_4.png`             |
 
 ## ライセンスについて（要注意）
 
