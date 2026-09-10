@@ -21,15 +21,15 @@ seoMeta:
   author: "ナイトウコウスケ"
   ogTitle: "最高の DX - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発"
   ogDescription: "Vue Fes Japan 2025 『最高の DX - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発』の登壇資料"
-  ogImage: "https://naitokosuke.github.io/vue-fes-japan-2025-slide/og-image.png"
+  ogImage: "https://slides.naito.dev/2025-10-25/og-image.png"
   ogType: "website"
-  ogUrl: "https://naitokosuke.github.io/vue-fes-japan-2025-slide/"
+  ogUrl: "https://slides.naito.dev/2025-10-25/"
   twitterCard: "summary_large_image"
   twitterSite: "@naitokosuke"
   twitterCreator: "@naitokosuke"
   twitterTitle: "最高の DX - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発"
   twitterDescription: "Vue Fes Japan 2025 『最高の DX - Nuxt Typed Router と Pinia Colada で実現する次世代 Vue/Nuxt 開発』の登壇資料"
-  twitterImage: "https://naitokosuke.github.io/vue-fes-japan-2025-slide/og-image.png"
+  twitterImage: "https://slides.naito.dev/2025-10-25/og-image.png"
 download: false
 ---
 
@@ -50,8 +50,8 @@ layout: center
 ---
 
 <div class="h-full grid place-items-center">
-  <QRCode url="https://naitokosuke.github.io/vue-fes-japan-2025-slide-lite/" :size="500" />
-  <a class="text-3xl opacity-80" href="https://naitokosuke.github.io/vue-fes-japan-2025-slide-lite/">https://naitokosuke.github.io/vue-fes-japan-2025-slide-lite/</a>
+  <QRCode url="https://slides.naito.dev/2025-10-25-lite/" :size="500" />
+  <a class="text-3xl opacity-80" href="https://slides.naito.dev/2025-10-25-lite/">https://slides.naito.dev/2025-10-25-lite/</a>
 </div>
 
 ---
@@ -60,8 +60,8 @@ transition: fade
 ---
 
 <div class="h-full grid place-items-center">
-  <QRCode url="https://naitokosuke.github.io/vue-fes-japan-2025-slide/" :size="500" />
-  <a class="text-3xl opacity-80" href="https://naitokosuke.github.io/vue-fes-japan-2025-slide/">https://naitokosuke.github.io/vue-fes-japan-2025-slide/</a>
+  <QRCode url="https://slides.naito.dev/2025-10-25/" :size="500" />
+  <a class="text-3xl opacity-80" href="https://slides.naito.dev/2025-10-25/">https://slides.naito.dev/2025-10-25/</a>
 </div>
 
 ---
