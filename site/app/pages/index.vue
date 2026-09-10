@@ -5,7 +5,8 @@ const formatDate = (dateStr: string) => {
   const match = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})/);
   if (!match) return dateStr;
   const [, year, month, day] = match;
-  const date = new Date(Number(year), Number(month) - 1, Number(day));
+  const date = new Date(`${year}-${month}-${day}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return dateStr;
   return date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -34,7 +35,13 @@ const formatDate = (dateStr: string) => {
     <ul role="list">
       <li v-for="slide in slides" :key="slide.folder">
         <a :href="`/${slide.folder}/`">
-          <img :src="slide.ogImage" :alt="slide.title" loading="lazy" />
+          <img
+            v-if="slide.ogImage"
+            :src="slide.ogImage"
+            :alt="slide.title"
+            loading="lazy"
+          />
+          <p v-else class="no-preview">No preview yet</p>
           <div>
             <time :datetime="slide.date">{{ formatDate(slide.date) }}</time>
             <h2>{{ slide.title }}</h2>
@@ -190,6 +197,18 @@ main {
           transform 0.4s ease,
           opacity 0.3s ease;
         opacity: 0.9;
+      }
+
+      .no-preview {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        aspect-ratio: 1200 / 630;
+        background: rgba(20, 35, 55, 0.5);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        color: rgba(120, 160, 200, 0.5);
       }
 
       div {

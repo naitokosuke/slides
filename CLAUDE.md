@@ -4,6 +4,17 @@
 
 When creating command-line interfaces, use the `use-gunshi-cli` skill.
 
+## Dev Server
+
+`nr dev` runs `scripts/picker.ts dev`, which starts a single server on port 3030 instead of prompting for a deck.
+
+- `/` is the Nuxt app in `site/`, rendering the OG-image grid from the local tree
+- `/<date>/` lazily spawns `slidev --base /<date>/` on a free port and proxies to it, websocket upgrades included
+- `scripts/dev-server.ts` owns the routing, the loading and error pages, and the back-to-index link injected into deck HTML
+- OG images are read from `<date>/og-image.png`, so `site/` never falls back to `slides.naito.dev`
+
+`build`, `export` and `create` still use the `prompts` picker.
+
 ## Fonts
 
 Local font collection is available at the sibling directory: `../awesome-fonts-awesome-fonts/`
