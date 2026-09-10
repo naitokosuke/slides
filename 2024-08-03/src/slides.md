@@ -108,7 +108,7 @@ transition: view-transition
     </a>
   </li>
   <li>
-    <a href="https://github.com/kosuke222naito" target="_blank" rel="noopener noreferrer">
+    <a href="https://github.com/naitokosuke" target="_blank" rel="noopener noreferrer">
       <carbon-logo-github /> GitHub <carbon-new-tab />
     </a>
   </li>
@@ -154,7 +154,7 @@ layoutClass: gap-16
     </a>
   </li>
   <li>
-    <a href="https://github.com/kosuke222naito" target="_blank" rel="noopener noreferrer">
+    <a href="https://github.com/naitokosuke" target="_blank" rel="noopener noreferrer">
       <carbon-logo-github /> GitHub <carbon-new-tab />
     </a>
   </li>
