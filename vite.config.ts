@@ -1,8 +1,14 @@
 import { defineConfig } from "vite-plus";
 import "@slidev/cli";
 import MarkdownItMagicLink from "markdown-it-magic-link";
+import { slidesDevServer } from "./scripts/dev/plugin.ts";
 
 export default defineConfig({
+  defaultPackage: { dev: "." },
+  plugins: [slidesDevServer()],
+  server: {
+    port: 3030,
+  },
   fmt: {
     semi: true,
     singleQuote: false,

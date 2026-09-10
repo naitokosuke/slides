@@ -1,37 +1,31 @@
 import fs from "node:fs";
 import fsp from "node:fs/promises";
-import http from "node:http";
+import type http from "node:http";
 import type { Socket } from "node:net";
 import path from "node:path";
 import process from "node:process";
-import { execa } from "execa";
 import {
   freePort,
   killChildren,
   pipeLogs,
   spawnChild,
   waitForPort,
-} from "./dev/children.ts";
+} from "./children.ts";
 import {
   deckStatus,
   ensureDeck,
   isSlideFolder,
   readyDeckPort,
-} from "./dev/decks.ts";
+} from "./decks.ts";
 import {
   proxyRequest,
   proxyUpgrade,
   send,
   sendHtml,
   sendText,
-} from "./dev/http.ts";
-import {
-  backLink,
-  errorPage,
-  loadingPage,
-  STATUS_PREFIX,
-} from "./dev/pages.ts";
-import { publicDir, rootDir, siteDir } from "./dev/paths.ts";
+} from "./http.ts";
+import { backLink, errorPage, loadingPage, STATUS_PREFIX } from "./pages.ts";
+import { publicDir, rootDir, siteDir } from "./paths.ts";
 
 const DECK_ROUTE = /^\/(\d{4}-\d{2}-\d{2}(?:-\w+)?)(?=$|[/?])(\/[^?]*)?/;
 
@@ -117,84 +111,68 @@ async function startSite() {
   return port;
 }
 
-function openBrowser(url: string) {
-  const command =
-    process.platform === "darwin"
-      ? "open"
-      : process.platform === "win32"
-        ? "start"
-        : "xdg-open";
-  void execa(command, [url], {
-    stdio: "ignore",
-    reject: false,
-    shell: process.platform === "win32",
-  });
-}
+export function slidesDevServer() {
+  return {
+    name: "slides-dev-server",
+    apply: "serve",
+    async configureServer(server) {
+      const sitePort = await startSite();
 
-export async function startDevServer({
-  port,
-  open,
-}: {
-  port: number;
-  open: boolean;
-}) {
-  const sitePort = await startSite();
+      server.middlewares.use((req, res) => {
+        const url = req.url ?? "/";
+        const pathname = url.split("?")[0];
 
-  const server = http.createServer((req, res) => {
-    const url = req.url ?? "/";
-    const pathname = url.split("?")[0];
+        if (pathname.startsWith(STATUS_PREFIX)) {
+          const folder = pathname.slice(STATUS_PREFIX.length);
+          send(
+            res,
+            200,
+            "application/json; charset=utf-8",
+            JSON.stringify({ status: deckStatus(folder) }),
+          );
+          return;
+        }
 
-    if (pathname.startsWith(STATUS_PREFIX)) {
-      const folder = pathname.slice(STATUS_PREFIX.length);
-      send(
-        res,
-        200,
-        "application/json; charset=utf-8",
-        JSON.stringify({ status: deckStatus(folder) }),
-      );
-      return;
-    }
+        const match = DECK_ROUTE.exec(url);
+        if (!match || !isSlideFolder(match[1])) {
+          if (servePublicFile(pathname, res)) return;
+          proxyRequest(req, res, deckPortFromReferer(req) ?? sitePort);
+          return;
+        }
 
-    const match = DECK_ROUTE.exec(url);
-    if (!match || !isSlideFolder(match[1])) {
-      if (servePublicFile(pathname, res)) return;
-      proxyRequest(req, res, deckPortFromReferer(req) ?? sitePort);
-      return;
-    }
+        const [, folder, rest] = match;
 
-    const [, folder, rest] = match;
+        if (!rest) {
+          res.writeHead(302, { location: `/${folder}/` });
+          res.end();
+          return;
+        }
 
-    if (!rest) {
-      res.writeHead(302, { location: `/${folder}/` });
-      res.end();
-      return;
-    }
+        if (rest === "/og-image.png") {
+          void serveOgImage(folder, res);
+          return;
+        }
 
-    if (rest === "/og-image.png") {
-      void serveOgImage(folder, res);
-      return;
-    }
+        serveDeck(req, res, folder);
+      });
 
-    serveDeck(req, res, folder);
-  });
+      const httpServer = server.httpServer;
+      if (httpServer) {
+        httpServer.removeAllListeners("upgrade");
+        httpServer.on("upgrade", (req, socket, head) => {
+          const match = DECK_ROUTE.exec(req.url ?? "/");
+          const deckPort = match ? readyDeckPort(match[1]) : undefined;
+          proxyUpgrade(req, socket as Socket, head, deckPort ?? sitePort);
+        });
+      }
 
-  server.on("upgrade", (req, socket, head) => {
-    const match = DECK_ROUTE.exec(req.url ?? "/");
-    const deckPort = match ? readyDeckPort(match[1]) : undefined;
-    proxyUpgrade(req, socket as Socket, head, deckPort ?? sitePort);
-  });
-
-  await new Promise<void>((resolve) => server.listen(port, resolve));
-
-  const url = `http://localhost:${port}/`;
-  console.log(`\n  Slides dev server ready at ${url}\n`);
-  if (open) openBrowser(url);
-
-  const shutdown = () => {
-    killChildren();
-    process.exit(0);
+      const shutdown = () => {
+        killChildren();
+        process.exit(0);
+      };
+      process.on("SIGINT", shutdown);
+      process.on("SIGTERM", shutdown);
+      process.on("exit", killChildren);
+    },
   };
-  process.on("SIGINT", shutdown);
-  process.on("SIGTERM", shutdown);
-  process.on("exit", killChildren);
 }

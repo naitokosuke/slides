@@ -5,7 +5,6 @@ import { fileURLToPath } from "node:url";
 import { cli, define } from "gunshi";
 import prompts from "prompts";
 import { execa } from "execa";
-import { startDevServer } from "./dev-server.ts";
 
 const rootDir = fileURLToPath(new URL("..", import.meta.url));
 
@@ -20,8 +19,16 @@ async function getFolders() {
   return folders;
 }
 
-async function pickFolder(useLatest: boolean) {
+async function pickFolder(date: string | undefined, useLatest: boolean) {
   const folders = await getFolders();
+
+  if (date) {
+    if (!folders.includes(date)) {
+      console.error(`No slide folder named: ${date}`);
+      process.exit(1);
+    }
+    return date;
+  }
 
   if (useLatest) {
     return folders[0];
@@ -46,31 +53,15 @@ async function runSlidev(folder: string, command: string, extraArgs: string[]) {
   });
 }
 
-const devCommand = define({
-  name: "dev",
-  description: "Serve the slide index and every deck from one dev server",
-  args: {
-    port: {
-      type: "number",
-      short: "p",
-      description: "Port to listen on",
-      default: 3030,
-    },
-    open: {
-      type: "boolean",
-      description: "Open browser automatically",
-      default: false,
-    },
-  },
-  run: async (ctx) => {
-    await startDevServer({ port: ctx.values.port, open: ctx.values.open });
-  },
-});
-
 const buildCommand = define({
   name: "build",
   description: "Build a slide for production",
   args: {
+    date: {
+      type: "positional",
+      multiple: true,
+      description: "Folder to build (YYYY-MM-DD), defaults to the picker",
+    },
     yes: {
       type: "boolean",
       short: "y",
@@ -79,7 +70,7 @@ const buildCommand = define({
     },
   },
   run: async (ctx) => {
-    const folder = await pickFolder(ctx.values.yes);
+    const folder = await pickFolder(ctx.values.date?.[0], ctx.values.yes);
     if (!folder) return;
 
     await runSlidev(folder, "build", []);
@@ -90,6 +81,11 @@ const exportCommand = define({
   name: "export",
   description: "Export a slide to PDF",
   args: {
+    date: {
+      type: "positional",
+      multiple: true,
+      description: "Folder to export (YYYY-MM-DD), defaults to the picker",
+    },
     yes: {
       type: "boolean",
       short: "y",
@@ -98,7 +94,7 @@ const exportCommand = define({
     },
   },
   run: async (ctx) => {
-    const folder = await pickFolder(ctx.values.yes);
+    const folder = await pickFolder(ctx.values.date?.[0], ctx.values.yes);
     if (!folder) return;
 
     await runSlidev(folder, "export", []);
@@ -207,7 +203,7 @@ ${date}
     console.log(`      ├── images/`);
     console.log(`      └── public/`);
     console.log();
-    console.log(`Run "pnpm dev" to start editing`);
+    console.log(`Run "vp dev" to start editing`);
   },
 });
 
@@ -215,7 +211,7 @@ const mainCommand = define({
   name: "picker",
   description: "Slide picker CLI",
   run: () => {
-    console.log("Available commands: create, dev, build, export");
+    console.log("Available commands: create, build, export");
     console.log('Run "picker --help" for more information');
   },
 });
@@ -225,7 +221,6 @@ await cli(process.argv.slice(2), mainCommand, {
   version: "1.0.0",
   subCommands: {
     create: createCommand,
-    dev: devCommand,
     build: buildCommand,
     export: exportCommand,
   },
