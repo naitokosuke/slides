@@ -6,6 +6,7 @@ export default defineConfig({
     chunkSizeWarningLimit: 8000,
   },
   optimizeDeps: {
+    include: ["@vueuse/integrations/useQRCode"],
     exclude: ["monaco-editor"],
   },
 });
