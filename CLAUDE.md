@@ -6,14 +6,15 @@ When creating command-line interfaces, use the `use-gunshi-cli` skill.
 
 ## Dev Server
 
-`nr dev` runs `scripts/picker.ts dev`, which starts a single server on port 3030 instead of prompting for a deck.
+`vp dev` starts a single server on port 3030. `defaultPackage.dev` in `vite.config.ts` points it at the repository root, so it never asks which workspace package to run.
 
 - `/` is the Nuxt app in `site/`, rendering the OG-image grid from the local tree
 - `/<date>/` lazily spawns `slidev --base /<date>/` on a free port and proxies to it, websocket upgrades included
-- `scripts/dev-server.ts` owns the routing, the loading and error pages, and the back-to-index link injected into deck HTML
+- `scripts/dev/plugin.ts` is the Vite plugin that owns the routing, the loading and error pages, and the back-to-index link injected into deck HTML
+- The plugin takes over the dev server's `upgrade` listener, because the root Vite server renders nothing of its own and its HMR socket would otherwise compete with the deck and site sockets
 - OG images are read from `<date>/og-image.png`, so `site/` never falls back to `slides.naito.dev`
 
-`build`, `export` and `create` still use the `prompts` picker.
+`build:slide`, `export:slide` and `create:slide` still use the `prompts` picker, and the first two also take a date, e.g. `vp run build:slide 2026-02-06`.
 
 ## Fonts
 
