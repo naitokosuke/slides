@@ -18,6 +18,7 @@
     "@iconify-json/noto": "catalog:slidev-presentation",
     "@slidev/cli": "catalog:slidev-presentation",
     "@slidev/theme-default": "catalog:slidev-presentation",
+    "@slidev/types": "catalog:slidev-presentation",
     "@vueuse/integrations": "catalog:slidev-presentation",
     "qrcode": "catalog:slidev-presentation",
     "vue": "catalog:demo-deps",
