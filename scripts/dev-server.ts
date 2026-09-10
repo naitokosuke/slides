@@ -58,6 +58,23 @@ async function serveOgImage(folder: string, res: http.ServerResponse) {
   }
 }
 
+function deckPortFromReferer(req: http.IncomingMessage) {
+  const referer = req.headers.referer;
+  if (!referer) return undefined;
+  if (req.headers["sec-fetch-mode"] === "navigate") return undefined;
+  if (String(req.headers.accept ?? "").includes("text/html")) return undefined;
+
+  let pathname: string;
+  try {
+    pathname = new URL(referer).pathname;
+  } catch {
+    return undefined;
+  }
+
+  const match = DECK_ROUTE.exec(pathname);
+  return match ? readyDeckPort(match[1]) : undefined;
+}
+
 function serveDeck(
   req: http.IncomingMessage,
   res: http.ServerResponse,
@@ -140,7 +157,8 @@ export async function startDevServer({
 
     const match = DECK_ROUTE.exec(url);
     if (!match || !isSlideFolder(match[1])) {
-      if (!servePublicFile(pathname, res)) proxyRequest(req, res, sitePort);
+      if (servePublicFile(pathname, res)) return;
+      proxyRequest(req, res, deckPortFromReferer(req) ?? sitePort);
       return;
     }
 
