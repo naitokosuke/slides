@@ -14,6 +14,7 @@ catalogs:
     "@slidev/cli": ^52.0.0
     "@slidev/theme-default": latest
     "@slidev/theme-seriph": latest
+    "@slidev/types": ^52.0.0
     "@iconify-json/logos": ^1.1.20
     "@iconify-json/material-icon-theme": ^1.2.29
     "@iconify-json/material-symbols": ^1.2.39
@@ -26,7 +27,7 @@ catalogs:
 
   # Monaco Editor
   monaco:
-    monaco-editor: ^0.55.1
+    monaco-editor: ^0.56.0
 
   # デモアプリ依存関係
   demo-deps:

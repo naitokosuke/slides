@@ -4,15 +4,9 @@ export default defineConfig({
   base: process.env.BASE_URL || "/",
   build: {
     chunkSizeWarningLimit: 8000,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          monaco: ["monaco-editor"],
-        },
-      },
-    },
   },
   optimizeDeps: {
+    include: ["@vueuse/integrations/useQRCode"],
     exclude: ["monaco-editor"],
   },
 });

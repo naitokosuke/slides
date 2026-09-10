@@ -82,7 +82,7 @@ transition: view-transition
 import { ref } from "vue";
 import { useQRCode } from "@vueuse/integrations/useQRCode";
 
-const text = ref("https://kosuke222naito.github.io/20240914-lt/");
+const text = ref("https://slides.naito.dev/2024-09-14/");
 const qrcode = useQRCode(text);
 </script>
 
@@ -128,7 +128,7 @@ layout: two-cols
 import { ref } from "vue";
 import { useQRCode } from "@vueuse/integrations/useQRCode";
 
-const text = ref("https://kosuke222naito.github.io/20240914-lt/");
+const text = ref("https://slides.naito.dev/2024-09-14/");
 const qrcode = useQRCode(text);
 </script>
 
@@ -154,7 +154,7 @@ layoutClass: gap-16
     </a>
   </li>
   <li>
-    <a href="https://github.com/kosuke222naito" target="_blank" rel="noopener noreferrer">
+    <a href="https://github.com/naitokosuke" target="_blank" rel="noopener noreferrer">
       <carbon-logo-github text-blue /> GitHub <carbon-new-tab />
     </a>
   </li>

@@ -259,7 +259,7 @@ transition: slide-up
 
 - アーキテクチャ
   - GoF のデザインパターンからファクトリメソッドパターンを採用
-  - https://kosuke222naito.github.io/20240803-lt/
+  - https://slides.naito.dev/2024-08-03/
 
 ---
 transition: slide-left
