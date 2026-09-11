@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "98.css": "^0.1.21",
-    "@react95/icons": "^2.5.3"
+    "@react95/icons": "^2.5.3",
+    "qrcode": "catalog:misc"
   }
 }

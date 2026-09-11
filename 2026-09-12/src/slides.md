@@ -40,6 +40,45 @@ layout: cover
 </footer>
 
 ---
+
+<div class="qr-slide">
+  <img :src="qrcode" alt="QR code for the slide URL" class="win98-qr" />
+  <a href="https://slides.naito.dev/2026-09-12/1">https://slides.naito.dev/2026-09-12/1</a>
+</div>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import QRCode from "qrcode";
+
+const qrcode = ref("");
+QRCode.toDataURL("https://slides.naito.dev/2026-09-12/1", {
+  errorCorrectionLevel: "M",
+  margin: 2,
+  scale: 1,
+}).then((dataUrl) => (qrcode.value = dataUrl));
+</script>
+
+<style>
+.qr-slide {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+
+  .win98-qr {
+    width: 23rem;
+    height: 23rem;
+    padding: var(--space-4);
+    background: var(--c-light);
+    box-shadow: var(--bevel-sunken);
+    image-rendering: pixelated;
+  }
+}
+</style>
+
+---
 clicks: 1
 ---
 
