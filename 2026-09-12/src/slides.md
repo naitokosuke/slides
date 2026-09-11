@@ -88,7 +88,59 @@ clicks: 1
 
 ---
 
-## Then one day I ran du
+## Somewhere I'd read this
+
+<div class="tip-body">
+  <div class="dialog-wrap">
+    <Win98Dialog title="Tip of the Day" icon="chip" :buttons="['Next Tip', 'Close']">
+      Review your agent's skills and rules. Regularly.
+    </Win98Dialog>
+  </div>
+  <small class="evidence">
+    <a href="https://x.com/MyWestLord/status/2082855525956415987">https://x.com/MyWestLord/status/2082855525956415987</a>
+  </small>
+</div>
+
+<style>
+.tip-body {
+  flex: 1;
+  display: grid;
+  grid-template-rows: 1fr auto;
+
+  .dialog-wrap {
+    display: grid;
+    place-items: center;
+  }
+
+  .evidence {
+    justify-self: end;
+  }
+
+  :deep(.window-body) {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-7);
+    gap: var(--space-7);
+
+    > img {
+      width: var(--icon-xl);
+      height: var(--icon-xl);
+    }
+
+    > p {
+      font-size: var(--text-lg);
+    }
+  }
+
+  :deep(footer) {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+  }
+}
+</style>
+
+---
+
+## Then, I ran du
 
 ```bash
 $ du -sh ~/.claude
@@ -148,8 +200,6 @@ layout: section
 ---
 
 <PixelIcon name="folder" />
-
-# PART 1
 
 ## Which worktrees are safe to delete?
 
@@ -285,8 +335,6 @@ layout: section
 
 <PixelIcon name="folder" />
 
-# PART 2
-
 ## Back to `.claude/projects`
 
 ---
@@ -326,9 +374,24 @@ layout: section
 
 <PixelIcon name="chip" />
 
-# PART 3
-
 ## auto memory grows on its own axis
+
+---
+
+## I found the remains of an old directory too
+
+```bash
+$ ls ~/.claude/.../
+before-move/app-some/memory
+app-some/memory
+```
+
+<small>
+  Two projects, one repo.
+
+  <br />
+  <code>before-move</code> hasn't existed since I moved to ghq + gwq, but its <code>memory/</code> still has 20 files
+</small>
 
 ---
 
@@ -348,11 +411,294 @@ layout: section
 
 ---
 
+## `MEMORY.md` is the index
+
+```text
+~/.claude/projects/<project>/memory/
+├── MEMORY.md      # index, one line per memory
+├── feedback_*.md  # one memory
+├── project_*.md   # one memory
+└── ...
+```
+
+<small>&ldquo;MEMORY.md acts as an index of the memory directory&rdquo; &mdash; <a href="https://code.claude.com/docs/en/memory">code.claude.com/docs/en/memory</a></small>
+
+---
+
 ## `MEMORY.md` has a ceiling
 
 <MemoryLines />
 
-<small>The later you add a rule, the more quietly it stops being read</small>
+<small>112 lines, 27.7KB &mdash; under the 200-line cap, already past the 25KB one</small>
+
+---
+layout: section
+---
+
+<PixelIcon name="chip" />
+
+## Here's the whole list
+
+---
+
+<MemoryWall :items="[
+  'Query Sentry directly, don\'t guess a URL',
+  'ADRs: only real decisions',
+  'Adversarial review before calling it best',
+  'Agent prompts: direct, imperative',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Answer only what\'s asked',
+  'Check child tasks before porting',
+  'Confirm before acting on scope',
+  'Correct means edit in place',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Pure CSS only',
+  'A memo scopes to investigation only',
+  'Discuss before forcing a choice',
+  'Docs are a contract, not fact',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Don\'t drop content over branch gaps',
+  'Don\'t idle-wait, keep working',
+  'Don\'t satisfy reviews superficially',
+  'Enrich the ticket, not a local memo',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Exclusion needs inclusion\'s rigor',
+  'Use headings in tracker comments',
+  'Tracker markdown needs a trailing backslash',
+  'Reply in-thread, not a new comment',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Verify files before grouping',
+  'Notes: no summaries, no negatives',
+  'No progress meta in ticket text',
+  'Locate by query, not by guess',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Match an existing list\'s terseness',
+  'A shared memo folder is write-only',
+  'Verify the dev build before merging',
+  'Minimal code comments',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Minimize character count',
+  'Fill placeholders from the diff',
+  'No trivia in change descriptions',
+  'A notes folder isn\'t a WIP fallback',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'A notes folder isn\'t for the team',
+  'Never fabricate tool results',
+  'No unprompted at-mentions',
+  'Don\'t iterate reviews on your own',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Re-explain fully, don\'t just point back',
+  'No re-confirming after just act',
+  'After pushing, check CI yourself',
+  'Exclude debug code without asking',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'No praising the user\'s own input',
+  'Don\'t drop a feature for green CI',
+  'No file:line refs in docs',
+  'No flip-flopping',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'No force-push',
+  'No invented abstractions or fake choices',
+  'No jargon',
+  'No stiff formality in tracker comments',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'No trailing periods in short text',
+  'No language-specific jargon',
+  'No lies',
+  'No meaningless labels',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'No meta fluff in docs',
+  'No meta narrative in prompts',
+  'No mocking without permission',
+  'No unexplained internal abbreviations',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'No self-mentions in a design talk',
+  'No personal paths baked into code',
+  'No numbered lists for short updates',
+  'Don\'t hardcode a busy dev port',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'No progress notes in code',
+  'No pushing without being asked',
+  'Don\'t reload a page mid-score',
+  'Don\'t repeat template variations',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Verify side effects with a dry run',
+  'Skills shouldn\'t reference each other',
+  'Skip TDD ritual for a clear fix',
+  'No unilateral prerequisite actions',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'No unprompted tracker comments',
+  'No unprompted ticket creation',
+  'No unrequested browser navigation',
+  'No unrequested title edits',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'No unrequested worktree changes',
+  'No vacuous precondition asserts',
+  'No UI library, write it plain',
+  'An operation needs no caller context',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'A plan is a statement, not an order',
+  'Port from the real merge branch',
+  'No fabricated artifacts in a port',
+  'A port invents no prerequisites',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'A pure file list needs no caption',
+  'A refactor branch can lead main',
+  'Escaping matters in regex replacement',
+  'Define symptom and data first',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Respond first, then keep working',
+  'Run the formatter before pushing',
+  'Semantic HTML',
+  'Link a blocker, don\'t just comment',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'A skill counts once it\'s deployed',
+  'Splitting a ticket means summarizing its parent',
+  'Split scope creep into its own ticket',
+  'Use formal language when expected',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Use the project\'s own CLI wrapper',
+  'An explicit format beats a skill default',
+  'Verify a command before running it',
+  'Verify UI fixes in the browser',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Verify via exit code, not output',
+  'Baking a prop into a const loses reactivity',
+  'A setup script needs no export',
+  'Wait for one tool call at a time',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Watch events instead of polling',
+  'Don\'t force direction on someone\'s WIP',
+  'One ticket, one change, no child tasks',
+  'A CDN script import needed a workaround',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'A cached component\'s hook stopped firing',
+  'Surveyed every cached-component usage',
+  'A stale cache showed old content',
+  'A GraphQL client is being phased out',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Commit messages: English, not Japanese',
+  'A personal sandbox has limits on its use',
+  'A migration branch will become main',
+  'A framework migration\'s branch strategy',
+]" />
+
+---
+
+<MemoryWall :items="[
+  'Type-check scope for the migration branch',
+  'A router plugin fires after first navigation',
+  'What was burning the error-tracking quota',
+  'Context needed when a session finishes',
+]" />
 
 ---
 
@@ -377,6 +723,43 @@ layout: section
 </ol>
 
 <small>Nothing expires it for you, so it has to be on your list</small>
+
+---
+
+## Some of it is tomorrow's noise
+
+<fieldset>
+  <legend>Worth the space in MEMORY.md?</legend>
+  <div class="field-row">
+    <input id="keep-pref" type="radio" name="keep-check" checked />
+    <label for="keep-pref">A preference the model can't infer on its own</label>
+  </div>
+  <div class="field-row">
+    <input id="keep-gap" type="radio" name="keep-check" disabled />
+    <label for="keep-gap">A gap this model has, the next one won't</label>
+  </div>
+</fieldset>
+
+<small>The second kind is noise waiting for a model upgrade to happen</small>
+
+---
+
+## 44 of them, gone
+
+<dl>
+  <div>
+    <dt>Before</dt>
+    <dd><meter value="117" max="117"></meter></dd>
+    <dd>117 memories</dd>
+  </div>
+  <div>
+    <dt>After</dt>
+    <dd><meter value="73" max="117"></meter></dd>
+    <dd>73 memories</dd>
+  </div>
+</dl>
+
+<small>Nowhere near the worktree scale &mdash; but <code>MEMORY.md</code> went from 112 lines / 27.7KB back under both caps, to 72 lines / 17.4KB</small>
 
 ---
 

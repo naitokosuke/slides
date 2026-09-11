@@ -28,6 +28,7 @@
   --font-ui: "Pixelated MS Sans Serif", sans-serif;
   --font-body: "DotGothic16", "Pixelated MS Sans Serif", sans-serif;
   --font-mono: "Fira Code", monospace;
+  --slidev-code-font-size: var(--text-md);
 
   --text-3xs: 0.85rem;
   --text-2xs: 0.95rem;
@@ -151,6 +152,12 @@
           line-height: var(--leading-snug);
         }
 
+        > .window,
+        > fieldset {
+          align-self: center;
+          margin-block: auto;
+        }
+
         h2 {
           flex: none;
           box-sizing: content-box;
@@ -230,16 +237,18 @@
         }
 
         .slidev-code-wrapper {
+          width: min(100%, 48rem);
           margin: 0 !important;
         }
 
         :is(pre, .slidev-code) {
+          width: min(100%, 48rem);
           margin: 0;
           padding: var(--space-3) var(--space-4);
           background: var(--c-light) !important;
           box-shadow: var(--bevel-sunken);
           font-family: var(--font-mono);
-          font-size: var(--text-xs);
+          font-size: var(--text-md);
           line-height: var(--leading-relaxed);
         }
 

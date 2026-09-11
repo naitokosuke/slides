@@ -22,6 +22,10 @@
   - 保持 (作業中): 15 件、27.91GB
   - 個別確認 (未コミット差分あり): 13 件、25.46GB
 - 対比の要点: `.claude` の 2.5GB に対し worktree 側は 319.6GB で約 127 倍
+- auto memory (`before-move` = 旧パスのプロジェクトディレクトリ、現行 = ghq 移行後のプロジェクトディレクトリ、いずれも同一リポジトリ)
+  - `before-move`: 20 files (feedback 17 + reference 2 + MEMORY.md)、MEMORY.md は 17行 / 2.5KB
+  - 現行: 118 files (feedback 102 + project 15 + MEMORY.md)、MEMORY.md は 112行 / 27.7KB
+  - 112行は200行の上限未満だが、27.7KBは25KBの上限を超過。1行平均約253バイトなので、行数より先にバイト数の壁に当たる計算(概算で終盤の十数行が切れている可能性)
 
 スライド中のパスは `app-some` / `app-other` の 2 リポジトリに簡略化してある。実データの数字は変えない。
 
