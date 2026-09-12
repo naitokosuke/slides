@@ -40,6 +40,10 @@
 
 ### 発端 (〜1.5分)
 
+- 「Somewhere I'd read this」Tip of the Day 風ダイアログ。「skills と rules を定期的に見直せ」という他人のポスト
+- 「And then Anthropic deleted 80% of theirs」Anthropic が Claude Code のシステムプロンプトを 8 割削っても品質が落ちなかった、という記事。きっかけの裏付けとして置く
+- 「The rules for writing rules changed」記事の Then / Now 表から 4 行。最後の行 (手書き CLAUDE.md → auto memory) が PART 3 への伏線
+- 「So I went to read what I had piled up」見直す対象は rules/skills と auto memory の 2 つ。読みに行っただけのつもりが、という前振りで `du` につなぐ
 - 「Then one day I ran du」`du -sh ~/.claude` が 2.5GB。ディスクのクリーンアップ風ダイアログで見せる
 - 「What is actually in `~/.claude`」Explorer 風のツリー。transcript は作業ディレクトリごと、memory は repo ごとで worktree 間共有かつ sweep 対象外、という違いをここで示す
 - 「Inside `.claude/projects/`」133 件。issue worktree ごとにディレクトリができている
@@ -60,6 +64,7 @@ gwq の設計に沿って語る。gwq に merged 判定機能はなく、ライ�
 
 - 「Ask gwq first」入口は `gwq status --filter inactive`。既定 14 日、ファイル mtime ベース。触られていないことは分かるが merged かは分からない
 - 「Then ask `.claude`」cclens (lambdalisue/cclens) の `sql`。`sessions.root` は transcript の `cwd` から復元した実パスなので、worktree ごとの最終セッション日が出る。PART 2 の EXISTS/GONE 判定はこれに `test -d` を足しただけ、と後で種明かしする
+- 「What is `cclens`?」cclens の紹介。`sql` を見せた直後に置く。「Ask gwq first」→「Then ask `.claude`」の対の間には挟まない。transcript と config をローカルの SQLite に取り込む。transcript が消えても store は残る。`doctor` と `sql` の 2 つを挙げ、`doctor` は締めの「And it is piling up again」で再登場する
 - 「gwq defers to `git branch -d`」gwq の標準ルートは `gwq remove -b` = `git branch -d`。squash merge 運用だとローカルのコミットが main に含まれず、常に `not fully merged` で拒否される
 - 「Who do you trust for "merged"?」forge の一次情報 `gh pr list --state merged` を根拠に選ぶ
 - 「Three checks before deleting」未コミット差分 → PR 履歴 → merged だけ削除
