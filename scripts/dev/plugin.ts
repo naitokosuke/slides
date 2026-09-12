@@ -26,6 +26,7 @@ import {
 } from "./http.ts";
 import { backLink, errorPage, loadingPage, STATUS_PREFIX } from "./pages.ts";
 import { publicDir, rootDir, siteDir } from "./paths.ts";
+import { printQrCode } from "./qr.ts";
 
 const DECK_ROUTE = /^\/(\d{4}-\d{2}-\d{2}(?:-\w+)?)(?=$|[/?])(\/[^?]*)?/;
 
@@ -117,6 +118,12 @@ export function slidesDevServer() {
     apply: "serve",
     async configureServer(server) {
       const sitePort = await startSite();
+
+      const printUrls = server.printUrls.bind(server);
+      server.printUrls = () => {
+        printUrls();
+        printQrCode(server.resolvedUrls?.network[0]);
+      };
 
       server.middlewares.use((req, res) => {
         const url = req.url ?? "/";

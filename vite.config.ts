@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [slidesDevServer()],
   server: {
     port: 3030,
+    host: true,
   },
   fmt: {
     semi: true,

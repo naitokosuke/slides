@@ -13,6 +13,7 @@ When creating command-line interfaces, use the `use-gunshi-cli` skill.
 - `scripts/dev/plugin.ts` is the Vite plugin that owns the routing, the loading and error pages, and the back-to-index link injected into deck HTML
 - The plugin takes over the dev server's `upgrade` listener, because the root Vite server renders nothing of its own and its HMR socket would otherwise compete with the deck and site sockets
 - OG images are read from `<date>/og-image.png`, so `site/` never falls back to `slides.naito.dev`
+- `server.host` is on, and `scripts/dev/qr.ts` prints a terminal QR code for the LAN URL right under the Vite banner, so a phone can open the index and the decks; only the root server is exposed, the Nuxt and Slidev children stay on localhost behind the proxy
 
 `build:slide`, `export:slide` and `create:slide` still use the `prompts` picker, and the first two also take a date, e.g. `vp run build:slide 2026-02-06`.
 
