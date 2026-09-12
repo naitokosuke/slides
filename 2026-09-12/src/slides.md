@@ -31,6 +31,18 @@ layout: cover
 
 # Hi
 
+<img class="avatar" src="/naitokosuke.png" alt="naitokosuke" />
+
+<style scoped>
+.avatar {
+  width: 18rem;
+  height: 18rem;
+  align-self: center;
+  margin-block: auto;
+  box-shadow: var(--bevel-sunken);
+}
+</style>
+
 <!--
 - こんにちは、naito です
 - 今日は「AI に合わせて働き方を変えたら、その代金をディスクが払っていた」という話をします
