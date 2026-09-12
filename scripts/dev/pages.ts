@@ -1,4 +1,25 @@
 export const STATUS_PREFIX = "/__dev/status/";
+export const SYNC_PREFIX = "/__dev/sync/";
+
+// Slidev syncs presenter and viewer state through vite-plugin-vue-server-ref,
+// whose client posts to `/@server-reactive/<key>` — an absolute path that
+// ignores the deck's base, and which the plugin matches before Vite strips the
+// base. On one origin serving many decks nothing in that request says which
+// deck it belongs to, so the deck page routes those posts itself.
+export function syncRoute(folder: string) {
+  return `<script>(() => {
+  const prefixes = ["/@server-ref/", "/@server-reactive/"];
+  const route = ${JSON.stringify(SYNC_PREFIX + folder)};
+  const fetch = window.fetch;
+  window.fetch = (input, init) =>
+    fetch(
+      typeof input === "string" && prefixes.some((p) => input.startsWith(p))
+        ? route + input
+        : input,
+      init,
+    );
+})();</script>`;
+}
 
 export const backLink = `<style>#slides-dev-index{position:fixed;top:0;left:0;z-index:2147483647;padding:6px 12px;border-bottom-right-radius:8px;background:rgba(8,20,35,.75);color:#e0e8f0;font:500 12px/1.2 ui-sans-serif,system-ui,sans-serif;text-decoration:none;opacity:.3;transition:opacity .2s}#slides-dev-index:hover,#slides-dev-index:focus-visible{opacity:1}</style><a id="slides-dev-index" href="/">&#8592; Index</a>`;
 
