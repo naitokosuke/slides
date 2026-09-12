@@ -140,6 +140,66 @@ clicks: 1
 
 ---
 
+## And then Anthropic deleted 80% of theirs
+
+<figure>
+  <PixelIcon name="chip" />
+  <figcaption>
+    <strong>&minus;80%</strong>
+    <span>of Claude Code's own system prompt, with no drop in quality on Claude 5 generation models</span>
+  </figcaption>
+</figure>
+
+<small><a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">The new rules of context engineering for Claude 5 generation models</a></small>
+
+---
+
+## The rules for writing rules changed
+
+<table class="then-now">
+  <thead>
+    <tr><th>Then</th><th>Now</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Give Claude explicit rules</td><td>Let Claude use judgement</td></tr>
+    <tr><td>Load every bit of context up front</td><td>Progressive disclosure</td></tr>
+    <tr><td>Repeat the instruction everywhere</td><td>Say it once, where it is used</td></tr>
+    <tr><td>Write memories into <code>CLAUDE.md</code> by hand</td><td>auto memory</td></tr>
+  </tbody>
+</table>
+
+<small>Every line I wrote for an older model is still sitting there, read on every turn</small>
+
+<style>
+.then-now {
+  font-size: var(--text-sm);
+
+  thead th:last-child {
+    text-align: right;
+  }
+}
+</style>
+
+---
+
+## So I went to read what I had piled up
+
+<fieldset>
+  <legend>Up for review</legend>
+  <div class="field-row">
+    <input id="review-rules" type="checkbox" checked />
+    <label for="review-rules">Rules and skills I wrote for an older model</label>
+  </div>
+  <div class="field-row">
+    <input id="review-memory" type="checkbox" checked />
+    <label for="review-memory">Memories the agent had written for itself</label>
+  </div>
+</fieldset>
+
+<small>I opened <code>~/.claude</code> to read it. I never got that far</small>
+
+---
+
 ## Then, I ran du
 
 ```bash
@@ -238,6 +298,25 @@ $ cclens sql "SELECT root, COUNT(*) AS sessions, MAX(started_at) AS last
 </table>
 
 <small>The real path from each transcript's cwd, and the last day I worked there. A second opinion, independent of file mtime</small>
+
+---
+
+## What is `cclens`?
+
+<figure>
+  <PixelIcon name="mirror" />
+  <figcaption>
+    <strong>A lens on <code>~/.claude</code></strong>
+    <span>It reads session transcripts and live config into a local SQLite store. The store is incremental and it outlives the transcripts it was built from. Nothing leaves the machine</span>
+  </figcaption>
+</figure>
+
+<ul>
+  <li><code>cclens doctor</code> &mdash; one screen of findings: recurring tool failures, stuck points, config nobody uses</li>
+  <li><code>cclens sql</code> &mdash; read-only SQL against that store, for the questions <code>doctor</code> does not ask</li>
+</ul>
+
+<small><a href="https://github.com/lambdalisue/cclens">https://github.com/lambdalisue/cclens</a></small>
 
 ---
 
@@ -847,6 +926,7 @@ layout: section
   <li>Claude Code / Memory <a href="https://code.claude.com/docs/en/memory">code.claude.com/docs/en/memory</a></li>
   <li>Claude Code / .claude directory <a href="https://code.claude.com/docs/en/claude-directory">code.claude.com/docs/en/claude-directory</a></li>
   <li>Claude Code / Sessions <a href="https://code.claude.com/docs/en/sessions#where-transcripts-are-stored">code.claude.com/docs/en/sessions</a></li>
+  <li>The new rules of context engineering for Claude 5 generation models <a href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">claude.com/blog</a></li>
   <li>cclens <a href="https://github.com/lambdalisue/cclens">github.com/lambdalisue/cclens</a> &mdash; <code>sql</code> / <code>doctor</code></li>
   <li>gwq <a href="https://github.com/d-kuro/gwq">github.com/d-kuro/gwq</a> &mdash; <code>status --filter inactive</code> / <code>remove -b</code> / <code>add --expires</code> / <code>prune --expired</code></li>
 </ul>
