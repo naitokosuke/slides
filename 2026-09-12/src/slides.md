@@ -51,7 +51,7 @@ layout: cover
 
 ---
 
-<QrCode url="https://slides.naito.dev/2026-09-12/1" label="slides.naito.dev/2026-09-12" />
+<QrCode url="https://slides.naito.dev/2026-09-12/1" />
 
 <!--
 - スライドはこの QR から開けます
@@ -60,10 +60,7 @@ layout: cover
 
 ---
 
-<QrCode
-  url="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models"
-  label="The new rules of context engineering"
-/>
+<QrCode url="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models" />
 
 <!--
 - そしてもう一枚、今日の話のきっかけになった Anthropic の記事です

@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import QRCode from "qrcode";
 
-const { url, label } = defineProps<{ url: string; label: string }>();
+const { url } = defineProps<{ url: string }>();
 
 const dataUrl = ref("");
 QRCode.toDataURL(url, {
@@ -14,8 +14,8 @@ QRCode.toDataURL(url, {
 
 <template>
   <div class="qr-code">
-    <img :src="dataUrl" :alt="`QR code for ${label}`" />
-    <a :href="url">{{ label }}</a>
+    <img :src="dataUrl" :alt="`QR code for ${url}`" />
+    <a :href="url">{{ url }}</a>
   </div>
 </template>
 
@@ -27,6 +27,7 @@ QRCode.toDataURL(url, {
   flex-direction: column;
   align-items: center;
   gap: var(--space-5);
+  max-width: 100%;
 
   img {
     width: var(--qr-size, 23rem);
@@ -35,6 +36,11 @@ QRCode.toDataURL(url, {
     background: var(--c-light);
     box-shadow: var(--bevel-sunken);
     image-rendering: pixelated;
+  }
+
+  a {
+    text-align: center;
+    word-break: break-all;
   }
 }
 </style>
