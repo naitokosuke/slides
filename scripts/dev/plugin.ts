@@ -24,8 +24,16 @@ import {
   sendHtml,
   sendText,
 } from "./http.ts";
-import { backLink, errorPage, loadingPage, STATUS_PREFIX } from "./pages.ts";
+import {
+  backLink,
+  errorPage,
+  loadingPage,
+  STATUS_PREFIX,
+  syncRoute,
+  SYNC_PREFIX,
+} from "./pages.ts";
 import { publicDir, rootDir, siteDir } from "./paths.ts";
+import { printQrCode } from "./qr.ts";
 
 const DECK_ROUTE = /^\/(\d{4}-\d{2}-\d{2}(?:-\w+)?)(?=$|[/?])(\/[^?]*)?/;
 
@@ -52,6 +60,8 @@ async function serveOgImage(folder: string, res: http.ServerResponse) {
   }
 }
 
+// Fallback for anything else a deck page requests without its base, for which
+// the referer is the only hint of which deck asked.
 function deckPortFromReferer(req: http.IncomingMessage) {
   const referer = req.headers.referer;
   if (!referer) return undefined;
@@ -90,7 +100,29 @@ function serveDeck(
     return;
   }
 
-  proxyRequest(req, res, deck.port, backLink);
+  proxyRequest(req, res, deck.port, backLink + syncRoute(folder));
+}
+
+// `/__dev/sync/<folder>/@server-reactive/<key>` is how a deck page addresses
+// its own Slidev server for state sync. The folder is stripped back off, so the
+// deck sees the path its plugin expects.
+function serveSync(
+  req: http.IncomingMessage,
+  res: http.ServerResponse,
+  url: string,
+) {
+  const rest = url.slice(SYNC_PREFIX.length);
+  const cut = rest.indexOf("/");
+  const folder = cut === -1 ? rest : rest.slice(0, cut);
+  const port = readyDeckPort(folder);
+
+  if (!port) {
+    sendText(res, 503, `${folder} is not running`);
+    return;
+  }
+
+  req.url = cut === -1 ? "/" : rest.slice(cut);
+  proxyRequest(req, res, port);
 }
 
 async function startSite() {
@@ -118,6 +150,12 @@ export function slidesDevServer() {
     async configureServer(server) {
       const sitePort = await startSite();
 
+      const printUrls = server.printUrls.bind(server);
+      server.printUrls = () => {
+        printUrls();
+        printQrCode(server.resolvedUrls?.network[0]);
+      };
+
       server.middlewares.use((req, res) => {
         const url = req.url ?? "/";
         const pathname = url.split("?")[0];
@@ -130,6 +168,11 @@ export function slidesDevServer() {
             "application/json; charset=utf-8",
             JSON.stringify({ status: deckStatus(folder) }),
           );
+          return;
+        }
+
+        if (pathname.startsWith(SYNC_PREFIX)) {
+          serveSync(req, res, url);
           return;
         }
 
