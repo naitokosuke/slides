@@ -267,12 +267,34 @@ $ du -sh ~/.claude
 
 ---
 
+## `claude project purge` deletes all of it
+
+```bash
+$ claude project purge --dry-run <path>
+```
+
+<Win98Dialog title="Delete Project State" icon="trash" :buttons="['OK', 'Cancel']">
+  Transcripts, tasks, file history and the config entry. <code>~/.claude</code> is not a git repository, so there is no undo
+</Win98Dialog>
+
+<small>So before running it, I went looking for the projects that were safe to purge</small>
+
+<!--
+- 消すコマンド自体はあります、`claude project purge` です
+- 対象のプロジェクトの transcript、task、file history、config entry をまとめて消します
+- ただし `~/.claude` は git 管理下にありません
+- 間違えても戻せないので、まず `--dry-run` で何が消えるかを見ます
+- その前に、そもそもどれが消していいのかを調べました
+-->
+
+---
+
 ## Except nothing was safe to delete
 
 <ProjectList status />
 
 <!--
-- ところが、消せるものが 1 件もありません
+- 調べた結果、消していいものが 1 件もありませんでした
 - 対応する worktree がまだ残っている限り、その記録は現役だからです
 -->
 
