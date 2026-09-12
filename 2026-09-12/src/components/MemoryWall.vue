@@ -3,8 +3,14 @@ const { items } = defineProps<{ items: string[] }>();
 </script>
 
 <template>
-  <div class="memory-wall" :class="{ 'is-single': items.length === 1 }">
-    <Win98Dialog v-for="item in items" :key="item" title="Memory" icon="chip" :buttons="['OK']">
+  <div class="memory-wall">
+    <Win98Dialog
+      v-for="item in items"
+      :key="item"
+      title="Memory"
+      icon="chip"
+      :buttons="['OK']"
+    >
       {{ item }}
     </Win98Dialog>
   </div>
@@ -20,15 +26,6 @@ const { items } = defineProps<{ items: string[] }>();
 
   :deep(.window) {
     width: 100%;
-  }
-
-  &.is-single {
-    grid-template-columns: 1fr;
-    justify-items: center;
-
-    :deep(.window) {
-      width: min(100%, 36rem);
-    }
   }
 }
 </style>
