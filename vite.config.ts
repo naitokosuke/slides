@@ -3,12 +3,28 @@ import "@slidev/cli";
 import MarkdownItMagicLink from "markdown-it-magic-link";
 import { slidesDevServer } from "./scripts/dev/plugin.ts";
 
+// Vize reads its settings from `vue`, but ships no augmentation for Vite's config type.
+declare module "vite" {
+  interface UserConfig {
+    vue?: Record<string, unknown>;
+  }
+}
+
 export default defineConfig({
   defaultPackage: { dev: "." },
   plugins: [slidesDevServer()],
   server: {
     port: 3030,
     host: true,
+  },
+  vue: {
+    ignores: ["2025-10-25/demo/**"],
+    linter: {
+      enabled: true,
+    },
+    typeChecker: {
+      tsrsPath: "node_modules/.bin/tsrs",
+    },
   },
   fmt: {
     semi: true,
@@ -26,7 +42,8 @@ export default defineConfig({
   slidev: {
     markdown: {
       markdownItSetup(md) {
-        md.use(MarkdownItMagicLink, {
+        // Slidev 53 renders with markdown-exit, which runs markdown-it plugins but rejects their types.
+        md.use(MarkdownItMagicLink as never, {
           linksMap: {
             NuxtLabs: {
               link: "https://nuxtlabs.com",

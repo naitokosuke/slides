@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTimer } from "./TimerTimer.vue";
 
-const { label = "スタート" } = defineProps<{ label: string }>();
+const { label = "スタート" } = defineProps<{ label?: string }>();
 
 const { start } = useTimer();
 </script>

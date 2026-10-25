@@ -63,7 +63,7 @@ async function bootDeck(folder: string, deck: Deck) {
     path.join(rootDir, folder, "src"),
   );
   pipeLogs(child, `[${folder}]`, logs);
-  child.on("exit", (code) => {
+  child.nodeChildProcess.on("exit", (code) => {
     exited = `slidev exited with code ${code ?? 0}`;
     if (deck.status === "ready") decks.delete(folder);
   });
