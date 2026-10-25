@@ -1,0 +1,296 @@
+/* Every value used on the slides comes from these tokens */
+:root {
+  --color-bg: #0d1117;
+  --color-surface: #161b22;
+  --color-border: #30363d;
+  --color-text: #e6edf3;
+  --color-text-muted: #8d96a0;
+  --color-accent: #ab7df8;
+  --color-code-bg: color-mix(in oklch, var(--color-text) 10%, transparent);
+
+  --font-sans: "Space Grotesk", "Noto Sans JP", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --text-xs: 0.8rem;
+  --text-sm: 0.9rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2.6rem;
+  --text-3xl: 4rem;
+  --text-display: 5.5rem;
+  --text-hero: 9rem;
+
+  --weight-bold: 700;
+  --leading-none: 1;
+  --leading-tight: 1.15;
+  --leading-normal: 1.5;
+  --tracking-tight: -0.02em;
+  --tracking-tighter: -0.04em;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-full: 9999px;
+
+  --border-width: 1px;
+  --rule-width: 4px;
+  --stroke-width: 2.5px;
+  --stroke-width-icon: 1.5px;
+  --dash: 2 4;
+
+  --size-icon: 1em;
+  --size-dot: 0.8rem;
+  --size-chart-dot: 7px;
+  --size-avatar: 14rem;
+  --size-shot: 7rem;
+}
+
+/* Base */
+
+.slidev-layout {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: var(--leading-normal);
+  padding: var(--space-7) var(--space-8);
+}
+
+.slidev-layout h1 {
+  margin: 0 0 var(--space-5);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+.slidev-layout h1 + p {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  opacity: 1;
+}
+
+.slidev-layout p {
+  margin: 0;
+}
+
+.slidev-layout code {
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-sm);
+  background: var(--color-code-bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Layout */
+
+.stack {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 2), 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.note {
+  margin-top: var(--space-6);
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+}
+
+.caveat {
+  position: absolute;
+  inset-inline: var(--space-8);
+  bottom: var(--space-6);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* Cover */
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+  height: 100%;
+}
+
+.cover h1 {
+  margin: 0;
+  font-size: var(--text-display);
+}
+
+.cover .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+}
+
+.cover .byline {
+  margin-top: var(--space-7);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+.avatar {
+  width: var(--size-avatar);
+  height: var(--size-avatar);
+  margin: var(--space-6) auto 0;
+  border-radius: var(--radius-full);
+}
+
+/* One huge number with a caption under it */
+
+.big {
+  display: grid;
+  place-content: center;
+  gap: var(--space-5);
+  height: 100%;
+  text-align: center;
+}
+
+.big strong {
+  font-size: var(--text-hero);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tighter);
+}
+
+.big strong small {
+  font-size: var(--text-3xl);
+  letter-spacing: 0;
+}
+
+.big span {
+  color: var(--color-text-muted);
+  font-size: var(--text-xl);
+}
+
+.big em {
+  color: var(--color-text);
+  font-style: normal;
+}
+
+/* Bordered box, used for cards, tiles and badges */
+
+.card,
+.tiles span {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.card {
+  overflow: hidden;
+  font-size: var(--text-md);
+}
+
+.card.large {
+  font-size: var(--text-lg);
+}
+
+.card header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-width) solid var(--color-border);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.card section {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4);
+}
+
+.card h4 {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+}
+
+.card h4:first-child {
+  margin-top: 0;
+}
+
+.card .label {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.card .shot {
+  display: grid;
+  place-content: center;
+  height: var(--size-shot);
+  margin-bottom: var(--space-3);
+  border: var(--border-width) dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.tiles span {
+  padding: var(--space-2) var(--space-4);
+}
+
+.tiles span::before {
+  content: "naitokosuke/";
+  color: var(--color-text-muted);
+}
+
+/* Quotes with a source line, set off by an accent rule */
+
+.quotes {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  font-size: var(--text-xl);
+}
+
+.quotes p {
+  padding-left: var(--space-4);
+  border-left: var(--rule-width) solid var(--color-accent);
+}
+
+.quotes small {
+  display: block;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
