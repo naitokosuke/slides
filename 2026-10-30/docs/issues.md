@@ -106,9 +106,4 @@ issue 30 件はすべて closed（stateReason は COMPLETED）、PR 3 件はす�
 - #10660: `v-else` 内の `v-for` + `<template #default>` で、絞り込み済みのガードを再出力して TS2367
 - #10661: `from` という prop を `_from` と宣言して `from` で参照し TS2552
 
-## 発表の切り口（案）
-
-- 4 か月で issue 30 件、すべて閉じられた。修正の速さ自体が話題になる
-- 起票の型が途中で変わった。最初は文章だけ、10 月から再現リポジトリを毎回添える
-- 「`vize check` は通るのに lint が言う」のように、比較対象（stock コンパイラ、markuplint、HTML 仕様、vue-router）を必ず置いている
-- 実プロジェクトの移行（ESLint → Patina、vue-tsc → vize check、Nuxt 4）で踏んだものが中心
+発表の筋と、スライドに出す数字の出どころは `outline.md` にある。
