@@ -135,7 +135,7 @@ async function startSite() {
   pipeLogs(child, "[site]");
 
   let exited: string | undefined;
-  child.on("exit", (code) => {
+  child.nodeChildProcess.on("exit", (code) => {
     exited = `The site dev server exited with code ${code ?? 0}`;
   });
 

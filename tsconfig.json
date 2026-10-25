@@ -2,10 +2,11 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "noEmit": true,
+    "strict": false,
     "allowSyntheticDefaultImports": true
   },
-  "exclude": ["**/*.md"]
+  "exclude": ["**/*.md", "**/dist", "site", "worker", "2025-10-25"]
 }

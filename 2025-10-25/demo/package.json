@@ -23,7 +23,7 @@
     "vue": "catalog:demo-deps",
     "vue-router": "catalog:demo-deps"
   },
-  "packageManager": "pnpm@11.25.0",
+  "packageManager": "pnpm@12.15.0",
   "devDependencies": {
     "typescript": "catalog:dev-tools"
   }

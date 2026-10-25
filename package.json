@@ -2,14 +2,14 @@
   "name": "slides",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@11.25.0",
+  "packageManager": "pnpm@12.15.0",
   "scripts": {
     "create:slide": "node scripts/picker.ts create",
     "build:slide": "rimraf dist && node scripts/picker.ts build",
     "build:all": "rimraf dist && pnpm -r run build",
     "build:ci": "NODE_OPTIONS='--max-old-space-size=4096' node scripts/build-all.ts",
     "export:slide": "node scripts/picker.ts export",
-    "typecheck": "vue-tsc --noEmit",
+    "typecheck": "vize check",
     "lint": "vize lint",
     "fmt": "vp fmt --write && prettier --write '**/*.md'",
     "picker": "PICKER_EDITOR=code node scripts/picker.ts",
@@ -59,7 +59,6 @@
     "vite-plus": "catalog:tooling",
     "vize": "catalog:lint",
     "vue": "catalog:slidev",
-    "vue-router": "catalog:slidev",
-    "vue-tsc": "catalog:slidev"
+    "vue-router": "catalog:slidev"
   }
 }

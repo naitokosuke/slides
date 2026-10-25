@@ -8,5 +8,8 @@
   },
   "dependencies": {
     "js-confetti": "catalog:content"
+  },
+  "devDependencies": {
+    "@slidev/types": "catalog:slidev"
   }
 }
