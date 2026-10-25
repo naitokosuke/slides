@@ -22,6 +22,9 @@ export default defineConfig({
     linter: {
       enabled: true,
     },
+    typeChecker: {
+      tsrsPath: "node_modules/.bin/tsrs",
+    },
   },
   fmt: {
     semi: true,

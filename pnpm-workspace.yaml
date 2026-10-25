@@ -39,6 +39,8 @@ catalogs:
 
   lint:
     vize: ^0.549.0
+    # Experimental checker for `vize check`; only prereleases are published, so pin exactly
+    tsrs: 0.18.0-ts7.1.0-dev.20260929
 
   script:
     gunshi: ^0.37.3
