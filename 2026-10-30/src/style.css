@@ -541,3 +541,38 @@
   line-height: var(--leading-tight);
   text-wrap: balance;
 }
+
+/* Two flat cards side by side, each a large count with what it means under it */
+
+.verdicts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+
+.verdict {
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+
+.verdict.kept {
+  --color-surface: var(--color-baby);
+  --color-on-surface: var(--color-royal);
+}
+
+.verdict strong {
+  font-size: var(--text-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tight);
+}
+
+.verdict .label {
+  margin-bottom: var(--space-3);
+  font-weight: var(--weight-bold);
+}
