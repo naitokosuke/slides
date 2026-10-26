@@ -63,6 +63,8 @@
   --size-avatar: 14rem;
   --size-shot: 7rem;
   --size-source: 9rem;
+  --size-step: 3rem;
+  --size-source-wide: 17rem;
 }
 
 /* Base */
@@ -321,4 +323,36 @@
   color: var(--color-text-muted);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
+}
+
+/* Numbered steps, one row each */
+
+.steps {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  font-size: var(--text-lg);
+}
+
+.slidev-layout .steps li {
+  display: grid;
+  grid-template-columns: var(--size-step) 1fr;
+  align-items: baseline;
+  margin: 0;
+  counter-increment: step;
+}
+
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.quotes.compact {
+  --size-source: var(--size-source-wide);
+  font-size: var(--text-lg);
 }
