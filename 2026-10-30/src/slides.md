@@ -1,8 +1,8 @@
 ---
 theme: default
-title: 30 Bugs, 0 Replies
+title: How I Contributed to Vize
 info: |
-  ## 30 Bugs, 0 Replies
+  ## How I Contributed to Vize
 
   I reported 30 bugs to Vize between June and October, and all of them got fixed, most on the same day.
   This talk is about how my bug reports changed along the way.
@@ -17,9 +17,8 @@ fonts:
 ---
 
 <div class="cover">
-  <p class="eyebrow"><ClosedIcon /> 30 Closed · 0 Open</p>
-  <h1>30 Bugs, 0 Replies</h1>
-  <p class="muted">Four months of reporting bugs to Vize</p>
+  <h1>How I Contributed to Vize</h1>
+  <p class="muted">30 bug reports, June to October</p>
   <p class="byline">@naitokosuke · 2026-10-30</p>
 </div>
 
@@ -48,7 +47,7 @@ fonts:
 
 ---
 
-# All of them are closed
+# All closed, and how long each one took
 
 <IssueWall />
 

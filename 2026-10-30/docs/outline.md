@@ -1,4 +1,4 @@
-# outline: 30 Bugs, 0 Replies
+# outline: How I Contributed to Vize
 
 想定時間: 10 分。
 表示する文言はすべて英語。このアウトラインだけ日本語で保守する。
@@ -26,11 +26,11 @@ issue ごとの一覧は `issues.md`、チャートの元データは `src/data/
 
 ## スライド構成
 
-1. cover「30 Bugs, 0 Replies」
+1. cover「How I Contributed to Vize」
 2. Hi
 3. 夏に Vue のツールチェーンを Vize に寄せた（lint、型検査、Nuxt ビルド）
 4. 30 件起票した
-5. 全部 closed（30 個のバッジ）
+5. 全部 closed。30 個のバッジに、それぞれ close までの時間を添える
 6. 中央値 5.7 時間、最速 56 分
 7. 散布図。6 月に少し、9〜10 月に集中。塗りつぶしは再現リポジトリ付き
 8. 136 日で 303 リリース
