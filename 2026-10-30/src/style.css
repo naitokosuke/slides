@@ -83,7 +83,7 @@
   --size-cursor: 0.55em;
   --size-logo: 70%;
   --size-tweet: 31rem;
-  --size-og-corner: 22rem;
+  --size-og-side: 26rem;
   --size-row-label: 13rem;
 }
 
@@ -278,8 +278,20 @@
 /* Caveats and sources sit at the bottom of the slide, apart from the evidence they qualify */
 .slidev-layout .source {
   margin-top: auto;
+  padding-top: var(--space-4);
   padding-bottom: var(--space-2);
   color: var(--color-text-muted);
+}
+
+.slidev-layout .source,
+.slidev-layout .source p {
+  line-height: var(--leading-normal);
+}
+
+/* Two lines of sources keep a gap between them */
+.slidev-layout div.source {
+  display: grid;
+  gap: var(--space-2);
 }
 
 /* A config snippet as a flat block */
@@ -429,24 +441,26 @@
   color: var(--color-text-muted);
   font-size: var(--text-body);
   font-style: normal;
+  line-height: var(--leading-normal);
 }
 
-/* A source's card pushed into the bottom-right corner of the space under the headline */
+/* A quote on the left and its source's card on the right, both centred in the space under the headline */
 
-.slidev-layout .og-corner,
-.slidev-layout .og-corner:hover,
-.slidev-layout .og-corner:focus-visible {
+.slidev-layout .evidence.pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--size-og-side);
+  align-items: center;
+  gap: var(--space-7);
+}
+
+.slidev-layout .og-side,
+.slidev-layout .og-side:hover,
+.slidev-layout .og-side:focus-visible {
   border: none;
   outline: none;
 }
 
-.slidev-layout .og-corner {
-  align-self: flex-end;
-  width: var(--size-og-corner);
-  margin-top: auto;
-}
-
-.og-corner img {
+.og-side img {
   display: block;
   width: 100%;
   border-radius: var(--radius-md);
@@ -454,8 +468,8 @@
   transition: translate var(--duration-fast) var(--easing-out);
 }
 
-.og-corner:hover img,
-.og-corner:focus-visible img {
+.og-side:hover img,
+.og-side:focus-visible img {
   translate: 0 var(--lift);
 }
 
