@@ -1,5 +1,5 @@
 <!--
-  All 30 issues as circles whose area is proportional to the time each took to close.
+  All 30 issues as circles whose area is inversely proportional to the time each took to close, so the fastest fix is the biggest.
   The circles push each other apart and are pulled toward the middle, so they settle into a cluster.
   Each one links to its issue and can be dragged into the others.
 -->
@@ -13,8 +13,8 @@ import { formatMinutes, minutesToClose } from "../data/time";
 const width = 880;
 const height = 400;
 
-// Area follows minutes to close; the floor keeps the fastest ones big enough to read
-const maxRadius = 84;
+// Area goes with 1 / minutes to close; the floor keeps the slowest ones big enough to read
+const maxRadius = 76;
 const minRadius = 27;
 const gap = 3;
 
@@ -48,7 +48,7 @@ function depthOf(minutes: number) {
   return "deep";
 }
 
-const longest = Math.max(
+const quickestClose = Math.min(
   ...issues.map((i) => minutesToClose(i.filed, i.closed)),
 );
 
@@ -69,7 +69,10 @@ type Bubble = {
 const bubbles = reactive<Bubble[]>(
   issues.map((issue) => {
     const minutes = minutesToClose(issue.filed, issue.closed);
-    const r = Math.max(maxRadius * Math.sqrt(minutes / longest), minRadius);
+    const r = Math.max(
+      maxRadius * Math.sqrt(quickestClose / minutes),
+      minRadius,
+    );
     return {
       number: issue.number,
       url: issue.url,

@@ -51,7 +51,7 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 
 1. cover「How I Contributed to Vize」。副題「30 issues, June to October」、アイコンと GitHub へのリンク付きの @naitokosuke。タイトルは一色
 2. 30（issues I opened on Vize）
-3. All 30 were fixed, most within a day。根拠は close までの時間に面積が比例する円 30 個。1 日以内に閉じたのは 23 件。番号と時間はどんなに小さい円でも出す
+3. All 30 were fixed, most within a day。根拠は close までの時間に面積が反比例する円 30 個（速く直ったものほど大きい。最大は #10660 の 56 分）。1 日以内に閉じたのは 23 件。番号と時間はどんなに小さい円でも出す
 4. I use Vize because it is much faster。根拠は Vize の README のベンチマーク（2026-09-16、blacksmith 32 CPU）。Lint 182×（eslint-plugin-vue、3,000 ファイル、20.75s → 114ms）、Format 85×（Prettier、3,000 ファイル、29.72s → 351ms）、Type check 4.9×（vue-tsc、500 ファイル、6.75s → 1.37s）。自分のアプリで測った記録はないので公式の数字を出典つきで使う
 5. It type-checks .vue on TypeScript 7。根拠は tsconfig の contentMappers と、vue-tsc が TypeScript 7 を読めないこと（このリポジトリの CLAUDE.md）
 6. It is still being tested, and that is the exciting part。根拠は公式ブログ「Real World Testing」（2026-06-07）の OG 画像。画像は src/public/real-world-testing.png（vizejs.dev の OG 画像を保存したもの）
