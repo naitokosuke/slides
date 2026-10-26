@@ -4,8 +4,8 @@ title: How I Contributed to Vize
 info: |
   ## How I Contributed to Vize
 
-  I reported 30 bugs to Vize between June and October, and all of them got fixed, most on the same day.
-  This talk is about how my bug reports changed along the way.
+  I opened 30 issues on Vize between June and October, and all of them were fixed, most on the same day.
+  This talk is about how I put those reports together, and how they changed along the way.
 
   Speaker: [@naitokosuke](https://twitter.com/naitokosuke)
 duration: 10min
@@ -18,8 +18,12 @@ fonts:
 
 <div class="cover">
   <h1>How I Contributed to Vize</h1>
-  <p class="muted">30 bug reports, June to October</p>
-  <p class="byline">@naitokosuke · 2026-10-30</p>
+  <p class="muted">30 issues, June to October</p>
+  <p class="byline">
+    <img class="avatar" src="/naitokosuke.png" alt="" />
+    <a href="https://github.com/naitokosuke" target="_blank" rel="noopener noreferrer">@naitokosuke</a>
+    <span>· 2026-10-30</span>
+  </p>
 </div>
 
 ---
@@ -27,7 +31,7 @@ fonts:
 # Where the bugs came from
 
 <div class="columns" style="--columns: 3">
-  <div class="card large"><section><p class="label">chirashitabi · 15</p><p>Vue Vapor app on <code>vize lint</code>, <code>vize check</code> and Musea</p></section></div>
+  <div class="card large"><section><p class="label">My toy app · 15</p><p>Vue Vapor on <code>vize lint</code>, <code>vize check</code> and Musea</p></section></div>
   <div class="card large"><section><p class="label">My blog · 5</p><p>Nuxt 4 with <code>@vizejs/nuxt</code>, built and prerendered</p></section></div>
   <div class="card large"><section><p class="label">Vue Fes Japan 2026 site · 2</p><p>File-based routing with vue-router</p></section></div>
 </div>
@@ -176,7 +180,7 @@ Rules I gave it along the way, still in its memory
 
 <div class="big">
   <strong>80 → 17 → 6</strong>
-  <span>lint warnings in chirashitabi</span>
+  <span>lint warnings in my toy app</span>
 </div>
 
 <p class="caveat">80 → 17 by fixing my own code, 17 → 6 by Vize fixes and two rewrites. The last 6 are false positives, each checked against the rule source and the spec.</p>

@@ -58,6 +58,7 @@
     color-mix(in oklch, var(--color-accent) 25%, transparent);
 
   --size-icon: 1em;
+  --size-avatar: 2.5rem;
   --size-dot: 0.8rem;
   --size-chart-dot: 7px;
   --size-shot: 4rem;
@@ -160,9 +161,32 @@
 }
 
 .cover .byline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   margin-top: var(--space-7);
   color: var(--color-text-muted);
   font-family: var(--font-mono);
+}
+
+.cover .avatar {
+  width: var(--size-avatar);
+  height: var(--size-avatar);
+  border-radius: var(--radius-full);
+}
+
+.slidev-layout .cover a {
+  border-bottom: var(--border-width) solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color var(--duration-fast) var(--easing-out);
+}
+
+.slidev-layout .cover a:hover,
+.slidev-layout .cover a:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+  outline: none;
 }
 
 /* One huge number with a caption under it */
