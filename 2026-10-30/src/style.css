@@ -444,22 +444,20 @@
 }
 
 /*
-  The quote across the width right under the headline; who wrote it and the article's card
-  along the bottom edge, where the other slides keep their sources
+  Everything hangs from the headline's left edge: the quote, then the article's card with
+  who wrote it beside, like a link preview
 */
 
 .slidev-layout .evidence.pair {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--size-og-side);
-  grid-template-rows: auto 1fr;
-  align-items: end;
-  gap: var(--space-6) var(--space-7);
-  padding-bottom: var(--space-2);
+  grid-template-columns: var(--size-og-side) minmax(0, 1fr);
+  align-content: start;
+  align-items: center;
+  gap: var(--space-6);
 }
 
 .evidence.pair .quote {
   grid-column: 1 / -1;
-  align-self: start;
 }
 
 .slidev-layout .og-side,
