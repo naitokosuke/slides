@@ -54,22 +54,6 @@ fonts:
 
 ---
 
-# One parser runs <em>every Vue tool</em>
-
-<div class="evidence">
-  <div class="chips compact">
-    <span>Compile</span>
-    <span>Lint</span>
-    <span>Format</span>
-    <span>Type check</span>
-    <span>Editor</span>
-    <span>Musea</span>
-  </div>
-  <p class="source">Source: <a href="https://github.com/ubugeeei-prod/vize#what-is-vize" target="_blank" rel="noopener noreferrer">Vize's README</a></p>
-</div>
-
----
-
 # It type-checks <code>.vue</code> <em>on TypeScript 7</em>
 
 <div class="evidence">
@@ -101,19 +85,23 @@ fonts:
 
 ---
 
-# Claude Code checks Vize against <em>something that already works</em>
+# I build a Vue app and use <em>every part of Vize</em>
 
 <div class="evidence">
-  <div class="rows">
-    <p><span>"<code>vize check</code> is fine"</span><small>#8752</small></p>
-    <p><span>"<code>@vue/compiler-sfc</code> emits …"</span><small>#6766</small></p>
-    <p><span>"unlike markuplint and the HTML spec"</span><small>#9749</small></p>
+  <div class="chips compact">
+    <span>Compile</span>
+    <span>Lint</span>
+    <span>Format</span>
+    <span>Check</span>
+    <span>Musea</span>
+    <span>Editor</span>
   </div>
+  <p class="source">All on one parser, per <a href="https://github.com/ubugeeei-prod/vize#what-is-vize" target="_blank" rel="noopener noreferrer">Vize's README</a></p>
 </div>
 
 ---
 
-# Then it cuts the case down to <em>one small repo</em>
+# When something looks off, Claude Code <em>makes a repro</em>
 
 <div class="evidence">
   <a class="repo" href="https://github.com/naitokosuke/vize-placeholder-label-option-repro" target="_blank" rel="noopener noreferrer">
@@ -125,14 +113,30 @@ fonts:
 
 ---
 
-# I decide what gets filed, <em>and what doesn't</em>
+# Then it checks whether <em>someone already filed it</em>
 
 <div class="evidence">
-  <p class="muted">Not filed</p>
-  <div class="chips">
-    <span>Fails only on tsrs</span>
-    <span class="palm">Works as designed</span>
-    <span class="deep">Narrow on purpose</span>
+  <pre class="snippet">gh search issues --repo ubugeeei-prod/vize \
+  "placeholder-label-option"</pre>
+</div>
+
+---
+
+# Vize ships twice a day, so the repro runs on <em>the latest release</em>
+
+<div class="big">
+  <strong>303</strong>
+  <span>releases in 136 days · <code>0.206.0</code> → <code>0.574.0</code></span>
+</div>
+
+---
+
+# TypeScript 7 is still moving, so it checks <em>whether it is really Vize</em>
+
+<div class="evidence">
+  <div class="rows">
+    <p><span>Fails on tsgo, TypeScript 7.0 or 7.1 beta</span><small>file it</small></p>
+    <p><span>Fails only on tsrs, which follows TypeScript main</span><small>don't file</small></p>
   </div>
 </div>
 

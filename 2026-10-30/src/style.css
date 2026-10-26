@@ -83,7 +83,7 @@
   --size-avatar: 3rem;
   --size-chip: 11rem;
   --size-chip-compact: 6rem;
-  --size-source: 8rem;
+  --size-source: 11rem;
   --size-speed-label: 11rem;
   --size-dot: 0.8rem;
   --size-chart-dot: 7px;
@@ -344,14 +344,6 @@
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
   text-align: center;
-}
-
-.chips .palm {
-  --color-surface: var(--color-palm);
-}
-
-.chips .deep {
-  --color-surface: var(--color-deep);
 }
 
 .chips.compact span {

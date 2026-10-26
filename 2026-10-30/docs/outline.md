@@ -7,7 +7,7 @@
 
 1 文で言うと「Rust を書かなくても Vize には contribute できる。自分のアプリで使い倒して、壊れたところを質問されずに直せる issue にして出せばいい」。
 
-結果（30 件、全部すぐ直った）→ やり方（Claude Code が正しく動くものと突き合わせる → 小さな再現リポジトリにする → 起票するかは自分が決める）→ 持ち帰り、の順で進む。
+結果（30 件、全部すぐ直った）→ Vize を使う理由（速い、TypeScript 7、まだテスト段階で面白い）→ やり方 → 持ち帰り、の順で進む。
 
 ## 使う実データ
 
@@ -53,16 +53,17 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 2. 30（issues I opened on Vize）
 3. All 30 were fixed, most within a day。根拠は close までの時間に面積が比例する円 30 個。1 日以内に閉じたのは 23 件。番号と時間はどんなに小さい円でも出す
 4. I use Vize because it is much faster。根拠は Vize の README のベンチマーク（2026-09-16、blacksmith 32 CPU）。Lint 182×（eslint-plugin-vue、3,000 ファイル、20.75s → 114ms）、Format 85×（Prettier、3,000 ファイル、29.72s → 351ms）、Type check 4.9×（vue-tsc、500 ファイル、6.75s → 1.37s）。自分のアプリで測った記録はないので公式の数字を出典つきで使う
-5. One parser runs every Vue tool。根拠は Compile / Lint / Format / Type check / Editor / Musea の 6 ブロック（README の What Is Vize?）
-6. It type-checks .vue on TypeScript 7。根拠は tsconfig の contentMappers と、vue-tsc が TypeScript 7 を読めないこと（このリポジトリの CLAUDE.md）
-7. It is still being tested, and that is the exciting part。根拠は公式ブログ「Real World Testing」（2026-06-07）の OG 画像。画像は src/public/real-world-testing.png（vizejs.dev の OG 画像を保存したもの）
-8. The blog asks for reports from real projects。根拠は同じ記事の 1 文「Real-world applications are the test suite now.」
-9. Claude Code checks Vize against something that already works。根拠は issue の文言 3 つ（#8752、#6766、#9749）
-10. Then it cuts the case down to one small repo。根拠は再現リポジトリ 1 つ（vize-placeholder-label-option-repro）とコマンド
-11. I decide what gets filed, and what doesn't。根拠は起票しなかったもの 3 種
-12. Use Vize in your app. File what breaks.
+5. It type-checks .vue on TypeScript 7。根拠は tsconfig の contentMappers と、vue-tsc が TypeScript 7 を読めないこと（このリポジトリの CLAUDE.md）
+6. It is still being tested, and that is the exciting part。根拠は公式ブログ「Real World Testing」（2026-06-07）の OG 画像。画像は src/public/real-world-testing.png（vizejs.dev の OG 画像を保存したもの）
+7. The blog asks for reports from real projects。根拠は同じ記事の 1 文「Real-world applications are the test suite now.」
+8. I build a Vue app and use every part of Vize。根拠は Compile / Lint / Format / Check / Musea / Editor の 6 ブロック。どれも同じパーサーの上にある（README の What Is Vize?）
+9. When something looks off, Claude Code makes a repro。根拠は再現リポジトリ 1 つ（vize-placeholder-label-option-repro）とコマンド。アプリのものは何も入れない
+10. Then it checks whether someone already filed it。根拠は `gh search issues --repo ubugeeei-prod/vize` のコマンド
+11. Vize ships twice a day, so the repro runs on the latest release。根拠は 136 日で 303 リリース（0.206.0 → 0.574.0）
+12. TypeScript 7 is still moving, so it checks whether it is really Vize。tsgo（TypeScript 7.0、7.1 beta）で壊れるなら起票、tsrs（TypeScript main を追っている）だけで壊れるなら起票しない（`vize-report-tsgo-only.md`）
+13. Use Vize in your app. File what breaks.
 
-散布図、303 リリース、6 月と 10 月の比較、8.3h → 4.3h、取りこぼし、lint 警告 80 → 6、報告のテンプレートは 5 分に収めるため外した。散布図のコンポーネントは 9914715 にある。
+散布図、6 月と 10 月の比較、8.3h → 4.3h、取りこぼし、lint 警告 80 → 6、報告のテンプレート、正しく動くものとの突き合わせ、起票しなかったものの分類は 5 分に収めるため外した。散布図のコンポーネントは 9914715 にある。
 
 ## 未決
 
