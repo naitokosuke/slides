@@ -4,12 +4,12 @@ title: How I Contributed to Vize
 info: |
   ## How I Contributed to Vize
 
-  I opened 30 issues on Vize between June and October, and all of them were fixed, most on the same day.
-  This talk is about how I put those reports together, and how they changed along the way.
+  I opened 30 issues on Vize between June and October, and all of them were fixed, most within a day.
+  This talk is about how those issues were put together.
 
   Speaker: [@naitokosuke](https://twitter.com/naitokosuke)
-duration: 10min
-colorSchema: dark
+duration: 5min
+colorSchema: light
 transition: fade
 fonts:
   sans: "Space Grotesk"
@@ -30,162 +30,56 @@ fonts:
 
 <div class="big">
   <strong>30</strong>
-  <span>issues I opened, June to October</span>
+  <span>issues I opened on Vize</span>
 </div>
 
 ---
 
-# All closed, and how long each one took
+# All 30 were fixed, <em>most within a day</em>
 
 <IssueBubbles />
 
 ---
 
-<div class="big">
-  <strong>5.7<small>h</small></strong>
-  <span>median time until closed · fastest was <em>56 min</em></span>
-</div>
+# Claude Code checks Vize against <em>something that already works</em>
 
----
-
-# Hours until closed, per issue
-
-<FixChart />
-
----
-
-<div class="big">
-  <strong>303</strong>
-  <span>releases in 136 days · <code>0.206.0</code> → <code>0.574.0</code></span>
-</div>
-
----
-
-# How each one got filed
-
-<ol class="steps">
-  <li><span><code>vp run check</code> on the app shows a warning or an error</span></li>
-  <li><span>Claude Code reads the rule source and the spec, and runs the same file through <code>@vitejs/plugin-vue</code>, <code>@vue/compiler-sfc</code> or <code>vue-tsc</code></span></li>
-  <li><span>If Vize is the odd one out, Claude Code builds a repro repo with none of the app's code in it</span></li>
-  <li><span>I read the repo and the issue Claude Code wrote, and decide whether it gets filed</span></li>
-  <li><span>Claude Code runs the repro again on the latest Vize, then posts it under my account with <code>gh issue create</code>, in English, 5 to 7 minutes apart</span></li>
-  <li><span>When the fix is released, the app gets the new Vize, the warning is checked again, and the repro repo is archived</span></li>
-</ol>
-
----
-
-# Claude Code does the digging. I decide what gets filed.
-
-Rules I gave it along the way, still in its memory
-
-<div class="quotes compact">
-  <p><small>vize-repros-repo.md</small><span>Never file upstream until the user says so</span></p>
-  <p><small>vapor-get-current-instance.md</small><span>Read the runtime source and the upstream decision before saying which side is wrong</span></p>
-  <p><small>vize-repros-repo.md</small><span>No trace of the app: generic names, no app code</span></p>
-  <p><small>github-issues-prs-in-english.md</small><span>Everything on GitHub is in English</span></p>
-</div>
-
----
-
-# June vs October
-
-<div class="columns">
-  <div class="stack">
-    <p class="muted">June · #1837</p>
-    <div class="card">
-      <header><ClosedIcon /> nested &lt;template&gt; closes the root template block early</header>
-      <section>
-        <div class="shot">screenshot</div>
-        <p>A paragraph on what goes wrong and where in the grammar it lives.</p>
-      </section>
-    </div>
-  </div>
-  <div class="stack">
-    <p class="muted">October · #10661</p>
-    <div class="card">
-      <header><ClosedIcon /> a prop named from is bound as _from</header>
-      <section>
-        <h4>Version</h4><p><code>vize 0.569.0</code>, TS 7.1.0-beta, Node 26.12.1</p>
-        <h4>Reproduction</h4><p><code>pnpm install</code>, then <code>pnpm check</code></p>
-        <h4>Actual / Expected</h4><p>TS2552 at a virtual position / no error</p>
-      </section>
-    </div>
+<div class="evidence">
+  <div class="rows">
+    <p><span>"<code>vize check</code> is fine"</span><small>#8752</small></p>
+    <p><span>"<code>@vue/compiler-sfc</code> emits …"</span><small>#6766</small></p>
+    <p><span>"unlike markuplint and the HTML spec"</span><small>#9749</small></p>
   </div>
 </div>
 
 ---
 
-# From #9747 on, each issue has its own repro repo
+# Then it cuts the case down to <em>one small repo</em>
 
-<ReproTiles />
-
-<p class="note"><code>pnpm install</code>, then one command that reproduces it</p>
-
----
-
-# Each report points at something that already works
-
-<div class="quotes">
-  <p><small>#8752 – #8755</small><span>"<code>vize check</code> is fine"</span></p>
-  <p><small>#6766, #6767</small><span>"<code>@vue/compiler-sfc</code> emits …"</span></p>
-  <p><small>#9749</small><span>"unlike markuplint and the HTML spec"</span></p>
-  <p><small>#7817</small><span>"as vue-router's <code>sfc-typed-router</code> does"</span></p>
+<div class="evidence">
+  <a class="repo" href="https://github.com/naitokosuke/vize-placeholder-label-option-repro" target="_blank" rel="noopener noreferrer">
+    <span><span class="owner">naitokosuke/</span><br />vize-placeholder-label-option-repro</span>
+    <code>pnpm install && pnpm lint</code>
+  </a>
+  <p class="muted">One repo per issue, with nothing from my app</p>
 </div>
 
 ---
 
-# What I kept to myself
+# I decide what gets filed, <em>and what doesn't</em>
 
-<div class="quotes">
-  <p><small>tsrs only</small><span>Vize targets tsgo, so a failure that tsgo does not show is not for Vize to fix</span></p>
-  <p><small>by design</small><span>A type checker that fails to start gives a warning and exit 0, on purpose</span></p>
-  <p><small>cautious on purpose</small><span><code>no-reactivity-loss</code> stays narrow, and the rewritten code was better anyway</span></p>
+<div class="evidence">
+  <p class="muted">Not filed</p>
+  <div class="chips">
+    <span>Fails only on tsrs</span>
+    <span class="palm">Works as designed</span>
+    <span class="deep">Narrow on purpose</span>
+  </div>
 </div>
 
 ---
 
-<div class="big">
-  <strong>8.3<small>h</small> → 4.3<small>h</small></strong>
-  <span>median time until closed, #1563 – #9180 → #9747 onward</span>
-</div>
-
-<p class="caveat">21 issues vs 9, and they are different issues. Take it loosely.</p>
-
----
-
-# Some fixes missed a case
-
-<div class="quotes">
-  <p><small>#6767 → #6898</small><span>After the <code>[object object]</code> fix, the scope id was still emitted where Vue emits none</span></p>
-  <p><small>#8752 → #9747</small><span>After the <code>v-if</code> fix, nested <code>v-if</code> and <code>v-else-if</code> still failed</span></p>
-</div>
-
-<p class="note">I run the repro again on the release that has the fix</p>
-
----
-
-<div class="big">
-  <strong>80 → 17 → 6</strong>
-  <span>lint warnings in my toy app</span>
-</div>
-
-<p class="caveat">80 → 17 by fixing my own code, 17 → 6 by Vize fixes and two rewrites. The last 6 are false positives, each checked against the rule source and the spec.</p>
-
----
-
-# What I put in a report now
-
-<dl class="terms">
-  <dt>Summary</dt><dd>What is wrong, in one sentence</dd>
-  <dt>Version</dt><dd>Every package and runtime involved</dd>
-  <dt>Reproduction</dt><dd>Repo URL and the command that fails</dd>
-  <dt>Actual / Expected</dt><dd>Pasted output</dd>
-  <dt>Reference</dt><dd>A tool or spec that gets it right</dd>
-</dl>
-
----
-
-<div class="big">
-  <strong>Thanks</strong>
-  <span>github.com/ubugeeei-prod/vize</span>
+<div class="closing">
+  <p>Use Vize in your app.</p>
+  <p><em>File what breaks.</em></p>
+  <a href="https://github.com/ubugeeei-prod/vize" target="_blank" rel="noopener noreferrer">github.com/ubugeeei-prod/vize</a>
 </div>

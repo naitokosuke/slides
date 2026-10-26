@@ -12,24 +12,19 @@
   --color-text: var(--color-deep);
   --color-text-muted: color-mix(
     in oklch,
-    var(--color-deep) 72%,
+    var(--color-deep) 82%,
     var(--color-blush)
   );
   --color-accent: var(--color-palm);
   --color-border: color-mix(in oklch, var(--color-deep) 22%, transparent);
   --color-code-bg: color-mix(in oklch, var(--color-deep) 10%, transparent);
 
-  /* Flat pool-blue blocks with white type on them */
+  /* Flat blocks with white type on them */
   --color-surface: var(--color-pool);
   --color-on-surface: var(--color-white);
   --color-on-surface-muted: color-mix(
     in oklch,
     var(--color-white) 78%,
-    transparent
-  );
-  --color-border-on-surface: color-mix(
-    in oklch,
-    var(--color-white) 30%,
     transparent
   );
   --color-code-bg-on-surface: color-mix(
@@ -41,20 +36,21 @@
   --font-sans: "Space Grotesk", "Noto Sans JP", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --text-xs: 0.8rem;
-  --text-sm: 0.9rem;
-  --text-md: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.5rem;
-  --text-2xl: 2.25rem;
-  --text-3xl: 4rem;
-  --text-display: 5.5rem;
-  --text-hero: 9rem;
+  /*
+    Type sizes for a 980 × 552 slide. The smallest one, 1.75rem (28px), is about 5% of the
+    slide height, the same share as 30pt on a 7.5-inch slide, so nothing reads smaller than that.
+  */
+  --text-body: 1.75rem;
+  --text-headline: 2.75rem;
+  --text-display: 4.5rem;
+  --text-hero: 10rem;
+  --size-code: 1em;
 
   --weight-bold: 700;
+  --weight-normal: 400;
   --leading-none: 1;
   --leading-tight: 1.15;
-  --leading-normal: 1.5;
+  --leading-normal: 1.4;
   --tracking-tight: -0.02em;
   --tracking-tighter: -0.04em;
 
@@ -68,61 +64,57 @@
   --space-8: 4rem;
 
   --radius-sm: 6px;
-  --radius-md: 8px;
+  --radius-md: 10px;
   --radius-full: 9999px;
 
-  --border-width: 1px;
+  --border-width: 2px;
   --stroke-width: 2.5px;
-  --stroke-width-icon: 1.5px;
   --dash: 2 4;
 
   --duration-fast: 160ms;
   --easing-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --lift: -3px;
-  --opacity-secondary: 0.75;
-  --offset-raised: 4px;
+  --offset-raised: 6px;
   --shadow-raised: var(--offset-raised) var(--offset-raised) 0
     var(--color-accent);
+  --opacity-secondary: 0.75;
 
-  --size-icon: 1em;
-  --size-avatar: 2.5rem;
+  --size-avatar: 3rem;
+  --size-chip: 11rem;
+  --size-source: 8rem;
   --size-dot: 0.8rem;
   --size-chart-dot: 7px;
   --size-chart-dot-active: 10px;
   --clamp-title: 3;
-  --size-shot: 4rem;
-  --size-source: 9rem;
-  --size-step: 3rem;
-  --size-source-wide: 17rem;
-  --size-term: 13rem;
-  --size-term-compact: 8rem;
 }
 
 /* Base */
 
 .slidev-layout {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-sans);
-  line-height: var(--leading-normal);
   display: flex;
   flex-direction: column;
   padding: var(--space-7) var(--space-8);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
 }
 
+/* The headline states the slide's point as a sentence; the evidence sits under it */
 .slidev-layout h1 {
-  margin: 0 0 var(--space-5);
-  font-size: var(--text-2xl);
+  margin: 0 0 var(--space-6);
+  font-size: var(--text-headline);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   text-wrap: balance;
 }
 
-.slidev-layout h1 + p {
-  color: var(--color-text-muted);
-  font-size: var(--text-lg);
-  opacity: 1;
+/* The words to remember in a headline */
+.slidev-layout h1 em {
+  color: var(--color-accent);
+  font-style: normal;
 }
 
 :where(.slidev-layout) p {
@@ -130,60 +122,60 @@
 }
 
 .slidev-layout :not(pre) > code {
-  padding: 0 var(--space-1);
+  padding: 0 var(--space-2);
   border-radius: var(--radius-sm);
   background: var(--color-code-bg);
-  color: var(--color-text);
+  color: inherit;
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: var(--size-code);
+}
+
+.slidev-layout a {
+  border-bottom: var(--border-width) solid var(--color-border);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color var(--duration-fast) var(--easing-out);
+}
+
+.slidev-layout a:hover,
+.slidev-layout a:focus-visible {
+  border-color: var(--color-accent);
+  color: inherit;
+  outline: none;
 }
 
 .muted {
   color: var(--color-text-muted);
 }
 
-.mono {
-  font-family: var(--font-mono);
-}
-
-/* Layout */
-
-.stack {
-  display: grid;
-  align-content: start;
-  gap: var(--space-3);
-}
-
-.columns {
-  display: grid;
-  grid-template-columns: repeat(var(--columns, 2), 1fr);
-  align-items: start;
-  gap: var(--space-5);
-  margin-top: var(--space-6);
-}
-
 .note {
   margin-top: var(--space-6);
   color: var(--color-text-muted);
-  font-size: var(--text-lg);
 }
 
-.caveat {
-  position: absolute;
-  inset-inline: var(--space-8);
-  bottom: var(--space-6);
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
+/* The evidence under a headline, centred in the height the slide has left */
+.evidence {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-5);
+}
+
+/* A figure that takes whatever height the slide has left */
+.fill {
+  flex: 1;
+  min-height: 0;
 }
 
 /* Cover */
 
 .cover {
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   gap: var(--space-4);
-  flex: 1;
 }
 
 .cover h1 {
@@ -194,7 +186,7 @@
 .cover .byline {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
   margin-top: var(--space-7);
   color: var(--color-text-muted);
   font-family: var(--font-mono);
@@ -206,27 +198,13 @@
   border-radius: var(--radius-full);
 }
 
-.slidev-layout .cover a {
-  border-bottom: var(--border-width) solid var(--color-border);
-  color: var(--color-text);
-  text-decoration: none;
-  transition: border-color var(--duration-fast) var(--easing-out);
-}
-
-.slidev-layout .cover a:hover,
-.slidev-layout .cover a:focus-visible {
-  border-color: var(--color-accent);
-  color: var(--color-text);
-  outline: none;
-}
-
 /* One huge number with a caption under it */
 
 .big {
   display: grid;
+  flex: 1;
   place-content: center;
   gap: var(--space-5);
-  flex: 1;
   text-align: center;
 }
 
@@ -237,235 +215,129 @@
   letter-spacing: var(--tracking-tighter);
 }
 
-.big strong small {
-  color: var(--color-accent);
-  font-size: var(--text-3xl);
-  letter-spacing: 0;
-}
-
 .big span {
   color: var(--color-text-muted);
-  font-size: var(--text-xl);
 }
 
-.big em {
-  color: var(--color-text);
-  font-style: normal;
+/* Short quotes, each with the issue it comes from on the right */
+
+.rows {
+  display: grid;
 }
 
-/* A flat block of colour with type on it, for mock issue bodies and the project cards */
-
-.card {
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  color: var(--color-on-surface);
-  font-size: var(--text-md);
+.rows p {
+  display: grid;
+  grid-template-columns: 1fr var(--size-source);
+  align-items: baseline;
+  gap: var(--space-5);
+  padding: var(--space-4) 0;
+  border-top: var(--border-width) solid var(--color-border);
 }
 
-/* The other blocks of the palette: the palms and the deep blue */
-.card.palm {
-  --color-surface: var(--color-palm);
+.rows p:last-child {
+  border-bottom: var(--border-width) solid var(--color-border);
 }
 
-.card.deep {
-  --color-surface: var(--color-deep);
-}
-
-.slidev-layout .card :not(pre) > code {
-  background: var(--color-code-bg-on-surface);
-  color: var(--color-on-surface);
-}
-
-.card.large {
-  font-size: var(--text-lg);
-}
-
-.card header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-4);
-  border-bottom: var(--border-width) solid var(--color-border-on-surface);
-  color: var(--color-on-surface-muted);
+.rows small {
+  color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
+  font-size: var(--text-body);
+  text-align: right;
 }
 
-.card section {
+/* One repro repo as a flat block that lifts onto an accent shadow */
+
+.slidev-layout .repo {
   display: grid;
-  gap: var(--space-1);
-  padding: var(--space-3) var(--space-4);
-}
-
-.slidev-layout .card h4 {
-  margin: var(--space-3) 0 0;
-  font-size: var(--text-md);
-  font-weight: var(--weight-bold);
-}
-
-.slidev-layout .card h4:first-child {
-  margin-top: 0;
-}
-
-.card .label {
-  color: var(--color-on-surface-muted);
-  font-size: var(--text-sm);
-}
-
-.card .shot {
-  display: grid;
-  place-content: center;
-  height: var(--size-shot);
-  margin-bottom: var(--space-3);
-  border: var(--border-width) dashed var(--color-border-on-surface);
-  border-radius: var(--radius-sm);
-  color: var(--color-on-surface-muted);
-}
-
-/* A flat pool-blue link that lifts onto an accent shadow on hover, used for the repo tiles */
-
-.slidev-layout .link-box {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-3);
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: none;
   border-radius: var(--radius-md);
   background: var(--color-surface);
   color: var(--color-on-surface);
   font-family: var(--font-mono);
-  text-decoration: none;
   transition:
     translate var(--duration-fast) var(--easing-out),
     box-shadow var(--duration-fast) var(--easing-out);
 }
 
-.slidev-layout .link-box:hover,
-.slidev-layout .link-box:focus-visible {
+.slidev-layout .repo:hover,
+.slidev-layout .repo:focus-visible {
   translate: 0 var(--lift);
   box-shadow: var(--shadow-raised);
   color: var(--color-on-surface);
-  outline: none;
-}
-
-.slidev-layout li:has(> .link-box) {
-  margin: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slidev-layout .link-box:hover,
-  .slidev-layout .link-box:focus-visible {
+  .slidev-layout .repo:hover,
+  .slidev-layout .repo:focus-visible {
     translate: none;
   }
 }
 
-/* Rows of quotes, with the issue numbers they come from in a column on the left */
-
-.quotes {
-  margin-top: var(--space-6);
-  font-size: var(--text-xl);
+.repo .owner {
+  color: var(--color-on-surface-muted);
 }
 
-.quotes p {
+.slidev-layout .repo code {
+  justify-self: start;
+  background: var(--color-code-bg-on-surface);
+}
+
+/* Short labels as flat blocks, one colour each */
+
+.chips {
   display: grid;
-  grid-template-columns: var(--size-source) 1fr;
-  align-items: baseline;
-  gap: var(--space-5);
-  padding: var(--space-3) 0;
-  border-top: var(--border-width) solid var(--color-border);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
 }
 
-.quotes p:last-child {
-  border-bottom: var(--border-width) solid var(--color-border);
-}
-
-.quotes small {
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-}
-
-/* Numbered steps, one row each */
-
-.steps {
+.chips span {
   display: grid;
-  gap: var(--space-2);
-  margin: var(--space-5) 0 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
-  font-size: var(--text-md);
-}
-
-.slidev-layout .steps li {
-  display: grid;
-  grid-template-columns: var(--size-step) 1fr;
-  align-items: baseline;
-  margin: 0;
-  counter-increment: step;
-}
-
-.steps li::before {
-  content: counter(step, decimal-leading-zero);
-  color: var(--color-accent);
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-}
-
-.quotes.compact {
-  --size-source: var(--size-source-wide);
-  font-size: var(--text-md);
-}
-
-/* Term and description side by side, one row each */
-
-.terms {
-  display: grid;
-  grid-template-columns: var(--size-term) 1fr;
-  margin: var(--space-5) 0 0;
-  font-size: var(--text-lg);
-}
-
-.terms dt,
-.terms dd {
-  margin: 0;
-  padding: var(--space-3) 0;
-  border-top: var(--border-width) solid var(--color-border);
-}
-
-.terms dt {
+  place-content: center;
+  min-height: var(--size-chip);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
   font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  text-align: center;
 }
 
-.terms dd {
-  color: var(--color-text-muted);
+.chips .palm {
+  --color-surface: var(--color-palm);
 }
 
-.terms :is(dt, dd):nth-last-child(-n + 2) {
-  border-bottom: var(--border-width) solid var(--color-border);
+.chips .deep {
+  --color-surface: var(--color-deep);
 }
 
-/* A figure that takes whatever height the slide has left */
+/* Closing call to action */
 
-.fill {
+.closing {
+  display: flex;
   flex: 1;
-  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--text-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
 }
 
-.quotes.compact p {
-  padding: var(--space-2) 0;
+.closing em {
+  color: var(--color-accent);
+  font-style: normal;
 }
 
-.slidev-layout .card p {
-  margin: 0;
-}
-
-.terms.compact {
-  --size-term: var(--size-term-compact);
-  margin: 0;
-  font-size: var(--text-md);
-}
-
-.terms.compact :is(dt, dd) {
-  padding: var(--space-2) 0;
+.closing a {
+  align-self: flex-start;
+  margin-top: var(--space-7);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-body);
+  font-weight: var(--weight-normal);
+  letter-spacing: 0;
 }

@@ -269,17 +269,19 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
       :key="b.number"
       :class="['bubble', b.depth]"
       :href="sanitizeUrl(b.url)"
+      :aria-label="`#${b.number}, ${b.label} to close`"
       target="_blank"
       rel="noopener noreferrer"
       :transform="`translate(${b.x} ${b.y})`"
       @pointerdown="grab(b, $event)"
       @click="follow"
     >
+      <title>#{{ b.number }} · {{ b.label }}</title>
       <circle :r="b.r" />
-      <text class="number" :font-size="Math.min(b.r * 0.34, 22)" dy="-0.15em">
+      <text class="number" :font-size="Math.min(b.r * 0.34, 28)" dy="-0.15em">
         #{{ b.number }}
       </text>
-      <text class="time" :font-size="Math.min(b.r * 0.3, 18)" dy="1.05em">
+      <text class="time" :font-size="Math.min(b.r * 0.3, 24)" dy="1.05em">
         {{ b.label }}
       </text>
     </a>
