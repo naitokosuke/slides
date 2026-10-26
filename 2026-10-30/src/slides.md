@@ -54,6 +54,53 @@ fonts:
 
 ---
 
+# One parser runs <em>every Vue tool</em>
+
+<div class="evidence">
+  <div class="chips compact">
+    <span>Compile</span>
+    <span>Lint</span>
+    <span>Format</span>
+    <span>Type check</span>
+    <span>Editor</span>
+    <span>Musea</span>
+  </div>
+  <p class="source">Source: <a href="https://github.com/ubugeeei-prod/vize#what-is-vize" target="_blank" rel="noopener noreferrer">Vize's README</a></p>
+</div>
+
+---
+
+# It type-checks <code>.vue</code> <em>on TypeScript 7</em>
+
+<div class="evidence">
+  <pre class="snippet">"contentMappers": [
+  { "package": "vize",
+    "extensions": [".vue"] }
+]</pre>
+  <p class="muted">vue-tsc cannot load TypeScript 7</p>
+</div>
+
+---
+
+# It is still being tested, <em>and that is the exciting part</em>
+
+<a class="og" href="https://vizejs.dev/blog/notes/2026-06-07-real-world-testing/" target="_blank" rel="noopener noreferrer">
+  <img src="https://vizejs.dev/_og/en-9004c41c876ca1a20b25b3e4c79f46433039ea3772e41da6e020c085558370fe.png" alt="Real World Testing, on the Vize blog" />
+</a>
+
+---
+
+# The blog asks for <em>reports from real projects</em>
+
+<div class="evidence">
+  <blockquote class="quote">
+    <p>“Real-world applications are the test suite now.”</p>
+    <cite><a href="https://vizejs.dev/blog/notes/2026-06-07-real-world-testing/" target="_blank" rel="noopener noreferrer">Real World Testing</a>, 2026-06-07</cite>
+  </blockquote>
+</div>
+
+---
+
 # Claude Code checks Vize against <em>something that already works</em>
 
 <div class="evidence">
