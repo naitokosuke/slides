@@ -41,6 +41,19 @@ fonts:
 
 ---
 
+# I use Vize because it is <em>much faster</em>
+
+<div class="evidence">
+  <div class="speed">
+    <p><span>Lint</span><span class="muted">vs eslint-plugin-vue</span><strong>182×</strong></p>
+    <p><span>Format</span><span class="muted">vs Prettier</span><strong>85×</strong></p>
+    <p><span>Type check</span><span class="muted">vs vue-tsc</span><strong>4.9×</strong></p>
+  </div>
+  <p class="source">Source: <a href="https://github.com/ubugeeei-prod/vize#benchmarks" target="_blank" rel="noopener noreferrer">Vize's benchmarks</a></p>
+</div>
+
+---
+
 # Claude Code checks Vize against <em>something that already works</em>
 
 <div class="evidence">
