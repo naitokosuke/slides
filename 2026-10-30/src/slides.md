@@ -123,8 +123,11 @@ fonts:
 # Then it checks whether <em>someone already filed it</em>
 
 <div class="evidence">
-  <pre class="snippet">gh search issues --repo ubugeeei-prod/vize \
-  "placeholder-label-option"</pre>
+  <p class="muted">To Claude Code</p>
+  <div class="prompt">
+    <span class="caret" aria-hidden="true">&gt;</span>
+    <p>Has anyone filed this already? Search <code>ubugeeei-prod/vize</code> issues and PRs, open and closed, before we write one.</p>
+  </div>
 </div>
 
 ---
