@@ -132,23 +132,19 @@ fonts:
 
 ---
 
-# I read every repro before it goes up, <em>and some never do</em>
+# I read them, and some <em>don't get filed</em>
 
 <div class="evidence">
   <div class="verdicts">
     <div class="verdict">
-      <strong>9</strong>
-      <span class="label">filed</span>
-      <p>Read, then posted</p>
+      <span class="label">Fails only on tsrs</span>
+      <p>Vize targets tsgo. tsrs follows TypeScript's unreleased main.</p>
     </div>
-    <div class="verdict kept">
-      <strong>2</strong>
-      <span class="label">kept back</span>
-      <p>Fails only on tsrs</p>
-      <p>Exit 0 is intended</p>
+    <div class="verdict">
+      <span class="label">Exits 0 when the checker can't start</span>
+      <p>Vize does that on purpose.</p>
     </div>
   </div>
-  <p class="source">Repro repos made in October</p>
 </div>
 
 ---
