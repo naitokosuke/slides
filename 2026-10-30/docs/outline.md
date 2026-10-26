@@ -57,7 +57,7 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 7. Johnson Chu の v4 alpha 告知ツイート（https://x.com/johnsoncodehk/status/2113609909329953099）を左に、右に「Vue Language Tools v4 takes the same path」。<Tweet> の埋め込みなので会場のネット接続が必要
 8. 見出しを画像の上下に分ける。上に「It's still being tested,」、真ん中に Real World Testing の OG 画像（src/public/real-world-testing.png）、下に右寄せで「and that is the exciting part」
 9. My issues hit every part of Vize。当たった箇所の内訳（Lint 15、Build 7、Editor 4、Type check 3、Musea 1）
-10. Claude Code does the legwork。1 つの入力欄に依頼 4 行（再現を作る、既存の issue を探す、最新リリースで再実行、tsgo でも走らせる）
+10. Claude Code does the legwork。1 つの入力欄に依頼 4 行。見出しに Claude Code とあるので「To Claude Code」のラベルは付けない（再現を作る、既存の issue を探す、最新リリースで再実行、tsgo でも走らせる）
 11. I read every repro before it goes up, and some never do。出さなかった例 2 つ（tsrs だけで壊れる、起動失敗時の exit 0 は意図どおり）
 12. One issue, from my app to a release。#9751 の流れ
 13. Try Vize on your app. Send a small repro.（`npx vize lint` と issue ページへのリンク）
