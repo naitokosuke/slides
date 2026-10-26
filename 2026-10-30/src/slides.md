@@ -53,23 +53,31 @@ fonts:
   <div class="speed">
     <p><span>Lint</span><span class="muted">vs eslint-plugin-vue</span><strong>182×</strong></p>
     <p><span>Format</span><span class="muted">vs Oxfmt</span><strong>50×</strong></p>
+    <p><span>Type check</span><span class="muted">vs vue-tsc v3</span><strong>4.9×</strong></p>
   </div>
   <div class="source">
-    <p>Lint: <a href="https://github.com/ubugeeei-prod/vize#benchmarks" target="_blank" rel="noopener noreferrer">Vize's benchmarks</a></p>
+    <p>Lint, type check: <a href="https://github.com/ubugeeei-prod/vize#benchmarks" target="_blank" rel="noopener noreferrer">Vize's benchmarks</a></p>
     <p>Format: 2,940 <code>.vue</code> files from my app, on an M1</p>
   </div>
 </div>
 
 ---
 
-# It type-checks <code>.vue</code> <em>on TypeScript 7</em>
+<div class="tweet">
+  <Tweet id="2113609909329953099" cards="hidden" conversation="none" />
+  <h1>Vue Language Tools v4 <em>takes the same path</em></h1>
+</div>
+
+---
+
+# Vize already type-checks <code>.vue</code> <em>on TypeScript 7</em>
 
 <div class="evidence">
   <pre class="snippet">"contentMappers": [
   { "package": "vize",
     "extensions": [".vue"] }
 ]</pre>
-  <p class="muted">vue-tsc cannot load TypeScript 7</p>
+  <p class="muted">Vue Language Tools v4 is still in alpha</p>
 </div>
 
 ---
