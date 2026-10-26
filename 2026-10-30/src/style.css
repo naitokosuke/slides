@@ -43,6 +43,7 @@
   --text-body: 1.75rem;
   --text-headline: 2.75rem;
   --text-display: 4.5rem;
+  --text-quote: 3.5rem;
   --text-hero: 10rem;
   --size-code: 1em;
 
@@ -81,6 +82,7 @@
 
   --size-avatar: 3rem;
   --size-chip: 11rem;
+  --size-chip-compact: 6rem;
   --size-source: 8rem;
   --size-speed-label: 11rem;
   --size-dot: 0.8rem;
@@ -262,7 +264,7 @@
   grid-template-columns: var(--size-speed-label) 1fr auto;
   align-items: baseline;
   gap: var(--space-5);
-  padding: var(--space-3) 0;
+  padding: var(--space-2) 0;
   border-top: var(--border-width) solid var(--color-border);
 }
 
@@ -350,6 +352,77 @@
 
 .chips .deep {
   --color-surface: var(--color-deep);
+}
+
+.chips.compact span {
+  min-height: var(--size-chip-compact);
+}
+
+/* A config snippet as a flat block */
+
+.slidev-layout .snippet {
+  margin: 0;
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: var(--font-mono);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+}
+
+/* A screenshot that takes the height under the headline, linking to its page */
+
+.slidev-layout .og {
+  display: flex;
+  flex: 1;
+  align-self: center;
+  min-height: 0;
+}
+
+/* Links that are blocks lift instead of showing the theme's hover border */
+.slidev-layout :is(.og, .repo),
+.slidev-layout :is(.og, .repo):hover,
+.slidev-layout :is(.og, .repo):focus-visible {
+  border: none;
+  outline: none;
+}
+
+.og img {
+  height: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
+  transition: translate var(--duration-fast) var(--easing-out);
+}
+
+.og:hover img,
+.og:focus-visible img {
+  translate: 0 var(--lift);
+}
+
+/* One quote, set large, with where it comes from */
+
+.slidev-layout .quote {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.quote p {
+  font-size: var(--text-quote);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+.quote cite {
+  color: var(--color-text-muted);
+  font-size: var(--text-body);
+  font-style: normal;
 }
 
 /* Closing call to action */

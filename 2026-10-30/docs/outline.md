@@ -53,15 +53,20 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 2. 30（issues I opened on Vize）
 3. All 30 were fixed, most within a day。根拠は close までの時間に面積が比例する円 30 個。1 日以内に閉じたのは 23 件。番号と時間はどんなに小さい円でも出す
 4. I use Vize because it is much faster。根拠は Vize の README のベンチマーク（2026-09-16、blacksmith 32 CPU）。Lint 182×（eslint-plugin-vue、3,000 ファイル、20.75s → 114ms）、Format 85×（Prettier、3,000 ファイル、29.72s → 351ms）、Type check 4.9×（vue-tsc、500 ファイル、6.75s → 1.37s）。自分のアプリで測った記録はないので公式の数字を出典つきで使う
-5. Claude Code checks Vize against something that already works。根拠は issue の文言 3 つ（#8752、#6766、#9749）
-6. Then it cuts the case down to one small repo。根拠は再現リポジトリ 1 つ（vize-placeholder-label-option-repro）とコマンド
-7. I decide what gets filed, and what doesn't。根拠は起票しなかったもの 3 種
-8. Use Vize in your app. File what breaks.
+5. One parser runs every Vue tool。根拠は Compile / Lint / Format / Type check / Editor / Musea の 6 ブロック（README の What Is Vize?）
+6. It type-checks .vue on TypeScript 7。根拠は tsconfig の contentMappers と、vue-tsc が TypeScript 7 を読めないこと（このリポジトリの CLAUDE.md）
+7. It is still being tested, and that is the exciting part。根拠は公式ブログ「Real World Testing」（2026-06-07）の OG 画像。いまは公式の URL を直接参照している
+8. The blog asks for reports from real projects。根拠は同じ記事の 1 文「Real-world applications are the test suite now.」
+9. Claude Code checks Vize against something that already works。根拠は issue の文言 3 つ（#8752、#6766、#9749）
+10. Then it cuts the case down to one small repo。根拠は再現リポジトリ 1 つ（vize-placeholder-label-option-repro）とコマンド
+11. I decide what gets filed, and what doesn't。根拠は起票しなかったもの 3 種
+12. Use Vize in your app. File what breaks.
 
 散布図、303 リリース、6 月と 10 月の比較、8.3h → 4.3h、取りこぼし、lint 警告 80 → 6、報告のテンプレートは 5 分に収めるため外した。散布図のコンポーネントは 9914715 にある。
 
 ## 未決
 
+- OG 画像は vizejs.dev から直接読んでいる。会場がオフラインなら `src/public/real-world-testing.png` に保存して `src` を差し替える
 - blog の 5 件のうち #6897、#6898 は推定
 - 記録のない 8 件の出どころ
 
