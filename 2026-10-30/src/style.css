@@ -39,6 +39,7 @@
   */
   --text-body: 1.75rem;
   --text-headline: 2.75rem;
+  --text-quote: 3.25rem;
   --text-display: 4.5rem;
   --size-code: 1em;
 
@@ -83,7 +84,7 @@
   --size-cursor: 0.55em;
   --size-logo: 70%;
   --size-tweet: 31rem;
-  --size-og-side: 26rem;
+  --size-og-side: 18rem;
   --size-row-label: 13rem;
 }
 
@@ -419,38 +420,46 @@
   letter-spacing: 0;
 }
 
-/* One short quote, set large, with where it comes from under it */
+/* One quote, set a step larger than the headline so it reads as the evidence */
 
 .slidev-layout .quote {
-  display: grid;
-  gap: var(--space-4);
   margin: 0;
   padding: 0;
   border: none;
   background: none;
+  color: var(--color-text);
 }
 
 .slidev-layout .quote p {
-  font-size: var(--text-display);
-  font-weight: var(--weight-bold);
+  font-size: var(--text-quote);
+  font-weight: var(--weight-normal);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
 }
 
-.slidev-layout .quote cite {
+.slidev-layout .attribution {
   color: var(--color-text-muted);
-  font-size: var(--text-body);
-  font-style: normal;
   line-height: var(--leading-normal);
 }
 
-/* A quote on the left and its source's card on the right, both centred in the space under the headline */
+/*
+  The quote across the width right under the headline; who wrote it and the article's card
+  along the bottom edge, where the other slides keep their sources
+*/
 
 .slidev-layout .evidence.pair {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--size-og-side);
-  align-items: center;
-  gap: var(--space-7);
+  grid-template-rows: auto 1fr;
+  align-items: end;
+  gap: var(--space-6) var(--space-7);
+  padding-bottom: var(--space-2);
+}
+
+.evidence.pair .quote {
+  grid-column: 1 / -1;
+  align-self: start;
 }
 
 .slidev-layout .og-side,
