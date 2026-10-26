@@ -19,12 +19,17 @@ const minRadius = 27;
 const gap = 3;
 
 // Simulation tuning, in viewBox units per frame
-const pullX = 0.0018;
-const pullY = 0.006;
+const pullX = 0.0007;
+const pullY = 0.0024;
 const repelRange = 18;
-const repelStrength = 0.06;
+const repelStrength = 0.025;
 const damping = 0.86;
 const restSpeed = 0.02;
+// Share of an overlap undone per pass. It starts small so the scattered circles ease apart
+// instead of jumping, and grows each frame until overlaps are fully undone
+const overlapEaseStart = 0.15;
+const overlapEaseGrowth = 0.004;
+let overlapEase = overlapEaseStart;
 
 // Deterministic scatter, so every run starts from the same layout
 function seeded(seed: number) {
@@ -83,6 +88,7 @@ const bubbles = reactive<Bubble[]>(
 
 function scatter() {
   const random = seeded(20261030);
+  overlapEase = overlapEaseStart;
   for (const b of bubbles) {
     b.x = b.r + random() * (width - 2 * b.r);
     b.y = b.r + random() * (height - 2 * b.r);
@@ -92,6 +98,7 @@ function scatter() {
 }
 
 function step() {
+  overlapEase = Math.min(overlapEase + overlapEaseGrowth, 1);
   for (const b of bubbles) {
     if (b.held) continue;
     b.vx += (width / 2 - b.x) * pullX;
@@ -115,10 +122,10 @@ function step() {
 
       if (distance < touching) {
         const overlap = touching - distance;
-        a.x -= nx * overlap * share;
-        a.y -= ny * overlap * share;
-        b.x += nx * overlap * (1 - share);
-        b.y += ny * overlap * (1 - share);
+        a.x -= nx * overlap * share * overlapEase;
+        a.y -= ny * overlap * share * overlapEase;
+        b.x += nx * overlap * (1 - share) * overlapEase;
+        b.y += ny * overlap * (1 - share) * overlapEase;
       }
 
       const push =
@@ -160,10 +167,10 @@ function separate() {
       const overlap = a.r + b.r + gap - distance;
       if (overlap <= 0) continue;
       const share = a.held ? 0 : b.held ? 1 : b.mass / (a.mass + b.mass);
-      a.x -= (dx / distance) * overlap * share;
-      a.y -= (dy / distance) * overlap * share;
-      b.x += (dx / distance) * overlap * (1 - share);
-      b.y += (dy / distance) * overlap * (1 - share);
+      a.x -= (dx / distance) * overlap * share * overlapEase;
+      a.y -= (dy / distance) * overlap * share * overlapEase;
+      b.x += (dx / distance) * overlap * (1 - share) * overlapEase;
+      b.y += (dy / distance) * overlap * (1 - share) * overlapEase;
     }
   }
 }
@@ -182,7 +189,7 @@ function run() {
 }
 
 function settleAtOnce() {
-  for (let i = 0; i < 800; i++) step();
+  for (let i = 0; i < 3000; i++) step();
 }
 
 const reducedMotion =
