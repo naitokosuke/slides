@@ -41,6 +41,12 @@ fonts:
 
 ---
 
+<div class="logo">
+  <VizeLogo />
+</div>
+
+---
+
 # I use Vize because it is <em>much faster</em>
 
 <div class="evidence">

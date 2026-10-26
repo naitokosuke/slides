@@ -81,6 +81,7 @@
   --opacity-secondary: 0.75;
 
   --size-avatar: 3rem;
+  --size-logo: 70%;
   --size-chip: 11rem;
   --size-chip-compact: 6rem;
   --size-speed-label: 11rem;
@@ -203,6 +204,20 @@
   width: var(--size-avatar);
   height: var(--size-avatar);
   border-radius: var(--radius-full);
+}
+
+/* A logo on its own, centred and as large as the slide allows */
+
+.logo {
+  display: grid;
+  flex: 1;
+  place-items: center;
+  min-height: 0;
+}
+
+.logo > * {
+  height: var(--size-logo);
+  color: var(--color-text);
 }
 
 /* One huge number with a caption under it */
