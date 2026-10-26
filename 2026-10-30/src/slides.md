@@ -135,10 +135,20 @@ fonts:
 # I read every repro before it goes up, <em>and some never do</em>
 
 <div class="evidence">
-  <div class="rows">
-    <p><span>tsrs only</span><span class="muted">TypeScript main is still moving</span></p>
-    <p><span>Exit 0</span><span class="muted">Intended when the checker fails</span></p>
+  <div class="verdicts">
+    <div class="verdict">
+      <strong>9</strong>
+      <span class="label">filed</span>
+      <p>Read, then posted</p>
+    </div>
+    <div class="verdict kept">
+      <strong>2</strong>
+      <span class="label">kept back</span>
+      <p>Fails only on tsrs</p>
+      <p>Exit 0 is intended</p>
+    </div>
   </div>
+  <p class="source">Repro repos made in October</p>
 </div>
 
 ---
