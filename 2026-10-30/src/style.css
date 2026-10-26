@@ -88,11 +88,14 @@
   --size-avatar: 2.5rem;
   --size-dot: 0.8rem;
   --size-chart-dot: 7px;
+  --size-chart-dot-active: 10px;
+  --clamp-title: 3;
   --size-shot: 4rem;
   --size-source: 9rem;
   --size-step: 3rem;
   --size-source-wide: 17rem;
   --size-term: 13rem;
+  --size-term-compact: 8rem;
 }
 
 /* Base */
@@ -462,23 +465,12 @@
   margin: 0;
 }
 
-/* Cards that stretch to the bottom of the slide, with a big count on top */
-
-.columns.tall {
-  align-items: stretch;
+.terms.compact {
+  --size-term: var(--size-term-compact);
+  margin: 0;
+  font-size: var(--text-md);
 }
 
-.columns.tall .card section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  height: 100%;
-  padding: var(--space-5);
-}
-
-.columns.tall .count {
-  flex: 1;
-  font-size: var(--text-3xl);
-  font-weight: var(--weight-bold);
-  line-height: var(--leading-none);
+.terms.compact :is(dt, dd) {
+  padding: var(--space-2) 0;
 }

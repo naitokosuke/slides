@@ -8,6 +8,7 @@ import { sanitizeUrl } from "@braintree/sanitize-url";
 import { onSlideEnter, onSlideLeave } from "@slidev/client";
 import { onBeforeUnmount, onMounted, reactive, useTemplateRef } from "vue";
 import { issues } from "../data/issues";
+import { formatMinutes, minutesToClose } from "../data/time";
 
 const width = 880;
 const height = 400;
@@ -24,16 +25,6 @@ const repelRange = 18;
 const repelStrength = 0.06;
 const damping = 0.86;
 const restSpeed = 0.02;
-
-function minutesToClose(filed: string, closed: string) {
-  return (Date.parse(closed) - Date.parse(filed)) / 60_000;
-}
-
-function formatMinutes(minutes: number) {
-  if (minutes < 60) return `${Math.floor(minutes)}m`;
-  if (minutes < 60 * 24) return `${(minutes / 60).toFixed(1)}h`;
-  return `${(minutes / 60 / 24).toFixed(1)}d`;
-}
 
 // Deterministic scatter, so every run starts from the same layout
 function seeded(seed: number) {
