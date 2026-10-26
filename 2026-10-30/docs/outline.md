@@ -29,9 +29,10 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 `~/.claude/projects/-Users-naitokosuke-src-github-com-naitokosuke-chirashitabi/memory/` が中心。
 
 - 出どころ
-  - chirashitabi 15 件: #8752〜#8756、#9180、#9747〜#9752、#10659〜#10661（memory の `vize-lint-false-positives.md`、`vapor-get-current-instance.md`、`vize-repros-repo.md`）
+  - chirashitabi 17 件: #7816、#7817、#8752〜#8756、#9180、#9747〜#9752、#10659〜#10661（memory の `use-route-no-name-pending.md`、`vize-lint-false-positives.md`、`vapor-get-current-instance.md`、`vize-repros-repo.md`）
+  - #7816、#7817 は vuefes-2026 の transcript にも URL があるが、`gh search` で自分の issue を一覧した出力に含まれていただけで、起票元ではない
+
   - blog 5 件: #6684、#6766、#6767 は blog の transcript に `gh issue create` と URL がある。#6897、#6898 は同じ Nuxt 4.5.2 / `@vizejs/nuxt` 環境で同日の起票なので blog と推定（要確認）
-  - Vue Fes Japan 2026 サイト 2 件: #7816、#7817（vuefes-2026 の transcript に URL がある）
   - 残り 8 件（#1563、#1837、#2010、#5966、#6234、#7273、#7377、#7417）は記録が残っておらず、スライドには出していない
 - 手順（`vize-repros-repo.md`、`vize-tsrs-upgrade-blocked.md`、`vapor-get-current-instance.md`）
   - `vp run check` の警告を、ルールの実装と仕様、`@vitejs/plugin-vue` / `@vue/compiler-sfc` / `vue-tsc` の挙動と突き合わせる
@@ -48,7 +49,7 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 ## スライド構成
 
 1. cover「How I Contributed to Vize」。副題は「30 issues, June to October」（bug という語は表紙に出さない）。アイコンと GitHub へのリンク付きの @naitokosuke
-2. バグの出どころ（toy app 15、blog 5、Vue Fes Japan 2026 サイト 2）。chirashitabi は個人プロジェクトなのでスライドでは "my toy app" と呼ぶ
+2. バグの出どころ（toy app 17、blog 5）。chirashitabi は個人プロジェクトなのでスライドでは "my toy app" と呼ぶ
 3. 30 件起票した
 4. 全部 closed。close までの時間に面積が比例する円を 30 個、物理演算で押し合わせる。円は issue へのリンクで、ドラッグで動かせる
 5. 中央値 5.7 時間、最速 56 分
