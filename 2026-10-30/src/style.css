@@ -1,36 +1,43 @@
 /* Every value used on the slides comes from these tokens */
 :root {
-  /* Palm Springs: pink walls, a deep blue, two pool blues and the palms */
-  --color-deep: #024873;
-  --color-pool: #048abf;
-  --color-lagoon: #049dbf;
-  --color-palm: #055902;
-  --color-blush: #f2c2c2;
-  --color-white: #ffffff;
+  /* Four colours: royal blue type and blocks, tea pink paper, a yellow marker, baby pink */
+  --color-royal: #3a2d71;
+  --color-tea: #e9d1e1;
+  --color-yellow: #f6d60d;
+  --color-baby: #a08ac0;
 
-  --color-bg: var(--color-blush);
-  --color-text: var(--color-deep);
+  --color-bg: var(--color-tea);
+  --color-text: var(--color-royal);
   --color-text-muted: color-mix(
     in oklch,
-    var(--color-deep) 82%,
-    var(--color-blush)
+    var(--color-royal) 78%,
+    var(--color-tea)
   );
-  --color-accent: var(--color-palm);
-  --color-border: color-mix(in oklch, var(--color-deep) 22%, transparent);
-  --color-code-bg: color-mix(in oklch, var(--color-deep) 10%, transparent);
+  /* Yellow is too light to be text on tea pink, so it is only ever a fill: a marker, a shadow */
+  --color-accent: var(--color-yellow);
+  --color-border: color-mix(in oklch, var(--color-royal) 22%, transparent);
+  --color-code-bg: color-mix(in oklch, var(--color-royal) 10%, transparent);
 
-  /* Flat blocks with white type on them */
-  --color-surface: var(--color-pool);
-  --color-on-surface: var(--color-white);
+  /* Flat royal blue blocks with tea pink type on them */
+  --color-surface: var(--color-royal);
+  --color-on-surface: var(--color-tea);
   --color-on-surface-muted: color-mix(
     in oklch,
-    var(--color-white) 78%,
+    var(--color-tea) 78%,
     transparent
   );
   --color-code-bg-on-surface: color-mix(
     in oklch,
-    var(--color-white) 20%,
+    var(--color-tea) 20%,
     transparent
+  );
+
+  /* A highlighter stroke over the lower part of the words it marks */
+  --marker-start: 58%;
+  --marker-pad: 0.08em;
+  --marker: linear-gradient(
+    transparent var(--marker-start),
+    var(--color-accent) var(--marker-start)
   );
 
   --font-sans: "Space Grotesk", "Noto Sans JP", sans-serif;
@@ -114,9 +121,13 @@
   text-wrap: balance;
 }
 
-/* The words to remember in a headline */
-.slidev-layout h1 em {
-  color: var(--color-accent);
+/* The words to remember, under a yellow highlighter stroke */
+.slidev-layout h1 em,
+.slidev-layout .headline-end em,
+.slidev-layout .closing em {
+  padding-inline: var(--marker-pad);
+  background: var(--marker);
+  box-decoration-break: clone;
   font-style: normal;
 }
 
@@ -147,7 +158,7 @@
 
 .slidev-layout a:hover,
 .slidev-layout a:focus-visible {
-  border-color: var(--color-accent);
+  border-color: var(--color-text);
   color: inherit;
   outline: none;
 }
@@ -282,7 +293,8 @@
 }
 
 .speed strong {
-  color: var(--color-accent);
+  padding-inline: var(--marker-pad);
+  background: var(--marker);
   font-size: var(--text-headline);
   line-height: var(--leading-none);
 }
@@ -382,7 +394,7 @@
 }
 
 .prompt .caret {
-  color: var(--color-accent);
+  color: var(--color-text);
   font-family: var(--font-mono);
   font-weight: var(--weight-bold);
 }
@@ -414,11 +426,6 @@
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   text-align: right;
-}
-
-.headline-end em {
-  color: var(--color-accent);
-  font-style: normal;
 }
 
 /* Links that are blocks lift instead of showing the theme's hover border */
@@ -459,11 +466,6 @@
 .slidev-layout .closing p {
   line-height: var(--leading-tight);
   text-wrap: balance;
-}
-
-.closing em {
-  color: var(--color-accent);
-  font-style: normal;
 }
 
 .closing a {
