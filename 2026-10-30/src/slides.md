@@ -150,13 +150,6 @@ Rules I gave it along the way, still in its memory
 
 ---
 
-<div class="big">
-  <strong>11 → 9</strong>
-  <span>repro repos made in October → repro repos filed</span>
-</div>
-
----
-
 # What I kept to myself
 
 <div class="quotes">
