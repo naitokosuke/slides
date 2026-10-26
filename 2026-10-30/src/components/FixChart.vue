@@ -1,10 +1,21 @@
-<!-- One dot per issue: when it was filed (x) against hours until it was closed (y, log scale) -->
+<!--
+  One dot per issue: when it was filed (x) against hours until it was closed (y, log scale).
+  Each dot links to its issue, and hovering one shows the issue's number, title and time to close.
+-->
 <script setup lang="ts">
+import { sanitizeUrl } from "@braintree/sanitize-url";
+import { computed, ref } from "vue";
 import { issues } from "../data/issues";
+import { formatMinutes, minutesToClose } from "../data/time";
 
 const width = 820;
 const height = 360;
 const pad = { top: 16, right: 24, bottom: 36, left: 56 };
+
+// The hover card, in viewBox units
+const cardWidth = 300;
+const cardHeight = 110;
+const cardGap = 14;
 
 const start = Date.parse("2026-06-01T00:00:00Z");
 const end = Date.parse("2026-11-01T00:00:00Z");
@@ -19,9 +30,13 @@ const y = (hours: number) =>
     (height - pad.top - pad.bottom);
 
 const dots = issues.map((issue) => {
-  const filed = Date.parse(issue.filed);
-  const hours = (Date.parse(issue.closed) - filed) / 3_600_000;
-  return { ...issue, cx: x(filed), cy: y(hours) };
+  const minutes = minutesToClose(issue.filed, issue.closed);
+  return {
+    ...issue,
+    label: formatMinutes(minutes),
+    cx: x(Date.parse(issue.filed)),
+    cy: y(minutes / 60),
+  };
 });
 
 const hourTicks = [1, 6, 24, 96].map((h) => ({
@@ -32,6 +47,19 @@ const months = ["Jun", "Jul", "Aug", "Sep", "Oct"].map((label, i) => ({
   x: x(Date.UTC(2026, 5 + i, 1)),
   label,
 }));
+
+const active = ref<(typeof dots)[number] | null>(null);
+
+// Beside the dot, on whichever side has room, and kept inside the chart
+const card = computed(() => {
+  const dot = active.value;
+  if (!dot) return null;
+  const left = dot.cx + cardGap + cardWidth <= width;
+  return {
+    x: left ? dot.cx + cardGap : dot.cx - cardGap - cardWidth,
+    y: Math.min(Math.max(dot.cy - cardHeight / 2, 0), height - cardHeight),
+  };
+});
 </script>
 
 <template>
@@ -72,13 +100,41 @@ const months = ["Jun", "Jul", "Aug", "Sep", "Oct"].map((label, i) => ({
           {{ month.label }}
         </text>
       </g>
-      <circle
+      <a
         v-for="dot in dots"
         :key="dot.number"
-        :cx="dot.cx"
-        :cy="dot.cy"
-        :class="{ repro: dot.repro }"
-      />
+        class="dot"
+        :class="{ repro: dot.repro, active: active === dot }"
+        :href="sanitizeUrl(dot.url)"
+        :aria-label="`#${dot.number} ${dot.title}`"
+        target="_blank"
+        rel="noopener noreferrer"
+        @mouseenter="active = dot"
+        @mouseleave="active = null"
+        @focus="active = dot"
+        @blur="active = null"
+      >
+        <circle :cx="dot.cx" :cy="dot.cy" />
+      </a>
+      <foreignObject
+        v-if="active && card"
+        :x="card.x"
+        :y="card.y"
+        :width="cardWidth"
+        :height="cardHeight"
+        class="hover"
+      >
+        <div class="card">
+          <header>
+            <span>#{{ active.number }}</span>
+            <span>{{ active.label }} to close</span>
+          </header>
+          <section>
+            <p class="title">{{ active.title }}</p>
+            <p v-if="active.repro" class="label">with a repro repo</p>
+          </section>
+        </div>
+      </foreignObject>
     </svg>
     <figcaption>
       <span class="key"><i class="repro" /> with a repro repo</span>
@@ -112,16 +168,52 @@ svg {
   font-size: var(--text-sm);
 }
 
+.dot {
+  cursor: pointer;
+}
+
+.dot:focus-visible {
+  outline: none;
+}
+
 circle {
   r: var(--size-chart-dot);
   fill: var(--color-bg);
   stroke: var(--color-pool);
   stroke-width: var(--stroke-width);
+  transition: r var(--duration-fast) var(--easing-out);
 }
 
-circle.repro {
+.repro circle {
   fill: var(--color-accent);
   stroke: var(--color-accent);
+}
+
+.active circle {
+  r: var(--size-chart-dot-active);
+}
+
+.hover {
+  overflow: visible;
+  pointer-events: none;
+}
+
+.hover .card {
+  font-size: var(--text-xs);
+  box-shadow: var(--shadow-raised);
+}
+
+.hover header {
+  justify-content: space-between;
+}
+
+.hover .title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--clamp-title);
+  font-size: var(--text-sm);
+  line-height: var(--leading-tight);
 }
 
 figcaption {
