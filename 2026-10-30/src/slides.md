@@ -82,22 +82,13 @@ fonts:
 
 ---
 
-# It is still being tested, <em>and that is the exciting part</em>
+<h1 class="split">It's still being tested,</h1>
 
 <a class="og" href="https://vizejs.dev/blog/notes/2026-06-07-real-world-testing/" target="_blank" rel="noopener noreferrer">
   <img src="/real-world-testing.png" alt="Real World Testing, on the Vize blog" />
 </a>
 
----
-
-# The blog asks for <em>reports from real projects</em>
-
-<div class="evidence">
-  <blockquote class="quote">
-    <p>“Real-world applications are the test suite now.”</p>
-    <cite><a href="https://vizejs.dev/blog/notes/2026-06-07-real-world-testing/" target="_blank" rel="noopener noreferrer">Real World Testing</a>, 2026-06-07</cite>
-  </blockquote>
-</div>
+<p class="headline-end"><em>and that is the exciting part</em></p>
 
 ---
 
