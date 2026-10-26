@@ -217,7 +217,6 @@
 
 .logo > * {
   height: var(--size-logo);
-  color: var(--color-text);
 }
 
 /* One huge number with a caption under it */
