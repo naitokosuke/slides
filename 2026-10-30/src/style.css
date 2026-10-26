@@ -1,16 +1,8 @@
 /* Every value used on the slides comes from these tokens */
 :root {
-  /* City pop summer sky: deep blue at the top, paling toward the horizon */
-  --color-sky-high: #0a3d9c;
+  /* City pop summer sky, one flat blue */
   --color-sky: #1565cf;
-  --color-sky-horizon: #4fa8ec;
   --color-bg: var(--color-sky);
-  --gradient-sky: linear-gradient(
-    to bottom,
-    var(--color-sky-high),
-    var(--color-sky) 60%,
-    var(--color-sky-horizon)
-  );
   --color-surface: color-mix(in oklch, white 14%, var(--color-sky));
   --color-border: color-mix(in oklch, white 38%, transparent);
   --color-text: #ffffff;
@@ -81,7 +73,7 @@
 /* Base */
 
 .slidev-layout {
-  background: var(--gradient-sky);
+  background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
   line-height: var(--leading-normal);
