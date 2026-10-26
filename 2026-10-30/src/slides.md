@@ -30,10 +30,10 @@ fonts:
 
 # Where the bugs came from
 
-<div class="columns" style="--columns: 3">
-  <div class="card large"><section><p class="label">My toy app · 15</p><p>Vue Vapor on <code>vize lint</code>, <code>vize check</code> and Musea</p></section></div>
-  <div class="card large palm"><section><p class="label">My blog · 5</p><p>Nuxt 4 with <code>@vizejs/nuxt</code>, built and prerendered</p></section></div>
-  <div class="card large deep"><section><p class="label">Vue Fes Japan 2026 site · 2</p><p>File-based routing with vue-router</p></section></div>
+<div class="columns fill tall" style="--columns: 3">
+  <div class="card large"><section><strong class="count">15</strong><p class="label">My toy app</p><p>Vue Vapor on <code>vize lint</code>, <code>vize check</code> and Musea</p></section></div>
+  <div class="card large palm"><section><strong class="count">5</strong><p class="label">My blog</p><p>Nuxt 4 with <code>@vizejs/nuxt</code>, built and prerendered</p></section></div>
+  <div class="card large deep"><section><strong class="count">2</strong><p class="label">Vue Fes Japan 2026 site</p><p>File-based routing with vue-router</p></section></div>
 </div>
 
 ---
