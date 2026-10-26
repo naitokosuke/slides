@@ -122,6 +122,11 @@
   margin: 0;
 }
 
+/* The theme fades the paragraph right after a heading; the muted colour does that job here */
+.slidev-layout h1 + p {
+  opacity: 1;
+}
+
 .slidev-layout :not(pre) > code {
   padding: 0 var(--space-2);
   border-radius: var(--radius-sm);
