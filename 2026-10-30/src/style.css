@@ -21,16 +21,6 @@
   /* Flat royal blue blocks with tea pink type on them */
   --color-surface: var(--color-royal);
   --color-on-surface: var(--color-tea);
-  --color-on-surface-muted: color-mix(
-    in oklch,
-    var(--color-tea) 78%,
-    transparent
-  );
-  --color-code-bg-on-surface: color-mix(
-    in oklch,
-    var(--color-tea) 20%,
-    transparent
-  );
 
   /* A highlighter stroke over the lower part of the words it marks */
   --marker-start: 58%;
@@ -50,7 +40,6 @@
   --text-body: 1.75rem;
   --text-headline: 2.75rem;
   --text-display: 4.5rem;
-  --text-hero: 10rem;
   --size-code: 1em;
 
   --weight-bold: 700;
@@ -60,7 +49,6 @@
   --leading-normal: 1.4;
   --leading-code: 1.25;
   --tracking-tight: -0.02em;
-  --tracking-tighter: -0.04em;
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -90,13 +78,7 @@
   --size-avatar: 3rem;
   --size-logo: 70%;
   --size-tweet: 31rem;
-  --size-chip: 11rem;
-  --size-chip-compact: 6rem;
-  --size-speed-label: 11rem;
-  --size-dot: 0.8rem;
-  --size-chart-dot: 7px;
-  --size-chart-dot-active: 10px;
-  --clamp-title: 3;
+  --size-row-label: 13rem;
 }
 
 /* Base */
@@ -132,7 +114,7 @@
   font-style: normal;
 }
 
-:where(.slidev-layout) p {
+.slidev-layout p {
   margin: 0;
 }
 
@@ -168,17 +150,12 @@
   color: var(--color-text-muted);
 }
 
-.note {
-  margin-top: var(--space-6);
-  color: var(--color-text-muted);
-}
-
-/* The evidence under a headline, centred in the height the slide has left */
+/* The evidence starts right under the headline, at the same gap on every slide */
 .evidence {
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-4);
 }
 
@@ -249,51 +226,33 @@
   height: var(--size-logo);
 }
 
-/* One huge number with a caption under it */
+/*
+  The one row style for every list: a bold label, a detail, and an optional
+  number set large on the right, between hairlines
+*/
 
-.big {
-  display: grid;
-  flex: 1;
-  place-content: center;
-  gap: var(--space-5);
-  text-align: center;
-}
-
-.big strong {
-  font-size: var(--text-hero);
-  font-weight: var(--weight-bold);
-  line-height: var(--leading-none);
-  letter-spacing: var(--tracking-tighter);
-}
-
-.big span {
-  color: var(--color-text-muted);
-}
-
-/* Each tool with its speedup set large on the right */
-
-.speed {
+.rows {
   display: grid;
 }
 
-.speed p {
+.rows p {
   display: grid;
-  grid-template-columns: var(--size-speed-label) 1fr auto;
+  grid-template-columns: var(--size-row-label) 1fr auto;
   align-items: baseline;
   gap: var(--space-5);
-  padding: var(--space-1) 0;
+  padding: var(--space-2) 0;
   border-top: var(--border-width) solid var(--color-border);
 }
 
-.speed p:last-child {
+.rows p:last-child {
   border-bottom: var(--border-width) solid var(--color-border);
 }
 
-.speed span:first-child {
+.rows span:first-child {
   font-weight: var(--weight-bold);
 }
 
-.speed strong {
+.rows strong {
   padding-inline: var(--marker-pad);
   background: var(--marker);
   font-size: var(--text-headline);
@@ -302,70 +261,6 @@
 
 .source {
   color: var(--color-text-muted);
-}
-
-/* One repro repo as a flat block that lifts onto an accent shadow */
-
-.slidev-layout .repo {
-  display: grid;
-  gap: var(--space-4);
-  padding: var(--space-6);
-  border: none;
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  color: var(--color-on-surface);
-  font-family: var(--font-mono);
-  transition:
-    translate var(--duration-fast) var(--easing-out),
-    box-shadow var(--duration-fast) var(--easing-out);
-}
-
-.slidev-layout .repo:hover,
-.slidev-layout .repo:focus-visible {
-  translate: 0 var(--lift);
-  box-shadow: var(--shadow-raised);
-  color: var(--color-on-surface);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .slidev-layout .repo:hover,
-  .slidev-layout .repo:focus-visible {
-    translate: none;
-  }
-}
-
-.repo .owner {
-  color: var(--color-on-surface-muted);
-}
-
-.slidev-layout .repo code {
-  justify-self: start;
-  background: var(--color-code-bg-on-surface);
-}
-
-/* Short labels as flat blocks, one colour each */
-
-.chips {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-}
-
-.chips span {
-  display: grid;
-  place-content: center;
-  min-height: var(--size-chip);
-  padding: var(--space-5);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  color: var(--color-on-surface);
-  font-weight: var(--weight-bold);
-  line-height: var(--leading-tight);
-  text-align: center;
-}
-
-.chips.compact span {
-  min-height: var(--size-chip-compact);
 }
 
 /* A config snippet as a flat block */
@@ -387,7 +282,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: baseline;
-  gap: var(--space-4);
+  gap: var(--space-2) var(--space-4);
   padding: var(--space-5) var(--space-6);
   border: var(--border-width) solid var(--color-text);
   border-radius: var(--radius-md);
@@ -401,6 +296,7 @@
 }
 
 .slidev-layout .prompt p {
+  margin: 0;
   line-height: var(--leading-normal);
   text-wrap: pretty;
 }
@@ -417,11 +313,12 @@
 /* A headline split around a figure: the first half above it, the rest below on the right */
 
 .slidev-layout h1.split {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
 }
 
 .slidev-layout .headline-end {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
+  padding-bottom: var(--space-1);
   font-size: var(--text-headline);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
@@ -429,10 +326,10 @@
   text-align: right;
 }
 
-/* Links that are blocks lift instead of showing the theme's hover border */
-.slidev-layout :is(.og, .repo),
-.slidev-layout :is(.og, .repo):hover,
-.slidev-layout :is(.og, .repo):focus-visible {
+/* A link that is a block lifts instead of showing the theme's hover border */
+.slidev-layout .og,
+.slidev-layout .og:hover,
+.slidev-layout .og:focus-visible {
   border: none;
   outline: none;
 }
@@ -483,15 +380,38 @@
   white-space: nowrap;
 }
 
-/*
-  Slides that show a prompt start it right under the headline, so every one of them
-  has the same gap there however long the prompt is
-*/
-.evidence.prompted {
-  justify-content: flex-start;
-  gap: var(--space-4);
+/* The label right above a prompt sits close to it */
+.evidence > .muted + .prompt {
+  margin-top: calc(var(--space-2) - var(--space-4));
 }
 
-.evidence.prompted > .muted + .prompt {
-  margin-top: calc(var(--space-2) - var(--space-4));
+.closing .snippet {
+  align-self: flex-start;
+  margin-top: var(--space-6);
+  font-weight: var(--weight-normal);
+  letter-spacing: 0;
+}
+
+/* One short quote, set large, with where it comes from under it */
+
+.slidev-layout .quote {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.slidev-layout .quote p {
+  font-size: var(--text-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.slidev-layout .quote cite {
+  color: var(--color-text-muted);
+  font-size: var(--text-body);
+  font-style: normal;
 }

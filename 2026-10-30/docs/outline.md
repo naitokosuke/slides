@@ -3,25 +3,26 @@
 5 分の LT。
 表示する文言はすべて英語。このアウトラインだけ日本語で保守する。
 
-## 軸
+## 主張
 
-1 文で言うと「Vize は今 Real World Testing の段階なので、自分のアプリで使ってフィードバックするだけで contribution になる。自分はそれをこうやって続けている」。
+1 文で言うと「Vize は今 Real World Testing の段階にある。自分のアプリで使い、おかしいと思ったところを小さな再現にして出せば、それがそのまま contribution になる。調べる手間は AI に任せられるが、出す前には自分で読む」。
 
-結果（30 件、全部すぐ直った）→ Vize を使う理由（速い、TypeScript 7、まだテスト段階で面白い）→ やり方 → 持ち帰り、の順で進む。
+聞き手への持ち帰りは「`npx vize lint` で試して、変だったら小さな再現を送る」。
+
+結果（30 件すべて closed as completed）→ Vize とは何か、なぜ使うか（Vibe Coding のガードレールが欲しい。速くて、Vue を分かっているルールが要る。v4 も同じ道、まだテスト段階で面白い）→ どこに当たったか → やり方（Claude Code の下調べ、自分が読む、1 件の流れ）→ 持ち帰り、の順で進む。
 
 ## 使う実データ
 
 ### GitHub と npm（2026-10-26 に `gh` と `npm view` で取得）
 
-issue ごとの一覧は `issues.md`、チャートと円の元データは `src/data/issues.ts`。
+issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts`。
 
-- issue 30 件（#1563〜#10661、2026-06-12〜2026-10-25）、すべて closed as completed
+- issue 30 件（#1563〜#10661、2026-06-12〜2026-10-25）、すべて closed as completed。うち 5 件（#5966、#6234、#7273、#7377、#7817）は機能追加の要望なので、スライドでは「25 fixes and 5 new features」と書く
 - 起票から close までの中央値は 341.5 分（約 5.7 時間）。最速は #10660 の 56 分、最遅は #8752〜#8756 の 6011 分（5 件まとめて #8765 で修正、v0.457.0）
-- 12 時間以内に閉じたのは 30 件中 22 件
+- 同じ期間（9/1〜10/25）に close した他の issue 973 件は中央値 498 分、1 日以内 76%（自分の 30 件は 1 日以内 77%）。ただし 904 件はメンテナー自身の起票なので比べる基準として弱い。なので「速く直った」はこの発表の主張にしない
 - npm の `vize` は 2026-06-12〜2026-10-26 の 136 日間に 303 リリース（0.206.0 → 0.574.0）
-- 再現リポジトリ（`naitokosuke/vize-*-repro`）は #2010 で一度使い、#9747 以降の 9 件はすべてに付いている
-- close までの中央値: #1563〜#9180 の 21 件は 496 分（約 8.3 時間）、#9747 以降の 9 件は 255 分（約 4.3 時間）。対照実験ではないのでスライドにも注記する
-- 先行修正の取りこぼしを報告した follow-up: #6898（#6767 の続き）、#9747（#8752 の続き）
+- 当たった箇所（タイトルから分類）: Lint 15（#5966、#6234、#7273、#7377、#7417、#8752〜#8756、#9747〜#9751）、Build 7（#6684、#6766、#6767、#6897、#6898、#9180、#10659）、Editor 4（#1563、#1837、#2010、#7816）、Type check 3（#7817、#10660、#10661）、Musea 1（#9752）
+- #9751 の流れ（日本時間）: 10/19 22:07 に起票（vize-hidden-input-label-repro 付き）、10/20 09:40 に #9759 で close、09:59 に vize 0.486.0 として公開、同日 toy app が 0.501.0 に上げて警告が消えた（chirashitabi#249、memory の `vize-lint-false-positives.md`）
 
 ### Claude Code の memory と transcript（2026-10-26 に確認）
 
@@ -30,41 +31,47 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 - 出どころ
   - chirashitabi 17 件: #7816、#7817、#8752〜#8756、#9180、#9747〜#9752、#10659〜#10661（memory の `use-route-no-name-pending.md`、`vize-lint-false-positives.md`、`vapor-get-current-instance.md`、`vize-repros-repo.md`）
   - #7816、#7817 は vuefes-2026 の transcript にも URL があるが、`gh search` で自分の issue を一覧した出力に含まれていただけで、起票元ではない
-
   - blog 5 件: #6684、#6766、#6767 は blog の transcript に `gh issue create` と URL がある。#6897、#6898 は同じ Nuxt 4.5.2 / `@vizejs/nuxt` 環境で同日の起票なので blog と推定（要確認）
-  - 残り 8 件（#1563、#1837、#2010、#5966、#6234、#7273、#7377、#7417）は記録が残っておらず、スライドには出していない
+  - 残り 8 件（#1563、#1837、#2010、#5966、#6234、#7273、#7377、#7417）は記録が残っていない
 - 手順（`vize-repros-repo.md`、`vize-tsrs-upgrade-blocked.md`、`vapor-get-current-instance.md`）
   - `vp run check` の警告を、ルールの実装と仕様、`@vitejs/plugin-vue` / `@vue/compiler-sfc` / `vue-tsc` の挙動と突き合わせる
   - 再現はリポジトリ 1 つに 1 件。アプリの名前もコードも入れない
-  - 起票はユーザーの許可が出てから。`gh issue create` で、まとめて出すときは 5〜7 分ずつ空ける（連投による BAN を避けるため。fake gh で dry run してから）
+  - 起票はユーザーの許可が出てから。`gh issue create` で、まとめて出すときは 5〜7 分ずつ空ける（fake gh で dry run してから）
   - 修正のリリース後は chirashitabi の Vize を上げて警告を確かめ直し、再現リポジトリは archive する
 - 起票しなかったもの
-  - 10 月に作った再現リポジトリは 11 個（10-19 に 6 個、10-25 に 5 個）、起票したのは 9 個。2 個はユーザーが削除した
+  - 10 月に作った再現リポジトリは 11 個（10-19 に 6 個、10-25 に 5 個）、起票したのは 9 個
   - tsrs でだけ壊れるもの（`vize-report-tsgo-only.md`: Vize は tsgo を対象にしている）
   - 型チェッカーが起動できないときに警告を出して exit 0 で終わる挙動（Vize の意図した挙動）
-  - `no-reactivity-loss` の判定が狭いこと（意図的。書き直したコードのほうが良かった）
-- chirashitabi の lint 警告: 80 → 17（chirashitabi#195 で自分のコードを修正）→ 6（Vize 0.501.0 時点。Vize 側の修正と #197 の書き直し）。残り 6 件はルールの実装と仕様に照らして誤検知と確認済み
+- chirashitabi の lint 警告: 80 → 17（chirashitabi#195 で自分のコードを修正）→ 6（Vize 0.501.0 時点）。残り 6 件はルールの実装と仕様に照らして誤検知と確認済み
 
-## スライド構成
+## スライド構成（13 枚）
 
-各スライドは「主張を言い切る見出し 1 文」と「その根拠になる図 1 つ」で組む。
+各スライドは「主張を言い切る見出し 1 文」と「その根拠 1 つ」で組む。
 
-1. cover「How I Contributed to Vize」。副題「30 issues, June to October」、アイコンと GitHub へのリンク付きの @naitokosuke。タイトルは一色
-2. 30（issues I opened on Vize）
-3. All 30 were fixed, most within a day。円の色は 6 時間未満が黄色、1 日未満が Baby Pink、それ以上が Royal Blue。根拠は close までの時間に面積が反比例する円 30 個（速く直ったものほど大きい。最大は #10660 の 56 分）。1 日以内に閉じたのは 23 件。番号と時間はどんなに小さい円でも出す
-4. Vize のロゴだけを中央に大きく置く。Vize の紹介と、使う理由への入り。ロゴは ubugeeei-prod/vize の assets/logo.svg（MIT）を src/components/VizeLogo.vue にしたもの。色は元の #000000 のまま変えない（切り抜くのは viewBox だけ）
-5. I use Vize because it is much faster。根拠は 3 行。Lint は eslint-plugin-vue より 182×（Vize の README のベンチマーク、2026-09-16、3,000 ファイル、20.75s → 114ms）。Format は Oxfmt より 50×（toy app の .vue 2,940 ファイルで手元で計測、docs/benchmark.md）。Type check は vue-tsc v3 より 4.9×（README のベンチマーク、500 ファイル、6.75s → 1.37s）。出典の行で「Lint, type check: Vize's benchmarks」「Format: 2,940 .vue files from my app, on an M1」と書き分ける。Lint を Oxlint と比べると Oxlint のほうが 2.4 倍速い（`<script>` しか見ない）ので、Lint は ESLint と比べる
-6. Johnson Chu の v4 alpha 告知ツイート（https://x.com/johnsoncodehk/status/2113609909329953099、2026-10-23）を左に大きく、右に見出し「Vue Language Tools v4 takes the same path」。v3 の vue-tsc との比較だという注意書きの代わり。Slidev 組み込みの <Tweet> で埋め込むので、表示には会場のネット接続が必要
-7. Vize already type-checks .vue on TypeScript 7。根拠は tsconfig の contentMappers。補足は「Vue Language Tools v4 is still in alpha」
-8. 見出しを画像の上下に分ける。上に左寄せで「It's still being tested,」、真ん中に OG 画像、下に右寄せで「and that is the exciting part」。根拠は公式ブログ「Real World Testing」（2026-06-07）の OG 画像。画像は src/public/real-world-testing.png（vizejs.dev の OG 画像を保存したもの）
-9. I build a Vue app and use every part of Vize。根拠は Compile / Lint / Format / Check / Musea / Editor の 6 ブロック。どれも同じパーサーの上にある（README の What Is Vize?）
-10. When something looks off, Claude Code makes a repro。根拠は Claude Code への依頼「> Make a minimal repro of this in a new repo, with nothing from the app.」と、その結果の再現リポジトリ（vize-placeholder-label-option-repro）へのリンク
-11. Then it checks whether someone already filed it。根拠は Claude Code への依頼を入力欄の見た目で見せる。「> Has anyone filed this already? Search ubugeeei-prod/vize issues and PRs, open and closed, before we write one.」。上に「To Claude Code」
-12. Vize ships twice a day, so the repro runs on the latest release。根拠は依頼「> Run the repro again on the latest Vize release and check that it still fails.」と、136 日で 303 リリース（0.206.0 → 0.574.0）
-13. TypeScript 7 is still moving, so it checks whether it is really Vize。根拠は依頼「> Run it with tsgo too, TypeScript 7.0 and the 7.1 beta, not only tsrs.」（`vize-report-tsgo-only.md`）。起票するかどうかの振り分けは見せない
-14. 締めは聞き手への呼びかけ。「Right now, trying Vize on your app is a contribution.」Real World Testing の今は、自分のアプリで使ってフィードバックするだけで contribution になる。リンクは Real World Testing の記事
+1. cover「How I Contributed to Vize」。副題「30 issues, June to October」、アイコンと GitHub へのリンク付きの @naitokosuke
+2. 30 issues, all closed as completed。根拠は close までの時間に面積が反比例する円 30 個（速く直ったものほど大きい）。円の色は 6 時間未満が黄色、1 日未満が Baby Pink、それ以上が Royal Blue。番号と時間はどんなに小さい円でも出す。下に「25 fixes and 5 new features. Bigger means closed sooner.」
+3. Vize のロゴだけを中央に大きく置き、Vize が何かを話す。ロゴは ubugeeei-prod/vize の assets/logo.svg（MIT）。色は元の #000000 のまま（切り抜くのは viewBox だけ）
+4. I vibe-code, so I need guardrails。根拠は Vize のブログ「Static Analysis for AI」（ubugeeei、2026-03-26）の 1 文「No. This is wrong.」。記事の要旨は、AI は確率的なので、決定的で速い静的解析がその歯止めになる、というもの
+5. Guardrails have to be fast。Lint 182×（vs eslint-plugin-vue、README）、Format 50×（vs Oxfmt、自分で計測、docs/benchmark.md）、Type check 4.9×（vs vue-tsc v3、README）。下に「Oxlint lints 2.4× faster, but reads only <script>」と出典
+6. The rules have to know Vue。`vize explain --list`（vize 0.575.0）から数えたルールの数。Vue 108、Accessibility 30、Runtime 10（SSR 2、Nuxt 4、Vapor 4）、Type-aware 6。下に「266 lint rules in all, each explained by vize explain」（コンパイラの診断 56 と TypeScript のコード 22 は数えない）
+7. Johnson Chu の v4 alpha 告知ツイート（https://x.com/johnsoncodehk/status/2113609909329953099）を左に、右に「Vue Language Tools v4 takes the same path」。<Tweet> の埋め込みなので会場のネット接続が必要
+8. 見出しを画像の上下に分ける。上に「It's still being tested,」、真ん中に Real World Testing の OG 画像（src/public/real-world-testing.png）、下に右寄せで「and that is the exciting part」
+9. My issues hit every part of Vize。当たった箇所の内訳（Lint 15、Build 7、Editor 4、Type check 3、Musea 1）
+10. Claude Code does the legwork。1 つの入力欄に依頼 4 行（再現を作る、既存の issue を探す、最新リリースで再実行、tsgo でも走らせる）
+11. I read every repro before it goes up, and some never do。出さなかった例 2 つ（tsrs だけで壊れる、起動失敗時の exit 0 は意図どおり）
+12. One issue, from my app to a release。#9751 の流れ
+13. Try Vize on your app. Send a small repro.（`npx vize lint` と issue ページへのリンク）
 
-散布図、6 月と 10 月の比較、8.3h → 4.3h、取りこぼし、lint 警告 80 → 6、報告のテンプレート、正しく動くものとの突き合わせ、起票しなかったものの分類は 5 分に収めるため外した。散布図のコンポーネントは 9914715 にある。
+## 敵対的レビューへの対応（2026-10-26）
+
+- 「most within a day」をやめ、「all closed as completed」と「25 fixes and 5 new features」に直した
+- 速さのスライドに Oxlint のほうが lint は速いことを明記した
+- Vize の説明と v4 の話は残すことにしたので、ロゴとツイートのスライドは残した。TypeScript 7 の contentMappers のスライドは外した
+- Claude Code の 4 枚を 1 枚にまとめ、自分が読むことと出さなかった例を 1 枚足した
+- 9 枚目の「every part」に根拠がないという指摘に、当たった箇所の内訳を出した
+- 1 件の流れ（#9751）を足した
+- 締めを「試すだけ」から「試して、変だったら小さな再現を送る」に直し、試すコマンドを出した
+- 2 枚目の「30」は表紙と重複なので外した
 
 ## 未決
 
@@ -75,8 +82,7 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 
 - スローガン調の言い回し（「X, not Y」、三つ並べ、決め台詞）を避け、事実を平叙で書く
 - 色・サイズ・余白・角丸・線幅などの値は `src/style.css` の `:root` にあるトークンだけを使う。コンポーネントもスライドもトークンを参照する
-- 配色は 4 色だけを使い、どれも単色のベタ塗りにする。Royal Blue #3A2D71（文字とブロック）、Tea Pink #E9D1E1（背景とブロックの上の文字）、Yellow #F6D60D（強調）、Baby Pink #A08AC0（3 枚目の円の中間）。黄色は Tea Pink の上では文字として読めないので、文字色にはせず、マーカー（語の下半分に敷く）と影にだけ使う。Vize のロゴは元の黒のまま
-- 文字は 1.75rem（28px）より小さくしない。980 × 552 のスライドで高さの約 5% にあたり、Guy Kawasaki の 10/20/30 の 30pt と同じ比率。例外は 3 枚目の円の中の番号と時間で、小さくても必ず出す
-- 見出しは主張の 1 文にして（Michael Alley の Assertion-Evidence）、覚えてほしい語だけアクセント色にする（Mayer の signaling）。話す内容をそのままスライドに書かない（redundancy）
-- 根拠の図は、見出しの下に残った高さの中で上下中央に置く。下に大きな余白を残さない
-- 例外は Claude Code への依頼を見せる 10〜13 枚目。入力欄は見出しのすぐ下に置き、4 枚とも見出しからの間隔を揃える（依頼の長さで間隔が変わらないように）
+- 配色は 4 色だけを使い、どれも単色のベタ塗りにする。Royal Blue #3A2D71（文字とブロック）、Tea Pink #E9D1E1（背景とブロックの上の文字）、Yellow #F6D60D（強調）、Baby Pink #A08AC0（2 枚目の円の中間）。黄色は Tea Pink の上では文字として読めないので、文字色にはせず、マーカー（語の下半分に敷く）と影にだけ使う。Vize のロゴは元の黒のまま
+- 文字は 1.75rem（28px）より小さくしない。980 × 552 のスライドで高さの約 5% にあたり、Guy Kawasaki の 10/20/30 の 30pt と同じ比率。例外は 2 枚目の円の中の番号と時間で、小さくても必ず出す
+- 見出しは主張の 1 文にして（Michael Alley の Assertion-Evidence）、覚えてほしい語だけマーカーで強調する（Mayer の signaling）。話す内容をそのままスライドに書かない（redundancy）
+- レイアウトを揃える。見出しは左上、根拠は見出しのすぐ下から同じ間隔で始める。表はすべて同じ行の型（太字のラベル列、説明、右端の数字）。例外は表紙、ロゴ、締めと、形を指定した 7 枚目（ツイート）と 8 枚目（テスト段階）
