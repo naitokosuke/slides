@@ -58,10 +58,10 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 7. Vize already type-checks .vue on TypeScript 7。根拠は tsconfig の contentMappers。補足は「Vue Language Tools v4 is still in alpha」
 8. 見出しを画像の上下に分ける。上に左寄せで「It's still being tested,」、真ん中に OG 画像、下に右寄せで「and that is the exciting part」。根拠は公式ブログ「Real World Testing」（2026-06-07）の OG 画像。画像は src/public/real-world-testing.png（vizejs.dev の OG 画像を保存したもの）
 9. I build a Vue app and use every part of Vize。根拠は Compile / Lint / Format / Check / Musea / Editor の 6 ブロック。どれも同じパーサーの上にある（README の What Is Vize?）
-10. When something looks off, Claude Code makes a repro。根拠は再現リポジトリ 1 つ（vize-placeholder-label-option-repro）とコマンド。アプリのものは何も入れない
+10. When something looks off, Claude Code makes a repro。根拠は Claude Code への依頼「> Make a minimal repro of this in a new repo, with nothing from the app.」と、その結果の再現リポジトリ（vize-placeholder-label-option-repro）へのリンク
 11. Then it checks whether someone already filed it。根拠は Claude Code への依頼を入力欄の見た目で見せる。「> Has anyone filed this already? Search ubugeeei-prod/vize issues and PRs, open and closed, before we write one.」。上に「To Claude Code」
-12. Vize ships twice a day, so the repro runs on the latest release。根拠は 136 日で 303 リリース（0.206.0 → 0.574.0）
-13. TypeScript 7 is still moving, so it checks whether it is really Vize。根拠は、再現リポジトリをリリース済みの TypeScript 7 でも走らせる 2 つのコマンド（同梱の tsgo で動く `vize check` と、TypeScript 7.1 beta の content mapper で動く `tsc --runExternalCode --noEmit`）。tsrs は TypeScript main を追っているので、tsrs だけで壊れるものは Vize の問題とは限らない（`vize-report-tsgo-only.md`）。起票するかどうかの振り分けは見せない
+12. Vize ships twice a day, so the repro runs on the latest release。根拠は依頼「> Run the repro again on the latest Vize release and check that it still fails.」と、136 日で 303 リリース（0.206.0 → 0.574.0）
+13. TypeScript 7 is still moving, so it checks whether it is really Vize。根拠は依頼「> Run it with tsgo too, TypeScript 7.0 and the 7.1 beta, not only tsrs.」（`vize-report-tsgo-only.md`）。起票するかどうかの振り分けは見せない
 14. 締めは聞き手への呼びかけ。「Right now, trying Vize on your app is a contribution.」Real World Testing の今は、自分のアプリで使ってフィードバックするだけで contribution になる。リンクは Real World Testing の記事
 
 散布図、6 月と 10 月の比較、8.3h → 4.3h、取りこぼし、lint 警告 80 → 6、報告のテンプレート、正しく動くものとの突き合わせ、起票しなかったものの分類は 5 分に収めるため外した。散布図のコンポーネントは 9914715 にある。
@@ -79,3 +79,4 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 - 文字は 1.75rem（28px）より小さくしない。980 × 552 のスライドで高さの約 5% にあたり、Guy Kawasaki の 10/20/30 の 30pt と同じ比率。例外は 3 枚目の円の中の番号と時間で、小さくても必ず出す
 - 見出しは主張の 1 文にして（Michael Alley の Assertion-Evidence）、覚えてほしい語だけアクセント色にする（Mayer の signaling）。話す内容をそのままスライドに書かない（redundancy）
 - 根拠の図は、見出しの下に残った高さの中で上下中央に置く。下に大きな余白を残さない
+- 例外は Claude Code への依頼を見せる 10〜13 枚目。入力欄は見出しのすぐ下に置き、4 枚とも見出しからの間隔を揃える（依頼の長さで間隔が変わらないように）

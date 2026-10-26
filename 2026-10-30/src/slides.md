@@ -110,19 +110,20 @@ fonts:
 
 # When something looks off, Claude Code <em>makes a repro</em>
 
-<div class="evidence">
-  <a class="repo" href="https://github.com/naitokosuke/vize-placeholder-label-option-repro" target="_blank" rel="noopener noreferrer">
-    <span><span class="owner">naitokosuke/</span><br />vize-placeholder-label-option-repro</span>
-    <code>pnpm install && pnpm lint</code>
-  </a>
-  <p class="muted">One repo per issue, with nothing from my app</p>
+<div class="evidence prompted">
+  <p class="muted">To Claude Code</p>
+  <div class="prompt">
+    <span class="caret" aria-hidden="true">&gt;</span>
+    <p>Make a minimal repro of this in a new repo, with nothing from the app.</p>
+  </div>
+  <p class="muted">→ <a href="https://github.com/naitokosuke/vize-placeholder-label-option-repro" target="_blank" rel="noopener noreferrer">vize-placeholder-label-option-repro</a></p>
 </div>
 
 ---
 
 # Then it checks whether <em>someone already filed it</em>
 
-<div class="evidence">
+<div class="evidence prompted">
   <p class="muted">To Claude Code</p>
   <div class="prompt">
     <span class="caret" aria-hidden="true">&gt;</span>
@@ -134,19 +135,25 @@ fonts:
 
 # Vize ships twice a day, so the repro runs on <em>the latest release</em>
 
-<div class="big">
-  <strong>303</strong>
-  <span>releases in 136 days · <code>0.206.0</code> → <code>0.574.0</code></span>
+<div class="evidence prompted">
+  <p class="muted">To Claude Code</p>
+  <div class="prompt">
+    <span class="caret" aria-hidden="true">&gt;</span>
+    <p>Run the repro again on the latest Vize release and check that it still fails.</p>
+  </div>
+  <p class="muted">303 releases in 136 days, <code>0.206.0</code> → <code>0.574.0</code></p>
 </div>
 
 ---
 
 # TypeScript 7 is still moving, so it checks <em>whether it is really Vize</em>
 
-<div class="evidence">
-  <pre class="snippet">vize check
-tsc --runExternalCode --noEmit</pre>
-  <p class="muted">The repro runs on released TypeScript 7, not only on tsrs</p>
+<div class="evidence prompted">
+  <p class="muted">To Claude Code</p>
+  <div class="prompt">
+    <span class="caret" aria-hidden="true">&gt;</span>
+    <p>Run it with tsgo too, TypeScript 7.0 and the 7.1 beta, not only tsrs.</p>
+  </div>
 </div>
 
 ---
