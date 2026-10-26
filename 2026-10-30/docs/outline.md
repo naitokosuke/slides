@@ -59,7 +59,7 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 8. 見出しを画像の上下に分ける。上に左寄せで「It's still being tested,」、真ん中に OG 画像、下に右寄せで「and that is the exciting part」。根拠は公式ブログ「Real World Testing」（2026-06-07）の OG 画像。画像は src/public/real-world-testing.png（vizejs.dev の OG 画像を保存したもの）
 9. I build a Vue app and use every part of Vize。根拠は Compile / Lint / Format / Check / Musea / Editor の 6 ブロック。どれも同じパーサーの上にある（README の What Is Vize?）
 10. When something looks off, Claude Code makes a repro。根拠は再現リポジトリ 1 つ（vize-placeholder-label-option-repro）とコマンド。アプリのものは何も入れない
-11. Then it checks whether someone already filed it。根拠は `gh search issues --repo ubugeeei-prod/vize` のコマンド
+11. Then it checks whether someone already filed it。根拠は Claude Code への依頼を入力欄の見た目で見せる。「> Has anyone filed this already? Search ubugeeei-prod/vize issues and PRs, open and closed, before we write one.」。上に「To Claude Code」
 12. Vize ships twice a day, so the repro runs on the latest release。根拠は 136 日で 303 リリース（0.206.0 → 0.574.0）
 13. TypeScript 7 is still moving, so it checks whether it is really Vize。根拠は、再現リポジトリをリリース済みの TypeScript 7 でも走らせる 2 つのコマンド（同梱の tsgo で動く `vize check` と、TypeScript 7.1 beta の content mapper で動く `tsc --runExternalCode --noEmit`）。tsrs は TypeScript main を追っているので、tsrs だけで壊れるものは Vize の問題とは限らない（`vize-report-tsgo-only.md`）。起票するかどうかの振り分けは見せない
 14. 締めは聞き手への呼びかけ。「Right now, trying Vize on your app is a contribution.」Real World Testing の今は、自分のアプリで使ってフィードバックするだけで contribution になる。リンクは Real World Testing の記事
