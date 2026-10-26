@@ -48,7 +48,7 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 
 ## スライド構成
 
-1. cover「How I Contributed to Vize」。副題は「30 issues, June to October」（bug という語は表紙に出さない）。アイコンと GitHub へのリンク付きの @naitokosuke
+1. cover「How I Contributed to Vize」。タイトルは一色で、頭文字だけ色を変えたりしない。副題は「30 issues, June to October」（bug という語は表紙に出さない）。アイコンと GitHub へのリンク付きの @naitokosuke
 2. バグの出どころ（toy app 17、blog 5）。chirashitabi は個人プロジェクトなのでスライドでは "my toy app" と呼ぶ
 3. 30 件起票した
 4. 全部 closed。close までの時間に面積が比例する円を 30 個、物理演算で押し合わせる。円は issue へのリンクで、ドラッグで動かせる

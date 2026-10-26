@@ -17,7 +17,7 @@ fonts:
 ---
 
 <div class="cover">
-  <h1><span class="initial">H</span>ow I Contributed to Vize</h1>
+  <h1>How I Contributed to Vize</h1>
   <p class="muted">30 issues, June to October</p>
   <p class="byline">
     <img class="avatar" src="/naitokosuke.png" alt="" />

@@ -191,11 +191,6 @@
   font-size: var(--text-display);
 }
 
-/* The first letter in the accent colour */
-.cover .initial {
-  color: var(--color-accent);
-}
-
 .cover .byline {
   display: flex;
   align-items: center;
