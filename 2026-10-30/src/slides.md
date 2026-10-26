@@ -120,16 +120,14 @@ fonts:
 # Claude Code does <em>the legwork</em>
 
 <div class="evidence">
-  <div class="prompt">
-    <span class="caret" aria-hidden="true">&gt;</span>
-    <p>Make a minimal repro, with nothing from the app.</p>
-    <span class="caret" aria-hidden="true">&gt;</span>
-    <p>Search <code>ubugeeei-prod/vize</code> for an existing issue.</p>
-    <span class="caret" aria-hidden="true">&gt;</span>
-    <p>Run it again on the latest Vize release.</p>
-    <span class="caret" aria-hidden="true">&gt;</span>
-    <p>Run it with tsgo too, not only tsrs.</p>
-  </div>
+  <PromptTyping
+    :lines="[
+      ['Make a minimal repro, with nothing from the app.'],
+      ['Search ', { code: 'ubugeeei-prod/vize' }, ' for an existing issue.'],
+      ['Run it again on the latest Vize release.'],
+      ['Run it with tsgo too, not only tsrs.'],
+    ]"
+  />
 </div>
 
 ---
