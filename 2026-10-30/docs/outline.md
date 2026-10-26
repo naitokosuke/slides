@@ -53,7 +53,7 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 2. 30（issues I opened on Vize）
 3. All 30 were fixed, most within a day。根拠は close までの時間に面積が反比例する円 30 個（速く直ったものほど大きい。最大は #10660 の 56 分）。1 日以内に閉じたのは 23 件。番号と時間はどんなに小さい円でも出す
 4. Vize のロゴだけを中央に大きく置く。Vize の紹介と、使う理由への入り。ロゴは ubugeeei-prod/vize の assets/logo.svg（MIT）を src/components/VizeLogo.vue にしたもの。色は元の #000000 のまま変えない（切り抜くのは viewBox だけ）
-5. I use Vize because it is much faster。根拠は Vize の README のベンチマーク（2026-09-16、blacksmith 32 CPU）。Lint 182×（eslint-plugin-vue、3,000 ファイル、20.75s → 114ms）、Format 85×（Prettier、3,000 ファイル、29.72s → 351ms）、Type check 4.9×（vue-tsc、500 ファイル、6.75s → 1.37s）。自分のアプリで測った記録はないので公式の数字を出典つきで使う
+5. I use Vize because it is much faster。根拠は 2 行。Lint は eslint-plugin-vue より 182×（Vize の README のベンチマーク、2026-09-16、3,000 ファイル、20.75s → 114ms）。Format は Oxfmt より 50×（toy app の .vue 2,940 ファイルで手元で計測、docs/benchmark.md）。Lint を Oxlint と比べると Oxlint のほうが 2.4 倍速い（ただし `<script>` しか見ない）ので、Lint は ESLint と比べる。型チェックは vue language tools v4 が同じ content mapper の仕組みに移る（vuejs/language-tools#6170、draft）ので、vue-tsc との比較は出さない
 6. It type-checks .vue on TypeScript 7。根拠は tsconfig の contentMappers と、vue-tsc が TypeScript 7 を読めないこと（このリポジトリの CLAUDE.md）
 7. It is still being tested, and that is the exciting part。根拠は公式ブログ「Real World Testing」（2026-06-07）の OG 画像。画像は src/public/real-world-testing.png（vizejs.dev の OG 画像を保存したもの）
 8. The blog asks for reports from real projects。根拠は同じ記事の 1 文「Real-world applications are the test suite now.」
