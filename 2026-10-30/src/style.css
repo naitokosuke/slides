@@ -43,7 +43,6 @@
   --text-body: 1.75rem;
   --text-headline: 2.75rem;
   --text-display: 4.5rem;
-  --text-quote: 3.5rem;
   --text-hero: 10rem;
   --size-code: 1em;
 
@@ -378,6 +377,26 @@
   min-height: 0;
 }
 
+/* A headline split around a figure: the first half above it, the rest below on the right */
+
+.slidev-layout h1.split {
+  margin-bottom: var(--space-4);
+}
+
+.slidev-layout .headline-end {
+  margin-top: var(--space-4);
+  font-size: var(--text-headline);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-align: right;
+}
+
+.headline-end em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+
 /* Links that are blocks lift instead of showing the theme's hover border */
 .slidev-layout :is(.og, .repo),
 .slidev-layout :is(.og, .repo):hover,
@@ -396,31 +415,6 @@
 .og:hover img,
 .og:focus-visible img {
   translate: 0 var(--lift);
-}
-
-/* One quote, set large, with where it comes from */
-
-.slidev-layout .quote {
-  display: grid;
-  gap: var(--space-5);
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: none;
-}
-
-.quote p {
-  font-size: var(--text-quote);
-  font-weight: var(--weight-bold);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  text-wrap: balance;
-}
-
-.quote cite {
-  color: var(--color-text-muted);
-  font-size: var(--text-body);
-  font-style: normal;
 }
 
 /* Closing call to action */

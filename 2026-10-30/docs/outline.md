@@ -56,14 +56,13 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 5. I use Vize because it is much faster。根拠は 3 行。Lint は eslint-plugin-vue より 182×（Vize の README のベンチマーク、2026-09-16、3,000 ファイル、20.75s → 114ms）。Format は Oxfmt より 50×（toy app の .vue 2,940 ファイルで手元で計測、docs/benchmark.md）。Type check は vue-tsc v3 より 4.9×（README のベンチマーク、500 ファイル、6.75s → 1.37s）。出典の行で「Lint, type check: Vize's benchmarks」「Format: 2,940 .vue files from my app, on an M1」と書き分ける。Lint を Oxlint と比べると Oxlint のほうが 2.4 倍速い（`<script>` しか見ない）ので、Lint は ESLint と比べる
 6. Johnson Chu の v4 alpha 告知ツイート（https://x.com/johnsoncodehk/status/2113609909329953099、2026-10-23）を左に大きく、右に見出し「Vue Language Tools v4 takes the same path」。v3 の vue-tsc との比較だという注意書きの代わり。Slidev 組み込みの <Tweet> で埋め込むので、表示には会場のネット接続が必要
 7. Vize already type-checks .vue on TypeScript 7。根拠は tsconfig の contentMappers。補足は「Vue Language Tools v4 is still in alpha」
-8. It is still being tested, and that is the exciting part。根拠は公式ブログ「Real World Testing」（2026-06-07）の OG 画像。画像は src/public/real-world-testing.png（vizejs.dev の OG 画像を保存したもの）
-9. The blog asks for reports from real projects。根拠は同じ記事の 1 文「Real-world applications are the test suite now.」
-10. I build a Vue app and use every part of Vize。根拠は Compile / Lint / Format / Check / Musea / Editor の 6 ブロック。どれも同じパーサーの上にある（README の What Is Vize?）
-11. When something looks off, Claude Code makes a repro。根拠は再現リポジトリ 1 つ（vize-placeholder-label-option-repro）とコマンド。アプリのものは何も入れない
-12. Then it checks whether someone already filed it。根拠は `gh search issues --repo ubugeeei-prod/vize` のコマンド
-13. Vize ships twice a day, so the repro runs on the latest release。根拠は 136 日で 303 リリース（0.206.0 → 0.574.0）
-14. TypeScript 7 is still moving, so it checks whether it is really Vize。根拠は、再現リポジトリをリリース済みの TypeScript 7 でも走らせる 2 つのコマンド（同梱の tsgo で動く `vize check` と、TypeScript 7.1 beta の content mapper で動く `tsc --runExternalCode --noEmit`）。tsrs は TypeScript main を追っているので、tsrs だけで壊れるものは Vize の問題とは限らない（`vize-report-tsgo-only.md`）。起票するかどうかの振り分けは見せない
-15. 締めは聞き手への呼びかけ。「Right now, trying Vize on your app is a contribution.」Real World Testing の今は、自分のアプリで使ってフィードバックするだけで contribution になる。リンクは Real World Testing の記事
+8. 見出しを画像の上下に分ける。上に左寄せで「It's still being tested,」、真ん中に OG 画像、下に右寄せで「and that is the exciting part」。根拠は公式ブログ「Real World Testing」（2026-06-07）の OG 画像。画像は src/public/real-world-testing.png（vizejs.dev の OG 画像を保存したもの）
+9. I build a Vue app and use every part of Vize。根拠は Compile / Lint / Format / Check / Musea / Editor の 6 ブロック。どれも同じパーサーの上にある（README の What Is Vize?）
+10. When something looks off, Claude Code makes a repro。根拠は再現リポジトリ 1 つ（vize-placeholder-label-option-repro）とコマンド。アプリのものは何も入れない
+11. Then it checks whether someone already filed it。根拠は `gh search issues --repo ubugeeei-prod/vize` のコマンド
+12. Vize ships twice a day, so the repro runs on the latest release。根拠は 136 日で 303 リリース（0.206.0 → 0.574.0）
+13. TypeScript 7 is still moving, so it checks whether it is really Vize。根拠は、再現リポジトリをリリース済みの TypeScript 7 でも走らせる 2 つのコマンド（同梱の tsgo で動く `vize check` と、TypeScript 7.1 beta の content mapper で動く `tsc --runExternalCode --noEmit`）。tsrs は TypeScript main を追っているので、tsrs だけで壊れるものは Vize の問題とは限らない（`vize-report-tsgo-only.md`）。起票するかどうかの振り分けは見せない
+14. 締めは聞き手への呼びかけ。「Right now, trying Vize on your app is a contribution.」Real World Testing の今は、自分のアプリで使ってフィードバックするだけで contribution になる。リンクは Real World Testing の記事
 
 散布図、6 月と 10 月の比較、8.3h → 4.3h、取りこぼし、lint 警告 80 → 6、報告のテンプレート、正しく動くものとの突き合わせ、起票しなかったものの分類は 5 分に収めるため外した。散布図のコンポーネントは 9914715 にある。
 
