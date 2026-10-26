@@ -46,7 +46,7 @@ fonts:
 
 <div class="evidence pair">
   <blockquote class="quote">
-    <p>“Static analysis creates a trust boundary between ‘plausible’ and ‘actually valid.’”</p>
+    <p>“They predict likely continuations. They do not enforce invariants.”</p>
   </blockquote>
   <p class="attribution">From <a href="https://vizejs.dev/blog/notes/2026-03-26-why-ai-needs-deterministic-fast-static-analysis/" target="_blank" rel="noopener noreferrer">Static Analysis for AI</a>,<br />ubugeeei</p>
   <a class="og-side" href="https://vizejs.dev/blog/notes/2026-03-26-why-ai-needs-deterministic-fast-static-analysis/" target="_blank" rel="noopener noreferrer">
