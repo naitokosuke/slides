@@ -30,12 +30,12 @@ fonts:
 
 ---
 
-# I moved my Vue tooling to Vize this summer
+# Where the bugs came from
 
 <div class="columns" style="--columns: 3">
-  <div class="card large"><section><p class="label">Lint</p><p>ESLint → <code>vize lint</code></p></section></div>
-  <div class="card large"><section><p class="label">Type check</p><p>vue-tsc → <code>vize check</code></p></section></div>
-  <div class="card large"><section><p class="label">Build</p><p>Nuxt 4 + <code>@vizejs/nuxt</code></p></section></div>
+  <div class="card large"><section><p class="label">chirashitabi · 15</p><p>Vue Vapor app on <code>vize lint</code>, <code>vize check</code> and Musea</p></section></div>
+  <div class="card large"><section><p class="label">My blog · 5</p><p>Nuxt 4 with <code>@vizejs/nuxt</code>, built and prerendered</p></section></div>
+  <div class="card large"><section><p class="label">Vue Fes Japan 2026 site · 2</p><p>File-based routing with vue-router</p></section></div>
 </div>
 
 ---
@@ -74,6 +74,32 @@ fonts:
 ---
 
 # The fixes came fast. My reports were the slow part.
+
+---
+
+# How each one got filed
+
+<ol class="steps">
+  <li><span><code>vp run check</code> on the app shows a warning or an error</span></li>
+  <li><span>Claude Code reads the rule source and the spec, and runs the same file through <code>@vitejs/plugin-vue</code>, <code>@vue/compiler-sfc</code> or <code>vue-tsc</code></span></li>
+  <li><span>If Vize is the odd one out, Claude Code builds a repro repo with none of the app's code in it</span></li>
+  <li><span>I read the repo and decide whether it gets filed</span></li>
+  <li><span>It goes up with <code>gh issue create</code>, in English. A batch goes out 5 to 7 minutes apart</span></li>
+  <li><span>When the fix is released, the app gets the new Vize and the warning is checked again</span></li>
+</ol>
+
+---
+
+# Claude Code does the digging. I decide what gets filed.
+
+Rules I gave it along the way, still in its memory
+
+<div class="quotes compact">
+  <p><small>vize-repros-repo.md</small><span>Never file upstream until the user says so</span></p>
+  <p><small>vapor-get-current-instance.md</small><span>Read the runtime source and the upstream decision before naming whose bug it is</span></p>
+  <p><small>vize-repros-repo.md</small><span>No trace of the app: generic names, no app code</span></p>
+  <p><small>github-issues-prs-in-english.md</small><span>Everything on GitHub is in English</span></p>
+</div>
 
 ---
 
@@ -125,6 +151,23 @@ fonts:
 ---
 
 <div class="big">
+  <strong>11 → 9</strong>
+  <span>repro repos made in October → repro repos filed</span>
+</div>
+
+---
+
+# What I kept to myself
+
+<div class="quotes">
+  <p><small>tsrs only</small><span>Vize targets tsgo, so a failure that tsgo does not show is not a Vize bug</span></p>
+  <p><small>by design</small><span>A type checker that fails to start gives a warning and exit 0, on purpose</span></p>
+  <p><small>cautious on purpose</small><span><code>no-reactivity-loss</code> stays narrow, and the rewritten code was better anyway</span></p>
+</div>
+
+---
+
+<div class="big">
   <strong>8.3<small>h</small> → 4.3<small>h</small></strong>
   <span>median time until closed, #1563 – #9180 → #9747 onward</span>
 </div>
@@ -141,6 +184,15 @@ fonts:
 </div>
 
 <p class="note">I run the repro again on the release that has the fix</p>
+
+---
+
+<div class="big">
+  <strong>80 → 17 → 6</strong>
+  <span>lint warnings in chirashitabi</span>
+</div>
+
+<p class="caveat">80 → 17 by fixing my own code, 17 → 6 by Vize fixes and two rewrites. The last 6 are false positives, each checked against the rule source and the spec.</p>
 
 ---
 
