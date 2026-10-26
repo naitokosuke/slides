@@ -42,7 +42,6 @@
   --radius-full: 9999px;
 
   --border-width: 1px;
-  --rule-width: 4px;
   --stroke-width: 2.5px;
   --stroke-width-icon: 1.5px;
   --dash: 2 4;
@@ -58,6 +57,7 @@
   --size-chart-dot: 7px;
   --size-avatar: 14rem;
   --size-shot: 7rem;
+  --size-source: 9rem;
 }
 
 /* Base */
@@ -85,7 +85,7 @@
   opacity: 1;
 }
 
-.slidev-layout p {
+:where(.slidev-layout) p {
   margin: 0;
 }
 
@@ -194,10 +194,9 @@
   font-style: normal;
 }
 
-/* Bordered box, used for cards, tiles and badges */
+/* Bordered box for mock issue bodies and the migration cards */
 
-.card,
-.tiles span {
+.card {
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
@@ -254,41 +253,67 @@
   color: var(--color-text-muted);
 }
 
-.tiles {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+/* A bordered link that lifts on hover, used for the issue badges and repo tiles */
+
+.slidev-layout .link-box {
+  display: flex;
+  align-items: center;
   gap: var(--space-2);
-  margin-top: var(--space-6);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
+  text-decoration: none;
+  transition:
+    translate var(--duration-fast) var(--easing-out),
+    border-color var(--duration-fast) var(--easing-out),
+    box-shadow var(--duration-fast) var(--easing-out);
 }
 
-.tiles span {
-  padding: var(--space-2) var(--space-4);
+.slidev-layout .link-box:hover,
+.slidev-layout .link-box:focus-visible {
+  translate: 0 var(--lift);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-raised);
+  color: var(--color-text);
+  outline: none;
 }
 
-.tiles span::before {
-  content: "naitokosuke/";
-  color: var(--color-text-muted);
+.slidev-layout li:has(> .link-box) {
+  margin: 0;
 }
 
-/* Quotes with a source line, set off by an accent rule */
+@media (prefers-reduced-motion: reduce) {
+  .slidev-layout .link-box:hover,
+  .slidev-layout .link-box:focus-visible {
+    translate: none;
+  }
+}
+
+/* Rows of quotes, with the issue numbers they come from in a column on the left */
 
 .quotes {
-  display: grid;
-  gap: var(--space-4);
   margin-top: var(--space-6);
   font-size: var(--text-xl);
 }
 
 .quotes p {
-  padding-left: var(--space-4);
-  border-left: var(--rule-width) solid var(--color-accent);
+  display: grid;
+  grid-template-columns: var(--size-source) 1fr;
+  align-items: baseline;
+  gap: var(--space-5);
+  padding: var(--space-4) 0;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.quotes p:last-child {
+  border-bottom: var(--border-width) solid var(--color-border);
 }
 
 .quotes small {
-  display: block;
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
+  font-size: var(--text-sm);
 }

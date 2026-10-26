@@ -73,18 +73,7 @@ fonts:
 
 ---
 
-<div class="big">
-  <strong>0</strong>
-  <span>comments from me after opening</span>
-</div>
-
-<p class="caveat">16 issues have no comments at all. The other 14 only have progress updates from ubugeeei.</p>
-
----
-
 # The fixes came fast. My reports were the slow part.
-
-Nobody asked me anything, so the first post had to have it all
 
 ---
 
@@ -118,17 +107,7 @@ Nobody asked me anything, so the first post had to have it all
 
 # From #9747 on, each issue has its own repro repo
 
-<div class="tiles">
-  <span>vize-nested-v-if-type-binding-repro</span>
-  <span>vize-ssr-arrow-param-repro</span>
-  <span>vize-placeholder-label-option-repro</span>
-  <span>vize-combobox-focus-repro</span>
-  <span>vize-hidden-input-label-repro</span>
-  <span>vize-musea-scoped-arrow-repro</span>
-  <span>vize-style-relative-import-repro</span>
-  <span>vize-narrowed-slot-condition-repro</span>
-  <span>vize-from-prop-template-repro</span>
-</div>
+<ReproTiles />
 
 <p class="note"><code>pnpm install</code>, then one command that shows the bug</p>
 
@@ -137,10 +116,10 @@ Nobody asked me anything, so the first post had to have it all
 # Each report points at something that already works
 
 <div class="quotes">
-  <p>"<code>vize check</code> is fine"<small>#8752 – #8755</small></p>
-  <p>"<code>@vue/compiler-sfc</code> emits …"<small>#6766, #6767</small></p>
-  <p>"unlike markuplint and the HTML spec"<small>#9749</small></p>
-  <p>"as vue-router's <code>sfc-typed-router</code> does"<small>#7817</small></p>
+  <p><small>#8752 – #8755</small><span>"<code>vize check</code> is fine"</span></p>
+  <p><small>#6766, #6767</small><span>"<code>@vue/compiler-sfc</code> emits …"</span></p>
+  <p><small>#9749</small><span>"unlike markuplint and the HTML spec"</span></p>
+  <p><small>#7817</small><span>"as vue-router's <code>sfc-typed-router</code> does"</span></p>
 </div>
 
 ---
@@ -157,8 +136,8 @@ Nobody asked me anything, so the first post had to have it all
 # Some fixes missed a case
 
 <div class="quotes">
-  <p>#6767 fixed <code>[object object]</code><small>#6898: the scope id was still emitted where Vue emits none</small></p>
-  <p>#8752 fixed <code>v-if</code><small>#9747: nested <code>v-if</code> and <code>v-else-if</code> still failed</small></p>
+  <p><small>#6767 → #6898</small><span>After the <code>[object object]</code> fix, the scope id was still emitted where Vue emits none</span></p>
+  <p><small>#8752 → #9747</small><span>After the <code>v-if</code> fix, nested <code>v-if</code> and <code>v-else-if</code> still failed</span></p>
 </div>
 
 <p class="note">I run the repro again on the release that has the fix</p>

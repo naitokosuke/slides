@@ -1,5 +1,6 @@
 <!-- All 30 issues as closed badges, each with the time it took to close and a link to the issue -->
 <script setup lang="ts">
+import { sanitizeUrl } from "@braintree/sanitize-url";
 import { issues } from "../data/issues";
 
 function timeToClose(filed: string, closed: string) {
@@ -14,9 +15,10 @@ function timeToClose(filed: string, closed: string) {
   <ul class="wall">
     <li v-for="issue in issues" :key="issue.number">
       <a
-        :href="`https://github.com/ubugeeei-prod/vize/issues/${issue.number}`"
+        class="link-box"
+        :href="sanitizeUrl(issue.url)"
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
       >
         <ClosedIcon />
         <span>#{{ issue.number }}</span>
@@ -34,39 +36,7 @@ function timeToClose(filed: string, closed: string) {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.wall a {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-3);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  color: var(--color-text);
-  font-family: var(--font-mono);
   font-size: var(--text-sm);
-  text-decoration: none;
-  transition:
-    translate var(--duration-fast) var(--easing-out),
-    border-color var(--duration-fast) var(--easing-out),
-    box-shadow var(--duration-fast) var(--easing-out);
-}
-
-.wall a:hover,
-.wall a:focus-visible {
-  translate: 0 var(--lift);
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-raised);
-  outline: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .wall a:hover,
-  .wall a:focus-visible {
-    translate: none;
-  }
 }
 
 .time {
