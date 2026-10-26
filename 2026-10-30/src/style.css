@@ -47,6 +47,12 @@
   --stroke-width-icon: 1.5px;
   --dash: 2 4;
 
+  --duration-fast: 160ms;
+  --easing-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --lift: -3px;
+  --shadow-raised: 0 6px 16px
+    color-mix(in oklch, var(--color-accent) 25%, transparent);
+
   --size-icon: 1em;
   --size-dot: 0.8rem;
   --size-chart-dot: 7px;
