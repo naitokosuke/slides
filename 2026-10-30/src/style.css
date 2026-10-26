@@ -1,18 +1,41 @@
 /* Every value used on the slides comes from these tokens */
 :root {
-  /* City pop summer sky, one flat blue */
-  --color-sky: #1565cf;
-  --color-bg: var(--color-sky);
-  --color-surface: color-mix(in oklch, white 14%, var(--color-sky));
-  --color-border: color-mix(in oklch, white 38%, transparent);
-  --color-text: #ffffff;
-  --color-text-muted: #cfe5fb;
-  --color-accent: #ff7fb0;
-  --color-code-bg: color-mix(in oklch, white 16%, transparent);
-  --color-accent-surface: color-mix(
+  /* Palm Springs: pink walls, a deep blue, two pool blues and the palms */
+  --color-deep: #024873;
+  --color-pool: #048abf;
+  --color-lagoon: #049dbf;
+  --color-palm: #055902;
+  --color-blush: #f2c2c2;
+  --color-white: #ffffff;
+
+  --color-bg: var(--color-blush);
+  --color-text: var(--color-deep);
+  --color-text-muted: color-mix(
     in oklch,
-    var(--color-accent) 18%,
-    var(--color-surface)
+    var(--color-deep) 72%,
+    var(--color-blush)
+  );
+  --color-accent: var(--color-palm);
+  --color-border: color-mix(in oklch, var(--color-deep) 22%, transparent);
+  --color-code-bg: color-mix(in oklch, var(--color-deep) 10%, transparent);
+
+  /* Flat pool-blue blocks with white type on them */
+  --color-surface: var(--color-pool);
+  --color-on-surface: var(--color-white);
+  --color-on-surface-muted: color-mix(
+    in oklch,
+    var(--color-white) 78%,
+    transparent
+  );
+  --color-border-on-surface: color-mix(
+    in oklch,
+    var(--color-white) 30%,
+    transparent
+  );
+  --color-code-bg-on-surface: color-mix(
+    in oklch,
+    var(--color-white) 20%,
+    transparent
   );
 
   --font-sans: "Space Grotesk", "Noto Sans JP", sans-serif;
@@ -56,8 +79,10 @@
   --duration-fast: 160ms;
   --easing-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --lift: -3px;
-  --shadow-raised: 0 6px 16px
-    color-mix(in oklch, var(--color-accent) 25%, transparent);
+  --opacity-secondary: 0.75;
+  --offset-raised: 4px;
+  --shadow-raised: var(--offset-raised) var(--offset-raised) 0
+    var(--color-accent);
 
   --size-icon: 1em;
   --size-avatar: 2.5rem;
@@ -163,6 +188,11 @@
   font-size: var(--text-display);
 }
 
+/* The first letter in the accent colour */
+.cover .initial {
+  color: var(--color-accent);
+}
+
 .cover .byline {
   display: flex;
   align-items: center;
@@ -210,6 +240,7 @@
 }
 
 .big strong small {
+  color: var(--color-accent);
   font-size: var(--text-3xl);
   letter-spacing: 0;
 }
@@ -224,17 +255,28 @@
   font-style: normal;
 }
 
-/* Bordered box for mock issue bodies and the migration cards */
-
-.card {
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-}
+/* A flat block of colour with type on it, for mock issue bodies and the project cards */
 
 .card {
   overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
   font-size: var(--text-md);
+}
+
+/* The other blocks of the palette: the palms and the deep blue */
+.card.palm {
+  --color-surface: var(--color-palm);
+}
+
+.card.deep {
+  --color-surface: var(--color-deep);
+}
+
+.slidev-layout .card :not(pre) > code {
+  background: var(--color-code-bg-on-surface);
+  color: var(--color-on-surface);
 }
 
 .card.large {
@@ -246,8 +288,8 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-4);
-  border-bottom: var(--border-width) solid var(--color-border);
-  color: var(--color-text-muted);
+  border-bottom: var(--border-width) solid var(--color-border-on-surface);
+  color: var(--color-on-surface-muted);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
 }
@@ -269,7 +311,7 @@
 }
 
 .card .label {
-  color: var(--color-text-muted);
+  color: var(--color-on-surface-muted);
   font-size: var(--text-sm);
 }
 
@@ -278,36 +320,33 @@
   place-content: center;
   height: var(--size-shot);
   margin-bottom: var(--space-3);
-  border: var(--border-width) dashed var(--color-border);
+  border: var(--border-width) dashed var(--color-border-on-surface);
   border-radius: var(--radius-sm);
-  color: var(--color-text-muted);
+  color: var(--color-on-surface-muted);
 }
 
-/* A bordered link that lifts on hover, used for the issue badges and repo tiles */
+/* A flat pool-blue link that lifts onto an accent shadow on hover, used for the repo tiles */
 
 .slidev-layout .link-box {
   display: flex;
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-2) var(--space-3);
-  border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
-  color: var(--color-text);
+  color: var(--color-on-surface);
   font-family: var(--font-mono);
   text-decoration: none;
   transition:
     translate var(--duration-fast) var(--easing-out),
-    border-color var(--duration-fast) var(--easing-out),
     box-shadow var(--duration-fast) var(--easing-out);
 }
 
 .slidev-layout .link-box:hover,
 .slidev-layout .link-box:focus-visible {
   translate: 0 var(--lift);
-  border-color: var(--color-accent);
   box-shadow: var(--shadow-raised);
-  color: var(--color-text);
+  color: var(--color-on-surface);
   outline: none;
 }
 

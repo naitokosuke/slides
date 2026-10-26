@@ -115,12 +115,13 @@ svg {
 circle {
   r: var(--size-chart-dot);
   fill: var(--color-bg);
-  stroke: var(--color-accent);
+  stroke: var(--color-pool);
   stroke-width: var(--stroke-width);
 }
 
 circle.repro {
   fill: var(--color-accent);
+  stroke: var(--color-accent);
 }
 
 figcaption {
@@ -140,11 +141,12 @@ figcaption {
 .key i {
   width: var(--size-dot);
   height: var(--size-dot);
-  border: var(--stroke-width) solid var(--color-accent);
+  border: var(--stroke-width) solid var(--color-pool);
   border-radius: var(--radius-full);
 }
 
 .key i.repro {
+  border-color: var(--color-accent);
   background: var(--color-accent);
 }
 </style>
