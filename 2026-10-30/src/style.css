@@ -1,12 +1,22 @@
 /* Every value used on the slides comes from these tokens */
 :root {
-  --color-bg: #0d1117;
-  --color-surface: #161b22;
-  --color-border: #30363d;
-  --color-text: #e6edf3;
-  --color-text-muted: #8d96a0;
-  --color-accent: #ab7df8;
-  --color-code-bg: color-mix(in oklch, var(--color-text) 10%, transparent);
+  /* City pop summer sky: deep blue at the top, paling toward the horizon */
+  --color-sky-high: #0a3d9c;
+  --color-sky: #1565cf;
+  --color-sky-horizon: #4fa8ec;
+  --color-bg: var(--color-sky);
+  --gradient-sky: linear-gradient(
+    to bottom,
+    var(--color-sky-high),
+    var(--color-sky) 60%,
+    var(--color-sky-horizon)
+  );
+  --color-surface: color-mix(in oklch, white 14%, var(--color-sky));
+  --color-border: color-mix(in oklch, white 38%, transparent);
+  --color-text: #ffffff;
+  --color-text-muted: #cfe5fb;
+  --color-accent: #ff7fb0;
+  --color-code-bg: color-mix(in oklch, white 16%, transparent);
   --color-accent-surface: color-mix(
     in oklch,
     var(--color-accent) 18%,
@@ -71,7 +81,7 @@
 /* Base */
 
 .slidev-layout {
-  background: var(--color-bg);
+  background: var(--gradient-sky);
   color: var(--color-text);
   font-family: var(--font-sans);
   line-height: var(--leading-normal);
@@ -99,10 +109,11 @@
   margin: 0;
 }
 
-.slidev-layout code {
+.slidev-layout :not(pre) > code {
   padding: 0 var(--space-1);
   border-radius: var(--radius-sm);
   background: var(--color-code-bg);
+  color: var(--color-text);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
 }
