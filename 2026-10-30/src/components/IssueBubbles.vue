@@ -41,11 +41,11 @@ function seeded(seed: number) {
   };
 }
 
-// Deeper blue for longer waits: lagoon under 6 hours, pool under a day, deep blue past that
+// Brighter for quicker fixes: yellow under 6 hours, baby pink under a day, royal blue past that
 function depthOf(minutes: number) {
-  if (minutes < 60 * 6) return "lagoon";
-  if (minutes < 60 * 24) return "pool";
-  return "deep";
+  if (minutes < 60 * 6) return "quick";
+  if (minutes < 60 * 24) return "day";
+  return "slow";
 }
 
 const quickestClose = Math.min(
@@ -310,16 +310,21 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
 }
 
 .bubble {
-  --bubble-fill: var(--color-pool);
-  --bubble-text: var(--color-white);
+  --bubble-fill: var(--color-surface);
+  --bubble-text: var(--color-on-surface);
+  --bubble-hover: var(--color-accent);
 }
 
-.bubble.lagoon {
-  --bubble-fill: var(--color-lagoon);
+.bubble.quick {
+  --bubble-fill: var(--color-yellow);
+  --bubble-text: var(--color-royal);
+  --bubble-hover: var(--color-royal);
 }
 
-.bubble.deep {
-  --bubble-fill: var(--color-deep);
+.bubble.day {
+  --bubble-fill: var(--color-baby);
+  --bubble-text: var(--color-royal);
+  --bubble-hover: var(--color-royal);
 }
 
 .bubble circle {
@@ -331,7 +336,7 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
 
 .bubble:hover circle,
 .bubble:focus-visible circle {
-  stroke: var(--color-accent);
+  stroke: var(--bubble-hover);
 }
 
 .bubble:focus-visible {

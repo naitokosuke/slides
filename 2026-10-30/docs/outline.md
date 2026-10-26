@@ -51,7 +51,7 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 
 1. cover「How I Contributed to Vize」。副題「30 issues, June to October」、アイコンと GitHub へのリンク付きの @naitokosuke。タイトルは一色
 2. 30（issues I opened on Vize）
-3. All 30 were fixed, most within a day。根拠は close までの時間に面積が反比例する円 30 個（速く直ったものほど大きい。最大は #10660 の 56 分）。1 日以内に閉じたのは 23 件。番号と時間はどんなに小さい円でも出す
+3. All 30 were fixed, most within a day。円の色は 6 時間未満が黄色、1 日未満が Baby Pink、それ以上が Royal Blue。根拠は close までの時間に面積が反比例する円 30 個（速く直ったものほど大きい。最大は #10660 の 56 分）。1 日以内に閉じたのは 23 件。番号と時間はどんなに小さい円でも出す
 4. Vize のロゴだけを中央に大きく置く。Vize の紹介と、使う理由への入り。ロゴは ubugeeei-prod/vize の assets/logo.svg（MIT）を src/components/VizeLogo.vue にしたもの。色は元の #000000 のまま変えない（切り抜くのは viewBox だけ）
 5. I use Vize because it is much faster。根拠は 3 行。Lint は eslint-plugin-vue より 182×（Vize の README のベンチマーク、2026-09-16、3,000 ファイル、20.75s → 114ms）。Format は Oxfmt より 50×（toy app の .vue 2,940 ファイルで手元で計測、docs/benchmark.md）。Type check は vue-tsc v3 より 4.9×（README のベンチマーク、500 ファイル、6.75s → 1.37s）。出典の行で「Lint, type check: Vize's benchmarks」「Format: 2,940 .vue files from my app, on an M1」と書き分ける。Lint を Oxlint と比べると Oxlint のほうが 2.4 倍速い（`<script>` しか見ない）ので、Lint は ESLint と比べる
 6. Johnson Chu の v4 alpha 告知ツイート（https://x.com/johnsoncodehk/status/2113609909329953099、2026-10-23）を左に大きく、右に見出し「Vue Language Tools v4 takes the same path」。v3 の vue-tsc との比較だという注意書きの代わり。Slidev 組み込みの <Tweet> で埋め込むので、表示には会場のネット接続が必要
@@ -75,7 +75,7 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 
 - スローガン調の言い回し（「X, not Y」、三つ並べ、決め台詞）を避け、事実を平叙で書く
 - 色・サイズ・余白・角丸・線幅などの値は `src/style.css` の `:root` にあるトークンだけを使う。コンポーネントもスライドもトークンを参照する
-- 配色は Palm Springs の 5 色（#024873 #048ABF #049DBF #055902 #F2C2C2）だけを使い、どれも単色のベタ塗りにする。背景はピンク、文字は濃い青、カードやタイルはプールの青、アクセントは緑。白はブロックの上の文字にだけ使う
+- 配色は 4 色だけを使い、どれも単色のベタ塗りにする。Royal Blue #3A2D71（文字とブロック）、Tea Pink #E9D1E1（背景とブロックの上の文字）、Yellow #F6D60D（強調）、Baby Pink #A08AC0（3 枚目の円の中間）。黄色は Tea Pink の上では文字として読めないので、文字色にはせず、マーカー（語の下半分に敷く）と影にだけ使う。Vize のロゴは元の黒のまま
 - 文字は 1.75rem（28px）より小さくしない。980 × 552 のスライドで高さの約 5% にあたり、Guy Kawasaki の 10/20/30 の 30pt と同じ比率。例外は 3 枚目の円の中の番号と時間で、小さくても必ず出す
 - 見出しは主張の 1 文にして（Michael Alley の Assertion-Evidence）、覚えてほしい語だけアクセント色にする（Mayer の signaling）。話す内容をそのままスライドに書かない（redundancy）
 - 根拠の図は、見出しの下に残った高さの中で上下中央に置く。下に大きな余白を残さない
