@@ -191,15 +191,13 @@ Rules I gave it along the way, still in its memory
 
 # What I put in a report now
 
-<div class="card large stack">
-  <section>
-    <h4>Summary</h4><p class="muted">What is wrong, in one sentence</p>
-    <h4>Version</h4><p class="muted">Every package and runtime involved</p>
-    <h4>Reproduction</h4><p class="muted">Repo URL and the command that fails</p>
-    <h4>Actual / Expected</h4><p class="muted">Pasted output</p>
-    <h4>Reference</h4><p class="muted">A tool or spec that gets it right</p>
-  </section>
-</div>
+<dl class="terms">
+  <dt>Summary</dt><dd>What is wrong, in one sentence</dd>
+  <dt>Version</dt><dd>Every package and runtime involved</dd>
+  <dt>Reproduction</dt><dd>Repo URL and the command that fails</dd>
+  <dt>Actual / Expected</dt><dd>Pasted output</dd>
+  <dt>Reference</dt><dd>A tool or spec that gets it right</dd>
+</dl>
 
 ---
 

@@ -35,7 +35,7 @@ const months = ["Jun", "Jul", "Aug", "Sep", "Oct"].map((label, i) => ({
 </script>
 
 <template>
-  <figure class="fix-chart">
+  <figure class="fix-chart fill">
     <svg
       :viewBox="`0 0 ${width} ${height}`"
       role="img"
@@ -90,13 +90,14 @@ const months = ["Jun", "Jul", "Aug", "Sep", "Oct"].map((label, i) => ({
 <style scoped>
 .fix-chart {
   display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   gap: var(--space-2);
   margin: 0;
 }
 
 svg {
   width: 100%;
-  height: auto;
+  height: 100%;
   overflow: visible;
 }
 
