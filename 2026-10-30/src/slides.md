@@ -46,9 +46,9 @@ fonts:
 
 <div class="evidence pair">
   <blockquote class="quote">
-    <p>“No. This is wrong.”</p>
-    <cite>From <a href="https://vizejs.dev/blog/notes/2026-03-26-why-ai-needs-deterministic-fast-static-analysis/" target="_blank" rel="noopener noreferrer">Static Analysis for AI</a>, ubugeeei</cite>
+    <p>“Static analysis creates a trust boundary between ‘plausible’ and ‘actually valid.’”</p>
   </blockquote>
+  <p class="attribution">From <a href="https://vizejs.dev/blog/notes/2026-03-26-why-ai-needs-deterministic-fast-static-analysis/" target="_blank" rel="noopener noreferrer">Static Analysis for AI</a>,<br />ubugeeei</p>
   <a class="og-side" href="https://vizejs.dev/blog/notes/2026-03-26-why-ai-needs-deterministic-fast-static-analysis/" target="_blank" rel="noopener noreferrer">
     <img src="/static-analysis-for-ai.png" alt="Static Analysis for AI, on the Vize blog" />
   </a>
