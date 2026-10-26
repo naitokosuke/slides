@@ -5,7 +5,7 @@
 
 ## 軸
 
-1 文で言うと「Rust を書かなくても Vize には contribute できる。自分のアプリで使い倒して、壊れたところを質問されずに直せる issue にして出せばいい」。
+1 文で言うと「Vize は今 Real World Testing の段階なので、自分のアプリで使ってフィードバックするだけで contribution になる。自分はそれをこうやって続けている」。
 
 結果（30 件、全部すぐ直った）→ Vize を使う理由（速い、TypeScript 7、まだテスト段階で面白い）→ やり方 → 持ち帰り、の順で進む。
 
@@ -60,8 +60,8 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 9. When something looks off, Claude Code makes a repro。根拠は再現リポジトリ 1 つ（vize-placeholder-label-option-repro）とコマンド。アプリのものは何も入れない
 10. Then it checks whether someone already filed it。根拠は `gh search issues --repo ubugeeei-prod/vize` のコマンド
 11. Vize ships twice a day, so the repro runs on the latest release。根拠は 136 日で 303 リリース（0.206.0 → 0.574.0）
-12. TypeScript 7 is still moving, so it checks whether it is really Vize。tsgo（TypeScript 7.0、7.1 beta）で壊れるなら起票、tsrs（TypeScript main を追っている）だけで壊れるなら起票しない（`vize-report-tsgo-only.md`）
-13. Use Vize in your app. File what breaks.
+12. TypeScript 7 is still moving, so it checks whether it is really Vize。根拠は、再現リポジトリをリリース済みの TypeScript 7 でも走らせる 2 つのコマンド（同梱の tsgo で動く `vize check` と、TypeScript 7.1 beta の content mapper で動く `tsc --runExternalCode --noEmit`）。tsrs は TypeScript main を追っているので、tsrs だけで壊れるものは Vize の問題とは限らない（`vize-report-tsgo-only.md`）。起票するかどうかの振り分けは見せない
+13. 締めは聞き手への呼びかけ。「Right now, trying Vize on your app is a contribution.」Real World Testing の今は、自分のアプリで使ってフィードバックするだけで contribution になる。リンクは Real World Testing の記事
 
 散布図、6 月と 10 月の比較、8.3h → 4.3h、取りこぼし、lint 警告 80 → 6、報告のテンプレート、正しく動くものとの突き合わせ、起票しなかったものの分類は 5 分に収めるため外した。散布図のコンポーネントは 9914715 にある。
 

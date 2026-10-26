@@ -83,7 +83,6 @@
   --size-avatar: 3rem;
   --size-chip: 11rem;
   --size-chip-compact: 6rem;
-  --size-source: 11rem;
   --size-speed-label: 11rem;
   --size-dot: 0.8rem;
   --size-chart-dot: 7px;
@@ -227,33 +226,7 @@
   color: var(--color-text-muted);
 }
 
-/* Short quotes, each with the issue it comes from on the right */
-
-.rows {
-  display: grid;
-}
-
-.rows p {
-  display: grid;
-  grid-template-columns: 1fr var(--size-source);
-  align-items: baseline;
-  gap: var(--space-5);
-  padding: var(--space-4) 0;
-  border-top: var(--border-width) solid var(--color-border);
-}
-
-.rows p:last-child {
-  border-bottom: var(--border-width) solid var(--color-border);
-}
-
-.rows small {
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--text-body);
-  text-align: right;
-}
-
-/* Before → after times, with the speedup set large on the right */
+/* Each tool with its speedup set large on the right */
 
 .speed {
   display: grid;
@@ -429,6 +402,12 @@
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
+}
+
+/* The theme gives paragraphs a fixed line height, too short for display type */
+.slidev-layout .closing p {
+  line-height: var(--leading-tight);
+  text-wrap: balance;
 }
 
 .closing em {

@@ -134,16 +134,14 @@ fonts:
 # TypeScript 7 is still moving, so it checks <em>whether it is really Vize</em>
 
 <div class="evidence">
-  <div class="rows">
-    <p><span>Fails on tsgo, TypeScript 7.0 or 7.1 beta</span><small>file it</small></p>
-    <p><span>Fails only on tsrs, which follows TypeScript main</span><small>don't file</small></p>
-  </div>
+  <pre class="snippet">vize check
+tsc --runExternalCode --noEmit</pre>
+  <p class="muted">The repro runs on released TypeScript 7, not only on tsrs</p>
 </div>
 
 ---
 
 <div class="closing">
-  <p>Use Vize in your app.</p>
-  <p><em>File what breaks.</em></p>
-  <a href="https://github.com/ubugeeei-prod/vize" target="_blank" rel="noopener noreferrer">github.com/ubugeeei-prod/vize</a>
+  <p>Right now, trying Vize on your app <em>is a contribution.</em></p>
+  <a href="https://vizejs.dev/blog/notes/2026-06-07-real-world-testing/" target="_blank" rel="noopener noreferrer">vizejs.dev · Real World Testing</a>
 </div>
