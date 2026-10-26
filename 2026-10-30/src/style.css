@@ -68,6 +68,7 @@
   --dash: 2 4;
 
   --duration-fast: 160ms;
+  --duration-blink: 1s;
   --easing-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --lift: -3px;
   --offset-raised: 6px;
@@ -76,6 +77,7 @@
   --opacity-secondary: 0.75;
 
   --size-avatar: 3rem;
+  --size-cursor: 0.55em;
   --size-logo: 70%;
   --size-tweet: 31rem;
   --size-og-corner: 22rem;
