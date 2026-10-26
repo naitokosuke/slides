@@ -64,6 +64,7 @@
   --radius-full: 9999px;
 
   --border-width: 2px;
+  --rule-thick: 4px;
   --stroke-width: 2.5px;
   --dash: 2 4;
 
@@ -77,6 +78,8 @@
   --opacity-secondary: 0.75;
 
   --size-avatar: 3rem;
+  --size-node: 1.5rem;
+  --journey-steps: 4;
   --size-cursor: 0.55em;
   --size-logo: 70%;
   --size-tweet: 31rem;
@@ -443,4 +446,98 @@
 .og-corner:hover img,
 .og-corner:focus-visible img {
   translate: 0 var(--lift);
+}
+
+/*
+  One issue's way from the app to a release, as stops on a line.
+  A bracket over the middle stops says how long that stretch took.
+*/
+
+.journey {
+  --step: calc(100% / var(--journey-steps));
+  display: grid;
+  gap: var(--space-4);
+  margin-block: auto;
+}
+
+.slidev-layout .journey-span {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: var(--space-2);
+  width: var(--step);
+  margin-left: calc(var(--step) * 1.5);
+  font-size: var(--text-headline);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  white-space: nowrap;
+}
+
+/* The bracket: a line with ticks down at both ends */
+.journey-span::after {
+  content: "";
+  justify-self: stretch;
+  height: var(--size-node);
+  border: var(--rule-thick) solid var(--color-text);
+  border-bottom: none;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.journey em {
+  padding-inline: var(--marker-pad);
+  background: var(--marker);
+  font-style: normal;
+}
+
+.journey ol {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--journey-steps), 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The line through the stops, from the first to the last */
+.journey ol::before {
+  content: "";
+  position: absolute;
+  top: calc((var(--size-node) - var(--rule-thick)) / 2);
+  left: calc(var(--step) / 2);
+  right: calc(var(--step) / 2);
+  height: var(--rule-thick);
+  background: var(--color-text);
+}
+
+.slidev-layout .journey li {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: var(--space-2);
+  margin: 0;
+  padding-inline: var(--space-2);
+  text-align: center;
+}
+
+.journey li::before {
+  content: "";
+  width: var(--size-node);
+  height: var(--size-node);
+  border: var(--rule-thick) solid var(--color-text);
+  border-radius: var(--radius-full);
+  background: var(--color-bg);
+}
+
+.journey li.arrived::before {
+  background: var(--color-accent);
+}
+
+.journey .when {
+  color: var(--color-text-muted);
+}
+
+.journey strong {
+  line-height: var(--leading-tight);
+  text-wrap: balance;
 }

@@ -146,12 +146,14 @@ fonts:
 # One issue, <em>from my app to a release</em>
 
 <div class="evidence">
-  <div class="rows">
-    <p><span>Before</span><span>My app asks a hidden file input for a label</span></p>
-    <p><span>Oct 19 22:07</span><span><a href="https://github.com/ubugeeei-prod/vize/issues/9751" target="_blank" rel="noopener noreferrer">#9751</a> filed, with a repro repo</span></p>
-    <p><span>Oct 20 09:40</span><span>Fixed in <a href="https://github.com/ubugeeei-prod/vize/pull/9759" target="_blank" rel="noopener noreferrer">#9759</a></span></p>
-    <p><span>Oct 20 09:59</span><span>Released in vize 0.486.0</span></p>
-    <p><span>Oct 20</span><span>My app moves up, the warning is gone</span></p>
+  <div class="journey">
+    <p class="journey-span"><em>under 12 hours</em></p>
+    <ol>
+      <li><span class="when">Before</span><strong>A warning in my app</strong></li>
+      <li><span class="when">Oct 19 22:07</span><strong><a href="https://github.com/ubugeeei-prod/vize/issues/9751" target="_blank" rel="noopener noreferrer">#9751</a> with a repro</strong></li>
+      <li><span class="when">Oct 20 09:59</span><strong><a href="https://github.com/ubugeeei-prod/vize/pull/9759" target="_blank" rel="noopener noreferrer">#9759</a> in vize 0.486.0</strong></li>
+      <li class="arrived"><span class="when">Oct 20</span><strong>The warning is gone</strong></li>
+    </ol>
   </div>
 </div>
 
