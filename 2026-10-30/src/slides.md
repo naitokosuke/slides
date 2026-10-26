@@ -5,7 +5,7 @@ info: |
   ## How I Contributed to Vize
 
   Vize is in its Real World Testing phase. Using it on your own app and sending a small repro of what looks off is a real contribution right now.
-  I opened 30 issues that way, with Claude Code doing the legwork and me reading every repro before it went up.
+  I opened 30 issues that way, with Claude Code doing the legwork and me reading the repros before they went up.
 
   Speaker: [@naitokosuke](https://twitter.com/naitokosuke)
 duration: 5min
@@ -103,7 +103,7 @@ fonts:
 
 ---
 
-# My issues hit <em>every part of Vize</em>
+# My issues hit <em>five parts of Vize</em>
 
 <div class="evidence">
   <div class="rows">
