@@ -82,6 +82,7 @@
   --size-avatar: 3rem;
   --size-chip: 11rem;
   --size-source: 8rem;
+  --size-speed-label: 11rem;
   --size-dot: 0.8rem;
   --size-chart-dot: 7px;
   --size-chart-dot-active: 10px;
@@ -243,6 +244,39 @@
   font-family: var(--font-mono);
   font-size: var(--text-body);
   text-align: right;
+}
+
+/* Before → after times, with the speedup set large on the right */
+
+.speed {
+  display: grid;
+}
+
+.speed p {
+  display: grid;
+  grid-template-columns: var(--size-speed-label) 1fr auto;
+  align-items: baseline;
+  gap: var(--space-5);
+  padding: var(--space-3) 0;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.speed p:last-child {
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.speed span:first-child {
+  font-weight: var(--weight-bold);
+}
+
+.speed strong {
+  color: var(--color-accent);
+  font-size: var(--text-headline);
+  line-height: var(--leading-none);
+}
+
+.source {
+  color: var(--color-text-muted);
 }
 
 /* One repro repo as a flat block that lifts onto an accent shadow */
