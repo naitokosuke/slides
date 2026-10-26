@@ -82,6 +82,7 @@
 
   --size-avatar: 3rem;
   --size-logo: 70%;
+  --size-tweet: 31rem;
   --size-chip: 11rem;
   --size-chip-compact: 6rem;
   --size-speed-label: 11rem;
@@ -206,6 +207,24 @@
   border-radius: var(--radius-full);
 }
 
+/* An embedded post on the left, as large as the slide allows, with the headline beside it */
+
+.tweet {
+  display: grid;
+  flex: 1;
+  grid-template-columns: var(--size-tweet) 1fr;
+  align-items: center;
+  gap: var(--space-7);
+  min-height: 0;
+}
+
+.tweet .slidev-tweet {
+  width: var(--size-tweet);
+}
+
+.slidev-layout .tweet h1 {
+  margin: 0;
+}
 /* A logo on its own, centred and as large as the slide allows */
 
 .logo {
