@@ -85,7 +85,7 @@ fonts:
 # It is still being tested, <em>and that is the exciting part</em>
 
 <a class="og" href="https://vizejs.dev/blog/notes/2026-06-07-real-world-testing/" target="_blank" rel="noopener noreferrer">
-  <img src="https://vizejs.dev/_og/en-9004c41c876ca1a20b25b3e4c79f46433039ea3772e41da6e020c085558370fe.png" alt="Real World Testing, on the Vize blog" />
+  <img src="/real-world-testing.png" alt="Real World Testing, on the Vize blog" />
 </a>
 
 ---
