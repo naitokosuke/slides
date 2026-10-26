@@ -46,12 +46,11 @@ fonts:
 
 <div class="evidence pair">
   <blockquote class="quote">
-    <p>“[Models] predict likely continuations.<br />They do not enforce invariants.”</p>
+    <p>“[Models] predict<br />likely continuations.<br />They do not enforce<br />invariants.”</p>
   </blockquote>
   <a class="og-side" href="https://vizejs.dev/blog/notes/2026-03-26-why-ai-needs-deterministic-fast-static-analysis/" target="_blank" rel="noopener noreferrer">
-    <img src="/static-analysis-for-ai.png" alt="Static Analysis for AI, on the Vize blog" />
+    <img src="/static-analysis-for-ai.png" alt="Static Analysis for AI by ubugeeei, on the Vize blog" />
   </a>
-  <p class="attribution">From <a href="https://vizejs.dev/blog/notes/2026-03-26-why-ai-needs-deterministic-fast-static-analysis/" target="_blank" rel="noopener noreferrer">Static Analysis for AI</a>,<br />ubugeeei</p>
 </div>
 
 ---
