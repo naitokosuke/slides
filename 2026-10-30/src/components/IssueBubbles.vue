@@ -45,6 +45,13 @@ function seeded(seed: number) {
   };
 }
 
+// Deeper blue for longer waits: lagoon under 6 hours, pool under a day, deep blue past that
+function depthOf(minutes: number) {
+  if (minutes < 60 * 6) return "lagoon";
+  if (minutes < 60 * 24) return "pool";
+  return "deep";
+}
+
 const longest = Math.max(
   ...issues.map((i) => minutesToClose(i.filed, i.closed)),
 );
@@ -53,6 +60,7 @@ type Bubble = {
   number: number;
   url: string;
   label: string;
+  depth: string;
   r: number;
   mass: number;
   x: number;
@@ -70,6 +78,7 @@ const bubbles = reactive<Bubble[]>(
       number: issue.number,
       url: issue.url,
       label: formatMinutes(minutes),
+      depth: depthOf(minutes),
       r,
       mass: r * r,
       x: 0,
@@ -260,7 +269,7 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
     <a
       v-for="b in bubbles"
       :key="b.number"
-      class="bubble"
+      :class="['bubble', b.depth]"
       :href="sanitizeUrl(b.url)"
       target="_blank"
       rel="noopener noreferrer"
@@ -297,18 +306,28 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
   cursor: grabbing;
 }
 
+.bubble {
+  --bubble-fill: var(--color-pool);
+  --bubble-text: var(--color-white);
+}
+
+.bubble.lagoon {
+  --bubble-fill: var(--color-lagoon);
+}
+
+.bubble.deep {
+  --bubble-fill: var(--color-deep);
+}
+
 .bubble circle {
-  fill: var(--color-surface);
-  stroke: var(--color-border);
-  stroke-width: var(--border-width);
-  transition:
-    stroke var(--duration-fast) var(--easing-out),
-    fill var(--duration-fast) var(--easing-out);
+  fill: var(--bubble-fill);
+  stroke: var(--bubble-fill);
+  stroke-width: var(--stroke-width);
+  transition: stroke var(--duration-fast) var(--easing-out);
 }
 
 .bubble:hover circle,
 .bubble:focus-visible circle {
-  fill: var(--color-accent-surface);
   stroke: var(--color-accent);
 }
 
@@ -317,16 +336,13 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
 }
 
 .bubble text {
+  fill: var(--bubble-text);
   font-family: var(--font-mono);
   text-anchor: middle;
   pointer-events: none;
 }
 
-.number {
-  fill: var(--color-text);
-}
-
 .time {
-  fill: var(--color-text-muted);
+  opacity: var(--opacity-secondary);
 }
 </style>

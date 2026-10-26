@@ -48,6 +48,6 @@ const repos = [
 }
 
 .owner {
-  color: var(--color-text-muted);
+  color: var(--color-on-surface-muted);
 }
 </style>

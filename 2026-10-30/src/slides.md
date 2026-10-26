@@ -17,7 +17,7 @@ fonts:
 ---
 
 <div class="cover">
-  <h1>How I Contributed to Vize</h1>
+  <h1><span class="initial">H</span>ow I Contributed to Vize</h1>
   <p class="muted">30 issues, June to October</p>
   <p class="byline">
     <img class="avatar" src="/naitokosuke.png" alt="" />
@@ -32,8 +32,8 @@ fonts:
 
 <div class="columns" style="--columns: 3">
   <div class="card large"><section><p class="label">My toy app · 15</p><p>Vue Vapor on <code>vize lint</code>, <code>vize check</code> and Musea</p></section></div>
-  <div class="card large"><section><p class="label">My blog · 5</p><p>Nuxt 4 with <code>@vizejs/nuxt</code>, built and prerendered</p></section></div>
-  <div class="card large"><section><p class="label">Vue Fes Japan 2026 site · 2</p><p>File-based routing with vue-router</p></section></div>
+  <div class="card large palm"><section><p class="label">My blog · 5</p><p>Nuxt 4 with <code>@vizejs/nuxt</code>, built and prerendered</p></section></div>
+  <div class="card large deep"><section><p class="label">Vue Fes Japan 2026 site · 2</p><p>File-based routing with vue-router</p></section></div>
 </div>
 
 ---

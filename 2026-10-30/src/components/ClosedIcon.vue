@@ -12,7 +12,7 @@
   width: var(--size-icon);
   height: var(--size-icon);
   fill: none;
-  stroke: var(--color-accent);
+  stroke: currentColor;
   stroke-width: var(--stroke-width-icon);
   stroke-linecap: round;
   stroke-linejoin: round;
