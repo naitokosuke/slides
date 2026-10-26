@@ -59,7 +59,7 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 9. My issues hit every part of Vize。当たった箇所の内訳（Lint 15、Build 7、Editor 4、Type check 3、Musea 1）
 10. Claude Code does the legwork。1 つの入力欄に依頼 4 行。スライドに入ると 1 文字ずつ打ち込まれ（src/components/PromptTyping.vue）、打ち終えたあとも最後の行の末尾でカーソルが点滅し続ける。一覧表示や書き出し、動きを減らす設定では最初から全文を出す。見出しに Claude Code とあるので「To Claude Code」のラベルは付けない（再現を作る、既存の issue を探す、最新リリースで再実行、tsgo でも走らせる）
 11. I read every repro before it goes up, and some never do。出さなかった例 2 つ（tsrs だけで壊れる、起動失敗時の exit 0 は意図どおり）
-12. One issue, from my app to a release。#9751 の流れ
+12. One issue, from my app to a release。#9751 を横のタイムラインで見せる。点は 4 つ（アプリの警告、#9751 を再現付きで起票 10/19 22:07、#9759 が vize 0.486.0 で公開 10/20 09:59、警告が消える 10/20）。2 つ目から 3 つ目の点の間に括弧と「under 12 hours」（11 時間 52 分）。最後の点だけ黄色
 13. Try Vize on your app. Send a small repro.（`npx vize lint` と issue ページへのリンク）
 
 ## 敵対的レビューへの対応（2026-10-26）
