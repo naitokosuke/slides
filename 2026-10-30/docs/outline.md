@@ -47,8 +47,8 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 
 ## スライド構成
 
-1. cover「How I Contributed to Vize」
-2. バグの出どころ（chirashitabi 15、blog 5、Vue Fes Japan 2026 サイト 2）
+1. cover「How I Contributed to Vize」。副題は「30 issues, June to October」（bug という語は表紙に出さない）。アイコンと GitHub へのリンク付きの @naitokosuke
+2. バグの出どころ（toy app 15、blog 5、Vue Fes Japan 2026 サイト 2）。chirashitabi は個人プロジェクトなのでスライドでは "my toy app" と呼ぶ
 3. 30 件起票した
 4. 全部 closed。close までの時間に面積が比例する円を 30 個、物理演算で押し合わせる。円は issue へのリンクで、ドラッグで動かせる
 5. 中央値 5.7 時間、最速 56 分
@@ -63,7 +63,7 @@ issue ごとの一覧は `issues.md`、チャートと円の元データは `src
 14. 起票しなかったもの（tsrs だけで壊れるもの、意図した挙動、意図的に狭い判定）
 15. 中央値 8.3 時間 → 4.3 時間（注記つき）
 16. 速い修正にも取りこぼしはある。修正済みと書かれたリリースで再現を回し直す
-17. chirashitabi の lint 警告 80 → 17 → 6
+17. toy app（chirashitabi）の lint 警告 80 → 17 → 6
 18. いま書いている報告のテンプレート
 19. Thanks
 
