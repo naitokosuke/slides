@@ -78,6 +78,7 @@
   --size-avatar: 3rem;
   --size-logo: 70%;
   --size-tweet: 31rem;
+  --size-og-corner: 22rem;
   --size-row-label: 13rem;
 }
 
@@ -256,10 +257,13 @@
   padding-inline: var(--marker-pad);
   background: var(--marker);
   font-size: var(--text-headline);
-  line-height: var(--leading-none);
+  line-height: var(--leading-tight);
 }
 
-.source {
+/* Caveats and sources sit at the bottom of the slide, apart from the evidence they qualify */
+.slidev-layout .source {
+  margin-top: auto;
+  padding-bottom: var(--space-2);
   color: var(--color-text-muted);
 }
 
@@ -414,4 +418,32 @@
   color: var(--color-text-muted);
   font-size: var(--text-body);
   font-style: normal;
+}
+
+/* A source's card pushed into the bottom-right corner of the space under the headline */
+
+.slidev-layout .og-corner,
+.slidev-layout .og-corner:hover,
+.slidev-layout .og-corner:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.slidev-layout .og-corner {
+  align-self: flex-end;
+  width: var(--size-og-corner);
+  margin-top: auto;
+}
+
+.og-corner img {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
+  transition: translate var(--duration-fast) var(--easing-out);
+}
+
+.og-corner:hover img,
+.og-corner:focus-visible img {
+  translate: 0 var(--lift);
 }
