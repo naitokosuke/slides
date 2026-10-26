@@ -24,12 +24,6 @@ fonts:
 
 ---
 
-# Hi
-
-<img class="avatar" src="/naitokosuke.png" alt="naitokosuke" />
-
----
-
 # Where the bugs came from
 
 <div class="columns" style="--columns: 3">

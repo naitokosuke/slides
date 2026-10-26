@@ -60,7 +60,6 @@
   --size-icon: 1em;
   --size-dot: 0.8rem;
   --size-chart-dot: 7px;
-  --size-avatar: 14rem;
   --size-shot: 4rem;
   --size-source: 9rem;
   --size-step: 3rem;
@@ -164,13 +163,6 @@
   margin-top: var(--space-7);
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-}
-
-.avatar {
-  width: var(--size-avatar);
-  height: var(--size-avatar);
-  margin: var(--space-6) auto 0;
-  border-radius: var(--radius-full);
 }
 
 /* One huge number with a caption under it */
