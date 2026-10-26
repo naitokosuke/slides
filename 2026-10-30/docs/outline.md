@@ -56,7 +56,7 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 6. The rules have to know Vue。`vize explain --list`（vize 0.575.0）から数えたルールの数。Vue 108、Accessibility 30、Runtime 10（SSR 2、Nuxt 4、Vapor 4）、Type-aware 6。下に「266 lint rules in all, each explained by vize explain」（コンパイラの診断 56 と TypeScript のコード 22 は数えない）
 7. Johnson Chu の v4 alpha 告知ツイート（https://x.com/johnsoncodehk/status/2113609909329953099）を左に、右に「Vue Language Tools v4 takes the same path」。<Tweet> の埋め込みなので会場のネット接続が必要
 8. 見出しを画像の上下に分ける。上に「It's still being tested,」、真ん中に Real World Testing の OG 画像（src/public/real-world-testing.png）、下に右寄せで「and that is the exciting part」
-9. My issues hit every part of Vize。当たった箇所の内訳（Lint 15、Build 7、Editor 4、Type check 3、Musea 1）
+9. My issues hit five parts of Vize。Format には 1 件も当たっていないので every とは書かない。当たった箇所の内訳（Lint 15、Build 7、Editor 4、Type check 3、Musea 1）
 10. Claude Code does the legwork。1 つの入力欄に依頼 4 行。スライドに入ると 1 文字ずつ打ち込まれ（src/components/PromptTyping.vue）、打ち終えたあとも最後の行の末尾でカーソルが点滅し続ける。一覧表示や書き出し、動きを減らす設定では最初から全文を出す。見出しに Claude Code とあるので「To Claude Code」のラベルは付けない（再現を作る、既存の issue を探す、最新リリースで再実行、tsgo でも走らせる）
 11. I read them, and some don't get filed。出さなかった 2 つのケースをカード 2 枚で見せ、それぞれ理由を書く。「Fails only on tsrs」は「Vize targets tsgo. tsrs follows TypeScript's unreleased main.」（Vize の対象はリリース済みの TypeScript 7 である tsgo。tsrs はまだリリースされていない TypeScript main の API を追っているので、tsrs だけで壊れるのは Vize の不具合ではない。`vize-report-tsgo-only.md`）。「Exits 0 when the checker can't start」は「Vize does that on purpose.」。全部を自分で読んだわけではないので every とは書かない。件数（9、2）は意味がないので出さない
 12. One issue, from my app to a release。#9751 を横のタイムラインで見せる。点は 4 つ（アプリの警告、#9751 を再現付きで起票 10/19 22:07、#9759 が vize 0.486.0 で公開 10/20 09:59、警告が消える 10/20）。2 つ目から 3 つ目の点の間に括弧と「under 12 hours」（11 時間 52 分）。最後の点だけ黄色
