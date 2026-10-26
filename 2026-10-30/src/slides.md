@@ -49,7 +49,7 @@ fonts:
 
 # All closed, and how long each one took
 
-<IssueWall />
+<IssueBubbles />
 
 ---
 
