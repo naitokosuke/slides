@@ -1,4 +1,4 @@
-<!-- All 30 issues as closed badges, each with the time it took to close -->
+<!-- All 30 issues as closed badges, each with the time it took to close and a link to the issue -->
 <script setup lang="ts">
 import { issues } from "../data/issues";
 
@@ -13,9 +13,15 @@ function timeToClose(filed: string, closed: string) {
 <template>
   <ul class="wall">
     <li v-for="issue in issues" :key="issue.number">
-      <ClosedIcon />
-      <span>#{{ issue.number }}</span>
-      <span class="time">{{ timeToClose(issue.filed, issue.closed) }}</span>
+      <a
+        :href="`https://github.com/ubugeeei-prod/vize/issues/${issue.number}`"
+        target="_blank"
+        rel="noopener"
+      >
+        <ClosedIcon />
+        <span>#{{ issue.number }}</span>
+        <span class="time">{{ timeToClose(issue.filed, issue.closed) }}</span>
+      </a>
     </li>
   </ul>
 </template>
@@ -30,7 +36,7 @@ function timeToClose(filed: string, closed: string) {
   list-style: none;
 }
 
-.wall li {
+.wall a {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -38,8 +44,29 @@ function timeToClose(filed: string, closed: string) {
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
+  color: var(--color-text);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
+  text-decoration: none;
+  transition:
+    translate var(--duration-fast) var(--easing-out),
+    border-color var(--duration-fast) var(--easing-out),
+    box-shadow var(--duration-fast) var(--easing-out);
+}
+
+.wall a:hover,
+.wall a:focus-visible {
+  translate: 0 var(--lift);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-raised);
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wall a:hover,
+  .wall a:focus-visible {
+    translate: none;
+  }
 }
 
 .time {
