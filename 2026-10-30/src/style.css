@@ -58,6 +58,7 @@
   --leading-none: 1;
   --leading-tight: 1.15;
   --leading-normal: 1.4;
+  --leading-code: 1.25;
   --tracking-tight: -0.02em;
   --tracking-tighter: -0.04em;
 
@@ -371,13 +372,13 @@
 
 .slidev-layout .snippet {
   margin: 0;
-  padding: var(--space-5) var(--space-6);
+  padding: var(--space-4) var(--space-6);
   border-radius: var(--radius-md);
   background: var(--color-surface);
   color: var(--color-on-surface);
   font-family: var(--font-mono);
   font-size: var(--text-body);
-  line-height: var(--leading-normal);
+  line-height: var(--leading-code);
 }
 
 /* A prompt typed to an AI agent, drawn like its input box */

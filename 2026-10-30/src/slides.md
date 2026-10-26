@@ -74,8 +74,10 @@ fonts:
 
 <div class="evidence">
   <pre class="snippet">"contentMappers": [
-  { "package": "vize",
-    "extensions": [".vue"] }
+  {
+    "package": "vize",
+    "extensions": [".vue"]
+  }
 ]</pre>
   <p class="muted">Vue Language Tools v4 is still in alpha</p>
 </div>
