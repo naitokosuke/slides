@@ -120,7 +120,6 @@ fonts:
 # Claude Code does <em>the legwork</em>
 
 <div class="evidence">
-  <p class="muted">To Claude Code</p>
   <div class="prompt">
     <span class="caret" aria-hidden="true">&gt;</span>
     <p>Make a minimal repro, with nothing from the app.</p>
