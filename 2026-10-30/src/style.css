@@ -461,3 +461,24 @@
 .slidev-layout .card p {
   margin: 0;
 }
+
+/* Cards that stretch to the bottom of the slide, with a big count on top */
+
+.columns.tall {
+  align-items: stretch;
+}
+
+.columns.tall .card section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  height: 100%;
+  padding: var(--space-5);
+}
+
+.columns.tall .count {
+  flex: 1;
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-none);
+}
