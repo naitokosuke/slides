@@ -51,7 +51,7 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 1. cover「How I Contributed to Vize」。副題「30 issues, June to October」、アイコンと GitHub へのリンク付きの @naitokosuke
 2. 30 issues, all closed as completed。根拠は close までの時間に面積が反比例する円 30 個（速く直ったものほど大きい）。円の色は 6 時間未満が黄色、1 日未満が Baby Pink、それ以上が Royal Blue。番号と時間はどんなに小さい円でも出す。下に「25 fixes and 5 new features. Bigger means closed sooner.」
 3. Vize のロゴだけを中央に大きく置き、Vize が何かを話す。ロゴは ubugeeei-prod/vize の assets/logo.svg（MIT）。色は元の #000000 のまま（切り抜くのは viewBox だけ）
-4. I vibe-code, so I need guardrails。根拠は Vize のブログ「Static Analysis for AI」（ubugeeei、2026-03-26）の 1 文「No. This is wrong.」。記事の要旨は、AI は確率的なので、決定的で速い静的解析がその歯止めになる、というもの
+4. I vibe-code, so I need guardrails。根拠は Vize のブログ「Static Analysis for AI」（ubugeeei、2026-03-26）の 1 文「No. This is wrong.」。記事の要旨は、AI は確率的なので、決定的で速い静的解析がその歯止めになる、というもの。右下に記事の OG 画像（src/public/static-analysis-for-ai.png、記事へのリンク）
 5. Guardrails have to be fast。Lint 182×（vs eslint-plugin-vue、README）、Format 50×（vs Oxfmt、自分で計測、docs/benchmark.md）、Type check 4.9×（vs vue-tsc v3、README）。下に「Oxlint lints 2.4× faster, but reads only <script>」と出典
 6. The rules have to know Vue。`vize explain --list`（vize 0.575.0）から数えたルールの数。Vue 108、Accessibility 30、Runtime 10（SSR 2、Nuxt 4、Vapor 4）、Type-aware 6。下に「266 lint rules in all, each explained by vize explain」（コンパイラの診断 56 と TypeScript のコード 22 は数えない）
 7. Johnson Chu の v4 alpha 告知ツイート（https://x.com/johnsoncodehk/status/2113609909329953099）を左に、右に「Vue Language Tools v4 takes the same path」。<Tweet> の埋め込みなので会場のネット接続が必要
@@ -85,4 +85,4 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 - 配色は 4 色だけを使い、どれも単色のベタ塗りにする。Royal Blue #3A2D71（文字とブロック）、Tea Pink #E9D1E1（背景とブロックの上の文字）、Yellow #F6D60D（強調）、Baby Pink #A08AC0（2 枚目の円の中間）。黄色は Tea Pink の上では文字として読めないので、文字色にはせず、マーカー（語の下半分に敷く）と影にだけ使う。Vize のロゴは元の黒のまま
 - 文字は 1.75rem（28px）より小さくしない。980 × 552 のスライドで高さの約 5% にあたり、Guy Kawasaki の 10/20/30 の 30pt と同じ比率。例外は 2 枚目の円の中の番号と時間で、小さくても必ず出す
 - 見出しは主張の 1 文にして（Michael Alley の Assertion-Evidence）、覚えてほしい語だけマーカーで強調する（Mayer の signaling）。話す内容をそのままスライドに書かない（redundancy）
-- レイアウトを揃える。見出しは左上、根拠は見出しのすぐ下から同じ間隔で始める。表はすべて同じ行の型（太字のラベル列、説明、右端の数字）。例外は表紙、ロゴ、締めと、形を指定した 7 枚目（ツイート）と 8 枚目（テスト段階）
+- レイアウトを揃える。見出しは左上、根拠は見出しのすぐ下から同じ間隔で始める。注意書きと出典はスライドの下端に置く。表はすべて同じ行の型（太字のラベル列、説明、右端の数字）。例外は表紙、ロゴ、締めと、形を指定した 7 枚目（ツイート）と 8 枚目（テスト段階）

@@ -49,6 +49,9 @@ fonts:
     <p>“No. This is wrong.”</p>
     <cite>From <a href="https://vizejs.dev/blog/notes/2026-03-26-why-ai-needs-deterministic-fast-static-analysis/" target="_blank" rel="noopener noreferrer">Static Analysis for AI</a>, ubugeeei</cite>
   </blockquote>
+  <a class="og-corner" href="https://vizejs.dev/blog/notes/2026-03-26-why-ai-needs-deterministic-fast-static-analysis/" target="_blank" rel="noopener noreferrer">
+    <img src="/static-analysis-for-ai.png" alt="Static Analysis for AI, on the Vize blog" />
+  </a>
 </div>
 
 ---
