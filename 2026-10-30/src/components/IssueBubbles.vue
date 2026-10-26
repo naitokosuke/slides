@@ -141,6 +141,11 @@ function step() {
   }
   // A single pass leaves overlaps in a crowded cluster, so push apart a few more times
   for (let pass = 0; pass < 3; pass++) separate();
+  // The pushes can move a circle past a wall, so put it back inside
+  for (const b of bubbles) {
+    b.x = Math.min(Math.max(b.x, b.r), width - b.r);
+    b.y = Math.min(Math.max(b.y, b.r), height - b.r);
+  }
   return fastest;
 }
 
@@ -244,7 +249,7 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
 <template>
   <svg
     ref="svg"
-    class="bubbles"
+    class="bubbles fill"
     :viewBox="`0 0 ${width} ${height}`"
     role="img"
     aria-label="Issues sized by time to close"
@@ -278,7 +283,7 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
 .bubbles {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   overflow: visible;
   touch-action: none;
   user-select: none;

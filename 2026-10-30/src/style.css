@@ -21,7 +21,7 @@
   --text-md: 1rem;
   --text-lg: 1.25rem;
   --text-xl: 1.5rem;
-  --text-2xl: 2.6rem;
+  --text-2xl: 2.25rem;
   --text-3xl: 4rem;
   --text-display: 5.5rem;
   --text-hero: 9rem;
@@ -61,10 +61,11 @@
   --size-dot: 0.8rem;
   --size-chart-dot: 7px;
   --size-avatar: 14rem;
-  --size-shot: 7rem;
+  --size-shot: 4rem;
   --size-source: 9rem;
   --size-step: 3rem;
   --size-source-wide: 17rem;
+  --size-term: 13rem;
 }
 
 /* Base */
@@ -74,6 +75,8 @@
   color: var(--color-text);
   font-family: var(--font-sans);
   line-height: var(--leading-normal);
+  display: flex;
+  flex-direction: column;
   padding: var(--space-7) var(--space-8);
 }
 
@@ -116,13 +119,14 @@
 
 .stack {
   display: grid;
-  gap: var(--space-5);
-  margin-top: var(--space-6);
+  align-content: start;
+  gap: var(--space-3);
 }
 
 .columns {
   display: grid;
   grid-template-columns: repeat(var(--columns, 2), 1fr);
+  align-items: start;
   gap: var(--space-5);
   margin-top: var(--space-6);
 }
@@ -148,7 +152,7 @@
   flex-direction: column;
   justify-content: center;
   gap: var(--space-4);
-  height: 100%;
+  flex: 1;
 }
 
 .cover h1 {
@@ -175,7 +179,7 @@
   display: grid;
   place-content: center;
   gap: var(--space-5);
-  height: 100%;
+  flex: 1;
   text-align: center;
 }
 
@@ -232,16 +236,16 @@
 .card section {
   display: grid;
   gap: var(--space-1);
-  padding: var(--space-4);
+  padding: var(--space-3) var(--space-4);
 }
 
-.card h4 {
+.slidev-layout .card h4 {
   margin: var(--space-3) 0 0;
   font-size: var(--text-md);
   font-weight: var(--weight-bold);
 }
 
-.card h4:first-child {
+.slidev-layout .card h4:first-child {
   margin-top: 0;
 }
 
@@ -311,7 +315,7 @@
   grid-template-columns: var(--size-source) 1fr;
   align-items: baseline;
   gap: var(--space-5);
-  padding: var(--space-4) 0;
+  padding: var(--space-3) 0;
   border-top: var(--border-width) solid var(--color-border);
 }
 
@@ -329,12 +333,12 @@
 
 .steps {
   display: grid;
-  gap: var(--space-3);
-  margin: var(--space-6) 0 0;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 0;
   padding: 0;
   list-style: none;
   counter-reset: step;
-  font-size: var(--text-lg);
+  font-size: var(--text-md);
 }
 
 .slidev-layout .steps li {
@@ -354,5 +358,48 @@
 
 .quotes.compact {
   --size-source: var(--size-source-wide);
+  font-size: var(--text-md);
+}
+
+/* Term and description side by side, one row each */
+
+.terms {
+  display: grid;
+  grid-template-columns: var(--size-term) 1fr;
+  margin: var(--space-5) 0 0;
   font-size: var(--text-lg);
+}
+
+.terms dt,
+.terms dd {
+  margin: 0;
+  padding: var(--space-3) 0;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.terms dt {
+  font-weight: var(--weight-bold);
+}
+
+.terms dd {
+  color: var(--color-text-muted);
+}
+
+.terms :is(dt, dd):nth-last-child(-n + 2) {
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+/* A figure that takes whatever height the slide has left */
+
+.fill {
+  flex: 1;
+  min-height: 0;
+}
+
+.quotes.compact p {
+  padding: var(--space-2) 0;
+}
+
+.slidev-layout .card p {
+  margin: 0;
 }
