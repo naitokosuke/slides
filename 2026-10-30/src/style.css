@@ -39,7 +39,7 @@
   */
   --text-body: 1.75rem;
   --text-headline: 2.75rem;
-  --text-quote: 3.25rem;
+  --text-quote: 3rem;
   --text-display: 4.5rem;
   --size-code: 1em;
 
@@ -84,7 +84,7 @@
   --size-cursor: 0.55em;
   --size-logo: 70%;
   --size-tweet: 31rem;
-  --size-og-side: 24rem;
+  --size-og-side: 26rem;
   --size-row-label: 13rem;
 }
 
