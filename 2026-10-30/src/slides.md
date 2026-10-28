@@ -14,6 +14,17 @@ transition: fade
 fonts:
   sans: "Space Grotesk"
   mono: "JetBrains Mono"
+seoMeta:
+  description: "Vize is in its Real World Testing phase. Using it on your own app and sending a small repro of what looks off is a real contribution right now"
+  author: "Kosuke Naito"
+  ogTitle: How I Contributed to Vize
+  ogDescription: "Vize is in its Real World Testing phase. Using it on your own app and sending a small repro of what looks off is a real contribution right now"
+  ogImage: https://slides.naito.dev/2026-10-30/og-image.png
+  ogUrl: https://slides.naito.dev/2026-10-30/
+  ogType: website
+  twitterCard: summary_large_image
+  twitterSite: "@naitokosuke"
+  twitterCreator: "@naitokosuke"
 ---
 
 <div class="cover">
