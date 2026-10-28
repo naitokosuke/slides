@@ -96,6 +96,19 @@ seoMeta:
 
 ---
 
+# It type-checks Vue <em>on TypeScript 7</em>
+
+<div class="evidence">
+  <div class="rows">
+    <p><span><code>vize check</code></span><span class="muted">TypeScript 7's native checker, no vue-tsc</span></p>
+    <p><span><code>tsc</code> 7.1</span><span class="muted">reads <code>.vue</code> through Vize's content mapper</span></p>
+    <p><span><code>tsrs</code></span><span class="muted">reads the same project</span></p>
+  </div>
+  <p class="source">Source: <a href="https://vizejs.dev/guide/content-mapper" target="_blank" rel="noopener noreferrer">Vize's content mapper guide</a></p>
+</div>
+
+---
+
 <div class="tweet">
   <Tweet id="2113609909329953099" cards="hidden" conversation="none" />
   <h1>Vue Language Tools v4 <em>takes the same path</em></h1>
