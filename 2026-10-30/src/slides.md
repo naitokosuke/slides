@@ -43,7 +43,7 @@ seoMeta:
 
 <IssueBubbles />
 
-<p class="muted">25 fixes and 5 new features. Bigger means closed sooner.</p>
+<p class="muted">25 fixes and 5 new features.</p>
 
 ---
 

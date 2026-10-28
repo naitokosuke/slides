@@ -49,7 +49,7 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 各スライドは「主張を言い切る見出し 1 文」と「その根拠 1 つ」で組む。
 
 1. cover「How I Contributed to Vize」。副題「30 issues, June to October」、アイコンと GitHub へのリンク付きの @naitokosuke
-2. 30 issues, all closed as completed。根拠は close までの時間に面積が反比例する円 30 個（速く直ったものほど大きい）。円の色は 6 時間未満が黄色、1 日未満が Baby Pink、それ以上が Royal Blue。番号と時間はどんなに小さい円でも出す。下に「25 fixes and 5 new features. Bigger means closed sooner.」
+2. 30 issues, all closed as completed。根拠は close までの時間に面積が反比例する円 30 個（速く直ったものほど大きい）。円の色は 6 時間未満が黄色、1 日未満が Baby Pink、それ以上が Royal Blue。番号と時間はどんなに小さい円でも出す。下に「25 fixes and 5 new features.」（大きさの意味は見れば分かるので書かない）
 3. Vize のロゴだけを中央に大きく置き、Vize が何かを話す。ロゴは ubugeeei-prod/vize の assets/logo.svg（MIT）。色は元の #000000 のまま（切り抜くのは viewBox だけ）
 4. I vibe-code, so I need guardrails。根拠は Vize のブログ「Static Analysis for AI」（ubugeeei、2026-03-26）の 2 文「They predict likely continuations. They do not enforce invariants.」。原文の They は LLM のことで、スライドだけで分かるように最初の They を [Models] と補う。記事の要旨は、AI は確率的なので、決定的で速い静的解析がその歯止めになる、というもの。以前は同じ記事の「No. This is wrong.」を使っていたが、前後の文脈がないと誰が誰に言っているのか分からないので差し替えた。引用を左、記事の OG 画像（src/public/static-analysis-for-ai.png、記事へのリンク）を右に、同じ高さで並べ、見出しの下の高さの中で上下中央に置く。引用は見出しと同じ 2.75rem の通常の太さ（太字だと見出しと一続きに見える）で、1 文を 2 行ずつ手で改行する。このとき引用は幅 417px、高さ 202px、24rem の画像は高さ 201px でほぼ揃い、合わせて 852px の幅に収まる。出典の文字は置かない（OG 画像が記事名を示しているので重複する）
 5. Guardrails have to be fast。Lint 182×（vs eslint-plugin-vue、README）、Format 50×（vs Oxfmt、自分で計測、docs/benchmark.md）、Type check 4.9×（vs vue-tsc v3、README）。下に「Oxlint lints 2.4× faster, but reads only <script>」と出典
