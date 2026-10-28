@@ -1,6 +1,7 @@
 <!--
   Vize's logo, copied from ubugeeei-prod/vize assets/logo.svg (MIT) with its original fill.
   Only the viewBox differs: it is cropped from the original 600 × 300 to the mark itself.
+  The speed lines are also wrapped in a .vize-logo-lines group, so they can move on their own.
 -->
 <template>
   <svg
@@ -11,10 +12,12 @@
     aria-label="Vize"
   >
     <g transform="translate(180, 50)">
-      <g transform="translate(180, 80) skewX(-20)">
-        <rect x="0" y="0" width="150" height="4" fill="#000000" rx="2" />
-        <rect x="20" y="25" width="100" height="3" fill="#000000" rx="1.5" />
-        <rect x="10" y="-25" width="80" height="2" fill="#000000" rx="1" />
+      <g class="vize-logo-lines">
+        <g transform="translate(180, 80) skewX(-20)">
+          <rect x="0" y="0" width="150" height="4" fill="#000000" rx="2" />
+          <rect x="20" y="25" width="100" height="3" fill="#000000" rx="1.5" />
+          <rect x="10" y="-25" width="80" height="2" fill="#000000" rx="1" />
+        </g>
       </g>
       <g transform="skewX(-15)">
         <path d="M 200 0 L 120 180 L 210 60 L 200 0 Z" fill="#000000" />
