@@ -2,32 +2,44 @@
   Slides its content in from the right when the slide is shown, skids to a stop just past the
   centre, and lurches forward on its base before easing back upright and into the centre.
   The motion is simulated, not hand-keyed. The cart arrives at a constant speed, brakes at a
-  constant deceleration, then a critically damped spring draws it back to the centre. The lurch
-  is a skew whose top is pushed forward by that deceleration and drawn back by a critically
-  damped spring, so it leans once and never swings back past upright.
+  constant deceleration, then a critically damped spring draws it back to the centre. That
+  deceleration drives three more critically damped springs, so each moves once and never swings
+  back: the lurch (the top tips forward), the squash (it sinks into the stop), and the trail (the
+  parts matched by the `trail` selector, inside an SVG, carry on past the stop and catch up).
 -->
 <script setup lang="ts">
 import { onSlideEnter, onSlideLeave } from "@slidev/client";
 import { onBeforeUnmount, useTemplateRef } from "vue";
+
+const props = defineProps<{ trail?: string }>();
 
 // Cart, in px right of the centre (x = 0)
 const start = 980; // off the slide
 const speed = 3200; // px/s
 const brakeAt = 40; // where the brakes go on
 const overshoot = 60; // how far past the centre it skids
-const returnFrequency = 2; // Hz, back to the centre once stopped
-// Lurch: how fast it comes back upright, in Hz
-const lurchFrequency = 2.2;
+const returnFrequency = 2.6; // Hz, back to the centre once stopped
+// Lurch: how fast it comes back upright, and how far past the physical amount it is drawn
+const lurch = { frequency: 2.2, exaggeration: 1.3 };
+// Squash: how fast it springs back, and how much it sinks per px/s² (about 4% at this stop)
+const squash = { frequency: 6, gain: 0.0015 };
+// Trail: how fast the trailing parts catch up, in Hz
+const trailFrequency = 4;
 
 const step = 1 / 1000; // s, for the simulation
 const frame = 1 / 60; // s, between keyframes
-const length = 1; // s, long enough to settle
+const length = 0.85; // s, long enough to settle
 
-// height: the content's height in px, which sets how far the deceleration tips it
-function simulate(height: number): Keyframe[] {
+/**
+ * height: the content's height in px, which sets how far the deceleration tips it
+ * trailScale: SVG user units per px, for the trailing parts
+ */
+function simulate(height: number, trailScale: number) {
   const deceleration = (speed * speed) / (2 * (brakeAt + overshoot));
   const wr = 2 * Math.PI * returnFrequency;
-  const wl = 2 * Math.PI * lurchFrequency;
+  const wl = 2 * Math.PI * lurch.frequency;
+  const ws = 2 * Math.PI * squash.frequency;
+  const wt = 2 * Math.PI * trailFrequency;
   // A uniform slab pivoting on its base: the deceleration acts at its centre of mass (height / 2)
   // against a moment of inertia of m × height² / 3, so it turns at 3a / (2 × height)
   const gain = height > 0 ? 3 / (2 * height) : 0;
@@ -36,14 +48,23 @@ function simulate(height: number): Keyframe[] {
   let phase: "arrive" | "skid" | "return" = "arrive";
   let lean = 0;
   let leanSpeed = 0;
+  let sink = 0;
+  let sinkSpeed = 0;
+  let lag = 0;
+  let lagSpeed = 0;
   const frames: Keyframe[] = [];
+  const trailFrames: Keyframe[] = [];
   const total = Math.round(length / step);
   const every = Math.round(frame / step);
   for (let i = 0; i <= total; i++) {
     if (i % every === 0) {
+      const tilt = lean * lurch.exaggeration;
+      // A tipped slab's top drops along an arc, by cos(tilt); the squash flattens it on top of that
+      const scaleY = Math.cos(tilt) * (1 - sink);
       frames.push({
-        transform: `translateX(${x}px) skewX(${(lean * 180) / Math.PI}deg)`,
+        transform: `translateX(${x}px) skewX(${(tilt * 180) / Math.PI}deg) scale(${1 / (1 - sink)}, ${scaleY})`,
       });
+      trailFrames.push({ transform: `translateX(${lag * trailScale}px)` });
     }
     if (phase === "arrive" && x <= brakeAt) phase = "skid";
     let a = 0;
@@ -60,12 +81,18 @@ function simulate(height: number): Keyframe[] {
     v += a * step;
     x += v * step;
     // Braking pushes back against the leftwards motion; the top keeps going, so it leans left
-    const leanAcceleration = -wl * wl * lean - 2 * wl * leanSpeed + gain * a;
-    leanSpeed += leanAcceleration * step;
+    leanSpeed += (-wl * wl * lean - 2 * wl * leanSpeed + gain * a) * step;
     lean += leanSpeed * step;
+    sinkSpeed +=
+      (-ws * ws * sink - 2 * ws * sinkSpeed + squash.gain * a) * step;
+    sink += sinkSpeed * step;
+    // The trailing parts are held only by a spring, so they carry on leftwards while the rest stops
+    lagSpeed += (-wt * wt * lag - 2 * wt * lagSpeed - a) * step;
+    lag += lagSpeed * step;
   }
   frames.push({ transform: "none" });
-  return frames;
+  trailFrames.push({ transform: "none" });
+  return { frames, trailFrames };
 }
 
 // Slidev's slide transition length, in ms
@@ -77,12 +104,13 @@ function fadeDuration() {
 }
 
 const box = useTemplateRef("box");
-let animation: Animation | undefined;
+let animations: Animation[] = [];
 let request = 0;
 
 function stop() {
   cancelAnimationFrame(request);
-  animation?.cancel();
+  for (const animation of animations) animation.cancel();
+  animations = [];
   if (box.value) box.value.style.transform = "";
 }
 
@@ -98,13 +126,23 @@ onSlideEnter(() => {
   el.style.transform = `translateX(${start}px)`;
   request = requestAnimationFrame(() => {
     el.style.transform = "";
-    const frames = simulate(el.offsetHeight);
-    animation = el.animate(frames, {
+    const trail = props.trail
+      ? el.querySelector<SVGGraphicsElement>(props.trail)
+      : null;
+    const svg = trail?.ownerSVGElement;
+    const trailScale =
+      svg && svg.clientWidth > 0
+        ? svg.viewBox.baseVal.width / svg.clientWidth
+        : 1;
+    const { frames, trailFrames } = simulate(el.offsetHeight, trailScale);
+    const timing: KeyframeAnimationOptions = {
       duration: (frames.length - 1) * frame * 1000,
       // Waits off the slide until the slide has faded in, so the whole run is seen
       delay: fadeDuration(),
       fill: "backwards",
-    });
+    };
+    animations = [el.animate(frames, timing)];
+    if (trail) animations.push(trail.animate(trailFrames, timing));
   });
 });
 onSlideLeave(stop);
