@@ -204,6 +204,6 @@ seoMeta:
 
 <div class="closing">
   <p>Try Vize on your app. <em>Send a small repro.</em></p>
-  <pre class="snippet">npx vize lint</pre>
+  <pre class="snippet">npx vize lint --preset opinionated</pre>
   <a href="https://github.com/ubugeeei-prod/vize/issues" target="_blank" rel="noopener noreferrer">github.com/ubugeeei-prod/vize/issues</a>
 </div>

@@ -7,7 +7,7 @@
 
 1 文で言うと「Vize は今 Real World Testing の段階にある。自分のアプリで使い、おかしいと思ったところを小さな再現にして出せば、それがそのまま contribution になる。調べる手間は AI に任せられるが、出す前には自分で読む」。
 
-聞き手への持ち帰りは「`npx vize lint` で試して、変だったら小さな再現を送る」。
+聞き手への持ち帰りは「`npx vize lint --preset opinionated` で試して、変だったら小さな再現を送る」。
 
 結果（30 件すべて closed as completed）→ Vize とは何か、なぜ使うか（Vibe Coding のガードレールが欲しい。速くて、Vue を分かっているルールが要る。v4 も同じ道、まだテスト段階で面白い）→ どこに当たったか → やり方（Claude Code の下調べ、自分が読む、1 件の流れ）→ 持ち帰り、の順で進む。
 
@@ -62,7 +62,7 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 12. Claude Code does the legwork。1 つの入力欄に依頼 4 行。スライドに入ると 1 文字ずつ打ち込まれ（src/components/PromptTyping.vue）、打ち終えたあとも最後の行の末尾でカーソルが点滅し続ける。一覧表示や書き出し、動きを減らす設定では最初から全文を出す。見出しに Claude Code とあるので「To Claude Code」のラベルは付けない（再現を作る、既存の issue を探す、最新リリースで再実行、tsgo でも走らせる）
 13. I read them, and some don't get filed。出さなかった 2 つのケースをカード 2 枚で見せ、それぞれ理由を書く。「Fails only on tsrs」は「Vize targets tsgo. tsrs follows TypeScript's unreleased main.」（Vize の対象はリリース済みの TypeScript 7 である tsgo。tsrs はまだリリースされていない TypeScript main の API を追っているので、tsrs だけで壊れるのは Vize の不具合ではない。`vize-report-tsgo-only.md`）。「Exits 0 when the checker can't start」は「Vize does that on purpose.」。全部を自分で読んだわけではないので every とは書かない。件数（9、2）は意味がないので出さない
 14. One issue, from my app to a release。#9751 を横のタイムラインで見せる。点は 4 つ（アプリの警告、#9751 を再現付きで起票 10/19 22:07、#9759 が vize 0.486.0 で公開 10/20 09:59、警告が消える 10/20）。2 つ目から 3 つ目の点の間に括弧と「under 12 hours」（11 時間 52 分）。最後の点だけ黄色
-15. Try Vize on your app. Send a small repro.（`npx vize lint` と issue ページへのリンク）
+15. Try Vize on your app. Send a small repro.（`npx vize lint --preset opinionated` と issue ページへのリンク）
 
 ## 敵対的レビューへの対応（2026-10-26）
 
