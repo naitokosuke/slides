@@ -305,6 +305,8 @@
   font-family: var(--font-mono);
   font-size: var(--text-body);
   line-height: var(--leading-code);
+  /* Typed in as shown: JetBrains Mono would join -- into one dash */
+  font-variant-ligatures: none;
 }
 
 /* A prompt typed to an AI agent, drawn like its input box */
