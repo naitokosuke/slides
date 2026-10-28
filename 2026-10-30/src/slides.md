@@ -102,6 +102,20 @@ fonts:
 
 ---
 
+# I run Vize on <em>my side projects</em>
+
+<div class="evidence">
+  <div class="rows">
+    <p><span>Lint</span><span class="muted">happy-path to opinionated</span><strong>7</strong></p>
+    <p><span>Type check</span><span class="muted"><code>vize check</code></span><strong>5</strong></p>
+    <p><span>Build</span><span class="muted">Vite plugin, Vapor</span><strong>4</strong></p>
+    <p><span>Format</span><span class="muted"><code>.vue</code> files</span><strong>4</strong></p>
+    <p><span>Musea</span><span class="muted">story catalog</span><strong>2</strong></p>
+  </div>
+</div>
+
+---
+
 # My issues hit <em>five parts of Vize</em>
 
 <div class="evidence">
