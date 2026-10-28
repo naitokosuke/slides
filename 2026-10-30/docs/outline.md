@@ -44,7 +44,7 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
   - 型チェッカーが起動できないときに警告を出して exit 0 で終わる挙動（Vize の意図した挙動）
 - chirashitabi の lint 警告: 80 → 17（chirashitabi#195 で自分のコードを修正）→ 6（Vize 0.501.0 時点）。残り 6 件はルールの実装と仕様に照らして誤検知と確認済み
 
-## スライド構成（14 枚）
+## スライド構成（15 枚）
 
 各スライドは「主張を言い切る見出し 1 文」と「その根拠 1 つ」で組む。
 
@@ -54,14 +54,15 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 4. I vibe-code, so I need guardrails。根拠は Vize のブログ「Static Analysis for AI」（ubugeeei、2026-03-26）の 2 文「They predict likely continuations. They do not enforce invariants.」。原文の They は LLM のことで、スライドだけで分かるように最初の They を [Models] と補う。記事の要旨は、AI は確率的なので、決定的で速い静的解析がその歯止めになる、というもの。以前は同じ記事の「No. This is wrong.」を使っていたが、前後の文脈がないと誰が誰に言っているのか分からないので差し替えた。引用を左、記事の OG 画像（src/public/static-analysis-for-ai.png、記事へのリンク）を右に、同じ高さで並べ、見出しの下の高さの中で上下中央に置く。引用は見出しと同じ 2.75rem の通常の太さ（太字だと見出しと一続きに見える）で、1 文を 2 行ずつ手で改行する。このとき引用は幅 417px、高さ 202px、24rem の画像は高さ 201px でほぼ揃い、合わせて 852px の幅に収まる。出典の文字は置かない（OG 画像が記事名を示しているので重複する）
 5. Guardrails have to be fast。Lint 182×（vs eslint-plugin-vue、README）、Format 50×（vs Oxfmt、自分で計測、docs/benchmark.md）、Type check 4.9×（vs vue-tsc v3、README）。下に「Oxlint lints 2.4× faster, but reads only <script>」と出典
 6. The rules have to know Vue。`vize explain --list`（vize 0.575.0）から数えたルールの数。Vue 108、Accessibility 30、Runtime 10（SSR 2、Nuxt 4、Vapor 4）、Type-aware 6。下に「266 lint rules in all, each explained by vize explain」（コンパイラの診断 56 と TypeScript のコード 22 は数えない）
-7. Johnson Chu の v4 alpha 告知ツイート（https://x.com/johnsoncodehk/status/2113609909329953099）を左に、右に「Vue Language Tools v4 takes the same path」。<Tweet> の埋め込みなので会場のネット接続が必要
-8. 見出しを画像の上下に分ける。上に「It's still being tested,」、真ん中に Real World Testing の OG 画像（src/public/real-world-testing.png）、下に右寄せで「and that is the exciting part」
-9. I run Vize on my side projects。テスト段階だと言った直後に、自分がその実地テストをしている側だと示し、次の「当たった箇所」につなぐ。どのアプリかは出さない。根拠は 2026-10-27 に github.com/naitokosuke/ 下を調べた、Vize を使っている趣味のプロジェクト 8 個の用途別の数（Lint 7、Type check 5、Build 4、Format 4、Musea 2）。Lint の説明は使っているプリセットの幅（happy-path から opinionated まで、詳細は docs/presets.md）。プロジェクトの総数は出さない。再現リポジトリ（vize-\*-repro）と、コミットのない poc-eiken-niji は数えない
-10. My issues hit five parts of Vize。Format には 1 件も当たっていないので every とは書かない。当たった箇所の内訳（Lint 15、Build 7、Editor 4、Type check 3、Musea 1）
-11. Claude Code does the legwork。1 つの入力欄に依頼 4 行。スライドに入ると 1 文字ずつ打ち込まれ（src/components/PromptTyping.vue）、打ち終えたあとも最後の行の末尾でカーソルが点滅し続ける。一覧表示や書き出し、動きを減らす設定では最初から全文を出す。見出しに Claude Code とあるので「To Claude Code」のラベルは付けない（再現を作る、既存の issue を探す、最新リリースで再実行、tsgo でも走らせる）
-12. I read them, and some don't get filed。出さなかった 2 つのケースをカード 2 枚で見せ、それぞれ理由を書く。「Fails only on tsrs」は「Vize targets tsgo. tsrs follows TypeScript's unreleased main.」（Vize の対象はリリース済みの TypeScript 7 である tsgo。tsrs はまだリリースされていない TypeScript main の API を追っているので、tsrs だけで壊れるのは Vize の不具合ではない。`vize-report-tsgo-only.md`）。「Exits 0 when the checker can't start」は「Vize does that on purpose.」。全部を自分で読んだわけではないので every とは書かない。件数（9、2）は意味がないので出さない
-13. One issue, from my app to a release。#9751 を横のタイムラインで見せる。点は 4 つ（アプリの警告、#9751 を再現付きで起票 10/19 22:07、#9759 が vize 0.486.0 で公開 10/20 09:59、警告が消える 10/20）。2 つ目から 3 つ目の点の間に括弧と「under 12 hours」（11 時間 52 分）。最後の点だけ黄色
-14. Try Vize on your app. Send a small repro.（`npx vize lint` と issue ページへのリンク）
+7. It type-checks Vue on TypeScript 7。lint だけでなく型チェックも Vize が持っていることを、次のツイート（content mapper で tsc が .vue を読む）の前に置く。3 行の表で、左に型チェックに使えるものを並べる。`vize check`（TypeScript 7 のネイティブのチェッカーを使い、vue-tsc を使わない）、`tsc` 7.1（Vize の content mapper を通して .vue をそのまま読む。mapper のプロトコルは microsoft/typescript-go#4712 で取り込まれた）、`tsrs`（同じプロジェクトをそのまま読む）。「Content mapper」をラベルにすると列に収まらず折り返すので、ラベルはツールの名前にする。数字の列は使わない。出典は Vize の README と https://vizejs.dev/guide/content-mapper（vize 0.549.0 で確認）
+8. Johnson Chu の v4 alpha 告知ツイート（https://x.com/johnsoncodehk/status/2113609909329953099）を左に、右に「Vue Language Tools v4 takes the same path」。<Tweet> の埋め込みなので会場のネット接続が必要
+9. 見出しを画像の上下に分ける。上に「It's still being tested,」、真ん中に Real World Testing の OG 画像（src/public/real-world-testing.png）、下に右寄せで「and that is the exciting part」
+10. I run Vize on my side projects。テスト段階だと言った直後に、自分がその実地テストをしている側だと示し、次の「当たった箇所」につなぐ。どのアプリかは出さない。根拠は 2026-10-27 に github.com/naitokosuke/ 下を調べた、Vize を使っている趣味のプロジェクト 8 個の用途別の数（Lint 7、Type check 5、Build 4、Format 4、Musea 2）。Lint の説明は使っているプリセットの幅（happy-path から opinionated まで、詳細は docs/presets.md）。プロジェクトの総数は出さない。再現リポジトリ（vize-\*-repro）と、コミットのない poc-eiken-niji は数えない
+11. My issues hit five parts of Vize。Format には 1 件も当たっていないので every とは書かない。当たった箇所の内訳（Lint 15、Build 7、Editor 4、Type check 3、Musea 1）
+12. Claude Code does the legwork。1 つの入力欄に依頼 4 行。スライドに入ると 1 文字ずつ打ち込まれ（src/components/PromptTyping.vue）、打ち終えたあとも最後の行の末尾でカーソルが点滅し続ける。一覧表示や書き出し、動きを減らす設定では最初から全文を出す。見出しに Claude Code とあるので「To Claude Code」のラベルは付けない（再現を作る、既存の issue を探す、最新リリースで再実行、tsgo でも走らせる）
+13. I read them, and some don't get filed。出さなかった 2 つのケースをカード 2 枚で見せ、それぞれ理由を書く。「Fails only on tsrs」は「Vize targets tsgo. tsrs follows TypeScript's unreleased main.」（Vize の対象はリリース済みの TypeScript 7 である tsgo。tsrs はまだリリースされていない TypeScript main の API を追っているので、tsrs だけで壊れるのは Vize の不具合ではない。`vize-report-tsgo-only.md`）。「Exits 0 when the checker can't start」は「Vize does that on purpose.」。全部を自分で読んだわけではないので every とは書かない。件数（9、2）は意味がないので出さない
+14. One issue, from my app to a release。#9751 を横のタイムラインで見せる。点は 4 つ（アプリの警告、#9751 を再現付きで起票 10/19 22:07、#9759 が vize 0.486.0 で公開 10/20 09:59、警告が消える 10/20）。2 つ目から 3 つ目の点の間に括弧と「under 12 hours」（11 時間 52 分）。最後の点だけ黄色
+15. Try Vize on your app. Send a small repro.（`npx vize lint` と issue ページへのリンク）
 
 ## 敵対的レビューへの対応（2026-10-26）
 
@@ -86,4 +87,4 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 - 配色は 4 色だけを使い、どれも単色のベタ塗りにする。Royal Blue #3A2D71（文字とブロック）、Tea Pink #E9D1E1（背景とブロックの上の文字）、Yellow #F6D60D（強調）、Baby Pink #A08AC0（2 枚目の円の中間）。黄色は Tea Pink の上では文字として読めないので、文字色にはせず、マーカー（語の下半分に敷く）と影にだけ使う。Vize のロゴは元の黒のまま
 - 文字は 1.75rem（28px）より小さくしない。980 × 552 のスライドで高さの約 5% にあたり、Guy Kawasaki の 10/20/30 の 30pt と同じ比率。例外は 2 枚目の円の中の番号と時間で、小さくても必ず出す
 - 見出しは主張の 1 文にして（Michael Alley の Assertion-Evidence）、覚えてほしい語だけマーカーで強調する（Mayer の signaling）。話す内容をそのままスライドに書かない（redundancy）
-- レイアウトを揃える。見出しは左上、根拠は見出しのすぐ下から同じ間隔（32px）で始め、スライドの下端まで使う。表は行ごとに高さを等分し、カードと入力欄は残りの高さいっぱいに伸ばして中身を上下中央に置く。上に詰まって下半分が空くことがないようにする。注意書きと出典はスライドの下端に置く。表はすべて同じ行の型（太字のラベル列、説明、右端の数字）。例外は表紙、ロゴ、締めと、形を指定した 7 枚目（ツイート）と 8 枚目（テスト段階）
+- レイアウトを揃える。見出しは左上、根拠は見出しのすぐ下から同じ間隔（32px）で始め、スライドの下端まで使う。表は行ごとに高さを等分し、カードと入力欄は残りの高さいっぱいに伸ばして中身を上下中央に置く。上に詰まって下半分が空くことがないようにする。注意書きと出典はスライドの下端に置く。表はすべて同じ行の型（太字のラベル列、説明、右端の数字）。例外は表紙、ロゴ、締めと、形を指定した 8 枚目（ツイート）と 9 枚目（テスト段階）
