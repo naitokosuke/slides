@@ -10,15 +10,15 @@ import { onBeforeUnmount, useTemplateRef } from "vue";
 
 // Cart: arrives at a constant speed, then a spring pulls it to the centre (x = 0)
 const start = 980; // px right of the centre, off the slide
-const speed = 2600; // px/s
-const brakeAt = 60; // px right of the centre
-const spring = { frequency: 2.2, damping: 0.55 };
+const speed = 3200; // px/s
+const brakeAt = 40; // px right of the centre
+const spring = { frequency: 3, damping: 0.6 };
 // Tilt: an upright spring at the base, pushed over by the deceleration
-const tilt = { frequency: 2.6, damping: 0.35, height: 500 };
+const tilt = { frequency: 3.4, damping: 0.45, height: 600 };
 
 const step = 1 / 1000; // s, for the simulation
 const frame = 1 / 60; // s, between keyframes
-const length = 1.3; // s, long enough to settle
+const length = 1; // s, long enough to settle
 
 function simulate(): Keyframe[] {
   const w = 2 * Math.PI * spring.frequency;
