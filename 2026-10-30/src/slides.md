@@ -48,7 +48,7 @@ seoMeta:
 ---
 
 <div class="logo">
-  <BrakeIn><VizeLogo /></BrakeIn>
+  <BrakeIn trail=".vize-logo-lines"><VizeLogo /></BrakeIn>
 </div>
 
 ---
