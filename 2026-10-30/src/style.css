@@ -70,6 +70,7 @@
 
   --duration-fast: 160ms;
   --duration-blink: 1s;
+  --duration-spin: 3s;
   --easing-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --lift: -3px;
   --offset-raised: 6px;
@@ -414,11 +415,43 @@
   white-space: nowrap;
 }
 
+/* The command to take home, ringed by two yellow arcs that chase each other round it */
+
+@property --spin {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .closing .snippet {
   align-self: flex-start;
   margin-top: var(--space-6);
+  border: var(--rule-thick) solid transparent;
+  background:
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    conic-gradient(
+        from var(--spin),
+        var(--color-accent) 0 25%,
+        transparent 0 50%,
+        var(--color-accent) 0 75%,
+        transparent 0
+      )
+      border-box;
   font-weight: var(--weight-normal);
   letter-spacing: 0;
+  animation: spin var(--duration-spin) linear infinite;
+}
+
+@keyframes spin {
+  to {
+    --spin: 1turn;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closing .snippet {
+    animation: none;
+  }
 }
 
 /*
