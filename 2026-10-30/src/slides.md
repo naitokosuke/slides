@@ -242,6 +242,7 @@ seoMeta:
 ---
 
 <div class="closing">
+  <div class="watermark" aria-hidden="true"><VizeLogo /></div>
   <p>Try Vize <em>on your app</em>.</p>
   <pre class="snippet">npx vize lint --preset opinionated</pre>
   <a href="https://github.com/ubugeeei-prod/vize" target="_blank" rel="noopener noreferrer"><img class="mark" src="/github.svg" alt="" />github.com/ubugeeei-prod/vize</a>

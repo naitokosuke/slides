@@ -77,6 +77,7 @@
   --shadow-raised: var(--offset-raised) var(--offset-raised) 0
     var(--color-accent);
   --opacity-secondary: 0.75;
+  --opacity-watermark: 0.08;
 
   --size-avatar: 3rem;
   --size-node: 1.5rem;
@@ -511,6 +512,9 @@ a.og:focus-visible img {
 /* Closing call to action */
 
 .closing {
+  position: relative;
+  /* So the watermark can sit behind the text at a negative z-index without leaving the slide */
+  isolation: isolate;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -520,6 +524,15 @@ a.og:focus-visible img {
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
+}
+
+/* Vize's logo, faint and as tall as the room under the padding, over to the right behind the text */
+.closing .watermark {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: -1;
+  opacity: var(--opacity-watermark);
+  pointer-events: none;
 }
 
 /* The theme gives paragraphs a fixed line height, too short for display type */
