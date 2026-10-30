@@ -6,7 +6,13 @@
 <script setup lang="ts">
 import { sanitizeUrl } from "@braintree/sanitize-url";
 import { onSlideEnter, onSlideLeave } from "@slidev/client";
-import { onBeforeUnmount, onMounted, reactive, useTemplateRef } from "vue";
+import {
+  onBeforeUnmount,
+  onMounted,
+  shallowRef,
+  triggerRef,
+  useTemplateRef,
+} from "vue";
 import { issues } from "../data/issues";
 import { formatMinutes, minutesToClose } from "../data/time";
 
@@ -66,28 +72,26 @@ type Bubble = {
   held: boolean;
 };
 
-const bubbles = reactive<Bubble[]>(
-  issues.map((issue) => {
-    const minutes = minutesToClose(issue.filed, issue.closed);
-    const r = Math.max(
-      maxRadius * Math.sqrt(quickestClose / minutes),
-      minRadius,
-    );
-    return {
-      number: issue.number,
-      url: issue.url,
-      label: formatMinutes(minutes),
-      depth: depthOf(minutes),
-      r,
-      mass: r * r,
-      x: 0,
-      y: 0,
-      vx: 0,
-      vy: 0,
-      held: false,
-    };
-  }),
-);
+// Plain objects, not reactive ones: a step reads and writes them tens of thousands of times, and
+// through Vue's proxies that took seconds. The template re-reads them when `view` is triggered.
+const bubbles: Bubble[] = issues.map((issue) => {
+  const minutes = minutesToClose(issue.filed, issue.closed);
+  const r = Math.max(maxRadius * Math.sqrt(quickestClose / minutes), minRadius);
+  return {
+    number: issue.number,
+    url: issue.url,
+    label: formatMinutes(minutes),
+    depth: depthOf(minutes),
+    r,
+    mass: r * r,
+    x: 0,
+    y: 0,
+    vx: 0,
+    vy: 0,
+    held: false,
+  };
+});
+const view = shallowRef(bubbles);
 
 function scatter() {
   const random = seeded(20261030);
@@ -184,6 +188,7 @@ function run() {
   cancelAnimationFrame(frame);
   const tick = () => {
     const fastest = step();
+    triggerRef(view);
     if (fastest > restSpeed || bubbles.some((b) => b.held)) {
       frame = requestAnimationFrame(tick);
     }
@@ -191,8 +196,12 @@ function run() {
   frame = requestAnimationFrame(tick);
 }
 
+// Steps until the circles are still, with a cap in case they never are
 function settleAtOnce() {
-  for (let i = 0; i < 3000; i++) step();
+  for (let i = 0; i < 3000; i++) {
+    if (step() < restSpeed && overlapEase >= 1) break;
+  }
+  triggerRef(view);
 }
 
 const reducedMotion =
@@ -268,7 +277,7 @@ onBeforeUnmount(() => cancelAnimationFrame(frame));
     @pointercancel="release"
   >
     <a
-      v-for="b in bubbles"
+      v-for="b in view"
       :key="b.number"
       :class="['bubble', b.depth]"
       :href="sanitizeUrl(b.url)"
