@@ -62,8 +62,8 @@ seoMeta:
 </div>
 
 <DropSign>
-  <strong>Don't trust<br />these numbers</strong>
-  <span>Vize moves faster<br />than these slides</span>
+  <strong>Don't trust<br />the numbers<br />in these slides</strong>
+  <span>Vize moves too fast</span>
 </DropSign>
 
 ---
