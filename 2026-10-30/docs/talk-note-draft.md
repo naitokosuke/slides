@@ -136,7 +136,7 @@ Claude Code が作った再現と診断を読んで、アプリの名前やコ�
 ただし、これは Vize のメンテナーが「AI に試させて、再現付きで issue を出して」と呼びかけているからできることです。
 ほかのプロジェクトでは、contribution と AI のポリシーを先に確かめてください。
 
-## 17 枚目: Try Vize on your app. Send a small repro.
+## 17 枚目: Try Vize on your app.
 
 Vize は今、実際のアプリで使われることで良くなっていく段階です。
 `npx vize lint --preset opinionated` で試してみて、変だと思ったら小さな再現を送ってください。

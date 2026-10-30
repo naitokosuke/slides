@@ -64,7 +64,7 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 14. Claude Code does the legwork。1 つの入力欄に依頼 4 行。スライドに入ると 1 文字ずつ打ち込まれ（src/components/PromptTyping.vue）、打ち終えたあとも最後の行の末尾でカーソルが点滅し続ける。一覧表示や書き出し、動きを減らす設定では最初から全文を出す。見出しの「Claude Code」の直後に Claude のマーク（Simple Icons、#D97757）。見出しに Claude Code とあるので「To Claude Code」のラベルは付けない（再現を作る、既存の issue を探す、最新リリースで再実行、tsgo でも走らせる）
 15. I check it before Claude Code files it。14 枚目の下調べのあと、起票の前に自分が間に入ることを横の 3 段で見せる。「Claude Code / drafts the repro」→「I read it / repro and diagnosis」→「Vize / gets the issue」。真ん中だけ Royal Blue のブロックにして黄色の影を付ける。読む中身（再現にアプリの名前もコードも入れない、診断はルールの実装と仕様に照らす）はスライドに書かず、口で言う。根拠は「使う実データ」の手順。Claude Code への許可の話にはしない。件数は出さない
 16. ⚠️ Vize asks for this. Others may not. ⚠️。締めの前に、AI に issue を出させるのは Vize が呼びかけているからだと断る。根拠は ubugeeei さんの発表「The Vue Toolchain, Reimagined」（https://the-vue-toolchain-reimagined.void.app/）の「Ask your AI to try Vize.」のスライド（src/public/ask-your-ai.png。「This invitation is for my project, Vize. For other open-source projects, check their contribution and AI policies first.」）を角丸と黄色の影で見出しの下いっぱいに置き、下に出典のリンク。画像自体はリンクにしない（あの発表のスライド番号は URL に出ないので、開いても該当のページには着かない）。見出しは両端を ⚠️ で挟む
-17. Try Vize on your app. Send a small repro.（`npx vize lint --preset opinionated` と GitHub リポジトリのトップへのリンク（issues ではなく）。リンクの前に GitHub のマーク（Simple Icons、Royal Blue）。マークはどれも文字と同じ高さ）
+17. Try Vize on your app.（「Send a small repro.」も並べていたが、文脈なしでは意味が取れないので消し、再現を送る話は口で言う。強調は「on your app」。`npx vize lint --preset opinionated` と GitHub リポジトリのトップへのリンク（issues ではなく）。リンクの前に GitHub のマーク（Simple Icons、Royal Blue）。マークはどれも文字と同じ高さ）
 
 ## 敵対的レビューへの対応（2026-10-26）
 
