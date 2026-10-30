@@ -47,8 +47,29 @@ seoMeta:
 
 ---
 
+# One issue, <em>from my app to a release</em>
+
+<div class="evidence">
+  <div class="journey">
+    <p class="journey-span"><em>under 12 hours</em></p>
+    <ol>
+      <li><span class="when">Before</span><strong>A warning in my app</strong></li>
+      <li><span class="when">Oct 19 22:07</span><strong><a href="https://github.com/ubugeeei-prod/vize/issues/9751" target="_blank" rel="noopener noreferrer">#9751</a> with a repro</strong></li>
+      <li><span class="when">Oct 20 09:59</span><strong><a href="https://github.com/ubugeeei-prod/vize/pull/9759" target="_blank" rel="noopener noreferrer">#9759</a> in vize 0.486.0</strong></li>
+      <li class="arrived"><span class="when">Oct 20</span><strong>The warning is gone</strong></li>
+    </ol>
+  </div>
+</div>
+
+---
+
 <div class="logo">
-  <BrakeIn trail=".vize-logo-lines"><VizeLogo /></BrakeIn>
+  <BrakeIn trail=".vize-logo-lines">
+    <VizeLogo />
+    <template #follow>
+      <a class="repo-qr" href="https://github.com/ubugeeei-prod/vize" target="_blank" rel="noopener noreferrer"><img src="/vize-repo-qr.svg" alt="QR code for github.com/ubugeeei-prod/vize" /></a>
+    </template>
+  </BrakeIn>
 </div>
 
 ---
@@ -103,7 +124,7 @@ seoMeta:
 
 ---
 
-# The rules have to <em>know Vue</em>
+# The rules have to <em>know Vue</em><img class="mark" src="/vue.svg" alt="" />
 
 <div class="evidence">
   <div class="rows">
@@ -117,7 +138,7 @@ seoMeta:
 
 ---
 
-# It type-checks Vue <em>on TypeScript 7</em>
+# It type-checks Vue <em>on TypeScript 7</em><img class="mark" src="/typescript.svg" alt="" />
 
 <div class="evidence">
   <div class="rows">
@@ -175,7 +196,7 @@ seoMeta:
 
 ---
 
-# Claude Code does <em>the legwork</em>
+# Claude Code<img class="mark" src="/claude.svg" alt="" />does <em>the legwork</em>
 
 <div class="evidence">
   <PromptTyping
@@ -204,18 +225,13 @@ seoMeta:
 
 ---
 
-# One issue, <em>from my app to a release</em>
+# ⚠️ Vize asks for this. <em>Others may not.</em> ⚠️
 
 <div class="evidence">
-  <div class="journey">
-    <p class="journey-span"><em>under 12 hours</em></p>
-    <ol>
-      <li><span class="when">Before</span><strong>A warning in my app</strong></li>
-      <li><span class="when">Oct 19 22:07</span><strong><a href="https://github.com/ubugeeei-prod/vize/issues/9751" target="_blank" rel="noopener noreferrer">#9751</a> with a repro</strong></li>
-      <li><span class="when">Oct 20 09:59</span><strong><a href="https://github.com/ubugeeei-prod/vize/pull/9759" target="_blank" rel="noopener noreferrer">#9759</a> in vize 0.486.0</strong></li>
-      <li class="arrived"><span class="when">Oct 20</span><strong>The warning is gone</strong></li>
-    </ol>
+  <div class="og">
+    <img src="/ask-your-ai.png" alt="Ask your AI to try Vize: a slide from The Vue Toolchain, Reimagined, which says this invitation is for Vize and that other projects' contribution and AI policies come first" />
   </div>
+  <p class="source"><a href="https://the-vue-toolchain-reimagined.void.app/" target="_blank" rel="noopener noreferrer">The Vue Toolchain, Reimagined</a></p>
 </div>
 
 ---
@@ -223,5 +239,5 @@ seoMeta:
 <div class="closing">
   <p>Try Vize on your app. <em>Send a small repro.</em></p>
   <pre class="snippet">npx vize lint --preset opinionated</pre>
-  <a href="https://github.com/ubugeeei-prod/vize/issues" target="_blank" rel="noopener noreferrer">github.com/ubugeeei-prod/vize/issues</a>
+  <a href="https://github.com/ubugeeei-prod/vize" target="_blank" rel="noopener noreferrer"><img class="mark" src="/github.svg" alt="" />github.com/ubugeeei-prod/vize</a>
 </div>

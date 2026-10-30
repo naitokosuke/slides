@@ -83,6 +83,7 @@
   --journey-steps: 4;
   --size-cursor: 0.55em;
   --size-logo: 70%;
+  --size-qr: 240px;
   --size-tweet: 31rem;
   --size-og-side: 24rem;
   --size-row-label: 13rem;
@@ -164,6 +165,8 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: var(--space-4);
+  /* So a figure inside shrinks to the height that is left, instead of pushing past the slide */
+  min-height: 0;
 }
 
 /*
@@ -239,6 +242,17 @@
 
 .logo > * {
   height: var(--size-logo);
+}
+
+/* The repository's QR code, riding along behind the logo */
+.logo .repo-qr {
+  display: block;
+  height: var(--size-qr);
+  border-bottom: none;
+}
+
+.logo .repo-qr img {
+  height: 100%;
 }
 
 /*
@@ -434,6 +448,19 @@
   line-height: var(--leading-none);
 }
 
+/* A product's mark beside the words that name it, as tall as the type around it */
+
+.slidev-layout .mark {
+  display: inline-block;
+  height: 1em;
+  margin-inline: var(--space-3);
+  vertical-align: -0.12em;
+}
+
+.closing a .mark {
+  margin-inline: 0 var(--space-2);
+}
+
 /* A screenshot that takes the height under the headline, linking to its page */
 
 .slidev-layout .og {
@@ -474,8 +501,9 @@
   transition: translate var(--duration-fast) var(--easing-out);
 }
 
-.og:hover img,
-.og:focus-visible img {
+/* Only a figure that is a link lifts on hover; a plain figure stays put */
+a.og:hover img,
+a.og:focus-visible img {
   translate: 0 var(--lift);
 }
 

@@ -7,28 +7,29 @@
 
 ## 時間配分
 
-全 16 枚、約 1660 字で 312 秒。
+全 17 枚、約 1800 字で 337 秒。
 1 分におよそ 330 字 (1 秒に 5.5 字) で話す前提で、各スライドの秒数を原稿の長さから決めた。
-3 枚目はロゴが止まるまで、13 枚目はプロンプトが打ち込まれるまでの間を足してある。
+4 枚目はロゴが止まるまで、14 枚目はプロンプトが打ち込まれるまでの間を足してある。
 
 | 枚目 | スライド                     | 字数 | 秒  | 終わる時刻 |
 | ---- | ---------------------------- | ---- | --- | ---------- |
 | 1    | 表紙                         | 52   | 10  | 0:10       |
 | 2    | 30 issues                    | 91   | 17  | 0:27       |
-| 3    | Vize のロゴ                  | 54   | 12  | 0:39       |
-| 4    | Vue's toolchain in Rust      | 99   | 18  | 0:57       |
-| 5    | guardrails                   | 114  | 21  | 1:18       |
-| 6    | fast                         | 134  | 25  | 1:43       |
-| 7    | know Vue                     | 107  | 20  | 2:03       |
-| 8    | type-checks Vue              | 141  | 25  | 2:28       |
-| 9    | Vue Language Tools v4        | 101  | 19  | 2:47       |
-| 10   | still being tested           | 88   | 16  | 3:03       |
-| 11   | side projects                | 89   | 17  | 3:20       |
-| 12   | five parts of Vize           | 97   | 18  | 3:38       |
-| 13   | Claude Code does the legwork | 111  | 23  | 4:01       |
-| 14   | before Claude Code files it  | 119  | 22  | 4:23       |
-| 15   | from my app to a release     | 137  | 25  | 4:48       |
-| 16   | 締め                         | 128  | 24  | 5:12       |
+| 3    | from my app to a release     | 137  | 25  | 0:52       |
+| 4    | Vize のロゴ                  | 81   | 17  | 1:09       |
+| 5    | Vue's toolchain in Rust      | 99   | 18  | 1:27       |
+| 6    | guardrails                   | 114  | 21  | 1:48       |
+| 7    | fast                         | 134  | 25  | 2:13       |
+| 8    | know Vue                     | 107  | 20  | 2:33       |
+| 9    | type-checks Vue              | 141  | 25  | 2:58       |
+| 10   | Vue Language Tools v4        | 101  | 19  | 3:17       |
+| 11   | still being tested           | 88   | 16  | 3:33       |
+| 12   | side projects                | 89   | 17  | 3:50       |
+| 13   | five parts of Vize           | 97   | 18  | 4:08       |
+| 14   | Claude Code does the legwork | 111  | 23  | 4:31       |
+| 15   | before Claude Code files it  | 119  | 22  | 4:53       |
+| 16   | Others may not               | 112  | 20  | 5:13       |
+| 17   | 締め                         | 128  | 24  | 5:37       |
 
 ## 1 枚目: 表紙
 
@@ -41,68 +42,76 @@ naitokosuke です。
 25 件が不具合の修正、5 件が新しい機能です。
 円が大きいほど早く直ったもので、いちばん早いものは起票から 56 分で閉じました。
 
-## 3 枚目: Vize のロゴ
+## 3 枚目: One issue, from my app to a release
+
+1 件だけ、流れを見せます。
+アプリで、hidden を付けた入力欄にラベルがないという警告が出ていました。
+10 月 19 日の夜 10 時に再現付きで #9751 を出したら、翌朝 10 時前には修正が vize 0.486.0 で公開されて、その日のうちに警告が消えました。
+12 時間かかっていません。
+
+## 4 枚目: Vize のロゴ
 
 > ロゴが止まるのを待ってから話し始める (フェード 0.5 秒と動き 0.85 秒)。
 
 名前は Vizier、Visor、Advisor から取られていて、コードを見通す賢い道具、という意味です。
+右の QR コードは GitHub のリポジトリです。
 
-## 4 枚目: Vize is Vue's toolchain, rewritten in Rust
+## 5 枚目: Vize is Vue's toolchain, rewritten in Rust
 
 Vize は、ubugeeei さんが作っている Rust 製の Vue のツールチェーンです。
 コンパイラ、リンタ、型チェッカー、フォーマッタ、エディタ連携まで、ひとつのパーサーの上に入っています。
 
-## 5 枚目: I vibe-code, so I need guardrails
+## 6 枚目: I vibe-code, so I need guardrails
 
 なぜ使うのか。
 僕はバイブコーディングで書くので、ガードレールが欲しいんです。
 Vize のブログにあるとおり、モデルはそれらしい続きを予測するだけで、守るべき決まりを守ってはくれません。
 だから、毎回同じ結果を返す静的解析で止めたい。
 
-## 6 枚目: Guardrails have to be fast
+## 7 枚目: Guardrails have to be fast
 
 ガードレールは、速くないと回し続けられません。
 lint は eslint-plugin-vue の 182 倍、型チェックは vue-tsc v3 の 4.9 倍。
 フォーマットは手元で測って Oxfmt の 50 倍でした。
 Oxlint は lint がもっと速いですが、見るのは script だけです。
 
-## 7 枚目: The rules have to know Vue
+## 8 枚目: The rules have to know Vue
 
 もう 1 つ、ルールが Vue を分かっていてほしい。
 テンプレート、props、slots、アクセシビリティ、SSR や Vapor まで、lint のルールは全部で 266 個あります。
 どれも `vize explain` で説明が読めます。
 
-## 8 枚目: It type-checks Vue on TypeScript 7
+## 9 枚目: It type-checks Vue on TypeScript 7
 
 lint だけでなく、型チェックもできます。
 `vize check` は TypeScript 7 のネイティブのチェッカーで動いて、vue-tsc は要りません。
 TypeScript 7.1 からは Vize の content mapper で tsc が `.vue` を直接読めて、tsrs でも同じように検査できます。
 
-## 9 枚目: Vue Language Tools v4 takes the same path
+## 10 枚目: Vue Language Tools v4 takes the same path
 
 > ツイートの埋め込みなので、会場のネット接続が要る。
 
 Vue Language Tools の v4 alpha も、content mapper で tsc に `.vue` を読ませる道を選びました。
 Vize が進んでいる方向は、Vue の型チェック全体が向かっている方向と同じです。
 
-## 10 枚目: It's still being tested
+## 11 枚目: It's still being tested
 
 ただ、Vize はまだテストの段階です。
 ブログでは Real World Testing と呼んでいて、実際のプロジェクトで使いながら直していく段階です。
 僕はそこが面白いと思っています。
 
-## 11 枚目: I run Vize on my side projects
+## 12 枚目: I run Vize on my side projects
 
 なので、趣味のプロジェクトで使っています。
 lint は 7 つ、型チェックは 5 つのプロジェクトで回していて、ビルドやフォーマット、コンポーネントのカタログの Musea でも使っています。
 
-## 12 枚目: My issues hit five parts of Vize
+## 13 枚目: My issues hit five parts of Vize
 
 使っていると、いろいろなところに当たります。
 30 件のうち半分の 15 件が lint で、ビルドが 7 件、エディタが 4 件、型チェックが 3 件、Musea が 1 件でした。
 フォーマットには 1 件も当たっていません。
 
-## 13 枚目: Claude Code does the legwork
+## 14 枚目: Claude Code does the legwork
 
 > プロンプトが打ち込まれていく間に話す。
 
@@ -111,20 +120,18 @@ lint は 7 つ、型チェックは 5 つのプロジェクトで回していて
 アプリのコードを含まない最小の再現を作る、既存の issue がないか探す、最新のリリースでもう一度試す、tsrs だけでなく tsgo でも試す。
 この 4 つを毎回頼んでいます。
 
-## 14 枚目: I check it before Claude Code files it
+## 15 枚目: I check it before Claude Code files it
 
 ただし、出すのは自分で確かめてからです。
 Claude Code が作った再現と診断を読んで、アプリの名前やコードが混ざっていないか、ルールの実装と仕様に照らして本当に Vize の問題かを確かめます。
 そのあとで issue にしています。
 
-## 15 枚目: One issue, from my app to a release
+## 16 枚目: Vize asks for this. Others may not.
 
-1 件だけ、流れを見せます。
-アプリで、hidden を付けた入力欄にラベルがないという警告が出ていました。
-10 月 19 日の夜 10 時に再現付きで #9751 を出したら、翌朝 10 時前には修正が vize 0.486.0 で公開されて、その日のうちに警告が消えました。
-12 時間かかっていません。
+ただし、これは Vize のメンテナーが「AI に試させて、再現付きで issue を出して」と呼びかけているからできることです。
+ほかのプロジェクトでは、contribution と AI のポリシーを先に確かめてください。
 
-## 16 枚目: Try Vize on your app. Send a small repro.
+## 17 枚目: Try Vize on your app. Send a small repro.
 
 Vize は今、実際のアプリで使われることで良くなっていく段階です。
 `npx vize lint --preset opinionated` で試してみて、変だと思ったら小さな再現を送ってください。
@@ -133,6 +140,6 @@ Vize は今、実際のアプリで使われることで良くなっていく段
 
 ## 話す前に確かめること
 
-- 9 枚目のツイートが会場のネットで読み込めるか。読み込めないときは「Vue Language Tools の v4 alpha も content mapper を使う」と口で補う
+- 10 枚目のツイートが会場のネットで読み込めるか。読み込めないときは「Vue Language Tools の v4 alpha も content mapper を使う」と口で補う
 - 2 枚目の「56 分」は #10660 の起票から close まで (`docs/issues.md`)。話す前に issue のタイムラインで確かめる
-- 15 枚目の時刻は日本時間
+- 3 枚目の時刻は日本時間
