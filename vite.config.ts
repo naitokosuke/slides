@@ -16,6 +16,9 @@ export default defineConfig({
   server: {
     port: 3030,
     host: true,
+    // The root watcher must not follow .devenv/profile into the Nix store: that scan never ends
+    // and grows the heap until the server dies
+    watch: { ignored: ["**/.devenv/**", "**/.direnv/**"] },
   },
   vue: {
     ignores: ["2025-10-25/demo/**"],
