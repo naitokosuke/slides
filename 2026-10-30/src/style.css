@@ -170,7 +170,7 @@
   Tables, cards and prompt boxes stretch to the bottom of the slide, so a short one
   never leaves the lower half empty; what they hold is centred in that height
 */
-.evidence > :is(.rows, .verdicts, .prompt) {
+.evidence > :is(.rows, .prompt, .flow) {
   flex: 1;
 }
 
@@ -334,6 +334,45 @@
   margin: 0;
   line-height: var(--leading-normal);
   text-wrap: pretty;
+}
+
+/* Three steps from a drafted repro to a filed issue; the one in the middle is where I read */
+
+.flow {
+  display: grid;
+  /* The middle step takes the width of its own caption; the two beside it split the rest equally */
+  grid-template-columns: minmax(0, 1fr) auto max-content auto minmax(0, 1fr);
+  align-content: center;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.flow .step {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-3);
+  border: var(--border-width) solid var(--color-text);
+  border-radius: var(--radius-md);
+  text-align: center;
+  line-height: var(--leading-tight);
+}
+
+/* Every caption stays on one line at the body size; the columns above and the tight tracking make room for it */
+.flow .step span {
+  letter-spacing: var(--tracking-tight);
+  white-space: nowrap;
+}
+
+.flow .gate {
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  box-shadow: var(--shadow-raised);
+}
+
+.flow .arrow {
+  color: var(--color-text-muted);
+  font-size: var(--text-body);
+  line-height: var(--leading-none);
 }
 
 /* A screenshot that takes the height under the headline, linking to its page */
@@ -603,37 +642,3 @@
 }
 
 /* Two flat cards side by side, each a case in bold with the reason under it */
-
-.verdicts {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-5);
-}
-
-.verdict {
-  display: grid;
-  align-content: center;
-  gap: var(--space-1);
-  padding: var(--space-5) var(--space-6);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  color: var(--color-on-surface);
-}
-
-.verdict:nth-child(2) {
-  --color-surface: var(--color-baby);
-  --color-on-surface: var(--color-royal);
-}
-
-.verdict .label {
-  margin-bottom: var(--space-3);
-  font-weight: var(--weight-bold);
-}
-
-.verdict .label {
-  line-height: var(--leading-tight);
-}
-
-.slidev-layout .verdict p {
-  line-height: var(--leading-normal);
-}

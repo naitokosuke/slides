@@ -40,8 +40,8 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
   - 修正のリリース後は chirashitabi の Vize を上げて警告を確かめ直し、再現リポジトリは archive する
 - 起票しなかったもの
   - 10 月に作った再現リポジトリは 11 個（10-19 に 6 個、10-25 に 5 個）、起票したのは 9 個
-  - tsrs でだけ壊れるもの（`vize-report-tsgo-only.md`: Vize は tsgo を対象にしている）
-  - 型チェッカーが起動できないときに警告を出して exit 0 で終わる挙動（Vize の意図した挙動）
+  - tsrs でだけ壊れるもの（`vize-report-tsgo-only.md`: Vize の標準は tsgo で、tsrs は `--tsrs-path` / `typeChecker.tsrsPath` で選ぶ実験的なバックエンド。content mapper でも tsrs は同じ tsconfig で動く）
+  - 型チェッカーが起動できないときに type-aware の lint が exit 0 で終わる挙動（Vize の意図した挙動。vize 0.549.0 で確認: `CORSA_PATH=/nonexistent vize lint --type-aware` は警告なしで exit 0、`vize check --corsa-path /nonexistent` は「corsa not found」で exit 1）
 - chirashitabi の lint 警告: 80 → 17（chirashitabi#195 で自分のコードを修正）→ 6（Vize 0.501.0 時点）。残り 6 件はルールの実装と仕様に照らして誤検知と確認済み
 
 ## スライド構成（15 枚）
@@ -60,7 +60,7 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 10. I run Vize on my side projects。テスト段階だと言った直後に、自分がその実地テストをしている側だと示し、次の「当たった箇所」につなぐ。どのアプリかは出さない。根拠は 2026-10-27 に github.com/naitokosuke/ 下を調べた、Vize を使っている趣味のプロジェクト 8 個の用途別の数（Lint 7、Type check 5、Build 4、Format 4、Musea 2）。Lint の説明は使っているプリセットの幅（happy-path から opinionated まで、詳細は docs/presets.md）。プロジェクトの総数は出さない。再現リポジトリ（vize-\*-repro）と、コミットのない poc-eiken-niji は数えない
 11. My issues hit five parts of Vize。Format には 1 件も当たっていないので every とは書かない。当たった箇所の内訳（Lint 15、Build 7、Editor 4、Type check 3、Musea 1）
 12. Claude Code does the legwork。1 つの入力欄に依頼 4 行。スライドに入ると 1 文字ずつ打ち込まれ（src/components/PromptTyping.vue）、打ち終えたあとも最後の行の末尾でカーソルが点滅し続ける。一覧表示や書き出し、動きを減らす設定では最初から全文を出す。見出しに Claude Code とあるので「To Claude Code」のラベルは付けない（再現を作る、既存の issue を探す、最新リリースで再実行、tsgo でも走らせる）
-13. I read them, and some don't get filed。出さなかった 2 つのケースをカード 2 枚で見せ、それぞれ理由を書く。「Fails only on tsrs」は「Vize targets tsgo. tsrs follows TypeScript's unreleased main.」（Vize の対象はリリース済みの TypeScript 7 である tsgo。tsrs はまだリリースされていない TypeScript main の API を追っているので、tsrs だけで壊れるのは Vize の不具合ではない。`vize-report-tsgo-only.md`）。「Exits 0 when the checker can't start」は「Vize does that on purpose.」。全部を自分で読んだわけではないので every とは書かない。件数（9、2）は意味がないので出さない
+13. I check it before Claude Code files it。12 枚目の下調べのあと、起票の前に自分が間に入ることを横の 3 段で見せる。「Claude Code / drafts the repro」→「I read it / repro and diagnosis」→「Vize / gets the issue」。真ん中だけ Royal Blue のブロックにして黄色の影を付ける。読む中身（再現にアプリの名前もコードも入れない、診断はルールの実装と仕様に照らす）はスライドに書かず、口で言う。根拠は「使う実データ」の手順。Claude Code への許可の話にはしない。件数は出さない
 14. One issue, from my app to a release。#9751 を横のタイムラインで見せる。点は 4 つ（アプリの警告、#9751 を再現付きで起票 10/19 22:07、#9759 が vize 0.486.0 で公開 10/20 09:59、警告が消える 10/20）。2 つ目から 3 つ目の点の間に括弧と「under 12 hours」（11 時間 52 分）。最後の点だけ黄色
 15. Try Vize on your app. Send a small repro.（`npx vize lint --preset opinionated` と issue ページへのリンク）
 
@@ -74,6 +74,7 @@ issue ごとの一覧は `issues.md`、円の元データは `src/data/issues.ts
 - 1 件の流れ（#9751）を足した
 - 締めを「試すだけ」から「試して、変だったら小さな再現を送る」に直し、試すコマンドを出した
 - 2 枚目の「30」は表紙と重複なので外した
+- 2026-10-30: 「I read them, and some don't get filed」の 1 枚は、理由として書いた 2 文の裏付けが取れなかったので「I check it before Claude Code files it」に差し替えた
 
 ## 未決
 

@@ -169,18 +169,15 @@ seoMeta:
 
 ---
 
-# I read them, and some <em>don't get filed</em>
+# I check it <em>before Claude Code files it</em>
 
 <div class="evidence">
-  <div class="verdicts">
-    <div class="verdict">
-      <span class="label">Fails only on tsrs</span>
-      <p>Vize targets tsgo. tsrs follows TypeScript's unreleased main.</p>
-    </div>
-    <div class="verdict">
-      <span class="label">Exits 0 when the checker can't start</span>
-      <p>Vize does that on purpose.</p>
-    </div>
+  <div class="flow">
+    <div class="step"><strong>Claude Code</strong><span class="muted">drafts the repro</span></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="step gate"><strong>I read it</strong><span>repro and diagnosis</span></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="step"><strong>Vize</strong><span class="muted">gets the issue</span></div>
   </div>
 </div>
 
