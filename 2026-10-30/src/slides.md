@@ -95,7 +95,7 @@ seoMeta:
     <span class="link" aria-hidden="true"></span>
     <p class="base"><strong>One shared parser</strong><Ferris /></p>
   </div>
-  <p class="source">Source: <a href="https://github.com/ubugeeei-prod/vize#what-is-vize" target="_blank" rel="noopener noreferrer">Vize's README</a></p>
+  <p class="source"><a href="https://github.com/ubugeeei-prod/vize#what-is-vize" target="_blank" rel="noopener noreferrer">Vize's README</a></p>
 </div>
 
 ---
@@ -123,7 +123,7 @@ seoMeta:
   </div>
   <div class="source">
     <p>Oxlint lints 2.4× faster, but reads only <code>&lt;script&gt;</code></p>
-    <p>Sources: <a href="https://github.com/ubugeeei-prod/vize#benchmarks" target="_blank" rel="noopener noreferrer">Vize's benchmarks</a>, and my app for format</p>
+    <p><a href="https://github.com/ubugeeei-prod/vize#benchmarks" target="_blank" rel="noopener noreferrer">Vize's benchmarks</a>; format measured on my app</p>
   </div>
 </div>
 
@@ -151,7 +151,7 @@ seoMeta:
     <p><span><code>tsc</code> 7.1</span><span class="muted">reads <code>.vue</code> through Vize's content mapper</span></p>
     <p><span><code>tsrs</code></span><span class="muted">reads the same project</span></p>
   </div>
-  <p class="source">Source: <a href="https://vizejs.dev/guide/content-mapper" target="_blank" rel="noopener noreferrer">Vize's content mapper guide</a></p>
+  <p class="source"><a href="https://vizejs.dev/guide/content-mapper" target="_blank" rel="noopener noreferrer">Vize's content mapper guide</a></p>
 </div>
 
 ---
