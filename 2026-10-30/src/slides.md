@@ -53,11 +53,32 @@ seoMeta:
 
 ---
 
+# Vize is Vue's toolchain, <em>rewritten in Rust</em>
+
+<div class="evidence">
+  <div class="core">
+    <p class="tool">Compile</p>
+    <p class="tool">Lint</p>
+    <p class="tool">Type check</p>
+    <p class="tool">Format</p>
+    <p class="tool">Editor</p>
+    <span class="link" aria-hidden="true"></span>
+    <span class="link" aria-hidden="true"></span>
+    <span class="link" aria-hidden="true"></span>
+    <span class="link" aria-hidden="true"></span>
+    <span class="link" aria-hidden="true"></span>
+    <p class="base"><strong>One shared parser</strong><Ferris /></p>
+  </div>
+  <p class="source">Source: <a href="https://github.com/ubugeeei-prod/vize#what-is-vize" target="_blank" rel="noopener noreferrer">Vize's README</a></p>
+</div>
+
+---
+
 # I vibe-code, so I need <em>guardrails</em>
 
 <div class="evidence pair">
   <blockquote class="quote">
-    <p>“[Models] predict<br />likely continuations.<br />They do not enforce<br />invariants.”</p>
+    <p>“[LLMs] predict<br />likely continuations.<br />They do not enforce<br />invariants.”</p>
   </blockquote>
   <a class="og-side" href="https://vizejs.dev/blog/notes/2026-03-26-why-ai-needs-deterministic-fast-static-analysis/" target="_blank" rel="noopener noreferrer">
     <img src="/static-analysis-for-ai.png" alt="Static Analysis for AI by ubugeeei, on the Vize blog" />
