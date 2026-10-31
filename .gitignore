@@ -18,3 +18,6 @@ devenv.local.yaml
 
 # pre-commit
 .pre-commit-config.yaml
+
+# Claude Code preview servers, set up per machine
+.claude/launch.json
