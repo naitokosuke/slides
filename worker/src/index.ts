@@ -6,9 +6,13 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     let path = url.pathname.slice(1); // Remove leading slash
-    // Answered with a 304 when the browser's copy is still current, so its body is not sent again
+    // Answered with a 304 when the browser's copy is still current, so its body is not sent again.
+    // R2 throws on a conditional header it cannot parse (If-None-Match: garbage), so such a
+    // request is served as if it had none.
     const get = (key: string) =>
-      env.ASSETS.get(key, { onlyIf: request.headers });
+      env.ASSETS.get(key, { onlyIf: request.headers }).catch(() =>
+        env.ASSETS.get(key),
+      );
 
     // Try to get the object directly
     let object = await get(path);
