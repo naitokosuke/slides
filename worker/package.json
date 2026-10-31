@@ -4,6 +4,8 @@
   "private": true,
   "devDependencies": {
     "@cloudflare/workers-types": "catalog:types",
-    "typescript": "catalog:tooling"
+    "cf": "catalog:cloudflare",
+    "typescript": "catalog:tooling",
+    "wrangler": "catalog:cloudflare"
   }
 }

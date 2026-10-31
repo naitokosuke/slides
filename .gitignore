@@ -21,3 +21,6 @@ devenv.local.yaml
 
 # Claude Code preview servers, set up per machine
 .claude/launch.json
+
+# cf build output and generated types
+.cloudflare
