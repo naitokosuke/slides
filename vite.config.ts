@@ -1,4 +1,5 @@
 import { defineConfig } from "vite-plus";
+import type { VueOptions } from "vize";
 import "@slidev/cli";
 import MarkdownItMagicLink from "markdown-it-magic-link";
 import { slidesDevServer } from "./scripts/dev/plugin.ts";
@@ -6,7 +7,7 @@ import { slidesDevServer } from "./scripts/dev/plugin.ts";
 // Vize reads its settings from `vue`, but ships no augmentation for Vite's config type.
 declare module "vite" {
   interface UserConfig {
-    vue?: Record<string, unknown>;
+    vue?: VueOptions;
   }
 }
 
@@ -25,7 +26,7 @@ export default defineConfig({
     linter: {
       enabled: true,
     },
-    typeChecker: {
+    typeCheck: {
       tsrsPath: "node_modules/.bin/tsrs",
     },
   },
