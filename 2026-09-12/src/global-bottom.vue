@@ -16,4 +16,7 @@ watch(
 );
 </script>
 
-<template />
+<!-- Behaviour only: the slot is never filled, so nothing is rendered -->
+<template>
+  <slot />
+</template>
