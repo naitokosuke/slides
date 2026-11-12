@@ -38,9 +38,9 @@ catalogs:
     "@iconify/json": ^2.2.547
 
   lint:
-    vize: ^0.549.0
+    vize: ^0.745.0
     # Experimental checker for `vize check`; only prereleases are published, so pin exactly
-    tsrs: 0.18.0-ts7.1.0-dev.20260929
+    tsrs: 0.24.0-ts7.1.0-beta
 
   script:
     gunshi: ^0.37.3
