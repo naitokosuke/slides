@@ -31,10 +31,10 @@ This repository is migrated to Vite+. Run the toolchain through `vp`, which come
 - `vp check` runs the format and lint checks
 - `vp run fmt` formats the tree: Oxfmt for code, Prettier for Markdown
 - `vp run lint` runs Vize
-- `vp run typecheck` runs `vize check` on the experimental tsrs checker, set by `vue.typeChecker.tsrsPath` in `vite.config.ts`; vue-tsc is gone because it cannot load TypeScript 7
+- `vp run typecheck` runs `vize check` on the experimental tsrs checker, set by `vue.typeCheck.tsrsPath` in `vite.config.ts`; vue-tsc is gone because it cannot load TypeScript 7
 - `vp run <script>` is the equivalent of `pnpm run <script>`
 
-Run these from the repository root so `vp` resolves from `node_modules/.bin`. A globally installed toolchain drifts from what this repository pins, and the system profile currently carries vize 0.391.0 against the pinned 0.549.0, which no longer reads `vize.config.*`.
+Run these from the repository root so `vp` resolves from `node_modules/.bin`. A globally installed toolchain drifts from what this repository pins, and the system profile currently carries vize 0.391.0 against the pinned 0.745.0, which no longer reads `vize.config.*`.
 
 Vize settings live in the `vue` block of `vite.config.ts`.
 
