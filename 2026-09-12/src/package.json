@@ -7,8 +7,8 @@
     "export": "slidev export --per-slide --dark --output ../slides.pdf"
   },
   "dependencies": {
+    "@react95/icons": "^2.12.0",
     "98.css": "^0.1.21",
-    "@react95/icons": "^2.8.0",
     "qrcode": "catalog:misc"
   }
 }
