@@ -58,7 +58,7 @@ catalogs:
   cloudflare:
     # cf is in open beta, so pin exactly
     cf: 1.0.0-beta.26
-    wrangler: ^4.163.0
+    wrangler: 4.156.0
 
   tooling:
     vite-plus: 1.4.0
