@@ -9,36 +9,36 @@ packages:
 
 catalogs:
   slidev:
-    "@slidev/cli": ^53.0.0
-    "@slidev/client": ^53.0.0
+    "@slidev/cli": ^53.1.0
+    "@slidev/client": ^53.1.0
     "@slidev/theme-default": latest
     "@slidev/theme-seriph": latest
-    "@slidev/types": ^53.0.0
-    vue: ^3.5.44
-    vue-router: ^5.4.0
+    "@slidev/types": ^53.1.0
+    vue: ^3.5.45
+    vue-router: ^5.5.1
     "@vueuse/integrations": ^15.0.0
     prettier-plugin-slidev: ^1.0.5
-    unocss: ^66.11.0
+    unocss: ^66.13.0
     markdown-it-magic-link: ^0.1.4
-    playwright-chromium: ^1.64.1
+    playwright-chromium: ^1.65.1
 
   iconify:
-    "@iconify-json/carbon": ^1.2.29
-    "@iconify-json/devicon": ^1.2.71
-    "@iconify-json/healthicons": ^1.2.14
-    "@iconify-json/logos": ^1.2.17
-    "@iconify-json/material-icon-theme": ^1.2.73
+    "@iconify-json/carbon": ^1.2.30
+    "@iconify-json/devicon": ^1.2.81
+    "@iconify-json/healthicons": ^1.2.18
+    "@iconify-json/logos": ^1.2.20
+    "@iconify-json/material-icon-theme": ^1.2.77
     "@iconify-json/mdi": ^1.2.3
-    "@iconify-json/noto": ^1.2.9
-    "@iconify-json/openmoji": ^1.2.29
-    "@iconify-json/simple-icons": ^1.2.100
+    "@iconify-json/noto": ^1.2.10
+    "@iconify-json/openmoji": ^1.2.31
+    "@iconify-json/simple-icons": ^1.2.102
     "@iconify-json/skill-icons": ^1.2.4
     "@iconify-json/twemoji": ^1.2.5
     "@iconify-json/uim": ^1.2.3
-    "@iconify/json": ^2.2.547
+    "@iconify/json": ^2.2.557
 
   lint:
-    vize: ^0.549.0
+    vize: ^0.767.0
     # Experimental checker for `vize check`; only prereleases are published, so pin exactly
     tsrs: 0.18.0-ts7.1.0-dev.20260929
 
@@ -50,25 +50,25 @@ catalogs:
     "@braintree/sanitize-url": ^7.1.2
 
   types:
-    "@types/node": ^26.6.5
+    "@types/node": ^26.6.6
     "@types/prompts": ^2.4.9
     "@types/seedrandom": ^3.0.8
-    "@cloudflare/workers-types": ^5.20261024.1
+    "@cloudflare/workers-types": ^5.20261116.1
 
   cloudflare:
     # cf is in open beta, so pin exactly
     cf: 1.0.0-beta.26
-    wrangler: ^4.156.0
+    wrangler: ^4.163.0
 
   tooling:
     vite-plus: 1.4.0
     typescript: ^7.0.2
-    rimraf: ^6.1.3
+    rimraf: ^6.1.4
     execa: ^10.2.1
     fast-glob: ^3.3.3
-    prettier: ^3.9.10
+    prettier: ^3.10.1
     taze: ^21.3.0
-    pnpm: ^12.15.0
+    pnpm: ^12.21.0
     vite: npm:@voidzero-dev/vite-plus-core@1.4.0
 
   misc:
@@ -78,18 +78,18 @@ catalogs:
     seedrandom: ^3.0.5
 
   site:
-    nuxt: ^4.6.2
-    vue: ^3.5.44
-    vue-router: ^5.4.0
-    "@nuxt/fonts": ^1.1.0
-    "@unocss/nuxt": ^66.11.0
-    unocss: ^66.11.0
+    nuxt: ^4.6.4
+    vue: ^3.5.45
+    vue-router: ^5.5.1
+    "@nuxt/fonts": ^1.2.0
+    "@unocss/nuxt": ^66.13.0
+    unocss: ^66.13.0
 
   content:
     canvas-confetti: ^1.9.4
-    gsap: ^3.15.0
+    gsap: ^3.15.1
     js-confetti: ^0.13.1
-    "@unocss/preset-icons": ^66.11.0
+    "@unocss/preset-icons": ^66.13.0
 
 allowBuilds:
   esbuild: true

@@ -3,7 +3,7 @@ title: ぼくのきたく
 favicon: /images/icon.png
 transition: view-transition
 fonts:
-  sans: "Kodomo Rounded"
+  sans: "Zen Maru Gothic"
   mono: "Fira Code"
 seoMeta:
   ogTitle: ぼくのきたく
