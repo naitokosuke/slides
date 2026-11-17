@@ -129,7 +129,7 @@ async function startSite() {
   const port = await freePort();
   const child = spawnChild(
     "pnpm",
-    ["exec", "nuxt", "dev", "--port", String(port)],
+    ["exec", "nuxt", "dev", "--host", "localhost", "--port", String(port)],
     siteDir,
   );
   pipeLogs(child, "[site]");
@@ -148,6 +148,14 @@ export function slidesDevServer() {
     name: "slides-dev-server",
     apply: "serve",
     async configureServer(server) {
+      const shutdown = () => {
+        killChildren();
+        process.exit(0);
+      };
+      process.on("SIGINT", shutdown);
+      process.on("SIGTERM", shutdown);
+      process.on("exit", killChildren);
+
       const sitePort = await startSite();
 
       const printUrls = server.printUrls.bind(server);
@@ -208,14 +216,6 @@ export function slidesDevServer() {
           proxyUpgrade(req, socket as Socket, head, deckPort ?? sitePort);
         });
       }
-
-      const shutdown = () => {
-        killChildren();
-        process.exit(0);
-      };
-      process.on("SIGINT", shutdown);
-      process.on("SIGTERM", shutdown);
-      process.on("exit", killChildren);
     },
   };
 }
