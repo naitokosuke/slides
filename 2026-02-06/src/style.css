@@ -1,19 +1,4 @@
 /* ===========================================
-   Font Definitions
-   =========================================== */
-@font-face {
-  font-family: "Kodomo Rounded";
-  src: url("/KodomoRounded.otf") format("opentype");
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: "Kodomo Rounded";
-  src: url("/KodomoRounded-Light.otf") format("opentype");
-  font-weight: 300;
-}
-
-/* ===========================================
    Color Palette
 
    Base:

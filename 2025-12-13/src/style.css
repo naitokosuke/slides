@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Yuji+Boku&display=swap");
 
 @font-face {
   font-family: "Tsunagi Gothic";
@@ -8,16 +8,8 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Onryou";
-  src: url("/fonts/onryou/onryou.TTF") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-.font-onryou {
-  font-family: "Onryou", sans-serif;
+.font-horror {
+  font-family: "Yuji Boku", serif;
 }
 
 .font-noto {

@@ -289,14 +289,14 @@ class: grid place-items-center bg-black
 
 ---
 layout: section
-class: font-onryou text-7xl bg-black text-#d20a13
+class: font-horror text-6xl bg-black text-#d20a13
 ---
 
 おわかりいただけただろうか
 
 ---
 layout: section
-class: font-onryou text-7xl bg-black text-#d20a13
+class: font-horror text-7xl bg-black text-#d20a13
 ---
 
 REPLAY
@@ -326,11 +326,11 @@ class: grid place-items-center bg-black
 <img src="/images/koko-up2.jpg" controls autoplay class="h-120" />
 
 ---
-class: grid place-items-center bg-black font-onryou text-#d20a13
+class: grid place-items-center bg-black font-horror text-#d20a13
 ---
 
 <img src="/images/koko-up2.jpg" class="h-120" />
-<span class="absolute top-64 left-34 text-6xl">タイトルが Source になっている</span>
+<span class="absolute top-64 left-34 text-5xl whitespace-nowrap">タイトルが Source になっている</span>
 
 ---
 class: grid place-items-center bg-#d20a13 text-9xl
